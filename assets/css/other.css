@@ -1,7 +1,6 @@
 .log{
     margin-left: 80%;
 }
-
 .card-theme-text-box{
     margin: 15px;
     border-style: groove;
@@ -23,3 +22,9 @@
 .theme-pdf-button{
     margin: 15px;
 }
+.histograma{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
