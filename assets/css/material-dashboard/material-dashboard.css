@@ -11168,6 +11168,7 @@ form {
 
 .navbar form {
   margin-bottom: 0;
+  margin-left: 10%;
 }
 
 .navbar form .bmd-form-group {
@@ -13031,7 +13032,6 @@ fieldset[disabled] .form-group .form-control {
   border: 0;
   border-radius: 3px;
   padding: 0.625rem 0;
-  margin-bottom: 20px;
   height: auto !important;
   color: #555;
   background-color: #fff !important;

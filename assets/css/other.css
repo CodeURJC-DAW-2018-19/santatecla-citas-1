@@ -1,3 +1,9 @@
 .log{
     margin-left: 80%;
 }
+
+.histograma{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
