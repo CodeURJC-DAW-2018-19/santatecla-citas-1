@@ -1,9 +1,30 @@
 .log{
     margin-left: 80%;
 }
+.card-theme-text-box{
+    margin: 15px;
+    border-style: groove;
+    padding: 5px;
+    height:100pt;
+}
 
+.card-theme-others-box{
+    margin: 15px;
+    border-style: groove;
+    padding: 5px;
+    width: 45%;
+}
+
+.card-theme-html{
+    height: 100%;
+}
+
+.theme-pdf-button{
+    margin: 15px;
+}
 .histograma{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
