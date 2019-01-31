@@ -1,6 +1,17 @@
 .log{
     margin-left: 80%;
 }
+
+.LogIn{
+    padding-left: 20vw;
+    padding-right: 20vw;
+    padding-top: 5vw;
+    padding-bottom: 5vw;
+    background: linear-gradient(60deg, #6b5bfc, #38b4da);
+    height:100%;
+    width:100%;
+}
+
 .card-theme-text-box{
     margin: 15px;
     border-style: groove;
@@ -22,7 +33,7 @@
 .theme-pdf-button{
     margin: 15px;
 }
-.histograma{
+.BCentrado{
     display: flex;
     justify-content: center;
     align-items: center;
