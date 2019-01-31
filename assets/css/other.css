@@ -1,3 +1,7 @@
+.body{
+    background: linear-gradient(60deg, #87c9ff, #b6deff);
+}
+
 .log{
     margin-left: 80%;
 }
@@ -7,7 +11,6 @@
     padding-right: 20vw;
     padding-top: 5vw;
     padding-bottom: 5vw;
-    background: linear-gradient(60deg, #6b5bfc, #38b4da);
     height:100%;
     width:100%;
 }
@@ -38,4 +41,5 @@
     justify-content: center;
     align-items: center;
 }
+
 
