@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Historiograma</title>
+  <title>Histograma</title>
  <!-- Required meta tags -->
  <meta charset="utf-8">
  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -17,45 +17,66 @@
     <script src="../assets/js/echarts/echarts.js"></script>
 </head>
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="../html/Inicio.html">Inicio</a></li>
-    <div class="log">
+<div class="row">
+    <div class="col-md-11">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../html/Inicio.html">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Histograma</li>
+        </ol>
+      </nav>
+    </div>
+    
+    <div class="logButton">
       <a href="../html/LogIn.html" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">LogIn</a>
     </div>
-  </ol>
-</nav>
+</div>
 
-<body>
-        <!-- prepare a DOM container with width and height -->
-    <div id="main" style="width: 600px;height:400px;"></div>
-    <script type="text/javascript">
-        // based on prepared DOM, initialize echarts instance
-        var myChart = echarts.init(document.getElementById('main'));
+<body class="body">
+    
+    <div class="histogramCard">
+        <div class="card">
+        
+            <div class="card-header card-header-text card-header-primary">
+                <div class="card-text">
+                    <h4 class="card-title">Histograma</h4>
+                </div>
+            </div>
 
-        // specify chart configuration item and data
-        var option = {
-            title: {
-                text: 'Historiograma'
-            },
-            tooltip: {},
-            legend: {
-                data:['Consultas']
-            },
-            xAxis: {
-                data: ["Temas","Citas"]
-            },
-            yAxis: {},
-            series: [{
-                name: 'Consultas',
-                type: 'bar',
-                data: [32, 20]
-            }]
-        };
+                <!-- prepare a DOM container with width and height -->
+            <div id="main" style="width: 600px;height:400px;"></div>
+            <script type="text/javascript">
+                // based on prepared DOM, initialize echarts instance
+                var myChart = echarts.init(document.getElementById('main'));
 
-        // use configuration item and data specified to show chart
-        myChart.setOption(option);
-    </script>
+                // specify chart configuration item and data
+                var option = {
+                    /*
+                    title: {
+                        text: 'Histograma'
+                    },
+                    */
+                    tooltip: {},
+                    legend: {
+                        data:['Consultas']
+                    },
+                    xAxis: {
+                        data: ["Temas","Citas"]
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: 'Consultas',
+                        type: 'bar',
+                        data: [32, 20]
+                    }]
+                };
+
+                // use configuration item and data specified to show chart
+                myChart.setOption(option);
+            </script>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
