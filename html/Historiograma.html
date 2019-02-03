@@ -51,16 +51,18 @@
                     */
                     tooltip: {},
                     legend: {
-                        data:['Consultas']
+                        data:['Citas en Temas']
                     },
                     xAxis: {
-                        data: ["Temas","Citas"]
+                        data: ["Tema 1","Tema 2","Tema 3","Tema 4"]
                     },
-                    yAxis: {},
+                    yAxis: {
+                        name: ["Citas"]
+                    },
                     series: [{
-                        name: 'Consultas',
+                        name: 'Citas en Temas',
                         type: 'bar',
-                        data: [32, 20]
+                        data: [2, 4, 1, 2]
                     }]
                 };
 
