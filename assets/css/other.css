@@ -4,17 +4,14 @@ html{
 
 .body{
     background-color: #b6deff;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.breadcrumb {
-    background: linear-gradient(60deg, #4e83e6, #b6deff);    
-  }
+#logButton{
+    margin-left: 65%;
+}
 
-.logButton{
-    margin-top: 1.25rem;
-    margin-left: 90%;
-    position: absolute;
+@media only screen and (min-width: 600px){
+    #logButton {margin-left: 80%}
 }
 
 .loginCard{
