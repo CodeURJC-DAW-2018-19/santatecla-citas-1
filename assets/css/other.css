@@ -6,12 +6,45 @@ html{
     background-color: #b6deff;
 }
 
-#logButton{
-    margin-left: 65%;
+#borrar{
+    margin-left: 1.7rem;
+    border-radius: 2rem;
 }
 
-@media only screen and (min-width: 600px){
-    #logButton {margin-left: 80%}
+#borrar2{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 2rem;
+}
+
+#logButton{
+    margin-left: 67%;
+    margin-top: 1.2rem;
+}
+
+@media only screen and (min-width: 767px){
+    #logButton {
+        margin-left: 85%;
+        margin-top: 1.2rem;
+    }
+}
+
+.shortNav{
+    width: 66%;
+    position: absolute;
+}
+
+@media only screen and (min-width: 767px){
+    .shortNav{
+        width: 85%;
+        position: absolute;
+    }
+}
+
+#selection{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .loginCard{
@@ -40,13 +73,14 @@ html{
 }
 
 .card-theme-html{
-    height: 90%;
+    height: 80%;
 }
 
 .theme-pdf-button{
     margin: 15px;
 }
 .BCentrado{
+    margin-bottom: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;

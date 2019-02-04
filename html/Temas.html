@@ -17,15 +17,16 @@
 
 <body class="body">
       
-  
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="../html/Inicio.html">Inicio</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Temas</li>
-      <a id="logButton" href="../html/LogIn.html" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">LogOut</a>
-    </ol>
-  </nav>
+  <div class="shortNav">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../html/Inicio.html">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Temas</li>
+      </ol>
+    </nav>
+  </div>
 
+  <a id="logButton" href="../html/LogIn.html" class="btn btn-primary btn-bg active" role="button" aria-pressed="true">LogOut</a>
 
   <div class="col-md-12">
     <div class="card">
@@ -48,6 +49,7 @@
               <div class="card-theme-others-box">AUTOR</div>
               <div class="card-theme-others-box">OBRA</div>
             </div>
+            <a id="borrar2" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
           </div>
 
           <div class="card">
@@ -57,6 +59,7 @@
               </div>
             </div>
             <div class="card-theme-text-box">Markdown</div>
+            <a id="borrar2" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
           </div>
 
           <div class="card">
@@ -70,9 +73,10 @@
               <div class="card-theme-others-box">AUTOR</div>
               <div class="card-theme-others-box">OBRA</div>
             </div>
+            <a id="borrar2" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
           </div>
 
-          <div class="row">
+          <div id="selection" class="row">
             <div class="col-md-6">
               <div class="form-check form-check-radio">
                 <label class="form-check-label">
@@ -83,7 +87,7 @@
                     </span>
                 </label>
               </div>
-
+    
               <div class="form-check form-check-radio">
                   <label class="form-check-label">
                       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
@@ -93,6 +97,10 @@
                       </span>
                   </label>
               </div>
+            </div>
+
+            <div class="col-md-6">
+              <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
             </div>
           </div>
         </div>
@@ -112,6 +120,9 @@
         </div>
 
       </div>
+
+      
+
     </div>
   </div>
     
