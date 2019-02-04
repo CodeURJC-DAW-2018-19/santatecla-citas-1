@@ -61,6 +61,10 @@ It has the fields of the quote and allows to modify the information directly on 
 
 **Historiograma - Histogram**
 
+```
+It shows the number of quotes that each topic has on the web.
+```
+
 ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/Historiograma.png)
 
 ---------------------
