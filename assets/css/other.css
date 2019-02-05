@@ -20,13 +20,13 @@ html{
 
 #logButton{
     margin-left: 67%;
-    margin-top: 1.2rem;
+    margin-top: 1.25rem;
 }
 
 @media only screen and (min-width: 767px){
     #logButton {
         margin-left: 85%;
-        margin-top: 1.2rem;
+        margin-top: 1.25rem;
     }
 }
 
