@@ -58,6 +58,12 @@ html{
     padding-right: 10%;
 }
 
+.citasCard{
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+
 .card-theme-text-box{
     margin: 15px;
     border-style: groove;
