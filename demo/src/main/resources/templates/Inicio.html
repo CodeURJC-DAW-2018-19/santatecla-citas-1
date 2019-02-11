@@ -20,7 +20,7 @@
   <div class="shortNav">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">{{name}}</li>
+        <li class="breadcrumb-item active" aria-current="page">Inicio</li>
       </ol>
     </nav>
   </div>
@@ -43,39 +43,22 @@
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" href="../Temas.html">Buscar</button>
                     </form>
                 </nav>
-
                 <div class="row">
+                  {{#themes}}
                   <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-body">
-                        <a href="/tema" class="card-title">El sentido de la vida</a>
-                        <a id="borrar" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
-                      </div>                       
-                    </div>
-                  </div>
-            
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-body">
-                        <a href="tema" class="card-title">Amor</a>
-                        <a id="borrar" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+                      <div class="card">
+                        <div class="card-body">
+                          <a href="/tema" class="card-title">{{name}}</a>
+                          <a id="borrar" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+                        </div>                       
                       </div>
                     </div>
-                  </div>
+                  {{/themes}}
+                </div>
 
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-body">
-                        <a href="tema" class="card-title">Sufrimiento</a>
-                        <a id="borrar" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
-                      </div>
-                    </div>
-                  </div>
+                <a href="/addTheme" type="button" class="btn btn-primary btn-lg btn-block">Añadir Tema</a>
 
-                  <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Añadir Tema</a>
-
-                </div> 
-            </div>
+            </div> 
         </div>
     </div>
   
@@ -96,7 +79,17 @@
                 </nav>
 
                 <div class="row">
+                  {{#quotes}}
                     <div class="col-md-6">
+                        <div class="card">
+                          <div class="card-body">
+                            <a href="/cita" class="card-title">{{quote}}</a>
+                            <a id="borrar" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+                          </div>                       
+                        </div>
+                      </div>
+                  {{/quotes}}
+                    <!--<div class="col-md-6">
                       <div class="card">
                         <div class="card-body">
                           <a href="/cita" class="card-title">“No hay felicidad o infelicidad en este mundo; 
@@ -137,9 +130,9 @@
                           <a id="borrar" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
                         </div>
                       </div>
-                    </div>
+                    </div>-->
 
-                    <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Añadir Cita</a>
+                    <a href="/addQuote" type="button" class="btn btn-primary btn-lg btn-block">Añadir Cita</a>
 
                 </div>                
             </div>
