@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -22,17 +23,17 @@ public class ControllerDemo {
 	public String home(Model model) {
 		model.addAttribute("themes", themes);
 		model.addAttribute("quotes", quotes);
-		return "Inicio";
+		return "Home";
 	}
 	
 	@GetMapping("/tema")
-	public String tema(Model model) {
-		return "Temas";
+	public String theme(Model model) {
+		return "Themes";
 	}
 
 	@GetMapping("/cita")
-	public String cita(Model model) {
-		return "Citas";
+	public String quote(Model model) {
+		return "Quotes";
 	}
 
 	@GetMapping("/login")
@@ -41,8 +42,8 @@ public class ControllerDemo {
 	}
 
 	@GetMapping("/histograma")
-	public String histograma(Model model) {
-		return "Histograma";
+	public String histogram(Model model) {
+		return "Histogram";
 	}
 
 	@GetMapping(value="/addTheme")
@@ -66,6 +67,5 @@ public class ControllerDemo {
 		quotes.add(quote);
         return "SavedQuote";
 	}
-	
     
 }
