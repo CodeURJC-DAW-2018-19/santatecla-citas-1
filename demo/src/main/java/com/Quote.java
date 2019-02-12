@@ -1,4 +1,4 @@
-package com.example.demo;
+package com;
 
 public class Quote{
     private String quote;

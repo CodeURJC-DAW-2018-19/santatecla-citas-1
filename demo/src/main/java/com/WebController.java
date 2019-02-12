@@ -1,4 +1,4 @@
-package com.example.demo;
+package com;
 
 import java.util.ArrayList;
 
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-public class ControllerDemo {
+public class WebController {
 
 	private ArrayList<Theme> themes = new ArrayList<>();
 	private ArrayList<Quote> quotes = new ArrayList<>();
 
-	public ControllerDemo(){
+	public WebController(){
 		this.themes.add(new Theme("Amor"));
 		this.quotes.add(new Quote("No es el sufrimiento en sí mismo el que hace madurar al hombre, es el hombre el que da sentido al sufrimiento", "Alejandro Dumas", "El Conde de Montecristo"));
 	}
