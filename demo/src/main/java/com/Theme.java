@@ -1,4 +1,4 @@
-package com.example.demo;
+package com;
 
 public class Theme{
     private String name;
