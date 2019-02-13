@@ -92,18 +92,14 @@ public class WebController {
 
 	@PostMapping("/saveQuote")
 	public String saveQuote(Model model, Quote quote) {
-		
 		quoteService.save(quote);
-		
-		return "Home";
+		return "SavedQuote";
 	}
 
 	@PostMapping("/saveTheme")
 	public String saveTheme(Model model, Theme theme) {
-		
 		themeService.save(theme);
-		
-		return "Home";
+		return "SavedTheme";
 	}
     
 }
