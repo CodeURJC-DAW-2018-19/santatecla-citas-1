@@ -1,4 +1,4 @@
-package com;
+package com.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,13 +13,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         
     	// Public pages
         http.authorizeRequests().antMatchers("/").permitAll();
-        http.authorizeRequests().antMatchers("/tema").permitAll();
-        http.authorizeRequests().antMatchers("/cita").permitAll();
         http.authorizeRequests().antMatchers("/login").permitAll();
-/*
+
         // Private pages (all other pages)
-        http.authorizeRequests().anyRequest().authenticated();
-*/
+        http.authorizeRequests().antMatchers("/Home").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/AddQuote").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/AddTheme").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/SavedQuote").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/SavedTheme").hasAnyRole("ADMIN");
+
         // Login form
         http.formLogin().loginPage("/login");
         http.formLogin().usernameParameter("username");
@@ -30,9 +32,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // Logout
         http.logout().logoutUrl("/logout");
         http.logout().logoutSuccessUrl("/");
-       
-        // Disable CSRF at the moment
-        http.csrf().disable();
         
     }
 

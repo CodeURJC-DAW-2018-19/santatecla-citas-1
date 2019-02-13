@@ -1,4 +1,4 @@
-package com;
+package com.quote;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,4 +47,12 @@ public class Quote{
     public void setBook(String book){
         this.book = book;
     }
+
+    public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 }

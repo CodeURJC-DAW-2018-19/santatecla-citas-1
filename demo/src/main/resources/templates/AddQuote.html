@@ -19,14 +19,16 @@
 
 	{{>header}}
 	
-    <form action='/quote/new'>
+    <form action='/saveQuote'>
+        {{#book}}<input type="hidden" name="id" value="{{id}}" class="form-control"/>{{/book}}
         <p>Cita: </p>
-        <input type="text" name="Name">
+        <input type="text" id="name" name="name">
         <p>Autor: </p>
-        <input type="text" name="Author">
+        <input type="text" id="author" name="author">
         <p>Obra: </p>
-        <input type="text" name="Book">
+        <input type="text" id="author" name="book">
         <input type="submit" value="Enviar">
+        <input type="hidden" name="_csrf" value="{{token}}"/>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

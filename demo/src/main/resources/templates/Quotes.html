@@ -18,13 +18,14 @@
 <body class="body"> 
       
 	{{>header}}
-	
+  
+  {{#quote}}
   <div class="cita">
     <div class="col-md-12">
       <div class="card" style="padding: 1rem">
         <div class="card-body">
             <div class="form-group-center">
-                <div style="text-align:center">"Al llegar al mar un cocodrilo surgio"</div>
+                <div style="text-align:center">"{{quote.name}}"</div>
             </div>
           </div>
         </div>
@@ -36,7 +37,7 @@
         <div class="card">
           <div class="card-header card-header-text card-header-primary">
             <div class="card-text">
-              <h4 class="card-title">Autores</h4>
+              <h4 class="card-title">Autor</h4>
             </div>
           </div>
 
@@ -44,7 +45,7 @@
             <div class="col-md-6">
                 <div class="card">
                   <div class="card-header">
-                    <h4 class="card-header">Alejandro Dumas</h4>
+                    <h4 class="card-header">"{{quote.author}}"</h4>
                   </div>
                 </div>
               </div>
@@ -66,7 +67,7 @@
                 <div class="col-md-6">
                     <div class="card">
                       <div class="card-header">
-                        <h4 class="card-header">"El rey leon"</h4>
+                        <h4 class="card-header">"{{quote.book}}"</h4>
                       </div>
                     </div>
                  </div>
@@ -75,7 +76,11 @@
           </div>
         </div>
   </div>
-      
+  {{/quote}}
+
+  {{^quote}}
+    <p>Book not found</p>
+  {{/quote}}
   
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -32,7 +32,7 @@
                 <nav class="navbar navbar-light bg-light">
                     <form class="form-inline">
                       <input class="form-control mr-sm-2" type="text" name='nombre' placeholder="Buscar" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" href="../Temas.html">Buscar</button>
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                 </nav>
                 <div class="row">
@@ -40,15 +40,24 @@
                   <div class="col-md-6">
                       <div class="card">
                         <div class="card-body">
-                          <a href="/tema" class="card-title">{{name}}</a>
+                          {{#logged}}
+                          <a href="/theme/{id}" class="card-title">{{name}}</a>
+                          {{#admin}}
                           <a id="borrar" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+                          {{/admin}}
+                          {{/logged}}
+                          {{^logged}}
+		                        {{name}}
+		                      {{/logged}}
                         </div>                       
                       </div>
                     </div>
                   {{/themes}}
                 </div>
 
+                {{#admin}}
                 <a href="/addTheme" type="button" class="btn btn-primary btn-lg btn-block">Añadir Tema</a>
+                {{/admin}}
 
             </div> 
         </div>
@@ -75,13 +84,23 @@
                     <div class="col-md-6">
                         <div class="card">
                           <div class="card-body">
-                            <a href="/cita" class="card-title">{{quote}}</a>
+                            {{#logged}}
+                            <a href="/quote/{id}" class="card-title">{{name}}</a>
+                            {{#admin}}
                             <a id="borrar" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+                            {{/admin}}
+                            {{/logged}}
+                            {{^logged}}
+		                          {{name}}
+		                        {{/logged}}
                           </div>                       
                         </div>
                       </div>
                   {{/quotes}}
+
+                  {{#admin}}
                     <a href="/addQuote" type="button" class="btn btn-primary btn-lg btn-block">Añadir Cita</a>
+                  {{/admin}}
 
                 </div>                
             </div>
