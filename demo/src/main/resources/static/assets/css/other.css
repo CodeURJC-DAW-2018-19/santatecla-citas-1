@@ -99,3 +99,7 @@ html{
 .clearIcon{
     margin-left: 0.5rem;
 }
+
+.logout{
+    background-color: #6f19be;
+}

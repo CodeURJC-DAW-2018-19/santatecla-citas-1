@@ -38,7 +38,6 @@ public class UserRepositoryAuthProvider implements AuthenticationProvider {
 		}
 
 		if (!new BCryptPasswordEncoder().matches(password, user.getPasswordHash())) {
-
 			throw new BadCredentialsException("Wrong password");
 		} else {
 

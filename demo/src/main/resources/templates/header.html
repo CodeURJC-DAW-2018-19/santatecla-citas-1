@@ -8,7 +8,11 @@
   </div>
 
   {{^hideLogin}}
-  <a id="logButton" href="/login" class="btn btn-primary btn-bg active" role="button" aria-pressed="true">LogIn</a>
+    {{^logged}}
+      <a id="logButton" href="/login" class="btn btn-primary btn-bg active"role="button" aria-pressed="true">LogIn</a>
+    {{/logged}} {{#logged}}
+      <a id="logButton" href="/logout" class="btn btn-primary btn-bg active logout" style="background-color: #6f19be" role="button" aria-pressed="true">LogOut</a>
+    {{/logged}}
   {{/hideLogin}}
 
  
