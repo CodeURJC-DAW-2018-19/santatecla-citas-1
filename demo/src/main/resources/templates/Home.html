@@ -40,10 +40,15 @@
                   <div class="col-md-6">
                       <div class="card">
                         <div class="card-body">
+                          {{#logged}}
                           <a href="/theme/{{id}}" class="card-title">{{name}}</a>
                           {{#admin}}
                           <a id="borrar" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
                           {{/admin}}
+                          {{/logged}}
+                          {{^logged}}
+                            {{name}}
+                          {{/logged}}
                         </div>                       
                       </div>
                     </div>
@@ -79,10 +84,15 @@
                     <div class="col-md-6">
                         <div class="card">
                           <div class="card-body">
+                            {{#logged}}
                             <a href="/quote/{{id}}" class="card-title">{{name}}</a>
                             {{#admin}}
                             <a id="borrar" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
                             {{/admin}}
+                            {{/logged}}
+                            {{^logged}}
+                              {{name}}
+                            {{/logged}}
                           </div>                       
                         </div>
                       </div>
