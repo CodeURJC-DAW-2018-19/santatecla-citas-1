@@ -66,7 +66,7 @@ public class WebController {
 			model.addAttribute("theme", theme.get());
 		}
 
-		return "theme";
+		return "Themes";
 	}
 
 	@GetMapping("/login")

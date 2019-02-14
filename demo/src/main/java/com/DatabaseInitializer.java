@@ -30,7 +30,7 @@ public class DatabaseInitializer {
         quoteRepository.save(new Quote("Cita 2","Jones","MilYUnanochesConNacho"));
         quoteRepository.save(new Quote("Cita 3","Pablo","MilYUnanochesConNacho"));
 		quoteRepository.save(new Quote("Cita 4","Tyrion","MilYUnanochesConNacho"));
-        quoteRepository.save(new Quote("Cita 5","Daeneris","MilYUnanochesConNacho"));
+        quoteRepository.save(new Quote("Cita 5","Daenerys","MilYUnanochesConNacho"));
         
         // Sample themes
 

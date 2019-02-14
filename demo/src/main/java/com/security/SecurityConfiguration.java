@@ -1,9 +1,12 @@
 package com.security;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -26,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().loginPage("/login");
         http.formLogin().usernameParameter("username");
         http.formLogin().passwordParameter("password");
-        http.formLogin().defaultSuccessUrl("/home");
+        http.formLogin().defaultSuccessUrl("/");
         http.formLogin().failureUrl("/loginerror");
 
         // Logout
@@ -40,6 +43,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         
     	// User
         auth.inMemoryAuthentication().withUser("user").password("pass").roles("USER");
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return NoOpPasswordEncoder.getInstance();
     }
 
 }
