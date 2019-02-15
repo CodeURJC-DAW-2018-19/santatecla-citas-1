@@ -76,6 +76,11 @@
           </div>
         </div>
   </div>
+
+  {{#admin}}
+    <a href="/editQuote/{{id}}" type="button" class="btn btn-primary btn-lg btn-block">Editar</a>
+  {{/admin}}
+
   {{/quote}}
 
   {{^quote}}

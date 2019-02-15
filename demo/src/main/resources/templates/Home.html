@@ -43,7 +43,7 @@
                           {{#logged}}
                           <a href="/theme/{{id}}" class="card-title">{{name}}</a>
                           {{#admin}}
-                          <a id="borrar" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+                          <a id="borrar" href="/deleteTheme/{{id}}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
                           {{/admin}}
                           {{/logged}}
                           {{^logged}}
@@ -87,7 +87,7 @@
                             {{#logged}}
                             <a href="/quote/{{id}}" class="card-title">{{name}}</a>
                             {{#admin}}
-                            <a id="borrar" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+                            <a id="borrar" href="/deleteQuote/{{id}}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
                             {{/admin}}
                             {{/logged}}
                             {{^logged}}

@@ -18,18 +18,9 @@
 <body class="body">
 
 	{{>header}}
-	
-    <form action='/saveQuote' method="POST">
-        {{#quote}}<input type="hidden" name="id" value="{{id}}" class="form-control"/>{{/quote}}
-        <p>Cita: </p>
-        <input type="text" id="name" name="name">
-        <p>Autor: </p>
-        <input type="text" id="author" name="author">
-        <p>Obra: </p>
-        <input type="text" id="author" name="book">
-        <input type="submit" value="Guardar">
-        <input type="hidden" name="_csrf" value="{{token}}"/>
-    </form>
+    
+    <p>Se ha eliminado correctamente</p>
+    <a href="/">INICIO</a>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

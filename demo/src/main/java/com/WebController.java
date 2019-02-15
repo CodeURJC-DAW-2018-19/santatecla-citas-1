@@ -24,6 +24,9 @@ public class WebController {
 	private ThemeService themeService;
 
 	@Autowired
+	private UserService userService;
+
+	@Autowired
 	private UserComponent userComponent;
 
 	@ModelAttribute
@@ -56,6 +59,14 @@ public class WebController {
 
 		return "Quotes";
 	}
+
+	@GetMapping("/deleteQuote/{id}")
+	public String deleteQuote(Model model, @PathVariable long id) {
+		
+		quoteService.delete(id);
+		
+		return "Deleted";
+	}
 	
 	@GetMapping("/theme/{id}")
 	public String showTheme(Model model, @PathVariable long id) {
@@ -69,10 +80,23 @@ public class WebController {
 		return "Themes";
 	}
 
+	@GetMapping("/deleteTheme/{id}")
+	public String deleteTheme(Model model, @PathVariable long id) {
+		
+		themeService.delete(id);
+		
+		return "Deleted";
+	}
+
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("hideLogin", true);
 		return "LogIn";
+	}
+
+	@GetMapping("/loginerror")
+	public String loginError() {
+		return "LogError";
 	}
 
 	@GetMapping("/histograma")
@@ -100,6 +124,24 @@ public class WebController {
 	public String saveTheme(Model model, Theme theme) {
 		themeService.save(theme);
 		return "SavedTheme";
+	}
+
+	@PostMapping("/saveUser")
+	public String saveUser(Model model, User user) {
+		userService.save(user);
+		return "SavedQuote";
+	}
+
+	@GetMapping("/editQuote/{id}")
+	public String newBook(Model model, @PathVariable long id) {
+		
+		Optional<Quote> quote = quoteService.findOne(id);
+		
+		if(quote.isPresent()) {
+			model.addAttribute("quote", quote.get());
+		}
+		
+		return "AddQuote";
 	}
     
 }
