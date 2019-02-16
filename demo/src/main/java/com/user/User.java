@@ -13,6 +13,7 @@ import javax.persistence.Id;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.TabElement;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -61,6 +62,20 @@ public class User {
 
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
+	}
+			
+	private ArrayList<TabElement> openTabs = new ArrayList();
+
+	public List<TabElement> getOpenTabs() {
+		return this.openTabs;
+	}
+
+	public void addTab(TabElement te) {
+		this.openTabs.add(te);
+	}
+
+	public void removeTab(TabElement te) {
+		this.openTabs.remove(te);
 	}
 
 }

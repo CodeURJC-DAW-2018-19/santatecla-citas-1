@@ -2,7 +2,13 @@
   <div class="shortNav">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page"><a href="/">Inicio</a></li>
+        <a href="/" class="tabButton" id="homeTab" role="button">Inicio</a>  
+        {{#openTabs}}
+          <div class="tabButton">
+            <a href="/{{type}}/{{id}}"> {{name}} </a>
+            <a href="/close/{{type}}/{{id}}" class="material-icons clearIcon closeTab"> clear </a>
+          </div>
+        {{/openTabs}}
       </ol>
     </nav>
   </div>
