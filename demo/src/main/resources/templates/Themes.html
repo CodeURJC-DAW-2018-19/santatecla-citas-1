@@ -18,34 +18,35 @@
 <body class="body">
       
 	{{>header}}
-	
+  
   <div class="col-md-12">
     <div class="card">
+      {{#theme}}
       <div class="row">
         <div class="col-md-6">
           <div class="card">
               <div class="card-header card-header-text">
-                  <h4 class="card-title">El sentido de la vida</h4>
+                  <h4 class="card-title">{{name}}</h4>
               </div>
           </div>
 
+          {{#quotes}}
           <div class="card">
             <div class="card-header card-header-text card-header-primary">
               <div class="card-text">
-                <div class="card-title">Referencia Cita 1</div>
+                <div class="card-title">Referencia Cita</div>
               </div>
             </div>
-            <div class="card-theme-text-box">“No hay felicidad o infelicidad en este mundo; 
-              solo hay comparación de un estado con otro. Solo un hombre que ha sentido la máxima desesperación es 
-              capaz de sentir la máxima felicidad. Es necesario haber deseado morir para saber lo bueno que es vivir”</div>
+            <div class="card-theme-text-box">{{name}}</div>
             <div class="d-flex">
-              <div class="card-theme-others-box">Alejandro Dumas</div>
-              <div class="card-theme-others-box">El conde de Monte Cristo</div>
+              <div class="card-theme-others-box">{{author}}</div>
+              <div class="card-theme-others-box">{{book}}</div>
             </div>
             <a id="borrar2" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
           </div>
+          {{/quotes}}
 
-          <div class="card">
+          <!--div class="card">
             <div class="card-header card-header-text card-header-primary">
               <div class="card-text">
                 <div class="card-title">Texto 1</div>
@@ -53,22 +54,7 @@
             </div>
             <div class="card-theme-text-box">Markdown</div>
             <a id="borrar2" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
-          </div>
-
-          <div class="card">
-            <div class="card-header card-header-text card-header-primary">
-              <div class="card-text">
-                <div class="card-title">Referencia Cita 2</div>
-              </div>
-            </div>
-            <div class="card-theme-text-box">“El hombre no se limita a existir, sino que decide cómo será 
-              su existencia, en qué se convertirá en el minuto siguiente”</div>
-            <div class="d-flex">
-              <div class="card-theme-others-box">Victor Emil Frankl</div>
-              <div class="card-theme-others-box">El hombre en busca de sentido</div>
-            </div>
-            <a id="borrar2" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
-          </div>
+          </div-->
 
           <div id="selection" class="row">
             <div class="col-md-6">
@@ -114,13 +100,9 @@
         </div>
 
       </div>
-
-      
-
+      {{/theme}}
     </div>
   </div>
-    
-      
   
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
