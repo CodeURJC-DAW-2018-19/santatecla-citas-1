@@ -30,11 +30,12 @@
               </div>
           </div>
 
+          {{#admin}}
           {{#quotes}}
           <div class="card">
             <div class="card-header card-header-text card-header-primary">
               <div class="card-text">
-                <div class="card-title">Referencia Cita</div>
+                <div class="card-title">Referencia Cita {{id}}</div>
               </div>
             </div>
             <div class="card-theme-text-box">{{name}}</div>
@@ -80,10 +81,11 @@
             </div>
 
             <div class="col-md-6">
-              <a href="#" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
+              <a href="/addQuoteToTheme" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
             </div>
           </div>
         </div>
+        {{/admin}}
 
         <div class="col-md-6">
           <div class="card card-theme-html">
@@ -92,8 +94,13 @@
                 <div class="card-title">HTML</div>
               </div>
             </div>
-
-            <div class="card-theme-text-box card-theme-html">HTML</div>
+            
+            <div class="card-theme-text-box card-theme-html">
+                {{#quotes}}
+                <p>"{{name}}"</p>
+                <p>{{author}}  -  {{book}}<br></p>
+                {{/quotes}}
+            </div>
             <button type="button" class="btn btn-default theme-pdf-button">Generar PDF</button>
 
           </div>

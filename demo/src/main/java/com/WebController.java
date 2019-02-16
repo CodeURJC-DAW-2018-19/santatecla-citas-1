@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.theme.*;
 import com.quote.*;
 import com.user.*;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class WebController {
@@ -133,7 +135,7 @@ public class WebController {
 	}
 
 	@GetMapping("/editQuote/{id}")
-	public String newBook(Model model, @PathVariable long id) {
+	public String editQuote(Model model, @PathVariable long id) {
 		
 		Optional<Quote> quote = quoteService.findOne(id);
 		
@@ -143,5 +145,26 @@ public class WebController {
 		
 		return "AddQuote";
 	}
+
+	@GetMapping(value="/addQuoteToTheme")
+	public String addQuoteToTheme(Model model, Theme theme) {
+
+		model.addAttribute("quotes", quoteService.findAll());
+
+		return "SelectQuote";
+	}
+
+	/*@GetMapping("/selectQuote/{id}")
+	public String selectQuote(Model model, @PathVariable long id) {
+		
+		Optional<Quote> quote = quoteService.findOne(id);
+		
+		if(quote.isPresent()) {
+			themeService.findOne(id).get().getQuotes().add(quote);
+		}
+		
+		return "Themes";
+	}*/
+	
     
 }
