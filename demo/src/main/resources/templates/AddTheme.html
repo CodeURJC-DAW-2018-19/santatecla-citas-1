@@ -19,12 +19,34 @@
 
 	{{>header}}
 	
-    <form action='/saveTheme' method="POST">
+    <!--<form action='/saveTheme' method="POST">
         <p>Tema: </p>
         <input type="text" id= "name" name="name">
         <input type="submit" value="Enviar">
         <input type="hidden" name="_csrf" value="{{token}}"/>
-    </form>
+    </form>-->
+
+    <div class="tittleCard">
+      <div class="card">
+        <div class="card-header card-header-text card-header-primary">
+          <div class="card-text">
+            <h4 class="card-title">Añadir tema</h4>
+          </div>
+        </div>
+        <div class="card-body">
+  
+          <form action="/saveTheme" method="POST">
+            <label for="theme">Tema</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca el nombre del tema">
+            <div class="BCentrado">
+              <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
+              <input type="hidden" name="_csrf" value="{{token}}" />
+            </div>
+          </form>
+  
+        </div>
+      </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
