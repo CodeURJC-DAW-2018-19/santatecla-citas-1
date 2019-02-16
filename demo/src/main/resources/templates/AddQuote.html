@@ -18,17 +18,131 @@
 <body class="body">
 
 	{{>header}}
-	
+
     <form action='/saveQuote' method="POST">
-        {{#quote}}<input type="hidden" name="id" value="{{id}}" class="form-control"/>{{/quote}}
-        <p>Cita: </p>
-        <input type="text" id="name" name="name">
-        <p>Autor: </p>
-        <input type="text" id="author" name="author">
-        <p>Obra: </p>
-        <input type="text" id="author" name="book">
-        <input type="submit" value="Guardar">
-        <input type="hidden" name="_csrf" value="{{token}}"/>
+      {{#quote}}<input type="hidden" name="id" value="{{id}}" class="form-control"/>{{/quote}}
+      {{#quote}}
+      <div class="cita">
+        <div class="col-md-12">
+          <div class="card" style="padding: 1rem">
+            <div class="card-body">
+                <div class="form-group-center">
+                  <input type="text" id="name" name="name" value="{{name}}">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header card-header-text card-header-primary">
+                <div class="card-text">
+                  <h4 class="card-title">Autor</h4>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                      <div class="card-header">
+                        <input type="text" id="author" name="author" value="{{author}}">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+              <div class="card">
+                <div class="card-header card-header-text card-header-primary">
+                  <div class="card-text">
+                    <h4 class="card-title">Obra</h4>
+                  </div>
+                </div>
+                    
+                <div class="row">
+                  <div class="col-md-6">
+                      <div class="card">
+                        <div class="card-header">
+                          <input type="text" id="author" name="book" value="{{book}}">
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+
+      <div class="btGrande">
+        <input type="submit" value="Guardar" class="btn btn-primary btn-lg btn-block"/>
+      </div>
+      <input type="hidden" name="_csrf" value="{{token}}"/>
+      {{/quote}}
+
+      {{^quote}}
+      <div class="cita">
+        <div class="col-md-12">
+          <div class="card" style="padding: 1rem">
+            <div class="card-body">
+                <div class="form-group-center">
+                  <input type="text" id="name" name="name">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header card-header-text card-header-primary">
+                <div class="card-text">
+                  <h4 class="card-title">Autor</h4>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                      <div class="card-header">
+                        <input type="text" id="author" name="author">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+              <div class="card">
+                <div class="card-header card-header-text card-header-primary">
+                  <div class="card-text">
+                    <h4 class="card-title">Obra</h4>
+                  </div>
+                </div>
+                    
+                <div class="row">
+                  <div class="col-md-6">
+                      <div class="card">
+                        <div class="card-header">
+                          <input type="text" id="author" name="book">
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+
+      <div class="btGrande">
+        <input type="submit" value="Guardar" class="btn btn-primary btn-lg btn-block"/>
+      </div>
+      <input type="hidden" name="_csrf" value="{{token}}"/>
+      {{/quote}}
+
     </form>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
