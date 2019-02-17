@@ -1,20 +1,16 @@
 package com.quote;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.TabElement;
 
 @Entity
-public class Quote{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class Quote extends TabElement{
     
     private String quote;
     private String author;
     private String book;
+    private String type = "quote";
+    private String tabName = "Cita";
 
     protected Quote(){}
 
@@ -54,5 +50,15 @@ public class Quote{
 
 	public void setId(long id) {
 		this.id = id;
-	}
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        try {
+            Quote q = (Quote)o;
+            return this.id == q.id;
+        } catch (Exception e) {}
+        return false;
+    }
+
 }

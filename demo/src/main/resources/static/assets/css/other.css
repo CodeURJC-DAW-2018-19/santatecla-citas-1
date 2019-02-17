@@ -114,3 +114,29 @@ html{
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
+.tabButton {
+    position: relative;
+    padding: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    border-radius: 0.2rem;
+    margin-right: 1rem;
+    background-color: #dcefff;
+    text-decoration: none;
+  }
+
+  #activeTab {
+    font-weight: bold;
+  }
+
+  .closeTab:hover {
+    background-color: #6f19be;
+    color: #ffffff;
+    border-radius: 1rem;
+  }
+
+  .material-icons {
+    font-size: 1rem;
+}
