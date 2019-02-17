@@ -63,9 +63,9 @@ public class User {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
-			
-	private ArrayList<TabElement> openTabs = new ArrayList();
 
+	private ArrayList<TabElement> openTabs = new ArrayList();
+		
 	public List<TabElement> getOpenTabs() {
 		return this.openTabs;
 	}
@@ -76,6 +76,22 @@ public class User {
 
 	public void removeTab(TabElement te) {
 		this.openTabs.remove(te);
+	}
+
+	public void setActive(TabElement te) {
+		if (te == null) {
+			for (TabElement t : openTabs) {
+				t.setActive(false);			
+			}
+		} else {
+			for (TabElement t : openTabs) {
+				if (t.equals(te)) {
+					t.setActive(true);
+				} else {
+					t.setActive(false);
+				}
+			}
+		}
 	}
 
 }

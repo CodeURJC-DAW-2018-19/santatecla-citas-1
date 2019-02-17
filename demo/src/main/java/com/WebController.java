@@ -34,7 +34,7 @@ public class WebController {
 
 	@ModelAttribute
 	public void addUserToModel(Model model) {
-		this.logged = (userComponent.getLoggedUser() != null);
+		this.logged = (userComponent.isLoggedUser());
 		model.addAttribute("logged", this.logged);
 		if(this.logged) {
 			model.addAttribute("admin", userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN"));
@@ -48,6 +48,11 @@ public class WebController {
 		model.addAttribute("quotes", quoteService.findAll());
 		model.addAttribute("themes", themeService.findAll());
 		
+
+		if(this.userComponent.isLoggedUser()) {
+			this.userComponent.getLoggedUser().setActive(null);
+		}
+		model.addAttribute("atHome", true);		
 		updateTabs(model);
 
 		return "Home";
@@ -65,6 +70,7 @@ public class WebController {
 			if(!this.userComponent.getLoggedUser().getOpenTabs().contains(q)) {
 				this.userComponent.getLoggedUser().addTab(q);
 			}
+			this.userComponent.getLoggedUser().setActive(q);
 		}
 		
 		updateTabs(model);
@@ -99,6 +105,7 @@ public class WebController {
 			if(!this.userComponent.getLoggedUser().getOpenTabs().contains(t)) {
 				this.userComponent.getLoggedUser().addTab(t);
 			}
+			this.userComponent.getLoggedUser().setActive(t);
 		}
 		
 		updateTabs(model);
@@ -218,7 +225,7 @@ public class WebController {
 	}
 
 	private void updateTabs(Model model) {
-		if (this.userComponent.getLoggedUser() != null) {
+		if (this.userComponent.isLoggedUser()) {
 			model.addAttribute("openTabs", this.userComponent.getLoggedUser().getOpenTabs());
 		}
 	}
@@ -236,7 +243,7 @@ public class WebController {
 				this.userComponent.getLoggedUser().removeTab(quote.get());
 			}
 		}
-		return this.home(model);
+		return "/CloseTab";
 	}
 
 	/*@GetMapping("/selectQuote/{id}")

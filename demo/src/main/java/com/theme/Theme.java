@@ -14,6 +14,7 @@ public class Theme extends TabElement {
     
     private String name;
     private String type = "theme";
+    private String tabName = "Tema";
 
     @OneToMany
     private List<Quote> quotes;

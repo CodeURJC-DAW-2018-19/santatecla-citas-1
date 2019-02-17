@@ -11,5 +11,10 @@ public class TabElement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
-        
+
+    protected boolean active;
+
+    public void setActive(boolean b) {
+        this.active = b;
+    }
 }
