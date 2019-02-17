@@ -9,8 +9,8 @@ public class Quote extends TabElement{
     private String quote;
     private String author;
     private String book;
-    private String type = "quote";
-    private String tabName = "Cita";
+   // private String type = "quote";
+   // private String tabName = "Cita";
 
     protected Quote(){}
 

@@ -9,8 +9,8 @@ import com.user.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -20,7 +20,7 @@ public class RegisterController {
 	@Autowired
 	private UserRepository uRepository;
 	
- 	@RequestMapping(value = "/access/register", method = RequestMethod.POST)
+ 	//@RequestMapping(value = "/access/register", method = RequestMethod.POST)
 	public String create(String email, String password, String password2, String name, String surname, String nickname, Date birthdate, RedirectAttributes redirectAttrs, HttpServletRequest request) {
 		
 		boolean samePasswords = password.equals(password2);

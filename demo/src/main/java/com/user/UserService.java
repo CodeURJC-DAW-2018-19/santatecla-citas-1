@@ -52,18 +52,18 @@ public class UserService {
 		// Clear user's themes
 		ThemeService.deleteUserThemes(user);
 
-		// Clear user's themes
+		/* Clear user's themes
 		List<Quote> userQuotes = qRepository.findByUser(user);
 		for (Quote quote : userQuotes)
 			qRepository.delete(quote);
-		userQuotes.clear();
+		userQuotes.clear();*/
 
 		// Delete user
 		uRepository.delete(user);
 	}
 
 	public User findByEmail(String email) {
-		return uRepository.findByEmail();
+		return uRepository.findByEmail(email);
 	}
 
 

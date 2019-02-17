@@ -48,8 +48,12 @@ public class WebController {
 		model.addAttribute("quotes", quoteService.findAll());
 		model.addAttribute("themes", themeService.findAll());
 		
-
+		//add User
+		model.addAttribute("logged", userComponent.isLoggedUser());
+		User user = userComponent.getLoggedUser();
 		if(this.userComponent.isLoggedUser()) {
+			model.addAttribute("name_user", user.getName());
+
 			this.userComponent.getLoggedUser().setActive(null);
 		}
 		model.addAttribute("atHome", true);		

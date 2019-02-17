@@ -10,17 +10,17 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+//import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.TabElement;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+//import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@Table(name = "users")
+//@Table(name = "users")
 public class User {
 
 	@Id
@@ -30,7 +30,7 @@ public class User {
 	@NotNull
 	private String name;
 
-	@NotNull
+	//@NotNull
 	private String email;
 
 	@NotNull
@@ -42,9 +42,9 @@ public class User {
 	public User() {
 	}
 
-	public User(long id){
+	/*public User(long id){
 		this.id = id;
-	}
+	}*/
 
 	public User(String name, String password, String... roles) {
 		this.name = name;
@@ -76,7 +76,7 @@ public class User {
 	}
 
 
-	@JsonProperty
+	//@JsonProperty
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = new BCryptPasswordEncoder().encode(passwordHash);
 	}
@@ -90,19 +90,19 @@ public class User {
 		return passwordHash;
 	}
 
-	public long getId() {
+	/*public long getId() {
 		return id;
 	}
 
 	public void setId(long id) {
 		this.id = id;
-	}
+	}*/
 
 	public List<String> getRoles() {
 		return roles;
 	}
 
-	@JsonProperty
+	//@JsonProperty
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
@@ -142,13 +142,13 @@ public class User {
 		return "User [id=" + id + ", roles=" + roles + ", email=" + email + ", name=" + name + "]";
 	}
 
-	@Override
+	/*@Override
 	public boolean equals(Object other) {
 		if (this == other)
 			return true;
 		if (!(other instanceof User))
 			return false;
 		return id == ((User) other).getId();
-	}
+	}*/
 
 }
