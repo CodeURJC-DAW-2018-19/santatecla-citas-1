@@ -30,7 +30,11 @@ public class QuoteService {
 	}
 
 	public List<Quote> findByName(String name) {
-		return new ArrayList();
+		List<Quote> quotes = new ArrayList();
+		quotes.addAll(repository.findByQuoteContaining(name));
+		quotes.addAll(repository.findByAuthorContaining(name));
+		quotes.addAll(repository.findByBookContaining(name));
+		return quotes;
 	}
 
 }
