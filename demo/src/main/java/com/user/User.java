@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 //import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -20,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 //import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-//@Table(name = "users")
+@Table(name = "users")
 public class User {
 
 	@Id
@@ -52,10 +53,10 @@ public class User {
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 	}
 
-	public User(String name, String email, String password) {
+	public User(String name, String password) {
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.name = name;
-		this.email = email;
+		//this.email = email;
 		this.roles = Arrays.asList("ROLE_USER");
 	}
 
