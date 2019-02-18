@@ -1,7 +1,8 @@
 package com.quote;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,13 @@ public class QuoteService {
 	}
 
 	public List<Quote> findByName(String name) {
-		List<Quote> quotes = new ArrayList();
-		quotes.addAll(repository.findByQuoteContaining(name));
-		quotes.addAll(repository.findByAuthorContaining(name));
-		quotes.addAll(repository.findByBookContaining(name));
-		return quotes;
+		HashSet<Quote> quotesSet = new HashSet();
+		quotesSet.addAll(repository.findByQuoteContaining(name));
+		quotesSet.addAll(repository.findByAuthorContaining(name));
+		quotesSet.addAll(repository.findByBookContaining(name));
+		List<Quote> quotesList = new ArrayList();
+		quotesList.addAll(quotesSet);
+		return quotesList;
 	}
 
 }

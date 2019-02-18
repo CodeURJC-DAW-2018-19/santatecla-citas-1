@@ -229,7 +229,7 @@ public class WebController {
 
 		return "AddQuote";
 	}
-
+	
 	@PostMapping("/saveQuote")
 	public String saveQuote(Model model, Quote quote) {
 
@@ -283,7 +283,7 @@ public class WebController {
         updateTabs(model);
 
         return "SelectQuote";
-    }
+	}
 
 	private void updateTabs(Model model) {
 		if (this.userComponent.isLoggedUser()) {
@@ -321,6 +321,23 @@ public class WebController {
 
         return "SavedQuote";
     }
-	
+		
+	@GetMapping("/addQuoteToTheme{id}/searchQuotes")
+	public String selectQuoteSearch(Model model, @PathVariable long id, @RequestParam String name) {
+
+		if (name.equals("")) {
+			model.addAttribute("quotes", quoteService.findAll());
+			model.addAttribute("searchQuotes", false);
+		} else {
+			List<Quote> quotes = quoteService.findByName(name);
+			model.addAttribute("quotes", quotes);
+			model.addAttribute("searchQuotes", true);
+			model.addAttribute("noResults", quotes.isEmpty());
+		}
+		model.addAttribute("themeId", id);
+		model.addAttribute("search", name);
+		
+		return "SelectQuote";
+	}
     
 }
