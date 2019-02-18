@@ -1,5 +1,6 @@
 package com.quote;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,4 +28,9 @@ public class QuoteService {
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
+
+	public List<Quote> findByName(String name) {
+		return new ArrayList();
+	}
+
 }

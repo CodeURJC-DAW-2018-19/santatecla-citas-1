@@ -1,6 +1,7 @@
 package com;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.theme.*;
@@ -47,8 +50,63 @@ public class WebController {
 
 		model.addAttribute("quotes", quoteService.findAll());
 		model.addAttribute("themes", themeService.findAll());
-		
+		model.addAttribute("searchThemes", false);
+		model.addAttribute("searchQuotes", false);		
 
+		if(this.userComponent.isLoggedUser()) {
+			this.userComponent.getLoggedUser().setActive(null);
+		}
+		model.addAttribute("atHome", true);		
+		updateTabs(model);
+
+		return "Home";
+	}
+
+	@GetMapping("/searchThemes")
+	public String searchThemes(Model model, @RequestParam String name) {
+
+		model.addAttribute("quotes", quoteService.findAll());
+
+		if (name.equals("")) {
+			model.addAttribute("themes", themeService.findAll());
+			model.addAttribute("searchThemes", false);
+		} else {
+			List<Theme> themes = themeService.findByName(name);
+			model.addAttribute("themes", themes);
+			model.addAttribute("searchThemes", true);
+			model.addAttribute("noResults", themes.isEmpty());	
+		}
+
+		model.addAttribute("searchQuotes", false);	
+		model.addAttribute("search", name);			
+		
+		if(this.userComponent.isLoggedUser()) {
+			this.userComponent.getLoggedUser().setActive(null);
+		}
+		model.addAttribute("atHome", true);		
+		updateTabs(model);
+
+		return "Home";
+	}
+
+	@GetMapping("/searchQuotes")
+	public String searchQuotes(Model model, @RequestParam String name) {
+
+		model.addAttribute("themes", themeService.findAll());
+
+		if (name.equals("")) {
+			model.addAttribute("quotes", quoteService.findAll());
+			model.addAttribute("searchQuotes", false);
+		} else {
+			List<Quote> quotes = quoteService.findByName(name);
+			model.addAttribute("quotes", quotes);
+			model.addAttribute("searchQuotes", true);
+			model.addAttribute("noResults", quotes.isEmpty());
+		}
+
+		model.addAttribute("searchThemes", false);
+		model.addAttribute("search", name);				
+		
 		if(this.userComponent.isLoggedUser()) {
 			this.userComponent.getLoggedUser().setActive(null);
 		}
