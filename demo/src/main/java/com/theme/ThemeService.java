@@ -27,7 +27,7 @@ public class ThemeService {
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
-
+	
 	public List<Theme> findByName(String name) {
 		return repository.findByNameContaining(name);
 	}

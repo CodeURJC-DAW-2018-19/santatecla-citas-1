@@ -35,6 +35,8 @@ public class WebController {
 
 	boolean logged = false;
 
+	private long theme;
+
 	@ModelAttribute
 	public void addUserToModel(Model model) {
 		this.logged = (userComponent.isLoggedUser());
@@ -272,15 +274,16 @@ public class WebController {
 		return "AddQuote";
 	}
 
-	@GetMapping(value="/addQuoteToTheme")
-	public String addQuoteToTheme(Model model, Theme theme) {
+	@GetMapping(value="/addQuoteToTheme{id}")
+    public String addQuoteToTheme(Model model, @PathVariable long id) {
 
-		model.addAttribute("quotes", quoteService.findAll());
+        model.addAttribute("quotes", quoteService.findAll());
+        model.addAttribute("themeId", id);
+        this.theme = id;
+        updateTabs(model);
 
-		updateTabs(model);
-
-		return "SelectQuote";
-	}
+        return "SelectQuote";
+    }
 
 	private void updateTabs(Model model) {
 		if (this.userComponent.isLoggedUser()) {
@@ -304,17 +307,20 @@ public class WebController {
 		return "/CloseTab";
 	}
 
-	/*@GetMapping("/selectQuote/{id}")
-	public String selectQuote(Model model, @PathVariable long id) {
-		
-		Optional<Quote> quote = quoteService.findOne(id);
-		
-		if(quote.isPresent()) {
-			themeService.findOne(id).get().getQuotes().add(quote);
-		}
-		
-		return "Themes";
-	}*/
+	@GetMapping("/addQuoteToTheme{theme}/selectQuote{id}")
+    public String selectQuote(Model model, @PathVariable long id) {
+
+        Optional<Quote> quote = quoteService.findOne(id);
+        if(quote.isPresent()) {
+			themeService.findOne(this.theme).get().getQuotes().add(quote.get());
+			themeService.save(themeService.findOne(theme).get());
+            for(Quote q: themeService.findOne(this.theme).get().getQuotes()){
+                System.out.println(q.getId());
+            }
+        }
+
+        return "SavedQuote";
+    }
 	
     
 }

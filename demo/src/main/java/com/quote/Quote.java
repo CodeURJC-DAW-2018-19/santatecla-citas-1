@@ -1,10 +1,18 @@
 package com.quote;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import com.TabElement;
 
 @Entity
 public class Quote extends TabElement{
+        
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected long id;
     
     private String quote;
     private String author;
