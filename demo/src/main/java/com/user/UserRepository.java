@@ -16,14 +16,6 @@ import org.springframework.data.repository.query.Param;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	public User findByName(String name);
-	public User findById(long id);	
-	public User findByEmail(String email);
-	
-	@Query("SELECT u FROM User u WHERE :role MEMBER OF u.roles")
-	public List<User> getUsersWithRole(@Param("role") String role);
-	
-	@Query("SELECT u FROM User u WHERE :role MEMBER OF u.roles")
-	public Page<User> getUsersWithRole(@Param("role") String role, Pageable page);
-	//public User findByEmail();
+	public User findById(long id);
 
 }

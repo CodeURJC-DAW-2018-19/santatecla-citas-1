@@ -111,7 +111,6 @@ public class WebController {
 		model.addAttribute("search", name);				
 		
 		if(this.userComponent.isLoggedUser()) {
-			model.addAttribute("name_user", user.getName());
 
 			this.userComponent.getLoggedUser().setActive(null);
 		}

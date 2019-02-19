@@ -50,8 +50,8 @@ public class User {
 	public User(String name, String password) {
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.name = name;
-
-		this.roles = Arrays.asList("ROLE_USER");
+		this.roles = new ArrayList<>();
+		this.roles.add("ROLE_USER");
 	}
 
 	public String getName() {

@@ -43,23 +43,4 @@ public class UserService {
 		uRepository.deleteById(id);
 	}
 
-	public void deleteUser(User user) {
-		// Clear user's themes
-		ThemeService.deleteUserThemes(user);
-
-		/* Clear user's themes
-		List<Quote> userQuotes = qRepository.findByUser(user);
-		for (Quote quote : userQuotes)
-			qRepository.delete(quote);
-		userQuotes.clear();*/
-
-		// Delete user
-		uRepository.delete(user);
-	}
-
-	public User findByEmail(String email) {
-		return uRepository.findByEmail(email);
-	}
-
-
 }
