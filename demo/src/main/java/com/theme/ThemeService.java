@@ -20,6 +20,8 @@ public class ThemeService {
 	}
 
 	public Page<Theme> findAll(Pageable page) {
+		page = new PageRequest(page.getPageNumber(), 4);
+		
 		return repository.findAll(page);
 	}
 
@@ -32,6 +34,7 @@ public class ThemeService {
 	}
 	
 	public Page<Theme> findByName(String name, Pageable page) {
+		page = new PageRequest(page.getPageNumber(), 4);
 		return repository.findByNameContaining(name, page);
 	}
 

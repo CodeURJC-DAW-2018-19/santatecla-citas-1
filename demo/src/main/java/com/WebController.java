@@ -50,6 +50,8 @@ public class WebController {
 	@GetMapping("/")
 	public String home(Model model, Pageable page) {
 
+		Page<Theme> themes =  themeService.findAll(page);
+
 		model.addAttribute("quotes", quoteService.findAll());
 		model.addAttribute("themes", themeService.findAll(page));
 		model.addAttribute("searchThemes", false);
@@ -60,6 +62,12 @@ public class WebController {
 		}
 		model.addAttribute("atHome", true);		
 		updateTabs(model);
+
+		model.addAttribute("showNext", !themes.isLast());
+		model.addAttribute("showPrev", !themes.isFirst());
+		model.addAttribute("nextPage", themes.getNumber()+1);
+		model.addAttribute("prevPage", themes.getNumber()-1);
+		model.addAttribute("numPage", themes.getNumber());
 
 		return "Home";
 	}
@@ -94,7 +102,7 @@ public class WebController {
 		model.addAttribute("showPrev", !themes.isFirst());
 		model.addAttribute("nextPage", themes.getNumber()+1);
 		model.addAttribute("prevPage", themes.getNumber()-1);
-		//model.addAttribute("numPage", themes.getNumber());
+		model.addAttribute("numPage", themes.getNumber());
 
 
 		return "Home";
@@ -102,6 +110,8 @@ public class WebController {
 
 	@GetMapping("/searchQuotes")
 	public String searchQuotes(Model model, Pageable page, @RequestParam String name) {
+
+		Page<Theme> themes =  themeService.findAll(page);
 
 		model.addAttribute("themes", themeService.findAll(page));
 
@@ -123,6 +133,12 @@ public class WebController {
 		}
 		model.addAttribute("atHome", true);		
 		updateTabs(model);
+
+		model.addAttribute("showNext", !themes.isLast());
+		model.addAttribute("showPrev", !themes.isFirst());
+		model.addAttribute("nextPage", themes.getNumber()+1);
+		model.addAttribute("prevPage", themes.getNumber()-1);
+		model.addAttribute("numPage", themes.getNumber());
 
 		return "Home";
 	}
