@@ -28,20 +28,26 @@
             </div>
             <div class="card-body">
 
-                <nav class="navbar navbar-light bg-light">
-                    <form class="form-inline">
-                      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
-                </nav>
+              <nav class="navbar navbar-light bg-light">
+                <form class="form-inline" action="/addQuoteToTheme{{themeId}}/searchQuotes">
+                  <input class="form-control mr-sm-2" type="search" name='name' placeholder="Buscar una cita" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+              </nav>
+
+              {{#searchQuotes}}
+                <p class="searchResults">Resultados de la búsqueda: "{{search}}"</p>
+                {{#noResults}}
+                  <p class="searchResults">Ningún resultado</p>
+                {{/noResults}}
+              {{/searchQuotes}}
 
                 <div class="row">
                     {{#quotes}}
                     <div class="col-md-6">
                       <div class="card">
                         <div class="card-body">
-                          <a href="/selectQuote/{{id}}" class="card-title">“{{name}}”</a>
-                          <a id="borrar" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+                          <a href="/addQuoteToTheme{{themeId}}/selectQuote{{id}}" class="card-title">“{{name}}”</a>
                         </div>                       
                       </div>
                     </div>
