@@ -78,8 +78,11 @@ public class WebController {
 		}
 
 		model.addAttribute("searchQuotes", false);	
-		model.addAttribute("search", name);			
-		
+		model.addAttribute("search", name);		
+    // add User
+    model.addAttribute("logged", userComponent.isLoggedUser());
+		User user = userComponent.getLoggedUser();
+
 		if(this.userComponent.isLoggedUser()) {
 			this.userComponent.getLoggedUser().setActive(null);
 		}
@@ -88,8 +91,8 @@ public class WebController {
 
 		return "Home";
 	}
-
-	@GetMapping("/searchQuotes")
+		
+  @GetMapping("/searchQuotes")
 	public String searchQuotes(Model model, @RequestParam String name) {
 
 		model.addAttribute("themes", themeService.findAll());
@@ -108,6 +111,8 @@ public class WebController {
 		model.addAttribute("search", name);				
 		
 		if(this.userComponent.isLoggedUser()) {
+			model.addAttribute("name_user", user.getName());
+
 			this.userComponent.getLoggedUser().setActive(null);
 		}
 		model.addAttribute("atHome", true);		
@@ -203,6 +208,17 @@ public class WebController {
 
 		return "LogError";
 	}
+
+	@GetMapping("/register")
+	public String register(Model model) {
+
+		model.addAttribute("hideLogin", true);
+		
+		updateTabs(model);
+
+		return "Register";
+	}
+	
 
 	@GetMapping("/histogram")
 	public String histogram(Model model) {

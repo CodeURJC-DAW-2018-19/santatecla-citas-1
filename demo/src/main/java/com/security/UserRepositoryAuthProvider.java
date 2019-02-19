@@ -48,6 +48,8 @@ public class UserRepositoryAuthProvider implements AuthenticationProvider {
 				roles.add(new SimpleGrantedAuthority(role));
 			}
 
+			userComponent.setLoggedUser(user);
+			
 			return new UsernamePasswordAuthenticationToken(username, password, roles);
 		}
 	}

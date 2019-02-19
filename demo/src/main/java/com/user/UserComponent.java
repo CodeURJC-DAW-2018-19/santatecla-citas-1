@@ -9,16 +9,20 @@ public class UserComponent {
 
 	private User user;
 
-	public User getLoggedUser() {
-		return user;
-	}
+    public User getLoggedUser() {
+        return user;
+    }
 
-	public void setLoggedUser(User user) {
-		this.user = user;
-	}
+    public void setLoggedUser(User user) {
+        this.user = user;
+    }
 
-	public boolean isLoggedUser() {
-		return this.user != null;
-	}
+    public boolean isLoggedUser() {
+        return this.user != null;
+    }
+    
+    public boolean isAdmin() {
+    	return user.getRoles().contains("ROLE_ADMIN");
+    }
 
 }
