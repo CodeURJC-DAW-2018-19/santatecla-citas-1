@@ -4,6 +4,8 @@ import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -46,10 +48,10 @@ public class WebController {
 	}
 
 	@GetMapping("/")
-	public String home(Model model) {
+	public String home(Model model, Pageable page) {
 
 		model.addAttribute("quotes", quoteService.findAll());
-		model.addAttribute("themes", themeService.findAll());
+		model.addAttribute("themes", themeService.findAll(page));
 		model.addAttribute("searchThemes", false);
 		model.addAttribute("searchQuotes", false);		
 
@@ -63,15 +65,17 @@ public class WebController {
 	}
 
 	@GetMapping("/searchThemes")
-	public String searchThemes(Model model, @RequestParam String name) {
+	public String searchThemes(Model model, Pageable page, @RequestParam String name) {
+
+		Page<Theme> themes =  themeService.findAll(page);
 
 		model.addAttribute("quotes", quoteService.findAll());
 
 		if (name.equals("")) {
-			model.addAttribute("themes", themeService.findAll());
+			model.addAttribute("themes", themes);
 			model.addAttribute("searchThemes", false);
 		} else {
-			List<Theme> themes = themeService.findByName(name);
+			themes = themeService.findByName(name, page);
 			model.addAttribute("themes", themes);
 			model.addAttribute("searchThemes", true);
 			model.addAttribute("noResults", themes.isEmpty());	
@@ -86,13 +90,20 @@ public class WebController {
 		model.addAttribute("atHome", true);		
 		updateTabs(model);
 
+		model.addAttribute("showNext", !themes.isLast());
+		model.addAttribute("showPrev", !themes.isFirst());
+		model.addAttribute("nextPage", themes.getNumber()+1);
+		model.addAttribute("prevPage", themes.getNumber()-1);
+		//model.addAttribute("numPage", themes.getNumber());
+
+
 		return "Home";
 	}
 
 	@GetMapping("/searchQuotes")
-	public String searchQuotes(Model model, @RequestParam String name) {
+	public String searchQuotes(Model model, Pageable page, @RequestParam String name) {
 
-		model.addAttribute("themes", themeService.findAll());
+		model.addAttribute("themes", themeService.findAll(page));
 
 		if (name.equals("")) {
 			model.addAttribute("quotes", quoteService.findAll());

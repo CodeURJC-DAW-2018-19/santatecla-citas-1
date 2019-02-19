@@ -111,6 +111,14 @@
                       </div>
                   {{/quotes}}
 
+                  {{#showPrev}}
+                  <a href="/?page={{prevPage}}">Prev</a>
+                  {{/showPrev}}
+
+                  {{#showNext}}
+                  <a href="/?page={{prevNext}}">Next</a>
+                  {{/showNext}}
+
                   {{#admin}}
                   <a href="/addQuote" type="button" class="btn btn-primary btn-lg btn-block">Añadir Cita</a>
                   {{/admin}}

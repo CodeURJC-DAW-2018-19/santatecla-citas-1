@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,8 +19,8 @@ public class ThemeService {
 		return repository.findById(id);
 	}
 
-	public List<Theme> findAll() {
-		return repository.findAll();
+	public Page<Theme> findAll(Pageable page) {
+		return repository.findAll(page);
 	}
 
 	public void save(Theme book) {
@@ -28,8 +31,8 @@ public class ThemeService {
 		repository.deleteById(id);
 	}
 	
-	public List<Theme> findByName(String name) {
-		return repository.findByNameContaining(name);
+	public Page<Theme> findByName(String name, Pageable page) {
+		return repository.findByNameContaining(name, page);
 	}
 
 }
