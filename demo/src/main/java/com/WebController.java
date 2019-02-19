@@ -250,7 +250,7 @@ public class WebController {
 		
 		updateTabs(model);
 
-		return "SavedQuote";
+		return "Saved";
 	}
 
 	@PostMapping("/saveTheme")
@@ -316,7 +316,7 @@ public class WebController {
 				this.userComponent.getLoggedUser().removeTab(quote.get());
 			}
 		}
-		return "/CloseTab";
+		return "/GoToHome";
 	}
 
 	@GetMapping("/addQuoteToTheme{theme}/selectQuote{id}")
