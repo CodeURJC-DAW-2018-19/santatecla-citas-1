@@ -350,5 +350,13 @@ public class WebController {
 		
 		return "SelectQuote";
 	}
+
+	@GetMapping("/error")
+	public String error(Model model) {
+		
+		updateTabs(model);
+
+		return "Error";
+	}
     
 }
