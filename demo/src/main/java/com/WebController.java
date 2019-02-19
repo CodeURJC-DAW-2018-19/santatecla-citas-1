@@ -150,6 +150,17 @@ public class WebController {
 		return "LogError";
 	}
 
+	@GetMapping("/register")
+	public String register(Model model) {
+
+		model.addAttribute("hideLogin", true);
+		
+		updateTabs(model);
+
+		return "Register";
+	}
+	
+
 	@GetMapping("/histogram")
 	public String histogram(Model model) {
 		

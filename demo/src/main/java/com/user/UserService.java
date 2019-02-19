@@ -22,13 +22,8 @@ public class UserService {
 	@Autowired
 	private UserRepository uRepository;
 
-	/*@Autowired
-	private ThemeRepository tRepository;*/
 
-	@Autowired
-	private QuoteRepository qRepository;
-
-	public User findUserbyId(long id) {
+	public User findOne(long id) {
 		return uRepository.findById(id);
 	}
 

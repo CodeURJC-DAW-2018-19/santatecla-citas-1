@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 //import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@Table(name = "users")
 public class User {
 
 	@Id
@@ -30,9 +29,6 @@ public class User {
 
 	@NotNull
 	private String name;
-
-	//@NotNull
-	private String email;
 
 	@NotNull
 	private String passwordHash;
@@ -43,9 +39,6 @@ public class User {
 	public User() {
 	}
 
-	/*public User(long id){
-		this.id = id;
-	}*/
 
 	public User(String name, String password, String... roles) {
 		this.name = name;
@@ -56,7 +49,7 @@ public class User {
 	public User(String name, String password) {
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.name = name;
-		//this.email = email;
+
 		this.roles = Arrays.asList("ROLE_USER");
 	}
 
@@ -67,17 +60,7 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	//@JsonProperty
+	
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = new BCryptPasswordEncoder().encode(passwordHash);
 	}
@@ -86,24 +69,16 @@ public class User {
 		this.passwordHash = passwordHash;
 	}	
 
-	@JsonIgnore
+	
 	public String getPasswordHash() {
 		return passwordHash;
 	}
 
-	/*public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}*/
 
 	public List<String> getRoles() {
 		return roles;
 	}
 
-	//@JsonProperty
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
@@ -138,10 +113,6 @@ public class User {
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", roles=" + roles + ", email=" + email + ", name=" + name + "]";
-	}
 
 	/*@Override
 	public boolean equals(Object other) {
