@@ -35,8 +35,6 @@ public class WebController {
 
 	boolean logged = false;
 
-	private long theme;
-
 	@ModelAttribute
 	public void addUserToModel(Model model) {
 		this.logged = (userComponent.isLoggedUser());
@@ -247,7 +245,7 @@ public class WebController {
 		
 		updateTabs(model);
 
-		return "SavedTheme";
+		return "Saved";
 	}
 
 	@PostMapping("/saveUser")
@@ -257,7 +255,7 @@ public class WebController {
 
 		updateTabs(model);
 
-		return "SavedQuote";
+		return "Saved";
 	}
 
 	@GetMapping("/editQuote/{id}")
@@ -279,7 +277,6 @@ public class WebController {
 
         model.addAttribute("quotes", quoteService.findAll());
         model.addAttribute("themeId", id);
-        this.theme = id;
         updateTabs(model);
 
         return "SelectQuote";
@@ -308,18 +305,17 @@ public class WebController {
 	}
 
 	@GetMapping("/addQuoteToTheme{theme}/selectQuote{id}")
-    public String selectQuote(Model model, @PathVariable long id) {
+    public String selectQuote(Model model, @PathVariable long id, @PathVariable long theme) {
 
         Optional<Quote> quote = quoteService.findOne(id);
         if(quote.isPresent()) {
-			themeService.findOne(this.theme).get().getQuotes().add(quote.get());
-			themeService.save(themeService.findOne(theme).get());
-            for(Quote q: themeService.findOne(this.theme).get().getQuotes()){
-                System.out.println(q.getId());
-            }
+			if(!(themeService.findOne(theme).get().getQuotes().contains(quote.get()))){
+				themeService.findOne(theme).get().getQuotes().add(quote.get());
+				themeService.save(themeService.findOne(theme).get());
+			}
         }
 
-        return "SavedQuote";
+        return "Saved";
     }
 		
 	@GetMapping("/addQuoteToTheme{id}/searchQuotes")

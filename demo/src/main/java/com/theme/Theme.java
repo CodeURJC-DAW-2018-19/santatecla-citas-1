@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 import com.TabElement;
 import com.quote.*;
@@ -23,7 +23,7 @@ public class Theme extends TabElement {
     private String type = "theme";
     private String tabName = "Tema";
 
-    @OneToMany
+    @ManyToMany
     private List<Quote> quotes;
 
     public Theme(){}
