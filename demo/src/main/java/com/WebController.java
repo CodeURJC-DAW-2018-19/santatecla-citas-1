@@ -171,6 +171,7 @@ public class WebController {
 		}
 		
 		updateTabs(model);
+		model.addAttribute("idTheme", id);
 
 		return "Themes";
 	}
@@ -349,6 +350,48 @@ public class WebController {
 		model.addAttribute("search", name);
 		
 		return "SelectQuote";
+	}
+
+	@GetMapping("/deleteQuote{idQuote}FromTheme{idTheme}")
+	public String deleteQuoteFromTheme(Model model, @PathVariable long idQuote, @PathVariable long idTheme){
+		Optional<Theme> theme = themeService.findOne(idTheme);
+		Optional<Quote> quote = quoteService.findOne(idQuote);
+		if(theme.isPresent() && quote.isPresent()) {
+			if(theme.get().getQuotes().contains(quote.get())){
+				theme.get().getQuotes().remove(quote.get());
+				themeService.save(themeService.findOne(idTheme).get());
+			}
+		}
+		return "Deleted";
+	}
+
+	@GetMapping("/editTheme{id}")
+	public String editTheme(Model model, @PathVariable long id) {
+		
+		Optional<Theme> theme = themeService.findOne(id);
+		
+		if(theme.isPresent()) {
+			model.addAttribute("theme", theme.get());
+			model.addAttribute("idTheme", theme.get().getId());
+		}
+		
+		updateTabs(model);
+		
+		return "EditTheme";
+	}
+
+	@PostMapping("/saveEditedTheme{idTheme}")
+	public String saveTheme(Model model, Theme theme, @PathVariable Long idTheme) {
+		Optional<Theme> oldTheme = themeService.findOne(idTheme);
+		
+		if(oldTheme.isPresent()){
+			oldTheme.get().setName(theme.getName());
+			themeService.save(oldTheme.get());
+		}
+		
+		updateTabs(model);
+
+		return "Saved";
 	}
 
 	@GetMapping("/error")

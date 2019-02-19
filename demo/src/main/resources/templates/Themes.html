@@ -27,6 +27,9 @@
           <div class="card">
               <div class="card-header card-header-text">
                   <h4 class="card-title">{{name}}</h4>
+                  {{#admin}}
+                  <a id="edit" href="/editTheme{{id}}" class="btn btn-primary btn-sm active">Editar</a>
+                  {{/admin}}
               </div>
           </div>
 
@@ -43,7 +46,7 @@
               <div class="card-theme-others-box">{{author}}</div>
               <div class="card-theme-others-box">{{book}}</div>
             </div>
-            <a id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','#')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+            <a id="borrar" href="/deleteQuote{{id}}FromTheme{{idTheme}}" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','#')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
           </div>
           {{/quotes}}
 
