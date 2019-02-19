@@ -3,6 +3,8 @@ package com.theme;
 import java.util.List;
 import java.util.Optional;
 
+import com.user.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +29,8 @@ public class ThemeService {
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
-	
-	public List<Theme> findByName(String name) {
+  
+  public List<Theme> findByName(String name) {
 		return repository.findByNameContaining(name);
 	}
-
 }

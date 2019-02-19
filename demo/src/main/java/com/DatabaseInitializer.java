@@ -57,7 +57,8 @@ public class DatabaseInitializer {
 
         // Sample users
 		userRepository.save(new User("user", "pass", "ROLE_USER"));
-		userRepository.save(new User("admin", "pass", "ROLE_USER", "ROLE_ADMIN"));
+        userRepository.save(new User("admin", "pass", "ROLE_USER", "ROLE_ADMIN"));
+        userRepository.save(new User("alex", "alex"));
 
 	}
 

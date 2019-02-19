@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import com.user.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +31,8 @@ public class QuoteService {
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
-
-	public List<Quote> findByName(String name) {
+  
+  public List<Quote> findByName(String name) {
 		HashSet<Quote> quotesSet = new HashSet();
 		quotesSet.addAll(repository.findByQuoteContaining(name));
 		quotesSet.addAll(repository.findByAuthorContaining(name));

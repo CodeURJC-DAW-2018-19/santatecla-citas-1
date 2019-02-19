@@ -10,22 +10,28 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+//import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.TabElement;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
+//@Table(name = "users")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotNull
 	private String name;
 
-	@JsonIgnore
+	@NotNull
 	private String passwordHash;
 
 	@ElementCollection(fetch = FetchType.EAGER)
@@ -34,10 +40,18 @@ public class User {
 	public User() {
 	}
 
+
 	public User(String name, String password, String... roles) {
 		this.name = name;
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
+	}
+
+	public User(String name, String password) {
+		this.passwordHash = new BCryptPasswordEncoder().encode(password);
+		this.name = name;
+
+		this.roles = Arrays.asList("ROLE_USER");
 	}
 
 	public String getName() {
@@ -47,14 +61,20 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = new BCryptPasswordEncoder().encode(passwordHash);
+	}
 
+	public void setPassword(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}	
+
+	
 	public String getPasswordHash() {
 		return passwordHash;
 	}
 
-	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
-	}
 
 	public List<String> getRoles() {
 		return roles;
@@ -93,5 +113,15 @@ public class User {
 			}
 		}
 	}
+
+
+	/*@Override
+	public boolean equals(Object other) {
+		if (this == other)
+			return true;
+		if (!(other instanceof User))
+			return false;
+		return id == ((User) other).getId();
+	}*/
 
 }
