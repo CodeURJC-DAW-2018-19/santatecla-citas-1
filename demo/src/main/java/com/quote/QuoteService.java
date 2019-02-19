@@ -1,6 +1,8 @@
 package com.quote;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import com.user.User;
@@ -29,7 +31,15 @@ public class QuoteService {
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
-
-	public static void deleteUserQuotes(User user) {
+  
+  public List<Quote> findByName(String name) {
+		HashSet<Quote> quotesSet = new HashSet();
+		quotesSet.addAll(repository.findByQuoteContaining(name));
+		quotesSet.addAll(repository.findByAuthorContaining(name));
+		quotesSet.addAll(repository.findByBookContaining(name));
+		List<Quote> quotesList = new ArrayList();
+		quotesList.addAll(quotesSet);
+		return quotesList;
 	}
+
 }

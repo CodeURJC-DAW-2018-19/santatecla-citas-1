@@ -140,3 +140,12 @@ html{
   .material-icons {
     font-size: 1rem;
 }
+
+.searchResults {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.bt-guardado{
+    margin-top: 5rem;
+}

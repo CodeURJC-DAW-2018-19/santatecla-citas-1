@@ -1,6 +1,7 @@
 package com;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.theme.*;
@@ -47,10 +50,66 @@ public class WebController {
 
 		model.addAttribute("quotes", quoteService.findAll());
 		model.addAttribute("themes", themeService.findAll());
-		
-		//add User
-		model.addAttribute("logged", userComponent.isLoggedUser());
+		model.addAttribute("searchThemes", false);
+		model.addAttribute("searchQuotes", false);		
+
+		if(this.userComponent.isLoggedUser()) {
+			this.userComponent.getLoggedUser().setActive(null);
+		}
+		model.addAttribute("atHome", true);		
+		updateTabs(model);
+
+		return "Home";
+	}
+
+	@GetMapping("/searchThemes")
+	public String searchThemes(Model model, @RequestParam String name) {
+
+		model.addAttribute("quotes", quoteService.findAll());
+
+		if (name.equals("")) {
+			model.addAttribute("themes", themeService.findAll());
+			model.addAttribute("searchThemes", false);
+		} else {
+			List<Theme> themes = themeService.findByName(name);
+			model.addAttribute("themes", themes);
+			model.addAttribute("searchThemes", true);
+			model.addAttribute("noResults", themes.isEmpty());	
+		}
+
+		model.addAttribute("searchQuotes", false);	
+		model.addAttribute("search", name);		
+    // add User
+    model.addAttribute("logged", userComponent.isLoggedUser());
 		User user = userComponent.getLoggedUser();
+
+		if(this.userComponent.isLoggedUser()) {
+			this.userComponent.getLoggedUser().setActive(null);
+		}
+		model.addAttribute("atHome", true);		
+		updateTabs(model);
+
+		return "Home";
+	}
+		
+  @GetMapping("/searchQuotes")
+	public String searchQuotes(Model model, @RequestParam String name) {
+
+		model.addAttribute("themes", themeService.findAll());
+
+		if (name.equals("")) {
+			model.addAttribute("quotes", quoteService.findAll());
+			model.addAttribute("searchQuotes", false);
+		} else {
+			List<Quote> quotes = quoteService.findByName(name);
+			model.addAttribute("quotes", quotes);
+			model.addAttribute("searchQuotes", true);
+			model.addAttribute("noResults", quotes.isEmpty());
+		}
+
+		model.addAttribute("searchThemes", false);
+		model.addAttribute("search", name);				
+		
 		if(this.userComponent.isLoggedUser()) {
 			model.addAttribute("name_user", user.getName());
 
@@ -184,7 +243,7 @@ public class WebController {
 
 		return "AddQuote";
 	}
-
+	
 	@PostMapping("/saveQuote")
 	public String saveQuote(Model model, Quote quote) {
 
@@ -202,7 +261,7 @@ public class WebController {
 		
 		updateTabs(model);
 
-		return "SavedTheme";
+		return "Saved";
 	}
 
 	@PostMapping("/saveUser")
@@ -212,7 +271,7 @@ public class WebController {
 
 		updateTabs(model);
 
-		return "SavedQuote";
+		return "Saved";
 	}
 
 	@GetMapping("/editQuote/{id}")
@@ -229,14 +288,14 @@ public class WebController {
 		return "AddQuote";
 	}
 
-	@GetMapping(value="/addQuoteToTheme")
-	public String addQuoteToTheme(Model model, Theme theme) {
+	@GetMapping(value="/addQuoteToTheme{id}")
+    public String addQuoteToTheme(Model model, @PathVariable long id) {
 
-		model.addAttribute("quotes", quoteService.findAll());
+        model.addAttribute("quotes", quoteService.findAll());
+        model.addAttribute("themeId", id);
+        updateTabs(model);
 
-		updateTabs(model);
-
-		return "SelectQuote";
+        return "SelectQuote";
 	}
 
 	private void updateTabs(Model model) {
@@ -261,17 +320,36 @@ public class WebController {
 		return "/CloseTab";
 	}
 
-	/*@GetMapping("/selectQuote/{id}")
-	public String selectQuote(Model model, @PathVariable long id) {
+	@GetMapping("/addQuoteToTheme{theme}/selectQuote{id}")
+    public String selectQuote(Model model, @PathVariable long id, @PathVariable long theme) {
+
+        Optional<Quote> quote = quoteService.findOne(id);
+        if(quote.isPresent()) {
+			if(!(themeService.findOne(theme).get().getQuotes().contains(quote.get()))){
+				themeService.findOne(theme).get().getQuotes().add(quote.get());
+				themeService.save(themeService.findOne(theme).get());
+			}
+        }
+
+        return "Saved";
+    }
 		
-		Optional<Quote> quote = quoteService.findOne(id);
-		
-		if(quote.isPresent()) {
-			themeService.findOne(id).get().getQuotes().add(quote);
+	@GetMapping("/addQuoteToTheme{id}/searchQuotes")
+	public String selectQuoteSearch(Model model, @PathVariable long id, @RequestParam String name) {
+
+		if (name.equals("")) {
+			model.addAttribute("quotes", quoteService.findAll());
+			model.addAttribute("searchQuotes", false);
+		} else {
+			List<Quote> quotes = quoteService.findByName(name);
+			model.addAttribute("quotes", quotes);
+			model.addAttribute("searchQuotes", true);
+			model.addAttribute("noResults", quotes.isEmpty());
 		}
+		model.addAttribute("themeId", id);
+		model.addAttribute("search", name);
 		
-		return "Themes";
-	}*/
-	
+		return "SelectQuote";
+	}
     
 }

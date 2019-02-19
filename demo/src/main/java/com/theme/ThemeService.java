@@ -29,7 +29,8 @@ public class ThemeService {
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
-
-	public static void deleteUserThemes(User user) {
+  
+  public List<Theme> findByName(String name) {
+		return repository.findByNameContaining(name);
 	}
 }
