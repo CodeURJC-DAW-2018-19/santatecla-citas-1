@@ -31,6 +31,9 @@ public class WebController {
 	private UserService userService;
 
 	@Autowired
+	private TextService textService;
+
+	@Autowired
 	private UserComponent userComponent;
 
 	boolean logged = false;
@@ -298,6 +301,29 @@ public class WebController {
         return "SelectQuote";
 	}
 
+	@GetMapping(value="/addTextToTheme{id}")
+  public String addTextToTheme(Model model, @PathVariable long id) {
+    model.addAttribute("themeId", id);
+    updateTabs(model);
+
+    return "AddText";
+	}
+
+	@PostMapping(value="/addTextToTheme{id}Save")
+  public String saveTextToTheme(Model model, Text text, @PathVariable long id) {
+		Optional<Theme> t = this.themeService.findOne(id);
+		if(t.isPresent()){
+			if(!t.get().getTexts().contains(text)){
+				t.get().getTexts().add(text);
+				themeService.save(t.get());
+				textService.save(text);
+			}
+		}
+    updateTabs(model);
+
+    return "Saved";
+	}
+
 	private void updateTabs(Model model) {
 		if (this.userComponent.isLoggedUser()) {
 			model.addAttribute("openTabs", this.userComponent.getLoggedUser().getOpenTabs());
@@ -332,7 +358,7 @@ public class WebController {
         }
 
         return "Saved";
-    }
+		}
 		
 	@GetMapping("/addQuoteToTheme{id}/searchQuotes")
 	public String selectQuoteSearch(Model model, @PathVariable long id, @RequestParam String name) {
@@ -356,12 +382,30 @@ public class WebController {
 	public String deleteQuoteFromTheme(Model model, @PathVariable long idQuote, @PathVariable long idTheme){
 		Optional<Theme> theme = themeService.findOne(idTheme);
 		Optional<Quote> quote = quoteService.findOne(idQuote);
+
 		if(theme.isPresent() && quote.isPresent()) {
 			if(theme.get().getQuotes().contains(quote.get())){
 				theme.get().getQuotes().remove(quote.get());
 				themeService.save(themeService.findOne(idTheme).get());
 			}
 		}
+
+		return "Deleted";
+	}
+
+	@GetMapping("/deleteText{idText}FromTheme{idTheme}")
+	public String deleteTextFromTheme(Model model, @PathVariable long idText, @PathVariable long idTheme){
+		Optional<Theme> theme = themeService.findOne(idTheme);
+		Optional<Text> text = textService.findOne(idText);
+
+		if(theme.isPresent() && text.isPresent()) {
+			if(!theme.get().getTexts().contains(text.get())){
+				theme.get().getTexts().remove(text.get());
+				themeService.save(themeService.findOne(idTheme).get());
+				textService.delete(idText);
+			}
+		}
+
 		return "Deleted";
 	}
 

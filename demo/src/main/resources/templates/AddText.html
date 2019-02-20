@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Editar Tema</title>
+  <title>Nueva Cita</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -17,31 +17,28 @@
 
 <body class="body">
 
-	{{>header}}
-
+    {{>header}}
+    
     <div class="tittleCard">
-      <div class="card">
-        <div class="card-header card-header-text card-header-primary">
-          <div class="card-text">
-            <h4 class="card-title">Editar tema</h4>
+        <div class="card">
+          <div class="card-header card-header-text card-header-primary">
+            <div class="card-text">
+              <h4 class="card-title">Añadir texto</h4>
+            </div>
+          </div>
+          <div class="card-body">
+    
+            <form action="/addTextToTheme{{themeId}}Save" method="POST">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca el nombre del tema" required="required">
+              <div class="BCentrado">
+                <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
+                <input type="hidden" name="_csrf" value="{{token}}" />
+              </div>
+            </form>
+    
           </div>
         </div>
-        <div class="card-body">
-  
-          <form action="/saveEditedTheme{{idTheme}}" method="POST">
-            {{#theme}}<input type="hidden" name="id" value="{{id}}" class="form-control"/>{{/theme}}
-            {{#theme}}
-            <input type="text" class="form-control" value="{{name}}" id="name" name="name" placeholder="Introduzca el nombre del tema" required="required">
-            <div class="BCentrado">
-              <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
-              <input type="hidden" name="_csrf" value="{{token}}" />
-            </div>
-            {{/theme}}
-          </form>
-  
-        </div>
       </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
