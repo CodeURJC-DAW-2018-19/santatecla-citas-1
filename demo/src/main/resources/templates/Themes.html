@@ -57,7 +57,7 @@
               </div>
             </div>
             <div class="card-theme-text-box">{{text}}</div>
-            <a id="borrar" href="/deleteText{{id}}FromTheme{{idTheme}}" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','#')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+            <a id="borrar" href="/deleteText{{-index}}FromTheme{{idTheme}}" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','#')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
           </div>
           {{/texts}}
 
@@ -95,7 +95,7 @@
             </div>
 
             <div class="col-md-6">
-              <a href="/addQuoteToTheme{{id}}" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
+              <a onclick="addSomethingToTheme('{{id}}')" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
             </div>
           </div>
         </div>
@@ -114,6 +114,9 @@
                 <p>"{{name}}"</p>
                 <p>{{author}}  -  {{book}}<br></p>
                 {{/quotes}}
+                {{#texts}}
+                <p>"{{text}}"</p>
+                {{/texts}}
             </div>
             <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">Generar PDF</a>
 

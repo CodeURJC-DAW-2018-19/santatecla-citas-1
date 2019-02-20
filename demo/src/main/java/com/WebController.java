@@ -321,12 +321,13 @@ public class WebController {
 	}
 
 	@PostMapping(value="/addTextToTheme{id}Save")
-  public String saveTextToTheme(Model model, Text text, @PathVariable long id) {
-		Optional<Theme> t = this.themeService.findOne(id);
-		if(t.isPresent()){
-			if(!t.get().getTexts().contains(text)){
-				t.get().getTexts().add(text);
-				themeService.save(t.get());
+  public String saveTextToTheme(Model model, String text, @PathVariable long id) {
+		Optional<Theme> theme = this.themeService.findOne(id);
+		Text t = new Text(text);
+		if(theme.isPresent()){
+			if(!theme.get().getTexts().contains(t)){
+				theme.get().getTexts().add(t);
+				themeService.save(theme.get());
 			}
 		}
     updateTabs(model);
@@ -403,19 +404,17 @@ public class WebController {
 		return "Deleted";
 	}
 
-	/*@GetMapping("/deleteText{idText}FromTheme{idTheme}")
-	public String deleteTextFromTheme(Model model, @PathVariable long idText, @PathVariable long idTheme){
+	@GetMapping("/deleteText{idText}FromTheme{idTheme}")
+	public String deleteTextFromTheme(Model model, @PathVariable int idText, @PathVariable long idTheme){
 		Optional<Theme> theme = themeService.findOne(idTheme);
 
 		if(theme.isPresent()) {
-			if(!theme.get().getTexts().contains(text.get())){
-				theme.get().getTexts().remove(text.get());
-				themeService.save(themeService.findOne(idTheme).get());
-			}
+			theme.get().getTexts().remove(theme.get().getTexts().get(idText-1));
+			themeService.save(themeService.findOne(idTheme).get());
 		}
 
 		return "Deleted";
-	}*/
+	}
 
 	@GetMapping("/editTheme{id}")
 	public String editTheme(Model model, @PathVariable long id) {
@@ -462,7 +461,7 @@ public class WebController {
 				document.add(phrase);
 			}
 			for(int i = 0; i<texts.size(); i++){
-				phrase = new Phrase(texts.get(i).getText() + "\n");
+				phrase = new Phrase(texts.get(i).getText() + "\n", font);
 				document.add(phrase);
 			}
 			

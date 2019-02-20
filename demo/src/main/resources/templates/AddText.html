@@ -29,7 +29,7 @@
           <div class="card-body">
     
             <form action="/addTextToTheme{{themeId}}Save" method="POST">
-              <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca el nombre del tema" required="required">
+              <input type="text" class="form-control" id="name" name="text" placeholder="Introduzca el nombre del tema" required="required">
               <div class="BCentrado">
                 <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
                 <input type="hidden" name="_csrf" value="{{token}}" />
