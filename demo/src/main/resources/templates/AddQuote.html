@@ -27,7 +27,7 @@
           <div class="card" style="padding: 1rem">
             <div class="card-body">
                 <div class="form-group-center">
-                  <input type="text" id="name" name="name" value="{{name}}">
+                  <input class="textField" type="text" id="name" name="name" value="{{name}}" required="required">
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="col-md-6">
                     <div class="card">
                       <div class="card-header">
-                        <input type="text" id="author" name="author" value="{{author}}">
+                        <input class="textField" type="text" id="author" name="author" value="{{author}}" required="required">
                       </div>
                     </div>
                   </div>
@@ -67,7 +67,7 @@
                   <div class="col-md-6">
                       <div class="card">
                         <div class="card-header">
-                          <input type="text" id="author" name="book" value="{{book}}">
+                          <input class="textField" type="text" id="author" name="book" value="{{book}}" required="required">
                         </div>
                       </div>
                   </div>
@@ -76,8 +76,8 @@
             </div>
       </div>
 
-      <div class="btGrande">
-        <input type="submit" value="Guardar" class="btn btn-primary btn-lg btn-block"/>
+      <div class="BCentrado">
+        <input type="submit" value="Guardar" class="btn btn-primary btn-lg active"/>
       </div>
       <input type="hidden" name="_csrf" value="{{token}}"/>
       {{/quote}}
@@ -88,7 +88,7 @@
           <div class="card" style="padding: 1rem">
             <div class="card-body">
                 <div class="form-group-center">
-                  <input type="text" id="name" name="name" required="required">
+                  <input class="textField" type="text" id="name" name="name" required="required">
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@
                 <div class="col-md-6">
                     <div class="card">
                       <div class="card-header">
-                        <input type="text" id="author" name="author" required="required">
+                        <input class="textField" type="text" id="author" name="author" required="required">
                       </div>
                     </div>
                   </div>
@@ -128,7 +128,7 @@
                   <div class="col-md-6">
                       <div class="card">
                         <div class="card-header">
-                          <input type="text" id="author" name="book" required="required">
+                          <input class="textField" type="text" id="author" name="book" required="required">
                         </div>
                       </div>
                   </div>
@@ -137,8 +137,8 @@
             </div>
       </div>
 
-      <div class="btGrande">
-        <input type="submit" value="Guardar" class="btn btn-primary btn-lg btn-block"/>
+      <div class="BCentrado">
+        <input type="submit" value="Guardar" class="btn btn-primary btn-lg active"/>
       </div>
       <input type="hidden" name="_csrf" value="{{token}}"/>
       {{/quote}}

@@ -7,15 +7,10 @@ html{
 }
 
 #borrar{
-    margin-left: 1.7rem;
-    border-radius: 2rem;
-}
-
-#borrar2{
+    align-self: center;
     margin-left: 1rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
     border-radius: 2rem;
+    background-color: #6f19be;
 }
 
 #logButton{
@@ -148,4 +143,8 @@ html{
 
 .bt-guardado{
     margin-top: 5rem;
+}
+
+.textField{
+    width: 99%;
 }
