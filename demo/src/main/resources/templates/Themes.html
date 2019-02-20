@@ -95,7 +95,7 @@
             </div>
 
             <div class="col-md-6">
-              <a href="/addTextToTheme{{id}}" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
+              <a href="/addQuoteToTheme{{id}}" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@
                 <p>{{author}}  -  {{book}}<br></p>
                 {{/quotes}}
             </div>
-            <button type="button" class="btn btn-default theme-pdf-button">Generar PDF</button>
+            <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">Generar PDF</a>
 
           </div>
         </div>

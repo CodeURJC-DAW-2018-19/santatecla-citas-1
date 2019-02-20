@@ -27,7 +27,7 @@ public class Theme extends TabElement {
     @ManyToMany
     private List<Quote> quotes;
 
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     private List<Text> texts;
 
     public Theme(){}

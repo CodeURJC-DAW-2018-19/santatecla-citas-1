@@ -1,9 +1,17 @@
 package com;
 
 import java.util.Optional;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +22,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.theme.*;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.quote.*;
 import com.user.*;
 
@@ -29,9 +43,6 @@ public class WebController {
 
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private TextService textService;
 
 	@Autowired
 	private UserComponent userComponent;
@@ -316,7 +327,6 @@ public class WebController {
 			if(!t.get().getTexts().contains(text)){
 				t.get().getTexts().add(text);
 				themeService.save(t.get());
-				textService.save(text);
 			}
 		}
     updateTabs(model);
@@ -393,21 +403,19 @@ public class WebController {
 		return "Deleted";
 	}
 
-	@GetMapping("/deleteText{idText}FromTheme{idTheme}")
+	/*@GetMapping("/deleteText{idText}FromTheme{idTheme}")
 	public String deleteTextFromTheme(Model model, @PathVariable long idText, @PathVariable long idTheme){
 		Optional<Theme> theme = themeService.findOne(idTheme);
-		Optional<Text> text = textService.findOne(idText);
 
-		if(theme.isPresent() && text.isPresent()) {
+		if(theme.isPresent()) {
 			if(!theme.get().getTexts().contains(text.get())){
 				theme.get().getTexts().remove(text.get());
 				themeService.save(themeService.findOne(idTheme).get());
-				textService.delete(idText);
 			}
 		}
 
 		return "Deleted";
-	}
+	}*/
 
 	@GetMapping("/editTheme{id}")
 	public String editTheme(Model model, @PathVariable long id) {
@@ -437,6 +445,51 @@ public class WebController {
 
 		return "Saved";
 	}
+
+	@GetMapping("/generatePDF{id}")
+	public String generatePDF(Model model, @PathVariable Long id){
+		try{
+			Document document = new Document();
+			PdfWriter.getInstance(document, new FileOutputStream("Tema.pdf"));
+			
+			document.open();
+			Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+			Phrase phrase;
+			List<Quote> quotes = this.themeService.findOne(id).get().getQuotes();
+			List<Text> texts = this.themeService.findOne(id).get().getTexts();
+			for(int i = 0; i<quotes.size(); i++){
+				phrase = new Phrase(quotes.get(i).getName() + "\n" + quotes.get(i).getAuthor() + "\n" + quotes.get(i).getBook() + "\n", font);
+				document.add(phrase);
+			}
+			for(int i = 0; i<texts.size(); i++){
+				phrase = new Phrase(texts.get(i).getText() + "\n");
+				document.add(phrase);
+			}
+			
+			document.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return "GeneratedPDF";
+	}
+
+	@GetMapping(value="/getpdf")
+	public ResponseEntity<InputStreamResource> getPDF1() {
+		try
+		{
+				File file = new File("Tema.pdf");
+				HttpHeaders respHeaders = new HttpHeaders();
+				MediaType mediaType = MediaType.parseMediaType("application/pdf");
+				respHeaders.setContentType(mediaType);
+				respHeaders.setContentLength(file.length());
+				respHeaders.setContentDispositionFormData("attachment", file.getName());
+				InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
+				return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+		}
+		catch (Exception e){
+			return new ResponseEntity<InputStreamResource>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+}
 
 	@GetMapping("/error")
 	public String error(Model model) {
