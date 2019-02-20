@@ -38,19 +38,14 @@ public class User {
 	private List<String> roles;
 
 	public User() {
+		this.roles = new ArrayList();
+		this.roles.add("ROLE_USER");
 	}
-
 
 	public User(String name, String password, String... roles) {
 		this.name = name;
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
-	}
-
-	public User(String name, String password) {
-		this.passwordHash = new BCryptPasswordEncoder().encode(password);
-		this.name = name;
-		this.roles = new ArrayList<>();
 		this.roles.add("ROLE_USER");
 	}
 
