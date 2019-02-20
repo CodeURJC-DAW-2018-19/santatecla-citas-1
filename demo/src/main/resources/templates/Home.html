@@ -65,13 +65,13 @@
                   <!--<button href="/?page={{prevPage}}" class="btn btn-primary btn-fab btn-fab-mini btn-round">
                     <i class="material-icons">favorite</i>
                   </button>-->
-                  <a href="/?page={{prevPage}}" class="btn btn-info btn-round">Prev</a>
+                  <a href="/searchThemes?name={{search}}&page={{prevPage}}" class="btn btn-info btn-round">Prev</a>
                 {{/showPrev}}
 
                 <h4>{{numPage}}</h4>
 
                 {{#showNext}}
-                <a href="/?page={{nextPage}}" class="btn btn-info btn-round">Next</a>
+                <a href="/searchThemes?name={{search}}&page={{nextPage}}" class="btn btn-info btn-round">Next</a>
                 {{/showNext}}
 
                 {{#admin}}

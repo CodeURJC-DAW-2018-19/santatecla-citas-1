@@ -69,6 +69,9 @@ public class WebController {
 		model.addAttribute("prevPage", themes.getNumber()-1);
 		model.addAttribute("numPage", themes.getNumber());
 
+		model.addAttribute("search","");
+
+
 		return "Home";
 	}
 
