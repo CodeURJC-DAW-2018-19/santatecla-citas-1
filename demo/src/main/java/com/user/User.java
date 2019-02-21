@@ -10,15 +10,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-//import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.TabElement;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 //@Table(name = "users")
@@ -38,19 +34,14 @@ public class User {
 	private List<String> roles;
 
 	public User() {
+		this.roles = new ArrayList();
+		this.roles.add("ROLE_USER");
 	}
-
 
 	public User(String name, String password, String... roles) {
 		this.name = name;
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
-	}
-
-	public User(String name, String password) {
-		this.passwordHash = new BCryptPasswordEncoder().encode(password);
-		this.name = name;
-		this.roles = new ArrayList<>();
 		this.roles.add("ROLE_USER");
 	}
 

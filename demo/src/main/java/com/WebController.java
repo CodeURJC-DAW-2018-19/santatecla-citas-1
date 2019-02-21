@@ -1,17 +1,25 @@
 package com;
 
 import java.util.Optional;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
+
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +30,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.theme.*;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.quote.*;
 import com.user.*;
 
@@ -235,10 +249,28 @@ public class WebController {
 
 		return "Register";
 	}
+  
+  private class MyInteger {
+		private int value;
+		public MyInteger(int v) {
+			value = v;
+		}
+	}
 
 	@GetMapping("/histogram")
 	public String histogram(Model model) {
+  
+  	List<Theme> savedThemes = this.themeService.findAll();
+		model.addAttribute("savedThemes", savedThemes);
 
+		List<MyInteger> numQuotes = new ArrayList();
+    
+		for(Theme t : savedThemes) {
+			numQuotes.add(new MyInteger(this.themeService.findOne(t.getId()).get().getQuotes().size()));
+		}
+    
+		model.addAttribute("numQuotes", numQuotes);
+    
 		updateTabs(model);
 
 		return "Histogram";
@@ -262,12 +294,16 @@ public class WebController {
 
 	@PostMapping("/saveQuote")
 	public String saveQuote(Model model, Quote quote) {
+    List<Quote> list = quoteService.findByName(quote.getName());
+    
+		if (list.isEmpty()) {
+			quoteService.save(quote);
+			updateTabs(model);
+			return "Saved";
+		}
+		
+		return "Error";
 
-		quoteService.save(quote);
-
-		updateTabs(model);
-
-		return "Saved";
 	}
 
 	@PostMapping("/saveTheme")
@@ -275,34 +311,40 @@ public class WebController {
 	@RequestParam("file") MultipartFile file){
 
 		Theme theme = new Theme(name);
+    
+    List<Theme> list = themeService.findByName(theme.getName());
+    
+		if (list.isEmpty()) {
+			themeService.save(theme);
+      String fileName = "image-" + theme.getId() + ".jpg";
 
-		themeService.save(theme);
+		  if (!file.isEmpty()) {
+			  try {
+			    File uploadedFile = new File(FILES_FOLDER.toFile(), fileName);
+			    file.transferTo(uploadedFile);
 
-		String fileName = "image-" + theme.getId() + ".jpg";
-
-		if (!file.isEmpty()) {
-			try {
-			File uploadedFile = new File(FILES_FOLDER.toFile(), fileName);
-			file.transferTo(uploadedFile);
-
-			} catch (Exception e) {
+			  } catch (Exception e) {
 				model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
-			}
+			  }
+		  }
+			updateTabs(model);
+			return "Saved";
 		}
 
-		updateTabs(model);
-
-		return "Saved";
+		return "Error";
 	}
 
 	@PostMapping("/saveUser")
 	public String saveUser(Model model, User user) {
-		
-		userService.save(user);
 
-		updateTabs(model);
+		User u = userService.findByName(user.getName());
+		if (u == null) {
+			userService.save(user);
+			updateTabs(model);
+			return "Saved";
+		}
 
-		return "Saved";
+		return "Error";
 	}
 
 	@GetMapping("/editQuote/{id}")
@@ -327,6 +369,29 @@ public class WebController {
         updateTabs(model);
 
         return "SelectQuote";
+	}
+
+	@GetMapping(value="/addTextToTheme{id}")
+  public String addTextToTheme(Model model, @PathVariable long id) {
+    model.addAttribute("themeId", id);
+    updateTabs(model);
+
+    return "AddText";
+	}
+
+	@PostMapping(value="/addTextToTheme{id}Save")
+  public String saveTextToTheme(Model model, String text, @PathVariable long id) {
+		Optional<Theme> theme = this.themeService.findOne(id);
+		Text t = new Text(text);
+		if(theme.isPresent()){
+			if(!theme.get().getTexts().contains(t)){
+				theme.get().getTexts().add(t);
+				themeService.save(theme.get());
+			}
+		}
+    updateTabs(model);
+
+    return "Saved";
 	}
 
 	private void updateTabs(Model model) {
@@ -363,7 +428,7 @@ public class WebController {
         }
 
         return "Saved";
-    }
+		}
 		
 	@GetMapping("/addQuoteToTheme{id}/searchQuotes")
 	public String selectQuoteSearch(Model model, @PathVariable long id, @RequestParam String name) {
@@ -387,12 +452,26 @@ public class WebController {
 	public String deleteQuoteFromTheme(Model model, @PathVariable long idQuote, @PathVariable long idTheme){
 		Optional<Theme> theme = themeService.findOne(idTheme);
 		Optional<Quote> quote = quoteService.findOne(idQuote);
+
 		if(theme.isPresent() && quote.isPresent()) {
 			if(theme.get().getQuotes().contains(quote.get())){
 				theme.get().getQuotes().remove(quote.get());
 				themeService.save(themeService.findOne(idTheme).get());
 			}
 		}
+
+		return "Deleted";
+	}
+
+	@GetMapping("/deleteText{idText}FromTheme{idTheme}")
+	public String deleteTextFromTheme(Model model, @PathVariable int idText, @PathVariable long idTheme){
+		Optional<Theme> theme = themeService.findOne(idTheme);
+
+		if(theme.isPresent()) {
+			theme.get().getTexts().remove(theme.get().getTexts().get(idText-1));
+			themeService.save(themeService.findOne(idTheme).get());
+		}
+
 		return "Deleted";
 	}
 
@@ -424,6 +503,51 @@ public class WebController {
 
 		return "Saved";
 	}
+
+	@GetMapping("/generatePDF{id}")
+	public String generatePDF(Model model, @PathVariable Long id){
+		try{
+			Document document = new Document();
+			PdfWriter.getInstance(document, new FileOutputStream("Tema.pdf"));
+			
+			document.open();
+			Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+			Phrase phrase;
+			List<Quote> quotes = this.themeService.findOne(id).get().getQuotes();
+			List<Text> texts = this.themeService.findOne(id).get().getTexts();
+			for(int i = 0; i<quotes.size(); i++){
+				phrase = new Phrase(quotes.get(i).getName() + "\n" + quotes.get(i).getAuthor() + "\n" + quotes.get(i).getBook() + "\n", font);
+				document.add(phrase);
+			}
+			for(int i = 0; i<texts.size(); i++){
+				phrase = new Phrase(texts.get(i).getText() + "\n", font);
+				document.add(phrase);
+			}
+			
+			document.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return "GeneratedPDF";
+	}
+
+	@GetMapping(value="/getpdf")
+	public ResponseEntity<InputStreamResource> getPDF1() {
+		try
+		{
+				File file = new File("Tema.pdf");
+				HttpHeaders respHeaders = new HttpHeaders();
+				MediaType mediaType = MediaType.parseMediaType("application/pdf");
+				respHeaders.setContentType(mediaType);
+				respHeaders.setContentLength(file.length());
+				respHeaders.setContentDispositionFormData("attachment", file.getName());
+				InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
+				return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+		}
+		catch (Exception e){
+			return new ResponseEntity<InputStreamResource>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+}
 
 	@GetMapping("/error")
 	public String error(Model model) {

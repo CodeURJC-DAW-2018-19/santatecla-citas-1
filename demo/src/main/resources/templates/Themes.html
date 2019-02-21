@@ -51,25 +51,26 @@
               <div class="card-theme-others-box">{{author}}</div>
               <div class="card-theme-others-box">{{book}}</div>
             </div>
-            <a id="borrar" href="/deleteQuote{{id}}FromTheme{{idTheme}}" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','#')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+            <a id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteQuote{{id}}FromTheme{{idTheme}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
           </div>
           {{/quotes}}
-
-          <!--div class="card">
+          {{#texts}}
+          <div class="card">
             <div class="card-header card-header-text card-header-primary">
               <div class="card-text">
-                <div class="card-title">Texto 1</div>
+                <div class="card-title">Referencia Texto {{-index}}</div>
               </div>
             </div>
-            <div class="card-theme-text-box">Markdown</div>
-            <a id="borrar2" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
-          </div-->
+            <div class="card-theme-text-box">{{text}}</div>
+            <a id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteText{{-index}}FromTheme{{idTheme}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+          </div>
+          {{/texts}}
 
           <div id="selection" class="row">
             <div class="col-md-6">
               <div class="form-check form-check-radio">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                     Referencia a cita
                     <span class="circle">
                         <span class="check"></span>
@@ -79,7 +80,7 @@
     
               <div class="form-check form-check-radio">
                   <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
                       Texto
                       <span class="circle">
                           <span class="check"></span>
@@ -88,8 +89,8 @@
               </div>
             </div>
 
-            <div class="col-md-6">
-              <a href="/addQuoteToTheme{{id}}" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
+            <div class="col-md-6 addButton">
+              <a onclick="addSomethingToTheme('{{id}}')" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
             </div>
           </div>
         </div>
@@ -110,8 +111,11 @@
                   <footer class="blockquote-footer">{{author}} en <cite title="Source Title">{{book}}</cite></footer>
                 </blockquote>
                 {{/quotes}}
+                {{#texts}}
+                <p>"{{text}}"</p>
+                {{/texts}}
             </div>
-            <button type="button" class="btn btn-default theme-pdf-button">Generar PDF</button>
+            <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">Generar PDF</a>
 
           </div>
         </div>

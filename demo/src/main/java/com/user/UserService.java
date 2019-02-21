@@ -1,15 +1,7 @@
 package com.user;
 
 import java.util.List;
-//import java.util.Optional;
-
-//import javax.xml.stream.events.Comment;
-
-import com.quote.Quote;
-import com.quote.QuoteRepository;
-//import com.quote.QuoteService;
-//import com.theme.ThemeRepository;
-import com.theme.ThemeService;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,5 +34,9 @@ public class UserService {
 	public void delete(long id) {
 		uRepository.deleteById(id);
 	}
+
+	public User findByName(String name) {
+		return uRepository.findByName(name);
+	} 
 
 }

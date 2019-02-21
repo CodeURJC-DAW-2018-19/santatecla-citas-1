@@ -17,24 +17,28 @@
 
 <body class="body">
 
-	{{>header}}
+    {{>header}}
     
-  <div class="row bt-guardado">
-    <div class="col-md-6 ml-auto mr-auto">
-      <div class="card card-chart">
-        <div class="card-header card-header-rose" data-header-animation="true">
-          <h2>Borrado</h2>
-        </div>
-        <div class="card-body">
-          <div class="card-actions">
-            <p></p>
-            <h4>Se ha borrado correctamente</h4>
+    <div class="tittleCard">
+        <div class="card">
+          <div class="card-header card-header-text card-header-primary">
+            <div class="card-text">
+              <h4 class="card-title">Añadir texto</h4>
+            </div>
           </div>
-          <a href="/" type="button" class="btn btn-primary btn-lg btn-block">Inicio</a>            
+          <div class="card-body">
+    
+            <form action="/addTextToTheme{{themeId}}Save" method="POST">
+              <input type="text" class="form-control" id="name" name="text" placeholder="Introduzca el texto" required="required">
+              <div class="BCentrado">
+                <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
+                <input type="hidden" name="_csrf" value="{{token}}" />
+              </div>
+            </form>
+    
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
