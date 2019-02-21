@@ -277,31 +277,40 @@ public class WebController {
 	@PostMapping("/saveQuote")
 	public String saveQuote(Model model, Quote quote) {
 
-		quoteService.save(quote);
+		List<Quote> list = quoteService.findByName(quote.getName());
+		if (list.isEmpty()) {
+			quoteService.save(quote);
+			updateTabs(model);
+			return "Saved";
+		}
 		
-		updateTabs(model);
-
-		return "Saved";
+		return "Error";
 	}
 
 	@PostMapping("/saveTheme")
 	public String saveTheme(Model model, Theme theme) {
 
-		themeService.save(theme);
-		
-		updateTabs(model);
+		List<Theme> list = themeService.findByName(theme.getName());
+		if (list.isEmpty()) {
+			themeService.save(theme);
+			updateTabs(model);
+			return "Saved";
+		}
 
-		return "Saved";
+		return "Error";
 	}
 
 	@PostMapping("/saveUser")
 	public String saveUser(Model model, User user) {
-		
-		userService.save(user);
 
-		updateTabs(model);
+		User u = userService.findByName(user.getName());
+		if (u == null) {
+			userService.save(user);
+			updateTabs(model);
+			return "Saved";
+		}
 
-		return "Saved";
+		return "Error";
 	}
 
 	@GetMapping("/editQuote/{id}")
