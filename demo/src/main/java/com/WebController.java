@@ -511,10 +511,15 @@ public class WebController {
 			PdfWriter.getInstance(document, new FileOutputStream("Tema.pdf"));
 			
 			document.open();
-			Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+			Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 16, BaseColor.BLACK);
 			Phrase phrase;
 			List<Quote> quotes = this.themeService.findOne(id).get().getQuotes();
 			List<Text> texts = this.themeService.findOne(id).get().getTexts();
+			Optional<Theme> t = this.themeService.findOne(id);
+			if(t.isPresent()){
+				phrase = new Phrase(t.get().getName() + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, BaseColor.BLACK));
+				document.add(phrase);
+			}
 			for(int i = 0; i<quotes.size(); i++){
 				phrase = new Phrase(quotes.get(i).getName() + "\n" + quotes.get(i).getAuthor() + "\n" + quotes.get(i).getBook() + "\n", font);
 				document.add(phrase);
