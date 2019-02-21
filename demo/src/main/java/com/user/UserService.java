@@ -1,15 +1,6 @@
 package com.user;
 
 import java.util.List;
-//import java.util.Optional;
-
-//import javax.xml.stream.events.Comment;
-
-import com.quote.Quote;
-import com.quote.QuoteRepository;
-//import com.quote.QuoteService;
-//import com.theme.ThemeRepository;
-import com.theme.ThemeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

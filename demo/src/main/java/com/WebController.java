@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -233,9 +234,24 @@ public class WebController {
 		return "Register";
 	}
 	
+	private class MyInteger {
+		private int value;
+		public MyInteger(int v) {
+			value = v;
+		}
+	}
 
 	@GetMapping("/histogram")
 	public String histogram(Model model) {
+
+		List<Theme> savedThemes = this.themeService.findAll();
+		model.addAttribute("savedThemes", savedThemes);
+
+		List<MyInteger> numQuotes = new ArrayList();
+		for(Theme t : savedThemes) {
+			numQuotes.add(new MyInteger(this.themeService.findOne(t.getId()).get().getQuotes().size()));
+		}
+		model.addAttribute("numQuotes", numQuotes);
 		
 		updateTabs(model);
 
