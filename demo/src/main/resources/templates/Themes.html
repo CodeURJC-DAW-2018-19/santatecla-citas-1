@@ -17,23 +17,28 @@
 
 <body class="body">
       
-	{{>header}}
+{{>header}}
   
   <div class="col-md-12">
     <div class="card">
       {{#theme}}
+      <img id="img-theme" src="../assets/img/image-{{id}}.jpg" class="rounded float-right">
+      {{#admin}}
       <div class="row">
         <div class="col-md-6">
           <div class="card">
               <div class="card-header card-header-text">
-                  <h4 class="card-title">{{name}}</h4>
-                  {{#admin}}
-                  <a id="edit" href="/editTheme{{id}}" class="btn btn-primary btn-sm active">Editar</a>
-                  {{/admin}}
+                  <div class="row">
+                      <div class="col-md-6">
+                        <h3 class="card-title">{{name}}</h3>
+                      </div>
+                      <div class="col-md-6">
+                        <a id="edit" href="/editTheme{{id}}" class="btn btn-primary btn-sm active">Editar</a>
+                      </div>
+                  </div>
               </div>
           </div>
 
-          {{#admin}}
           {{#quotes}}
           <div class="card">
             <div class="card-header card-header-text card-header-primary">
@@ -89,7 +94,6 @@
             </div>
           </div>
         </div>
-        {{/admin}}
 
         <div class="col-md-6">
           <div class="card card-theme-html">
@@ -100,9 +104,12 @@
             </div>
             
             <div class="card-theme-text-box card-theme-html">
+                <h2>{{name}}</h2>
                 {{#quotes}}
-                <p>"{{name}}"</p>
-                <p>{{author}}  -  {{book}}<br></p>
+                <blockquote class="blockquote">
+                  <p class="mb-0">"{{name}}"</p>
+                  <footer class="blockquote-footer">{{author}} en <cite title="Source Title">{{book}}</cite></footer>
+                </blockquote>
                 {{/quotes}}
                 {{#texts}}
                 <p>"{{text}}"</p>
@@ -114,10 +121,27 @@
         </div>
 
       </div>
+      {{/admin}}
+
+      {{^admin}}
+          <div class="card card-theme-html">
+            <div class="card-theme-text-box card-theme-html">
+                <h2>{{name}}</h2>
+                {{#quotes}}
+                <blockquote class="blockquote">
+                  <p class="mb-0">"{{name}}"</p>
+                  <footer class="blockquote-footer">{{author}} en <cite title="Source Title">{{book}}</cite></footer>
+                </blockquote>
+                {{/quotes}}
+            </div>
+            <button type="button" class="btn btn-default theme-pdf-button">Generar PDF</button>
+          </div>
+      {{/admin}}
+
       {{/theme}}
     </div>
   </div>
-  
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

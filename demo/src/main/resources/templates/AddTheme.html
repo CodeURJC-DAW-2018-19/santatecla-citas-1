@@ -35,8 +35,11 @@
         </div>
         <div class="card-body">
   
-          <form action="/saveTheme" method="POST">
+          <form action="/saveTheme" method="POST" enctype="multipart/form-data">
             <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca el nombre del tema" required="required">
+            <p>Seleccione una imagen para este tema</p>
+            <input type="file" class="inputFileHidden" name="file">
+            
             <div class="BCentrado">
               <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
               <input type="hidden" name="_csrf" value="{{token}}" />
