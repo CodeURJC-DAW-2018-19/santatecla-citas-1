@@ -427,6 +427,7 @@ public class WebController {
 					}
         }
 
+				updateTabs(model);
         return "Saved";
 		}
 		
@@ -445,6 +446,7 @@ public class WebController {
 		model.addAttribute("themeId", id);
 		model.addAttribute("search", name);
 		
+		updateTabs(model);
 		return "SelectQuote";
 	}
 
@@ -460,6 +462,7 @@ public class WebController {
 			}
 		}
 
+		updateTabs(model);
 		return "Deleted";
 	}
 
@@ -472,6 +475,7 @@ public class WebController {
 			themeService.save(themeService.findOne(idTheme).get());
 		}
 
+		updateTabs(model);
 		return "Deleted";
 	}
 
@@ -533,6 +537,8 @@ public class WebController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+		updateTabs(model);
 		return "GeneratedPDF";
 	}
 
