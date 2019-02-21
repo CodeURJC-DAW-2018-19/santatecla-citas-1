@@ -1,6 +1,14 @@
 package com;
 
 import java.util.Optional;
+
+import javax.annotation.PostConstruct;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +18,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.theme.*;
 import com.quote.*;
 import com.user.*;
-
 
 @Controller
 public class WebController {
@@ -35,13 +42,23 @@ public class WebController {
 
 	boolean logged = false;
 
+	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/demo/src/main/resources/static/assets/img");
+
+	@PostConstruct
+	public void init() throws IOException {
+
+		if (!Files.exists(FILES_FOLDER)) {
+			Files.createDirectories(FILES_FOLDER);
+		}
+	}
+
 	@ModelAttribute
 	public void addUserToModel(Model model) {
 		this.logged = (userComponent.isLoggedUser());
 		model.addAttribute("logged", this.logged);
-		if(this.logged) {
+		if (this.logged) {
 			model.addAttribute("admin", userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN"));
-			model.addAttribute("userName",userComponent.getLoggedUser().getName());
+			model.addAttribute("userName", userComponent.getLoggedUser().getName());
 		}
 	}
 
@@ -51,12 +68,12 @@ public class WebController {
 		model.addAttribute("quotes", quoteService.findAll());
 		model.addAttribute("themes", themeService.findAll());
 		model.addAttribute("searchThemes", false);
-		model.addAttribute("searchQuotes", false);		
+		model.addAttribute("searchQuotes", false);
 
-		if(this.userComponent.isLoggedUser()) {
+		if (this.userComponent.isLoggedUser()) {
 			this.userComponent.getLoggedUser().setActive(null);
 		}
-		model.addAttribute("atHome", true);		
+		model.addAttribute("atHome", true);
 		updateTabs(model);
 
 		return "Home";
@@ -74,25 +91,25 @@ public class WebController {
 			List<Theme> themes = themeService.findByName(name);
 			model.addAttribute("themes", themes);
 			model.addAttribute("searchThemes", true);
-			model.addAttribute("noResults", themes.isEmpty());	
+			model.addAttribute("noResults", themes.isEmpty());
 		}
 
-		model.addAttribute("searchQuotes", false);	
-		model.addAttribute("search", name);		
-    // add User
-    model.addAttribute("logged", userComponent.isLoggedUser());
+		model.addAttribute("searchQuotes", false);
+		model.addAttribute("search", name);
+		// add User
+		model.addAttribute("logged", userComponent.isLoggedUser());
 		User user = userComponent.getLoggedUser();
 
-		if(this.userComponent.isLoggedUser()) {
+		if (this.userComponent.isLoggedUser()) {
 			this.userComponent.getLoggedUser().setActive(null);
 		}
-		model.addAttribute("atHome", true);		
+		model.addAttribute("atHome", true);
 		updateTabs(model);
 
 		return "Home";
 	}
-		
-  @GetMapping("/searchQuotes")
+
+	@GetMapping("/searchQuotes")
 	public String searchQuotes(Model model, @RequestParam String name) {
 
 		model.addAttribute("themes", themeService.findAll());
@@ -108,13 +125,13 @@ public class WebController {
 		}
 
 		model.addAttribute("searchThemes", false);
-		model.addAttribute("search", name);				
-		
-		if(this.userComponent.isLoggedUser()) {
+		model.addAttribute("search", name);
+
+		if (this.userComponent.isLoggedUser()) {
 
 			this.userComponent.getLoggedUser().setActive(null);
 		}
-		model.addAttribute("atHome", true);		
+		model.addAttribute("atHome", true);
 		updateTabs(model);
 
 		return "Home";
@@ -122,19 +139,19 @@ public class WebController {
 
 	@GetMapping("/quote/{id}")
 	public String showQuote(Model model, @PathVariable long id) {
-		
+
 		Optional<Quote> quote = quoteService.findOne(id);
 
-		if(quote.isPresent()) {
+		if (quote.isPresent()) {
 			Quote q = quote.get();
 			model.addAttribute("quote", q);
 
-			if(!this.userComponent.getLoggedUser().getOpenTabs().contains(q)) {
+			if (!this.userComponent.getLoggedUser().getOpenTabs().contains(q)) {
 				this.userComponent.getLoggedUser().addTab(q);
 			}
 			this.userComponent.getLoggedUser().setActive(q);
 		}
-		
+
 		updateTabs(model);
 
 		return "Quotes";
@@ -142,34 +159,34 @@ public class WebController {
 
 	@GetMapping("/deleteQuote/{id}")
 	public String deleteQuote(Model model, @PathVariable long id) {
-		
+
 		Optional<Quote> quote = quoteService.findOne(id);
-		if(quote.isPresent()) {
+		if (quote.isPresent()) {
 			this.userComponent.getLoggedUser().removeTab(quote.get());
 		}
 
 		quoteService.delete(id);
 
 		updateTabs(model);
-		
+
 		return "Deleted";
 	}
-	
+
 	@GetMapping("/theme/{id}")
 	public String showTheme(Model model, @PathVariable long id) {
-		
+
 		Optional<Theme> theme = themeService.findOne(id);
 
-		if(theme.isPresent()) {
+		if (theme.isPresent()) {
 			Theme t = theme.get();
 			model.addAttribute("theme", t);
 
-			if(!this.userComponent.getLoggedUser().getOpenTabs().contains(t)) {
+			if (!this.userComponent.getLoggedUser().getOpenTabs().contains(t)) {
 				this.userComponent.getLoggedUser().addTab(t);
 			}
 			this.userComponent.getLoggedUser().setActive(t);
 		}
-		
+
 		updateTabs(model);
 		model.addAttribute("idTheme", id);
 
@@ -180,12 +197,12 @@ public class WebController {
 	public String deleteTheme(Model model, @PathVariable long id) {
 
 		Optional<Theme> theme = themeService.findOne(id);
-		if(theme.isPresent()) {
+		if (theme.isPresent()) {
 			this.userComponent.getLoggedUser().removeTab(theme.get());
 		}
 
 		themeService.delete(id);
-		
+
 		updateTabs(model);
 
 		return "Deleted";
@@ -195,7 +212,7 @@ public class WebController {
 	public String login(Model model) {
 
 		model.addAttribute("hideLogin", true);
-		
+
 		updateTabs(model);
 
 		return "LogIn";
@@ -203,7 +220,7 @@ public class WebController {
 
 	@GetMapping("/loginerror")
 	public String loginError(Model model) {
-		
+
 		updateTabs(model);
 
 		return "LogError";
@@ -213,16 +230,15 @@ public class WebController {
 	public String register(Model model) {
 
 		model.addAttribute("hideLogin", true);
-		
+
 		updateTabs(model);
 
 		return "Register";
 	}
-	
 
 	@GetMapping("/histogram")
 	public String histogram(Model model) {
-		
+
 		updateTabs(model);
 
 		return "Histogram";
@@ -230,35 +246,50 @@ public class WebController {
 
 	@GetMapping("/addTheme")
 	public String addTheme(Model model) {
-		
+
 		updateTabs(model);
 
 		return "AddTheme";
 	}
-	
+
 	@GetMapping("/addQuote")
 	public String addQuote(Model model) {
-		
+
 		updateTabs(model);
 
 		return "AddQuote";
 	}
-	
+
 	@PostMapping("/saveQuote")
 	public String saveQuote(Model model, Quote quote) {
 
 		quoteService.save(quote);
-		
+
 		updateTabs(model);
 
 		return "Saved";
 	}
 
 	@PostMapping("/saveTheme")
-	public String saveTheme(Model model, Theme theme) {
+	public String saveTheme(Model model, @RequestParam("name") String name, 
+	@RequestParam("file") MultipartFile file){
+
+		Theme theme = new Theme(name);
 
 		themeService.save(theme);
-		
+
+		String fileName = "image-" + theme.getId() + ".jpg";
+
+		if (!file.isEmpty()) {
+			try {
+			File uploadedFile = new File(FILES_FOLDER.toFile(), fileName);
+			file.transferTo(uploadedFile);
+
+			} catch (Exception e) {
+				model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
+			}
+		}
+
 		updateTabs(model);
 
 		return "Saved";
@@ -325,10 +356,10 @@ public class WebController {
 
         Optional<Quote> quote = quoteService.findOne(id);
         if(quote.isPresent()) {
-			if(!(themeService.findOne(theme).get().getQuotes().contains(quote.get()))){
-				themeService.findOne(theme).get().getQuotes().add(quote.get());
-				themeService.save(themeService.findOne(theme).get());
-			}
+					if(!(themeService.findOne(theme).get().getQuotes().contains(quote.get()))){
+						themeService.findOne(theme).get().getQuotes().add(quote.get());
+						themeService.save(themeService.findOne(theme).get());
+					}
         }
 
         return "Saved";

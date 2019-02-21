@@ -20,6 +20,7 @@ public class Theme extends TabElement {
     protected long id;
     
     private String name;
+    
     private String type = "theme";
     private String tabName = "Tema";
 

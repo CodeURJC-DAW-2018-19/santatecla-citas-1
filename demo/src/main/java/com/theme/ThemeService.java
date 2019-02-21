@@ -22,15 +22,15 @@ public class ThemeService {
 		return repository.findAll();
 	}
 
-	public void save(Theme book) {
-		repository.save(book);
+	public void save(Theme theme) {
+		repository.save(theme);
 	}
 
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
   
-  public List<Theme> findByName(String name) {
+  	public List<Theme> findByName(String name) {
 		return repository.findByNameContaining(name);
 	}
 }
