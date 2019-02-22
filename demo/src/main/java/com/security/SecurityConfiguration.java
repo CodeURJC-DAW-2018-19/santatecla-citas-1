@@ -15,17 +15,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         
-    	// Public pages
+        // Public pages
         http.authorizeRequests().antMatchers("/").permitAll();
+        http.authorizeRequests().antMatchers("/histogram").permitAll();
         http.authorizeRequests().antMatchers("/login").permitAll();
 
         // Private pages (all other pages)
         http.authorizeRequests().antMatchers("/quote/*").hasAnyRole("USER");
         http.authorizeRequests().antMatchers("/theme/*").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/addQuote").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers("/addTheme").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers("/savedQuote").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers("/savedTheme").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/generatePDF*").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/getpdf").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/*").hasAnyRole("ADMIN");
 
         // Login form
         http.formLogin().loginPage("/login");
