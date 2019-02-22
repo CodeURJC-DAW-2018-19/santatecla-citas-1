@@ -4,7 +4,9 @@ import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,12 +50,21 @@ public class WebController {
 	}
 
 	@GetMapping("/")
-	public String home(Model model, Pageable page) {
+	public String home(Model model, 
+		@RequestParam(value="pageTheme", required=false) Integer pageThemeNum,
+		@RequestParam(value="pageQuote", required=false) Integer pageQuoteNum) {
 
-		Page<Theme> themes =  themeService.findAll(page);
+		if(pageThemeNum == null) pageThemeNum = 0;
+		if(pageQuoteNum == null) pageQuoteNum = 0;
 
-		model.addAttribute("quotes", quoteService.findAll());
-		model.addAttribute("themes", themeService.findAll(page));
+		Pageable pageTheme = new PageRequest(pageThemeNum, 10);
+		Pageable pageQuote = new PageRequest(pageQuoteNum, 10);
+
+		Page<Theme> themes =  themeService.findAll(pageTheme);
+		Page<Quote> quotes = quoteService.findAll(pageQuote);
+
+		model.addAttribute("quotes", quotes);
+		model.addAttribute("themes", themes);
 		model.addAttribute("searchThemes", false);
 		model.addAttribute("searchQuotes", false);		
 
@@ -63,11 +74,20 @@ public class WebController {
 		model.addAttribute("atHome", true);		
 		updateTabs(model);
 
-		model.addAttribute("showNext", !themes.isLast());
-		model.addAttribute("showPrev", !themes.isFirst());
-		model.addAttribute("nextPage", themes.getNumber()+1);
-		model.addAttribute("prevPage", themes.getNumber()-1);
-		model.addAttribute("numPage", themes.getNumber());
+		int prevPageThemes = (themeService.getPageNumber(themes)>0)?(themeService.getPageNumber(themes)-1):0;
+		int prevPageQuotes = (quoteService.getPageNumber(quotes)>0)?(quoteService.getPageNumber(quotes)-1):0;
+
+		model.addAttribute("showNextThemes", !themes.isLast());
+		model.addAttribute("showPrevThemes", !themes.isFirst());
+		model.addAttribute("nextPageThemes", themeService.getPageNumber(themes) +1);
+		model.addAttribute("prevPageThemes", prevPageThemes);
+		model.addAttribute("numPageThemes", themeService.getPageNumber(themes));
+
+		model.addAttribute("showNextQuotes", !quotes.isLast());
+		model.addAttribute("showPrevQuotes", !quotes.isFirst());
+		model.addAttribute("nextPageQuotes", quoteService.getPageNumber(quotes) +1);
+		model.addAttribute("prevPageQuotes", prevPageQuotes);
+		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
 
 		model.addAttribute("search","");
 
@@ -76,17 +96,27 @@ public class WebController {
 	}
 
 	@GetMapping("/searchThemes")
-	public String searchThemes(Model model, Pageable page, @RequestParam String name) {
+	public String searchThemes(Model model, 
+		@RequestParam(value="pageTheme", required=false) Integer pageThemeNum,
+		@RequestParam(value="pageQuote", required=false) Integer pageQuoteNum,  
+		@RequestParam String name) {
 
-		Page<Theme> themes =  themeService.findAll(page);
+		if(pageThemeNum == null) pageThemeNum = 0;
+		if(pageQuoteNum == null) pageQuoteNum = 0;
 
-		model.addAttribute("quotes", quoteService.findAll());
+		Pageable pageTheme = new PageRequest(pageThemeNum, 10);
+		Pageable pageQuote = new PageRequest(pageQuoteNum, 10);
+
+		Page<Theme> themes =  themeService.findAll(pageTheme);
+		Page<Quote> quotes = quoteService.findAll(pageQuote);
+
+		model.addAttribute("quotes", quotes);
 
 		if (name.equals("")) {
 			model.addAttribute("themes", themes);
 			model.addAttribute("searchThemes", false);
 		} else {
-			themes = themeService.findByName(name, page);
+			themes = themeService.findByName(name, pageTheme);
 			model.addAttribute("themes", themes);
 			model.addAttribute("searchThemes", true);
 			model.addAttribute("noResults", themes.isEmpty());	
@@ -101,28 +131,46 @@ public class WebController {
 		model.addAttribute("atHome", true);		
 		updateTabs(model);
 
-		model.addAttribute("showNext", !themes.isLast());
-		model.addAttribute("showPrev", !themes.isFirst());
-		model.addAttribute("nextPage", themes.getNumber()+1);
-		model.addAttribute("prevPage", themes.getNumber()-1);
-		model.addAttribute("numPage", themes.getNumber());
+		int prevPageThemes = (themeService.getPageNumber(themes)>0)?(themeService.getPageNumber(themes)-1):0;
+		int prevPageQuotes = (quoteService.getPageNumber(quotes)>0)?(quoteService.getPageNumber(quotes)-1):0;
 
+		model.addAttribute("showNextThemes", !themes.isLast());
+		model.addAttribute("showPrevThemes", !themes.isFirst());
+		model.addAttribute("nextPageThemes", themeService.getPageNumber(themes) +1);
+		model.addAttribute("prevPageThemes", prevPageThemes);
+		model.addAttribute("numPageThemes", themeService.getPageNumber(themes));
+
+		model.addAttribute("showNextQuotes", !quotes.isLast());
+		model.addAttribute("showPrevQuotes", !quotes.isFirst());
+		model.addAttribute("nextPageQuotes", quoteService.getPageNumber(quotes) +1);
+		model.addAttribute("prevPageQuotes", prevPageQuotes);
+		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
 
 		return "Home";
 	}
 
 	@GetMapping("/searchQuotes")
-	public String searchQuotes(Model model, Pageable page, @RequestParam String name) {
+	public String searchQuotes(Model model, 
+		@RequestParam(value="pageTheme", required=false) Integer pageThemeNum,
+		@RequestParam(value="pageQuote", required=false) Integer pageQuoteNum,  
+		@RequestParam String name) {
 
-		Page<Theme> themes =  themeService.findAll(page);
+		if(pageThemeNum == null) pageThemeNum = 0;
+		if(pageQuoteNum == null) pageQuoteNum = 0;
 
-		model.addAttribute("themes", themeService.findAll(page));
+		Pageable pageTheme = new PageRequest(pageThemeNum, 10);
+		Pageable pageQuote = new PageRequest(pageQuoteNum, 10);
+
+		Page<Theme> themes =  themeService.findAll(pageTheme);
+		Page<Quote> quotes = quoteService.findAll(pageQuote);
+
+		model.addAttribute("themes", themes);
 
 		if (name.equals("")) {
-			model.addAttribute("quotes", quoteService.findAll());
+			model.addAttribute("quotes", quotes);
 			model.addAttribute("searchQuotes", false);
 		} else {
-			List<Quote> quotes = quoteService.findByName(name);
+			quotes = quoteService.findByName(name, pageQuote);
 			model.addAttribute("quotes", quotes);
 			model.addAttribute("searchQuotes", true);
 			model.addAttribute("noResults", quotes.isEmpty());
@@ -137,11 +185,20 @@ public class WebController {
 		model.addAttribute("atHome", true);		
 		updateTabs(model);
 
-		model.addAttribute("showNext", !themes.isLast());
-		model.addAttribute("showPrev", !themes.isFirst());
-		model.addAttribute("nextPage", themes.getNumber()+1);
-		model.addAttribute("prevPage", themes.getNumber()-1);
-		model.addAttribute("numPage", themes.getNumber());
+		int prevPageThemes = (themeService.getPageNumber(themes)>0)?(themeService.getPageNumber(themes)-1):0;
+		int prevPageQuotes = (quoteService.getPageNumber(quotes)>0)?(quoteService.getPageNumber(quotes)-1):0;
+
+		model.addAttribute("showNextThemes", !themes.isLast());
+		model.addAttribute("showPrevThemes", !themes.isFirst());
+		model.addAttribute("nextPageThemes", themeService.getPageNumber(themes) +1);
+		model.addAttribute("prevPageThemes", prevPageThemes);
+		model.addAttribute("numPageThemes", themeService.getPageNumber(themes));
+
+		model.addAttribute("showNextQuotes", !quotes.isLast());
+		model.addAttribute("showPrevQuotes", !quotes.isFirst());
+		model.addAttribute("nextPageQuotes", quoteService.getPageNumber(quotes) +1);
+		model.addAttribute("prevPageQuotes", prevPageQuotes);
+		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
 
 		return "Home";
 	}
@@ -355,7 +412,7 @@ public class WebController {
 			model.addAttribute("quotes", quoteService.findAll());
 			model.addAttribute("searchQuotes", false);
 		} else {
-			List<Quote> quotes = quoteService.findByName(name);
+			List<Quote> quotes = quoteService.findByNameList(name);
 			model.addAttribute("quotes", quotes);
 			model.addAttribute("searchQuotes", true);
 			model.addAttribute("noResults", quotes.isEmpty());

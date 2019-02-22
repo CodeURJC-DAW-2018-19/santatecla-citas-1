@@ -61,18 +61,18 @@
                   {{/themes}}
                 </div>
 
-                {{#showPrev}}
+                {{#showPrevThemes}}
                   <!--<button href="/?page={{prevPage}}" class="btn btn-primary btn-fab btn-fab-mini btn-round">
                     <i class="material-icons">favorite</i>
                   </button>-->
-                  <a href="/searchThemes?name={{search}}&page={{prevPage}}" class="btn btn-info btn-round">Prev</a>
-                {{/showPrev}}
+                  <a href="/searchThemes?name={{search}}&pageTheme={{prevPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">Prev</a>
+                {{/showPrevThemes}}
 
-                <h4>{{numPage}}</h4>
+                <h4>{{numPageThemes}}</h4>
 
-                {{#showNext}}
-                <a href="/searchThemes?name={{search}}&page={{nextPage}}" class="btn btn-info btn-round">Next</a>
-                {{/showNext}}
+                {{#showNextThemes}}
+                <a href="/searchThemes?name={{search}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">Next</a>
+                {{/showNextThemes}}
 
                 {{#admin}}
                 <a href="/addTheme" type="button" class="btn btn-primary btn-lg btn-block">Añadir Tema</a>
@@ -123,6 +123,16 @@
                         </div>
                       </div>
                   {{/quotes}}
+
+                  {{#showPrevQuotes}}
+                  <a href="/searchQuotes?name={{search}}&pageTheme={{numPageThemes}}&pageQuote={{prevPageQuotes}}" class="btn btn-info btn-round">Prev</a>
+                {{/showPrevQuotes}}
+
+                <h4>{{numPageQuotes}}</h4>
+
+                {{#showNextQuotes}}
+                <a href="/searchQuotes?name={{search}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}" class="btn btn-info btn-round">Next</a>
+                {{/showNextQuotes}}
 
                   {{#admin}}
                   <a href="/addQuote" type="button" class="btn btn-primary btn-lg btn-block">Añadir Cita</a>

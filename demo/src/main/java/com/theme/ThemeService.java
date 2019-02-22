@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ThemeService {
 
+	private int pageSize = 4;
+
 	@Autowired
 	private ThemeRepository repository;
 
@@ -21,7 +23,7 @@ public class ThemeService {
 
 	public Page<Theme> findAll(Pageable page) {
 
-		page = new PageRequest(0, 4 + 4*page.getPageNumber());
+		page = new PageRequest(0, pageSize(page));
 		
 		return repository.findAll(page);
 	}
@@ -35,8 +37,18 @@ public class ThemeService {
 	}
 	
 	public Page<Theme> findByName(String name, Pageable page) {
-		page = new PageRequest(0, 4 + 4*page.getPageNumber());
+
+		page = new PageRequest(0, pageSize(page));
+
 		return repository.findByNameContaining(name, page);
+	}
+
+	public int pageSize(Pageable page){
+		return pageSize + pageSize*page.getPageNumber();
+	}
+
+	public int getPageNumber(Page<Theme> page){
+		return (page.getSize()-4)/4;
 	}
 
 }
