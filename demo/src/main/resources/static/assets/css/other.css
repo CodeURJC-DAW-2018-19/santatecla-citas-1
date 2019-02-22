@@ -188,3 +188,28 @@ html{
 .pdf_card{
     margin-left: 30%;
 }
+
+.homeMessageDeleted{
+    border-radius: 0.5rem;
+    background-color: #6f19be;
+    color: #ffffff;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+.homeMessageSaved{
+    border-radius: 0.5rem;
+    background-color: #2aafc7;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+.closeMessage {
+    float: right;
+}
+
+.closeMessage:hover {
+    color: #ffffff;
+    border-radius: 1rem;
+}

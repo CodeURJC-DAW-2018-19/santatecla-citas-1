@@ -89,6 +89,63 @@ public class WebController {
 		}
 		model.addAttribute("atHome", true);
 		updateTabs(model);
+		
+		model.addAttribute("deleteThemeMessage", false);
+		model.addAttribute("saveThemeMessage", false);
+		model.addAttribute("deleteQuoteMessage", false);
+		model.addAttribute("saveQuoteMessage", false);
+
+		return "Home";
+	}
+
+	@GetMapping("/deletedTheme")
+	public String deletedTheme(Model model) {
+
+		home(model);
+		
+		model.addAttribute("deleteThemeMessage", true);
+		model.addAttribute("saveThemeMessage", false);
+		model.addAttribute("deleteQuoteMessage", false);
+		model.addAttribute("saveQuoteMessage", false);
+
+		return "Home";
+	}
+
+	@GetMapping("/savedTheme")
+	public String savedTheme(Model model) {
+
+		home(model);
+		
+		model.addAttribute("deleteThemeMessage", false);
+		model.addAttribute("saveThemeMessage", true);
+		model.addAttribute("deleteQuoteMessage", false);
+		model.addAttribute("saveQuoteMessage", false);
+
+		return "Home";
+	}
+	
+	@GetMapping("/deletedQuote")
+	public String deletedQuote(Model model) {
+
+		home(model);
+		
+		model.addAttribute("deleteThemeMessage", false);
+		model.addAttribute("saveThemeMessage", false);
+		model.addAttribute("deleteQuoteMessage", true);
+		model.addAttribute("saveQuoteMessage", false);
+
+		return "Home";
+	}
+
+	@GetMapping("/savedQuote")
+	public String savedQuote(Model model) {
+
+		home(model);
+		
+		model.addAttribute("deleteThemeMessage", false);
+		model.addAttribute("saveThemeMessage", false);
+		model.addAttribute("deleteQuoteMessage", false);
+		model.addAttribute("saveQuoteMessage", true);
 
 		return "Home";
 	}
@@ -183,7 +240,7 @@ public class WebController {
 
 		updateTabs(model);
 
-		return "Deleted";
+		return deletedQuote(model);
 	}
 
 	@GetMapping("/theme/{id}")
@@ -203,7 +260,7 @@ public class WebController {
 
 		updateTabs(model);
 		model.addAttribute("idTheme", id);
-
+		
 		return "Themes";
 	}
 
@@ -219,7 +276,7 @@ public class WebController {
 
 		updateTabs(model);
 
-		return "Deleted";
+		return deletedTheme(model);
 	}
 
 	@GetMapping("/login")
@@ -299,7 +356,7 @@ public class WebController {
 		if (list.isEmpty()) {
 			quoteService.save(quote);
 			updateTabs(model);
-			return "Saved";
+			return savedQuote(model);
 		}
 		
 		return "Error";
@@ -328,7 +385,7 @@ public class WebController {
 			  }
 		  }
 			updateTabs(model);
-			return "Saved";
+			return savedTheme(model);
 		}
 
 		return "Error";
@@ -341,7 +398,7 @@ public class WebController {
 		if (u == null) {
 			userService.save(user);
 			updateTabs(model);
-			return "Saved";
+			return "/login";
 		}
 
 		return "Error";
@@ -391,7 +448,7 @@ public class WebController {
 		}
     updateTabs(model);
 
-    return "Saved";
+    return showTheme(model, id);
 	}
 
 	private void updateTabs(Model model) {
@@ -428,7 +485,7 @@ public class WebController {
         }
 
 				updateTabs(model);
-        return "Saved";
+				return showTheme(model, theme);
 		}
 		
 	@GetMapping("/addQuoteToTheme{id}/searchQuotes")
@@ -463,7 +520,7 @@ public class WebController {
 		}
 
 		updateTabs(model);
-		return "Deleted";
+		return showTheme(model, idTheme);
 	}
 
 	@GetMapping("/deleteText{idText}FromTheme{idTheme}")
@@ -476,7 +533,7 @@ public class WebController {
 		}
 
 		updateTabs(model);
-		return "Deleted";
+		return showTheme(model, idTheme);
 	}
 
 	@GetMapping("/editTheme{id}")
@@ -505,7 +562,7 @@ public class WebController {
 		
 		updateTabs(model);
 
-		return "Saved";
+    return showTheme(model, idTheme);
 	}
 
 	@GetMapping("/generatePDF{id}")
