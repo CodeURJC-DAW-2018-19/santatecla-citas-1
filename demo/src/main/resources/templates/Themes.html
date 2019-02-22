@@ -43,7 +43,12 @@
           <div class="card">
             <div class="card-header card-header-text card-header-primary">
               <div class="card-text">
-                <div class="card-title">Referencia Cita {{id}}</div>
+                <div class="card-title">
+                  Referencia Cita {{id}}
+                  <a title="Borrar" id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteQuote{{id}}FromTheme{{idTheme}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
+                    <i class="material-icons">delete_outline</i>
+                  </a>
+                </div>
               </div>
             </div>
             <div class="card-theme-text-box">{{name}}</div>
@@ -51,18 +56,21 @@
               <div class="card-theme-others-box">{{author}}</div>
               <div class="card-theme-others-box">{{book}}</div>
             </div>
-            <a id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteQuote{{id}}FromTheme{{idTheme}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
           </div>
           {{/quotes}}
           {{#texts}}
           <div class="card">
             <div class="card-header card-header-text card-header-primary">
               <div class="card-text">
-                <div class="card-title">Referencia Texto {{-index}}</div>
+                <div class="card-title">
+                  Referencia Texto {{-index}}
+                  <a title="Borrar" id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteText{{-index}}FromTheme{{idTheme}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
+                    <i class="material-icons">delete_outline</i>
+                  </a>
+                </div>
               </div>
             </div>
             <div class="card-theme-text-box">{{text}}</div>
-            <a id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteText{{-index}}FromTheme{{idTheme}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
           </div>
           {{/texts}}
 
@@ -90,7 +98,9 @@
             </div>
 
             <div class="col-md-6 addButton">
-              <a onclick="addSomethingToTheme('{{id}}')" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
+              <a onclick="addSomethingToTheme('{{id}}')" type="button" class="btn btn-primary btn-lg btn-block">
+                Añadir <i class="material-icons">add_circle</i>
+              </a>
             </div>
           </div>
         </div>
@@ -115,7 +125,9 @@
                 <p>"{{text}}"</p>
                 {{/texts}}
             </div>
-            <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">Generar PDF</a>
+            <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">
+              Generar PDF <i class="material-icons">picture_as_pdf</i>
+            </a>
 
           </div>
         </div>
@@ -134,7 +146,9 @@
                 </blockquote>
                 {{/quotes}}
             </div>
-            <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">Generar PDF</a>
+            <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">
+              Generar PDF <i class="material-icons">picture_as_pdf</i>
+            </a>
           </div>
       {{/admin}}
 

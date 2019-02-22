@@ -32,7 +32,9 @@
                 <nav class="navbar navbar-light bg-light">
                     <form class="form-inline" action="/searchThemes">
                       <input class="form-control mr-sm-2" type="text" name='name' placeholder="Buscar un tema" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        Buscar <i class="material-icons">pageview</i>
+                      </button>
                     </form>
                 </nav>
                 {{#searchThemes}}
@@ -49,7 +51,9 @@
                           {{#logged}}
                             <a href="/theme/{{id}}" class="card-title">{{name}}</a>
                           {{#admin}}
-                            <a id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/deleteTheme/{{id}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+                            <a title="Borrar" id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/deleteTheme/{{id}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
+                              <i class="material-icons">delete_outline</i>
+                            </a>
                           {{/admin}}
                           {{/logged}}
                           {{^logged}}
@@ -62,7 +66,9 @@
                 </div>
 
                 {{#admin}}
-                <a href="/addTheme" type="button" class="btn btn-primary btn-lg btn-block">Añadir Tema</a>
+                <a href="/addTheme" type="button" class="btn btn-primary btn-lg btn-block">
+                  Añadir Tema <i class="material-icons">add_circle</i>
+                </a>
                 {{/admin}}
 
             </div> 
@@ -81,7 +87,9 @@
                 <nav class="navbar navbar-light bg-light">
                     <form class="form-inline" action="/searchQuotes">
                       <input class="form-control mr-sm-2" type="search" name='name' placeholder="Buscar una cita" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        Buscar <i class="material-icons">pageview</i>
+                      </button>
                     </form>
                 </nav>
 
@@ -100,7 +108,9 @@
                             {{#logged}}
                               <a href="/quote/{{id}}" class="card-title">{{name}}</a>
                             {{#admin}}
-                              <a id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta cita?','/deleteQuote/{{id}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
+                              <a title="Borrar" id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta cita?','/deleteQuote/{{id}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
+                                <i class="material-icons">delete_outline</i>
+                              </a>
                             {{/admin}}
                             {{/logged}}
                             {{^logged}}
@@ -112,7 +122,9 @@
                   {{/quotes}}
 
                   {{#admin}}
-                  <a href="/addQuote" type="button" class="btn btn-primary btn-lg btn-block">Añadir Cita</a>
+                  <a href="/addQuote" type="button" class="btn btn-primary btn-lg btn-block">
+                    Añadir Cita <i class="material-icons">add_circle</i>
+                  </a>
                   {{/admin}}
 
                 </div>                
@@ -122,7 +134,9 @@
   </div>
 
   <div class="BCentrado">
-    <a href="/histogram" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Histograma</a>
+    <a href="/histogram" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+      Histograma <i class="material-icons">bar_chart</i>
+    </a>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -243,7 +243,7 @@ public class WebController {
 	@GetMapping("/register")
 	public String register(Model model) {
 
-		model.addAttribute("hideLogin", true);
+		model.addAttribute("hideLogin", false);
 
 		updateTabs(model);
 
