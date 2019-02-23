@@ -21,7 +21,7 @@
 
 https://docs.google.com/document/d/1PKqs6eayJti3jBymaytm1CKXEUqmyDpC4xDh7tM-wEk/edit
 
-## Phase 1
+## Screens
 
 **Pantalla de inicio - Home Screen**
 
@@ -41,6 +41,14 @@ You can introduce your email and password (with the opcion to show it up) to acc
 
 ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/Login.png)
 
+**SignIn**
+
+```
+You can introduce your email and password to register on the web.
+```
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/SignIn.png)
+
 **Temas - Topics**
 
 ```
@@ -51,6 +59,23 @@ you want and allows to add. modify or delete text, to create or delete a quote a
 
 ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/Temas.png)
 
+**Añadir Nueva Cita desde Tema - Add New Quote from Topic**
+
+```
+This screen allows you to select the quote you want to add to a specific topic
+```
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/add_quote_from_topic.png)
+
+**Añadir nuevo Tema - Add New Topic**
+
+```
+If you want to add a new topic, you just have to put the name that identifies it and optionally you can upload 
+an image that represents it
+```
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/new_theme.png)
+
 **Citas - Quotes**
 
 ```
@@ -58,6 +83,15 @@ It has the fields of the quote and allows to modify the information directly on 
 ```
 
 ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/Citas.png)
+
+**Añadir Nueva Cita - Add New Quote**
+
+```
+To add a new quote, you must put the "quote" in the upper text box and add an author and his corresponding 
+work in the lower text boxes.
+```
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/new_quote.png)
 
 **Historiograma - Histogram**
 
