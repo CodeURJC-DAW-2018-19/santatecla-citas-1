@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Nuevo Tema</title>
+  <title>Editar Tema</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -18,32 +18,25 @@
 <body class="body">
 
 	{{>header}}
-	
-    <!--<form action='/saveTheme' method="POST">
-        <p>Tema: </p>
-        <input type="text" id= "name" name="name">
-        <input type="submit" value="Enviar">
-        <input type="hidden" name="_csrf" value="{{token}}"/>
-    </form>-->
 
     <div class="tittleCard">
       <div class="card">
         <div class="card-header card-header-text card-header-primary">
           <div class="card-text">
-            <h4 class="card-title">Añadir tema</h4>
+            <h4 class="card-title">Editar tema</h4>
           </div>
         </div>
         <div class="card-body">
   
-          <form action="/saveTheme" method="POST" enctype="multipart/form-data">
-            <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca el nombre del tema" required="required">
-            <p>Seleccione una imagen para este tema</p>
-            <input type="file" class="inputFileHidden" name="file">
-            
+          <form action="/saveEditedTheme{{idTheme}}" method="POST">
+            {{#theme}}<input type="hidden" name="id" value="{{id}}" class="form-control"/>{{/theme}}
+            {{#theme}}
+            <input type="text" class="form-control" value="{{name}}" id="name" name="name" placeholder="Introduzca el nombre del tema" required="required">
             <div class="BCentrado">
               <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
               <input type="hidden" name="_csrf" value="{{token}}" />
             </div>
+            {{/theme}}
           </form>
   
         </div>

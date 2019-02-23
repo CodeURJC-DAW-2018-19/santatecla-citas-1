@@ -9422,16 +9422,16 @@ a.text-dark:focus {
 .btn,
 .btn.btn-default {
   color: #fff;
-  background-color: #999999;
-  border-color: #999999;
+  background-color: #323bb4;
+  border-color: #323bb4;
   box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14), 0 3px 1px -2px rgba(153, 153, 153, 0.2), 0 1px 5px 0 rgba(153, 153, 153, 0.12);
 }
 
 .btn:hover,
 .btn.btn-default:hover {
   color: #fff;
-  background-color: #919191;
-  border-color: #7a7a7a;
+  background-color: #323bb4;
+  border-color: #323bb4;
 }
 
 .btn:focus,
@@ -9441,8 +9441,8 @@ a.text-dark:focus {
 .btn.btn-default.focus,
 .btn.btn-default:hover {
   color: #fff;
-  background-color: #919191;
-  border-color: #7a7a7a;
+  background-color: #323bb4;
+  border-color: #323bb4;
 }
 
 .btn:active,
@@ -9454,8 +9454,8 @@ a.text-dark:focus {
 .open>.btn.btn-default.dropdown-toggle,
 .show>.btn.btn-default.dropdown-toggle {
   color: #fff;
-  background-color: #919191;
-  border-color: #7a7a7a;
+  background-color: #323bb4;
+  border-color: #323bb4;
   box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14), 0 3px 1px -2px rgba(153, 153, 153, 0.2), 0 1px 5px 0 rgba(153, 153, 153, 0.12);
 }
 
@@ -10746,7 +10746,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
   position: relative;
   display: inline-block;
   top: 0;
-  margin-top: -1em;
+  margin-top: -1.2em;
   margin-bottom: -1em;
   font-size: 1.1rem;
   vertical-align: middle;

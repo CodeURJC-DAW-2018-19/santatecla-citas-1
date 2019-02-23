@@ -17,25 +17,38 @@
 
 <body class="body">
       
-	{{>header}}
+{{>header}}
   
   <div class="col-md-12">
     <div class="card">
       {{#theme}}
+      <img id="img-theme" src="../assets/img/image-{{id}}.jpg" class="rounded float-right">
+      {{#admin}}
       <div class="row">
         <div class="col-md-6">
           <div class="card">
               <div class="card-header card-header-text">
-                  <h4 class="card-title">{{name}}</h4>
+                  <div class="row">
+                      <div class="col-md-6">
+                        <h3 class="card-title">{{name}}</h3>
+                      </div>
+                      <div class="col-md-6">
+                        <a id="edit" href="/editTheme{{id}}" class="btn btn-primary btn-sm active">Editar</a>
+                      </div>
+                  </div>
               </div>
           </div>
 
-          {{#admin}}
           {{#quotes}}
           <div class="card">
             <div class="card-header card-header-text card-header-primary">
               <div class="card-text">
-                <div class="card-title">Referencia Cita {{id}}</div>
+                <div class="card-title">
+                  Referencia Cita {{id}}
+                  <a title="Borrar" id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteQuote{{id}}FromTheme{{idTheme}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
+                    <i class="material-icons">delete_outline</i>
+                  </a>
+                </div>
               </div>
             </div>
             <div class="card-theme-text-box">{{name}}</div>
@@ -43,25 +56,29 @@
               <div class="card-theme-others-box">{{author}}</div>
               <div class="card-theme-others-box">{{book}}</div>
             </div>
-            <a id="borrar2" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
           </div>
           {{/quotes}}
-
-          <!--div class="card">
+          {{#texts}}
+          <div class="card">
             <div class="card-header card-header-text card-header-primary">
               <div class="card-text">
-                <div class="card-title">Texto 1</div>
+                <div class="card-title">
+                  Referencia Texto {{-index}}
+                  <a title="Borrar" id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteText{{-index}}FromTheme{{idTheme}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
+                    <i class="material-icons">delete_outline</i>
+                  </a>
+                </div>
               </div>
             </div>
-            <div class="card-theme-text-box">Markdown</div>
-            <a id="borrar2" href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Borrar</a>
-          </div-->
+            <div class="card-theme-text-box">{{text}}</div>
+          </div>
+          {{/texts}}
 
           <div id="selection" class="row">
             <div class="col-md-6">
               <div class="form-check form-check-radio">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                     Referencia a cita
                     <span class="circle">
                         <span class="check"></span>
@@ -71,7 +88,7 @@
     
               <div class="form-check form-check-radio">
                   <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
                       Texto
                       <span class="circle">
                           <span class="check"></span>
@@ -80,12 +97,13 @@
               </div>
             </div>
 
-            <div class="col-md-6">
-              <a href="/addQuoteToTheme{{id}}" type="button" class="btn btn-primary btn-lg btn-block">Añadir</a>
+            <div class="col-md-6 addButton">
+              <a onclick="addSomethingToTheme('{{id}}')" type="button" class="btn btn-primary btn-lg btn-block">
+                Añadir <i class="material-icons">add_circle</i>
+              </a>
             </div>
           </div>
         </div>
-        {{/admin}}
 
         <div class="col-md-6">
           <div class="card card-theme-html">
@@ -96,24 +114,52 @@
             </div>
             
             <div class="card-theme-text-box card-theme-html">
+                <h2>{{name}}</h2>
                 {{#quotes}}
-                <p>"{{name}}"</p>
-                <p>{{author}}  -  {{book}}<br></p>
+                <blockquote class="blockquote">
+                  <p class="mb-0">"{{name}}"</p>
+                  <footer class="blockquote-footer">{{author}} en <cite title="Source Title">{{book}}</cite></footer>
+                </blockquote>
                 {{/quotes}}
+                {{#texts}}
+                <p>"{{text}}"</p>
+                {{/texts}}
             </div>
-            <button type="button" class="btn btn-default theme-pdf-button">Generar PDF</button>
+            <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">
+              Generar PDF <i class="material-icons">picture_as_pdf</i>
+            </a>
 
           </div>
         </div>
 
       </div>
+      {{/admin}}
+
+      {{^admin}}
+          <div class="card card-theme-html">
+            <div class="card-theme-text-box card-theme-html">
+                <h2>{{name}}</h2>
+                {{#quotes}}
+                <blockquote class="blockquote">
+                  <p class="mb-0">"{{name}}"</p>
+                  <footer class="blockquote-footer">{{author}} en <cite title="Source Title">{{book}}</cite></footer>
+                </blockquote>
+                {{/quotes}}
+            </div>
+            <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">
+              Generar PDF <i class="material-icons">picture_as_pdf</i>
+            </a>
+          </div>
+      {{/admin}}
+
       {{/theme}}
     </div>
   </div>
-  
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+  <script src="../assets/js/script.js"></script>
 
+</body>
 </html>

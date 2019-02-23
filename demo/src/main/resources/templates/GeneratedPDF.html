@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Nueva Cita</title>
+  <title>PDF Generado</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -17,10 +17,18 @@
 
 <body class="body">
 
-	{{>header}}
-    
-    <p>Se ha eliminado correctamente</p>
-    <a href="/">INICIO</a>
+  {{>header}}
+
+    <div class="card pdf_card" style="width: 40%">
+      <img class="card-img-top" src="../assets/img/pdf.png" alt="PDF image">
+      <div class="card-body">
+        <p class="card-text">
+          <a href="/getpdf">
+            Descargar PDF <i class="material-icons">cloud_download</i>
+          </a>
+        </p>
+      </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

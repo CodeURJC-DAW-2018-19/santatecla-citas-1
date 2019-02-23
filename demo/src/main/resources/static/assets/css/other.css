@@ -7,15 +7,10 @@ html{
 }
 
 #borrar{
-    margin-left: 1.7rem;
-    border-radius: 2rem;
-}
-
-#borrar2{
+    align-self: center;
     margin-left: 1rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
     border-radius: 2rem;
+    background-color: #6f19be;
 }
 
 #logButton{
@@ -50,7 +45,7 @@ html{
 .loginCard{
     padding-left: 20%;
     padding-right: 20%;
-    padding-top: 4%;
+    padding-top: 2%;
 }
 
 .tittleCard{
@@ -91,6 +86,7 @@ html{
 .theme-pdf-button{
     margin: 15px;
 }
+
 .BCentrado{
     margin-bottom: 1rem;
     display: flex;
@@ -125,19 +121,19 @@ html{
     margin-right: 1rem;
     background-color: #dcefff;
     text-decoration: none;
-  }
+}
 
-  #activeTab {
+#activeTab {
     font-weight: bold;
-  }
+}
 
-  .closeTab:hover {
+.closeTab:hover {
     background-color: #6f19be;
     color: #ffffff;
     border-radius: 1rem;
-  }
+}
 
-  .material-icons {
+.material-icons {
     font-size: 1rem;
 }
 
@@ -148,4 +144,72 @@ html{
 
 .bt-guardado{
     margin-top: 5rem;
+}
+
+.textField{
+    width: 99%;
+}
+
+.addButton{
+    color: #ffffff;
+}
+
+.errorImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4rem;
+    width: 25%;
+}
+
+.errorMsg{
+    text-align: center;
+    margin-top: 4rem;
+}
+
+#img-theme{
+    width: 100%;
+    height: 5rem;
+}
+
+#edit{
+    position: absolute;
+    margin-top: -2.55rem;
+    margin-left: 50vw;
+}
+
+@media only screen and (min-width: 767px){
+    #edit{
+        margin-top: 0.65rem;
+        margin-left: 10vw;
+    }
+}
+
+.pdf_card{
+    margin-left: 30%;
+}
+
+.homeMessageDeleted{
+    border-radius: 0.5rem;
+    background-color: #6f19be;
+    color: #ffffff;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+.homeMessageSaved{
+    border-radius: 0.5rem;
+    background-color: #2aafc7;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+.closeMessage {
+    float: right;
+}
+
+.closeMessage:hover {
+    color: #ffffff;
+    border-radius: 1rem;
 }

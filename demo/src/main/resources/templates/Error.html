@@ -2,13 +2,11 @@
 <html>
 
 <head>
-  <title>LogIn</title>
+  <title>Cita Guardada</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <!--     Responsive meta tag     -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -18,39 +16,16 @@
 </head>
 
 <body class="body">
-      
-	{{>header}}
 
-  <div class="loginCard">
-    <div class="card">
-      <div class="card-header card-header-text card-header-primary">
-        <div class="card-text">
-          <h4 class="card-title">LogIn</h4>
-        </div>
-      </div>
-      <div class="card-body">
-        <form action="/login" method="POST" role="search">
-          <div class="form-group">
-            <label for="username">Nombre</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Nombre">
-          </div>
-          <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
-          </div>
-          <div class="BCentrado">
-            <button type="submit" class="btn btn-primary">LogIn</button>
-            <input type="hidden" name="_csrf" value="{{token}}" />
-          </div>
-        </form>
-
-      </div>
-    </div>
-  </div>
+  {{>header}}
   
+  <img src="../assets/img/error.png" class="errorImg">
+  <h3 class="errorMsg">Lo sentimos, se ha producido un error</h3>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
 
+</body>
+      
 </html>

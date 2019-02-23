@@ -3,6 +3,7 @@ package com.theme;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,15 +29,15 @@ public class ThemeService {
 		return repository.findAll(page);
 	}
 
-	public void save(Theme book) {
-		repository.save(book);
+	public void save(Theme theme) {
+		repository.save(theme);
 	}
 
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
-	
-	public Page<Theme> findByName(String name, Pageable page) {
+  
+  public Page<Theme> findByName(String name, Pageable page) {
 
 		page = new PageRequest(0, pageSize(page));
 
@@ -49,6 +50,6 @@ public class ThemeService {
 
 	public int getPageNumber(Page<Theme> page){
 		return (page.getSize()-4)/4;
-	}
-
+  }
+  
 }

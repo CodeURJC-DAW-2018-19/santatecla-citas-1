@@ -13,7 +13,7 @@ public class Quote extends TabElement{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
-    
+
     private String quote;
     private String author;
     private String book;

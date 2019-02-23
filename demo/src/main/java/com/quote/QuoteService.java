@@ -28,8 +28,8 @@ public class QuoteService {
 
 		return repository.findAll();
 	}
-
-	public Page<Quote> findAll(Pageable page) {
+  
+  public Page<Quote> findAll(Pageable page) {
 
 		page = new PageRequest(0, pageSize(page));
 
@@ -38,23 +38,23 @@ public class QuoteService {
 
 	public void save(Quote book) {
 		repository.save(book);
-	}
+  }
 
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
-
-	public List<Quote> findByNameList(String name) {
-		/*HashSet<Quote> quotesSet = new HashSet();
+  
+  public List<Quote> findByNameList(String name) {
+    return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name);
+    /*HashSet<Quote> quotesSet = new HashSet();
 		quotesSet.addAll(repository.findByQuoteContaining(name));
 		quotesSet.addAll(repository.findByAuthorContaining(name));
 		quotesSet.addAll(repository.findByBookContaining(name));
 		List<Quote> quotesList = new ArrayList();
 		quotesList.addAll(quotesSet);
 		return quotesList;*/
-
-		return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name);
 	}
+
 
 	public Page<Quote> findByName(String name, Pageable page) {
 		/*HashSet<Quote> quotesSet = new HashSet();

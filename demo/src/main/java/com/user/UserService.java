@@ -4,27 +4,39 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
 	@Autowired
-	private UserRepository repository;
+	private UserRepository uRepository;
 
-	public Optional<User> findOne(long id) {
-		return repository.findById(id);
+
+	public User findOne(long id) {
+		return uRepository.findById(id);
 	}
 
-	public List<User> findAll() {
-		return repository.findAll();
+	public List<User> findAllUsers() {
+		return uRepository.findAll();
+	}
+
+	public Page<User> findAllUsers(PageRequest page) {
+		return uRepository.findAll(page);
 	}
 
 	public void save(User user) {
-		repository.save(user);
+		uRepository.save(user);
 	}
 
 	public void delete(long id) {
-		repository.deleteById(id);
+		uRepository.deleteById(id);
 	}
+
+	public User findByName(String name) {
+		return uRepository.findByName(name);
+	} 
+
 }
