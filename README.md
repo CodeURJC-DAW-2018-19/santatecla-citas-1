@@ -23,23 +23,24 @@ https://docs.google.com/document/d/1PKqs6eayJti3jBymaytm1CKXEUqmyDpC4xDh7tM-wEk/
 
 ### Development Environment 
 
-![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/vscode.png)
+To carry out this work we have used Visual Studio Code. [![VSC](https://img.shields.io/badge/Link%20descarga-VS%20Code-blue.svg)](https://visual-studio-code.uptodown.com/windows)
 
-To carry out this work we have used Visual Studio Code. This development environment allows 
+This development environment allows 
 you to have almost everything you need to develop the web.
 
 We must install a series of extensions:
--Java Extension Pack
 
--Maven for Java
+* **Java Extension Pack** [![Java](https://img.shields.io/badge/Extension-Java%20Extension%20Pack-orange.svg)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 
--Mustache
+* **Maven for Java** [![Maven](https://img.shields.io/badge/Extension-Maven-yellowgreen.svg)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven)
 
--MySQL [![MySQL](https://img.shields.io/badge/Extension-MySQL-blue.svg)](http://www.nocountryforgeeks.com/author/gallardo)
+* **Mustache** [![Mustache](https://img.shields.io/badge/Extension%20-Mustache-9cf.svg)](https://marketplace.visualstudio.com/items?itemName=dawhite.mustache)
 
--MySQL syntax
+* **MySQL** [![MySQL](https://img.shields.io/badge/Extension-MySQL-blue.svg)](https://marketplace.visualstudio.com/items?itemName=formulahendry.vscode-mysql)
 
--Spring Boot Extension Pack ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/spring.png)
+* **MySQL syntax** [![MySQL Syntax](https://img.shields.io/badge/Extension-MySQL%20Syntax-blue.svg)](https://marketplace.visualstudio.com/items?itemName=jakebathman.mysql-syntax)
+
+* **Spring Boot Extension Pack** [![Spring Boot Extension Pack](https://img.shields.io/badge/Extension-Spring%20BOOT%20Extension%20Pack-green.svg)](https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack)
 
 You also need to have the latest version of JDK and MAVEN installed on your machine.
 
