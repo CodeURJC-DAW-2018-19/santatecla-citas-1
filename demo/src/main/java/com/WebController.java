@@ -15,6 +15,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -77,28 +81,78 @@ public class WebController {
 	}
 
 	@GetMapping("/")
-	public String home(Model model) {
+	public String home(Model model,
+		@RequestParam(value="searchThemes", required=false) String searchThemes,
+		@RequestParam(value="searchQuotes", required=false) String searchQuotes,
+		@RequestParam(value="pageTheme", required=false) Integer pageThemeNum,
+		@RequestParam(value="pageQuote", required=false) Integer pageQuoteNum) {
+    
+    if(pageThemeNum == null) pageThemeNum = 0;
+		if(pageQuoteNum == null) pageQuoteNum = 0;
+		if(searchThemes == null) searchThemes = "";
+		if(searchQuotes == null) searchQuotes = "";
 
-		model.addAttribute("quotes", quoteService.findAll());
-		model.addAttribute("themes", themeService.findAll());
+		Pageable pageTheme = new PageRequest(pageThemeNum, 10);
+		Pageable pageQuote = new PageRequest(pageQuoteNum, 10);
+
+		Page<Theme> themes =  themeService.findAll(pageTheme);
+		Page<Quote> quotes = quoteService.findAll(pageQuote);
+
+		model.addAttribute("quotes", quotes);
+		model.addAttribute("themes", themes);
 		model.addAttribute("searchThemes", false);
 		model.addAttribute("searchQuotes", false);
+		
+		if (searchThemes == null || searchThemes.equals("")) {
+			model.addAttribute("themes", themes);
+			model.addAttribute("searchThemes", false);
+		} else {
+			themes = themeService.findByName(searchThemes, pageTheme);
+			model.addAttribute("themes", themes);
+			model.addAttribute("searchThemes", true);
+			model.addAttribute("noResultsTheme", themes.isEmpty());	
+		}
 
-		if (this.userComponent.isLoggedUser()) {
+		if (searchQuotes == null || searchQuotes.equals("")) {
+			model.addAttribute("quotes", quotes);
+			model.addAttribute("searchQuotes", false);
+		} else {
+			quotes = quoteService.findByName(searchQuotes, pageQuote);
+			model.addAttribute("quotes", quotes);
+			model.addAttribute("searchQuotes", true);
+			model.addAttribute("noResultsQuotes", quotes.isEmpty());
+		}
+
+		model.addAttribute("searchThemeString", searchThemes);	
+		model.addAttribute("searchQuoteString", searchQuotes);	
+
+		if(this.userComponent.isLoggedUser()) {
 			this.userComponent.getLoggedUser().setActive(null);
 		}
-		model.addAttribute("atHome", true);
+
+		model.addAttribute("atHome", true);		
 		updateTabs(model);
-		
-		model.addAttribute("deleteThemeMessage", false);
+    
+    model.addAttribute("deleteThemeMessage", false);
 		model.addAttribute("saveThemeMessage", false);
 		model.addAttribute("deleteQuoteMessage", false);
 		model.addAttribute("saveQuoteMessage", false);
 
-		return "Home";
-	}
+		int prevPageThemes = (themeService.getPageNumber(themes)>0)?(themeService.getPageNumber(themes)-1):0;
+		int prevPageQuotes = (quoteService.getPageNumber(quotes)>0)?(quoteService.getPageNumber(quotes)-1):0;
 
-	@GetMapping("/deletedTheme")
+		model.addAttribute("showNextThemes", !themes.isLast());
+		model.addAttribute("nextPageThemes", themeService.getPageNumber(themes) +1);
+		//model.addAttribute("numPageThemes", themeService.getPageNumber(themes));
+
+		model.addAttribute("showNextQuotes", !quotes.isLast());
+		model.addAttribute("nextPageQuotes", quoteService.getPageNumber(quotes) +1);
+		//model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
+    
+    return "Home";
+  }
+  
+  @GetMapping("/deletedTheme")
 	public String deletedTheme(Model model) {
 
 		home(model);
@@ -150,63 +204,6 @@ public class WebController {
 		return "Home";
 	}
 
-	@GetMapping("/searchThemes")
-	public String searchThemes(Model model, @RequestParam String name) {
-
-		model.addAttribute("quotes", quoteService.findAll());
-
-		if (name.equals("")) {
-			model.addAttribute("themes", themeService.findAll());
-			model.addAttribute("searchThemes", false);
-		} else {
-			List<Theme> themes = themeService.findByName(name);
-			model.addAttribute("themes", themes);
-			model.addAttribute("searchThemes", true);
-			model.addAttribute("noResults", themes.isEmpty());
-		}
-
-		model.addAttribute("searchQuotes", false);
-		model.addAttribute("search", name);
-		// add User
-		model.addAttribute("logged", userComponent.isLoggedUser());
-		User user = userComponent.getLoggedUser();
-
-		if (this.userComponent.isLoggedUser()) {
-			this.userComponent.getLoggedUser().setActive(null);
-		}
-		model.addAttribute("atHome", true);
-		updateTabs(model);
-
-		return "Home";
-	}
-
-	@GetMapping("/searchQuotes")
-	public String searchQuotes(Model model, @RequestParam String name) {
-
-		model.addAttribute("themes", themeService.findAll());
-
-		if (name.equals("")) {
-			model.addAttribute("quotes", quoteService.findAll());
-			model.addAttribute("searchQuotes", false);
-		} else {
-			List<Quote> quotes = quoteService.findByName(name);
-			model.addAttribute("quotes", quotes);
-			model.addAttribute("searchQuotes", true);
-			model.addAttribute("noResults", quotes.isEmpty());
-		}
-
-		model.addAttribute("searchThemes", false);
-		model.addAttribute("search", name);
-
-		if (this.userComponent.isLoggedUser()) {
-
-			this.userComponent.getLoggedUser().setActive(null);
-		}
-		model.addAttribute("atHome", true);
-		updateTabs(model);
-
-		return "Home";
-	}
 
 	@GetMapping("/quote/{id}")
 	public String showQuote(Model model, @PathVariable long id) {
@@ -495,7 +492,7 @@ public class WebController {
 			model.addAttribute("quotes", quoteService.findAll());
 			model.addAttribute("searchQuotes", false);
 		} else {
-			List<Quote> quotes = quoteService.findByName(name);
+			List<Quote> quotes = quoteService.findByNameList(name);
 			model.addAttribute("quotes", quotes);
 			model.addAttribute("searchQuotes", true);
 			model.addAttribute("noResults", quotes.isEmpty());

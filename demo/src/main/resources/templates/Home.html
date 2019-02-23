@@ -30,18 +30,23 @@
             <div class="card-body">
 
                 <nav class="navbar navbar-light bg-light">
-                    <form class="form-inline" action="/searchThemes">
-                      <input class="form-control mr-sm-2" type="text" name='name' placeholder="Buscar un tema" aria-label="Search">
+                  
+                    <form class="form-inline" action="/">
+                      <input class="form-control mr-sm-2" type="text" name='searchThemes' placeholder="Buscar un tema" aria-label="Search">
+                      <input name='searchQuotes' value="{{searchThemeString}}" hidden>
+                      <input name='pageTheme' value="0" hidden>
+                      <input name='pageQuote' value="{{numPageQuotes}}" hidden>
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                         Buscar <i class="material-icons">pageview</i>
                       </button>
                     </form>
                 </nav>
+              
                 {{#searchThemes}}
-                  <p class="searchResults">Resultados de la búsqueda: "{{search}}"</p>
-                  {{#noResults}}
+                  <p class="searchResults">Resultados de la búsqueda: "{{searchThemeString}}"</p>
+                  {{#noResultsTheme}}
                     <p class="searchResults">Ningún resultado</p>
-                  {{/noResults}}
+                  {{/noResultsTheme}}
                 {{/searchThemes}}
                 
                 {{#deleteThemeMessage}}
@@ -80,10 +85,18 @@
                   {{/themes}}
                 </div>
 
+                <!--<h4>{{numPageThemes}}</h4>-->
+
+                {{#showNextThemes}}
+                <a href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">Next</a>
+                {{/showNextThemes}}
+
                 {{#admin}}
+              
                 <a href="/addTheme" type="button" class="btn btn-primary btn-lg btn-block">
                   Añadir Tema <i class="material-icons">add_circle</i>
                 </a>
+              
                 {{/admin}}
 
             </div> 
@@ -100,8 +113,11 @@
             <div class="card-body">
 
                 <nav class="navbar navbar-light bg-light">
-                    <form class="form-inline" action="/searchQuotes">
-                      <input class="form-control mr-sm-2" type="search" name='name' placeholder="Buscar una cita" aria-label="Search">
+                    <form class="form-inline" action="/">
+                      <input name='searchThemes' value="{{searchThemeString}}" hidden>
+                      <input class="form-control mr-sm-2" type="search" name='searchQuotes' placeholder="Buscar una cita" aria-label="Search">
+                      <input name='pageTheme' value="{{numPageThemes}}" hidden>
+                      <input name='pageQuote' value="0" hidden>
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                         Buscar <i class="material-icons">pageview</i>
                       </button>
@@ -109,10 +125,10 @@
                 </nav>
 
                 {{#searchQuotes}}
-                  <p class="searchResults">Resultados de la búsqueda: "{{search}}"</p>
-                  {{#noResults}}
+                  <p class="searchResults">Resultados de la búsqueda: "{{searchQuoteString}}"</p>
+                  {{#noResultsQuotes}}
                     <p class="searchResults">Ningún resultado</p>
-                  {{/noResults}}
+                  {{/noResultsQuotes}}
                 {{/searchQuotes}}
 
                 {{#deleteQuoteMessage}}
@@ -149,14 +165,23 @@
                         </div>
                       </div>
                   {{/quotes}}
+                </div> 
+
+                <!--<h4>{{numPageQuotes}}</h4>-->
+
+                {{#showNextQuotes}}
+                <a href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}" class="btn btn-info btn-round">Next</a>
+                {{/showNextQuotes}}
 
                   {{#admin}}
+              
                   <a href="/addQuote" type="button" class="btn btn-primary btn-lg btn-block">
                     Añadir Cita <i class="material-icons">add_circle</i>
                   </a>
                   {{/admin}}
 
-                </div>                
+
+               
             </div>
         </div>
     </div>
