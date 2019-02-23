@@ -21,7 +21,7 @@
 
 https://docs.google.com/document/d/1PKqs6eayJti3jBymaytm1CKXEUqmyDpC4xDh7tM-wEk/edit
 
-### Development Environment 
+### Development Environment 🔩
 
 To carry out this work we have used Visual Studio Code. [![VSC](https://img.shields.io/badge/Link%20descarga-VS%20Code-blue.svg)](https://visual-studio-code.uptodown.com/windows)
 
