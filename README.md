@@ -21,7 +21,13 @@
 
 https://docs.google.com/document/d/1PKqs6eayJti3jBymaytm1CKXEUqmyDpC4xDh7tM-wEk/edit
 
-To carry out this work we have used Visual Studio Code. This development environment allows you to have almost everything you need to develop the web.
+### Development Environment 
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/vscode.png)
+
+To carry out this work we have used Visual Studio Code. This development environment allows 
+you to have almost everything you need to develop the web.
+
 We must install a series of extensions:
 -Java Extension Pack
 -Maven for Java
@@ -38,6 +44,7 @@ Once it is loaded, display the "SPRING-BOOT DASHBOARD" extension, there you shou
 Place the cursor on the extension and click on run. Then select "demo" in the bar that appears on the screen and press OK.
 Once it has been executed, open the browser and enter the following URL: https //: localhost8443.
 YOU ARE READY TO USE OUR WEB APPLICATION
+
 ## Screens
 
 **Pantalla de inicio - Home Screen**
