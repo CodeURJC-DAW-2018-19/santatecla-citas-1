@@ -21,6 +21,38 @@
 
 https://docs.google.com/document/d/1PKqs6eayJti3jBymaytm1CKXEUqmyDpC4xDh7tM-wEk/edit
 
+### Development Environment 🔩
+
+To carry out this work we have used Visual Studio Code. [![VSC](https://img.shields.io/badge/Link%20descarga-VS%20Code-blue.svg)](https://visual-studio-code.uptodown.com/windows)
+
+This development environment allows 
+you to have almost everything you need to develop the web.
+
+We must install a series of extensions:
+
+* **Java Extension Pack** [![Java](https://img.shields.io/badge/Extension-Java%20Extension%20Pack-orange.svg)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+
+* **Maven for Java** [![Maven](https://img.shields.io/badge/Extension-Maven-yellowgreen.svg)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven)
+
+* **Mustache** [![Mustache](https://img.shields.io/badge/Extension%20-Mustache-9cf.svg)](https://marketplace.visualstudio.com/items?itemName=dawhite.mustache)
+
+* **MySQL** [![MySQL](https://img.shields.io/badge/Extension-MySQL-blue.svg)](https://marketplace.visualstudio.com/items?itemName=formulahendry.vscode-mysql)
+
+* **MySQL syntax** [![MySQL Syntax](https://img.shields.io/badge/Extension-MySQL%20Syntax-blue.svg)](https://marketplace.visualstudio.com/items?itemName=jakebathman.mysql-syntax)
+
+* **Spring Boot Extension Pack** [![Spring Boot Extension Pack](https://img.shields.io/badge/Extension-Spring%20BOOT%20Extension%20Pack-green.svg)](https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack)
+
+You also need to have the latest version of JDK and MAVEN installed on your machine.
+
+Once you download the code and have all the extensions, go to VS Code and open the project.
+You must wait for everything to load, it may take a few minutes.
+Once it is loaded, display the "SPRING-BOOT DASHBOARD" extension, there you should see an item called "demo".
+Place the cursor on the extension and click on run. Then select "demo" in the bar that appears on the screen and press OK.
+Once it has been executed, open the browser and enter the following URL: *https//:localhost8443*.
+
+
+YOU ARE READY TO USE OUR WEB APPLICATION
+
 ## Screens
 
 **Pantalla de inicio - Home Screen**
@@ -102,6 +134,10 @@ It shows the number of quotes that each topic has on the web.
 ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/Historiograma.png)
 
 ---------------------
+
+**Vista Administrador (Diagrama de navegación) - Administrator View**
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/AV.png)
 
 **Vista Alumno (Diagrama de navegación) - Student View**
 
