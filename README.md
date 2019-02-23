@@ -35,7 +35,7 @@ We must install a series of extensions:
 
 -Mustache
 
--MySQL [![MySQL](https://img.shields.io/badge/Extension%2-MySQL-blue.svg)](http://www.nocountryforgeeks.com/author/gallardo)
+-MySQL [![MySQL](https://img.shields.io/badge/Extension-MySQL-blue.svg)](http://www.nocountryforgeeks.com/author/gallardo)
 
 -MySQL syntax
 
