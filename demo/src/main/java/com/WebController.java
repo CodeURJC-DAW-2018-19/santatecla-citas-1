@@ -79,7 +79,7 @@ public class WebController {
 			themes = themeService.findByName(searchThemes, pageTheme);
 			model.addAttribute("themes", themes);
 			model.addAttribute("searchThemes", true);
-			model.addAttribute("noResults", themes.isEmpty());	
+			model.addAttribute("noResultsTheme", themes.isEmpty());	
 		}
 
 		if (searchQuotes == null || searchQuotes.equals("")) {
@@ -89,11 +89,11 @@ public class WebController {
 			quotes = quoteService.findByName(searchQuotes, pageQuote);
 			model.addAttribute("quotes", quotes);
 			model.addAttribute("searchQuotes", true);
-			model.addAttribute("noResults", quotes.isEmpty());
+			model.addAttribute("noResultsQuotes", quotes.isEmpty());
 		}
 
-		model.addAttribute("search1", searchThemes);	
-		model.addAttribute("search2", searchQuotes);	
+		model.addAttribute("searchThemeString", searchThemes);	
+		model.addAttribute("searchQuoteString", searchQuotes);	
 
 		if(this.userComponent.isLoggedUser()) {
 			this.userComponent.getLoggedUser().setActive(null);

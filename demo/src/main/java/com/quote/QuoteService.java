@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class QuoteService {
 
-	private int pageSize = 4;
+	private int pageSize = 10;
 
 	@Autowired
 	private QuoteRepository repository;
@@ -45,30 +45,31 @@ public class QuoteService {
 	}
 
 	public List<Quote> findByNameList(String name) {
-		HashSet<Quote> quotesSet = new HashSet();
+		/*HashSet<Quote> quotesSet = new HashSet();
 		quotesSet.addAll(repository.findByQuoteContaining(name));
 		quotesSet.addAll(repository.findByAuthorContaining(name));
 		quotesSet.addAll(repository.findByBookContaining(name));
 		List<Quote> quotesList = new ArrayList();
 		quotesList.addAll(quotesSet);
-		return quotesList;
+		return quotesList;*/
+
+		return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name);
 	}
 
-	public Page<Quote> findByName(String name, Pageable pageable) {
-		HashSet<Quote> quotesSet = new HashSet();
+	public Page<Quote> findByName(String name, Pageable page) {
+		/*HashSet<Quote> quotesSet = new HashSet();
 		quotesSet.addAll(repository.findByQuoteContaining(name));
 		quotesSet.addAll(repository.findByAuthorContaining(name));
 		quotesSet.addAll(repository.findByBookContaining(name));
 		List<Quote> quotesList = new ArrayList();
 		quotesList.addAll(quotesSet);
-
 		pageable = new PageRequest(0, pageSize(pageable));
-
 		Page<Quote> page = new PageImpl<>(quotesList, pageable, quotesList.size());
-		
-		return page;
+		return page;*/
 
-		//return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name, page);
+		page = new PageRequest(0, pageSize(page));
+
+		return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name, page);
 
 	}
 

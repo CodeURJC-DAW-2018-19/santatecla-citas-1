@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ThemeService {
 
-	private int pageSize = 4;
+	private int pageSize = 10;
 
 	@Autowired
 	private ThemeRepository repository;

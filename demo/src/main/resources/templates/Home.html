@@ -32,17 +32,17 @@
                 <nav class="navbar navbar-light bg-light">
                     <form class="form-inline" action="/">
                       <input class="form-control mr-sm-2" type="text" name='searchThemes' placeholder="Buscar un tema" aria-label="Search">
-                      <input name='searchQuotes' value="{{search2}}" hidden>
+                      <input name='searchQuotes' value="{{searchThemeString}}" hidden>
                       <input name='pageTheme' value="0" hidden>
                       <input name='pageQuote' value="{{numPageQuotes}}" hidden>
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                 </nav>
                 {{#searchThemes}}
-                  <p class="searchResults">Resultados de la búsqueda: "{{search1}}"</p>
-                  {{#noResults}}
+                  <p class="searchResults">Resultados de la búsqueda: "{{searchThemeString}}"</p>
+                  {{#noResultsTheme}}
                     <p class="searchResults">Ningún resultado</p>
-                  {{/noResults}}
+                  {{/noResultsTheme}}
                 {{/searchThemes}}
                 <div class="row">
                   {{#themes}}
@@ -64,17 +64,10 @@
                   {{/themes}}
                 </div>
 
-                {{#showPrevThemes}}
-                  <!--<button href="/?page={{prevPage}}" class="btn btn-primary btn-fab btn-fab-mini btn-round">
-                    <i class="material-icons">favorite</i>
-                  </button>-->
-                  <a href="/?searchThemes={{search1}}&searchQuotes={{search2}}&pageTheme={{prevPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">Prev</a>
-                {{/showPrevThemes}}
-
-                <h4>{{numPageThemes}}</h4>
+                <!--<h4>{{numPageThemes}}</h4>-->
 
                 {{#showNextThemes}}
-                <a href="/?searchThemes={{search1}}&searchQuotes={{search2}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">Next</a>
+                <a href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">Next</a>
                 {{/showNextThemes}}
 
                 {{#admin}}
@@ -96,7 +89,7 @@
 
                 <nav class="navbar navbar-light bg-light">
                     <form class="form-inline" action="/">
-                      <input name='searchThemes' value="{{search1}}" hidden>
+                      <input name='searchThemes' value="{{searchThemeString}}" hidden>
                       <input class="form-control mr-sm-2" type="search" name='searchQuotes' placeholder="Buscar una cita" aria-label="Search">
                       <input name='pageTheme' value="{{numPageThemes}}" hidden>
                       <input name='pageQuote' value="0" hidden>
@@ -105,10 +98,10 @@
                 </nav>
 
                 {{#searchQuotes}}
-                  <p class="searchResults">Resultados de la búsqueda: "{{search2}}"</p>
-                  {{#noResults}}
+                  <p class="searchResults">Resultados de la búsqueda: "{{searchQuoteString}}"</p>
+                  {{#noResultsQuotes}}
                     <p class="searchResults">Ningún resultado</p>
-                  {{/noResults}}
+                  {{/noResultsQuotes}}
                 {{/searchQuotes}}
 
                 <div class="row">
@@ -131,14 +124,10 @@
                   {{/quotes}}
                 </div> 
 
-                {{#showPrevQuotes}}
-                <a href="/?searchThemes={{search1}}&searchQuotes={{search2}}&pageTheme={{numPageThemes}}&pageQuote={{prevPageQuotes}}" class="btn btn-info btn-round">Prev</a>
-                {{/showPrevQuotes}}
-
-                <h4>{{numPageQuotes}}</h4>
+                <!--<h4>{{numPageQuotes}}</h4>-->
 
                 {{#showNextQuotes}}
-                <a href="/?searchThemes={{search1}}&searchQuotes={{search2}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}" class="btn btn-info btn-round">Next</a>
+                <a href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}" class="btn btn-info btn-round">Next</a>
                 {{/showNextQuotes}}
 
                   {{#admin}}
