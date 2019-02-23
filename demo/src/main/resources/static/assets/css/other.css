@@ -15,13 +15,13 @@ html{
 
 #logButton{
     margin-left: 67%;
-    margin-top: 1.25rem;
+    margin-top: 1.35rem;
 }
 
 @media only screen and (min-width: 767px){
     #logButton {
         margin-left: 85%;
-        margin-top: 1.25rem;
+        margin-top: 1.35rem;
     }
 }
 
@@ -67,14 +67,13 @@ html{
 
 .card-theme-text-box{
     margin: 15px;
-    border-style: groove;
     padding: 5px;
     height:auto;
 }
 
 .card-theme-others-box{
     margin: 15px;
-    border-style: groove;
+    border-style: outset;
     padding: 5px;
     width: 45%;
 }
@@ -127,14 +126,9 @@ html{
     font-weight: bold;
 }
 
-.closeTab:hover {
-    background-color: #6f19be;
-    color: #ffffff;
-    border-radius: 1rem;
-}
-
 .material-icons {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin-top: -0.4rem;
 }
 
 .searchResults {
@@ -199,17 +193,19 @@ html{
 }
 .homeMessageSaved{
     border-radius: 0.5rem;
-    background-color: #2aafc7;
+    background-color: #38b4da;
     padding: 1rem;
     margin-top: 1.5rem;
     margin-bottom: 0;
 }
 
 .closeMessage {
+    margin-top: 0.1rem;
     float: right;
 }
 
 .closeMessage:hover {
+    background-color: #6f19be;
     color: #ffffff;
     border-radius: 1rem;
 }

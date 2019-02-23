@@ -51,14 +51,14 @@
                 
                 {{#deleteThemeMessage}}
                   <div class="homeMessageDeleted">
-                    Tema borrado correctamente <i class="material-icons">check</i>
+                    Tema borrado correctamente
                     <a href="/" class="material-icons clearIcon closeMessage">clear</a>
                   </div>
                 {{/deleteThemeMessage}}
 
                 {{#saveThemeMessage}}
                   <div class="homeMessageSaved">
-                    Tema guardado correctamente <i class="material-icons">check</i>
+                    Tema guardado correctamente
                     <a href="/" class="material-icons clearIcon closeMessage">clear</a>
                   </div>
                 {{/saveThemeMessage}}
@@ -88,7 +88,7 @@
                 <!--<h4>{{numPageThemes}}</h4>-->
 
                 {{#showNextThemes}}
-                <a href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">
+                <a title="Cargar más" href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round BCentrado">
                   <i class="material-icons">more_horiz</i>
                 </a>
                 {{/showNextThemes}}
@@ -135,14 +135,14 @@
 
                 {{#deleteQuoteMessage}}
                   <div class="homeMessageDeleted">
-                    Cita borrada correctamente <i class="material-icons">check</i>
+                    Cita borrada correctamente
                     <a href="/" class="material-icons clearIcon closeMessage">clear</a>
                   </div>
                 {{/deleteQuoteMessage}}
 
                 {{#saveQuoteMessage}}
                   <div class="homeMessageSaved">
-                    Cita guardada correctamente <i class="material-icons">check</i>
+                    Cita guardada correctamente
                     <a href="/" class="material-icons clearIcon closeMessage">clear</a>
                   </div>
                 {{/saveQuoteMessage}}
@@ -172,7 +172,7 @@
                 <!--<h4>{{numPageQuotes}}</h4>-->
 
                 {{#showNextQuotes}}
-                <a href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}" class="btn btn-info btn-round">
+                <a title="Cargar más" href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}" class="btn btn-info btn-round BCentrado">
                   <i class="material-icons">more_horiz</i>
                 </a>
                 {{/showNextQuotes}}
