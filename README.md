@@ -30,10 +30,15 @@ you to have almost everything you need to develop the web.
 
 We must install a series of extensions:
 -Java Extension Pack
+
 -Maven for Java
+
 -Mustache
+
 -MySQL [![MySQL](https://img.shields.io/badge/Extension%2-MySQL-blue.svg)](http://www.nocountryforgeeks.com/author/gallardo)
+
 -MySQL syntax
+
 -Spring Boot Extension Pack ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/spring.png)
 
 You also need to have the latest version of JDK and MAVEN installed on your machine.
