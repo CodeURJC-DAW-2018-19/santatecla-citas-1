@@ -30,17 +30,17 @@ you to have almost everything you need to develop the web.
 
 We must install a series of extensions:
 
-* **Java Extension Pack** [![Java](https://img.shields.io/badge/Extension-Java%20Extension%20Pack-orange.svg)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+* [![Java](https://img.shields.io/badge/Extension-Java%20Extension%20Pack-orange.svg)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 
-* **Maven for Java** [![Maven](https://img.shields.io/badge/Extension-Maven-yellowgreen.svg)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven)
+* [![Maven](https://img.shields.io/badge/Extension-Maven-yellowgreen.svg)](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven)
 
-* **Mustache** [![Mustache](https://img.shields.io/badge/Extension%20-Mustache-9cf.svg)](https://marketplace.visualstudio.com/items?itemName=dawhite.mustache)
+* [![Mustache](https://img.shields.io/badge/Extension%20-Mustache-9cf.svg)](https://marketplace.visualstudio.com/items?itemName=dawhite.mustache)
 
-* **MySQL** [![MySQL](https://img.shields.io/badge/Extension-MySQL-blue.svg)](https://marketplace.visualstudio.com/items?itemName=formulahendry.vscode-mysql)
+* [![MySQL](https://img.shields.io/badge/Extension-MySQL-blue.svg)](https://marketplace.visualstudio.com/items?itemName=formulahendry.vscode-mysql)
 
-* **MySQL syntax** [![MySQL Syntax](https://img.shields.io/badge/Extension-MySQL%20Syntax-blue.svg)](https://marketplace.visualstudio.com/items?itemName=jakebathman.mysql-syntax)
+* [![MySQL Syntax](https://img.shields.io/badge/Extension-MySQL%20Syntax-blue.svg)](https://marketplace.visualstudio.com/items?itemName=jakebathman.mysql-syntax)
 
-* **Spring Boot Extension Pack** [![Spring Boot Extension Pack](https://img.shields.io/badge/Extension-Spring%20BOOT%20Extension%20Pack-green.svg)](https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack)
+* [![Spring Boot Extension Pack](https://img.shields.io/badge/Extension-Spring%20BOOT%20Extension%20Pack-green.svg)](https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack)
 
 You also need to have the latest version of JDK and MAVEN installed on your machine.
 
