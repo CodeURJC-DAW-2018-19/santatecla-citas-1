@@ -30,13 +30,13 @@
             <div class="card-body">
 
                 <nav class="navbar navbar-light bg-light">
-                    <form class="form-inline" action="/searchThemes">
+                    <form class="form-inline" action="/?searchThemes={{search1}}&searchQuotes={{search2}}&pageTheme={{numPageThemes}}&pageQuote={{numPageQuotes}}">
                       <input class="form-control mr-sm-2" type="text" name='name' placeholder="Buscar un tema" aria-label="Search">
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                 </nav>
                 {{#searchThemes}}
-                  <p class="searchResults">Resultados de la búsqueda: "{{search}}"</p>
+                  <p class="searchResults">Resultados de la búsqueda: "{{search1}}"</p>
                   {{#noResults}}
                     <p class="searchResults">Ningún resultado</p>
                   {{/noResults}}
@@ -65,13 +65,13 @@
                   <!--<button href="/?page={{prevPage}}" class="btn btn-primary btn-fab btn-fab-mini btn-round">
                     <i class="material-icons">favorite</i>
                   </button>-->
-                  <a href="/searchThemes?name={{search}}&pageTheme={{prevPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">Prev</a>
+                  <a href="/?searchThemes={{search1}}&searchQuotes={{search2}}&pageTheme={{prevPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">Prev</a>
                 {{/showPrevThemes}}
 
                 <h4>{{numPageThemes}}</h4>
 
                 {{#showNextThemes}}
-                <a href="/searchThemes?name={{search}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">Next</a>
+                <a href="/?searchThemes={{search1}}&searchQuotes={{search2}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round">Next</a>
                 {{/showNextThemes}}
 
                 {{#admin}}
@@ -92,14 +92,14 @@
             <div class="card-body">
 
                 <nav class="navbar navbar-light bg-light">
-                    <form class="form-inline" action="/searchQuotes">
+                    <form class="form-inline" action="/?searchThemes={{search1}}&searchQuotes={{search2}}&pageTheme={{numPageThemes}}&pageQuote={{numPageQuotes}}"">
                       <input class="form-control mr-sm-2" type="search" name='name' placeholder="Buscar una cita" aria-label="Search">
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                 </nav>
 
                 {{#searchQuotes}}
-                  <p class="searchResults">Resultados de la búsqueda: "{{search}}"</p>
+                  <p class="searchResults">Resultados de la búsqueda: "{{search2}}"</p>
                   {{#noResults}}
                     <p class="searchResults">Ningún resultado</p>
                   {{/noResults}}
@@ -123,22 +123,23 @@
                         </div>
                       </div>
                   {{/quotes}}
+                </div> 
 
-                  {{#showPrevQuotes}}
-                  <a href="/searchQuotes?name={{search}}&pageTheme={{numPageThemes}}&pageQuote={{prevPageQuotes}}" class="btn btn-info btn-round">Prev</a>
+                {{#showPrevQuotes}}
+                <a href="/?searchThemes={{search1}}&searchQuotes={{search2}}&pageTheme={{numPageThemes}}&pageQuote={{prevPageQuotes}}" class="btn btn-info btn-round">Prev</a>
                 {{/showPrevQuotes}}
 
                 <h4>{{numPageQuotes}}</h4>
 
                 {{#showNextQuotes}}
-                <a href="/searchQuotes?name={{search}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}" class="btn btn-info btn-round">Next</a>
+                <a href="/?searchThemes={{search1}}&searchQuotes={{search2}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}" class="btn btn-info btn-round">Next</a>
                 {{/showNextQuotes}}
 
                   {{#admin}}
                   <a href="/addQuote" type="button" class="btn btn-primary btn-lg btn-block">Añadir Cita</a>
                   {{/admin}}  
 
-                </div>                
+               
             </div>
         </div>
     </div>

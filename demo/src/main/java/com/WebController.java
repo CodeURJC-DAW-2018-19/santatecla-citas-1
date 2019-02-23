@@ -50,12 +50,16 @@ public class WebController {
 	}
 
 	@GetMapping("/")
-	public String home(Model model, 
+	public String home(Model model,
+		@RequestParam(value="searchThemes", required=false) String searchThemes,
+		@RequestParam(value="searchQuotes", required=false) String searchQuotes,
 		@RequestParam(value="pageTheme", required=false) Integer pageThemeNum,
 		@RequestParam(value="pageQuote", required=false) Integer pageQuoteNum) {
 
 		if(pageThemeNum == null) pageThemeNum = 0;
 		if(pageQuoteNum == null) pageQuoteNum = 0;
+		if(searchThemes == null) searchThemes = "";
+		if(searchQuotes == null) searchQuotes = "";
 
 		Pageable pageTheme = new PageRequest(pageThemeNum, 10);
 		Pageable pageQuote = new PageRequest(pageQuoteNum, 10);
@@ -66,11 +70,35 @@ public class WebController {
 		model.addAttribute("quotes", quotes);
 		model.addAttribute("themes", themes);
 		model.addAttribute("searchThemes", false);
-		model.addAttribute("searchQuotes", false);		
+		model.addAttribute("searchQuotes", false);
+		
+		if (searchThemes == null || searchThemes.equals("")) {
+			model.addAttribute("themes", themes);
+			model.addAttribute("searchThemes", false);
+		} else {
+			themes = themeService.findByName(searchThemes, pageTheme);
+			model.addAttribute("themes", themes);
+			model.addAttribute("searchThemes", true);
+			model.addAttribute("noResults", themes.isEmpty());	
+		}
+
+		if (searchQuotes == null || searchQuotes.equals("")) {
+			model.addAttribute("quotes", quotes);
+			model.addAttribute("searchQuotes", false);
+		} else {
+			quotes = quoteService.findByName(searchQuotes, pageQuote);
+			model.addAttribute("quotes", quotes);
+			model.addAttribute("searchQuotes", true);
+			model.addAttribute("noResults", quotes.isEmpty());
+		}
+
+		model.addAttribute("search1", searchThemes);	
+		model.addAttribute("search2", searchQuotes);	
 
 		if(this.userComponent.isLoggedUser()) {
 			this.userComponent.getLoggedUser().setActive(null);
 		}
+
 		model.addAttribute("atHome", true);		
 		updateTabs(model);
 
@@ -89,13 +117,13 @@ public class WebController {
 		model.addAttribute("prevPageQuotes", prevPageQuotes);
 		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
 
-		model.addAttribute("search","");
+		//model.addAttribute("search","");
 
 
 		return "Home";
 	}
 
-	@GetMapping("/searchThemes")
+	/*@GetMapping("/searchThemes")
 	public String searchThemes(Model model, 
 		@RequestParam(value="pageTheme", required=false) Integer pageThemeNum,
 		@RequestParam(value="pageQuote", required=false) Integer pageQuoteNum,  
@@ -201,7 +229,7 @@ public class WebController {
 		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
 
 		return "Home";
-	}
+	}*/
 
 	@GetMapping("/quote/{id}")
 	public String showQuote(Model model, @PathVariable long id) {
