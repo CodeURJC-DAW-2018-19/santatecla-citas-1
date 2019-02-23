@@ -54,18 +54,21 @@ public class QuoteService {
 		return quotesList;
 	}
 
-	public Page<Quote> findByName(String name, Pageable page) {
-		/*HashSet<Quote> quotesSet = new HashSet();
+	public Page<Quote> findByName(String name, Pageable pageable) {
+		HashSet<Quote> quotesSet = new HashSet();
 		quotesSet.addAll(repository.findByQuoteContaining(name));
 		quotesSet.addAll(repository.findByAuthorContaining(name));
 		quotesSet.addAll(repository.findByBookContaining(name));
 		List<Quote> quotesList = new ArrayList();
 		quotesList.addAll(quotesSet);
-		Page page = new PageImpl<>(quotesList);
-		
-		return page;*/
 
-		return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name, page);
+		pageable = new PageRequest(0, pageSize(pageable));
+
+		Page<Quote> page = new PageImpl<>(quotesList, pageable, quotesList.size());
+		
+		return page;
+
+		//return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name, page);
 
 	}
 
