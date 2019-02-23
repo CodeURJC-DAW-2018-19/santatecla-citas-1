@@ -49,7 +49,7 @@ Once you download the code and have all the extensions, go to VS Code and open t
 You must wait for everything to load, it may take a few minutes.
 Once it is loaded, display the "SPRING-BOOT DASHBOARD" extension, there you should see an item called "demo".
 Place the cursor on the extension and click on run. Then select "demo" in the bar that appears on the screen and press OK.
-Once it has been executed, open the browser and enter the following URL: ** *https//:localhost8443* **.
+Once it has been executed, open the browser and enter the following URL: **https//:localhost8443**.
 
 
 YOU ARE READY TO USE OUR WEB APPLICATION
