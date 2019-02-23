@@ -155,7 +155,7 @@ public class WebController {
   @GetMapping("/deletedTheme")
 	public String deletedTheme(Model model) {
 
-		//home(model);
+		home(model, null, null , 0, 0);
 		
 		model.addAttribute("deleteThemeMessage", true);
 		model.addAttribute("saveThemeMessage", false);
@@ -168,7 +168,7 @@ public class WebController {
 	@GetMapping("/savedTheme")
 	public String savedTheme(Model model) {
 
-		//home(model);
+		home(model, null, null , 0, 0);
 		
 		model.addAttribute("deleteThemeMessage", false);
 		model.addAttribute("saveThemeMessage", true);
@@ -181,7 +181,7 @@ public class WebController {
 	@GetMapping("/deletedQuote")
 	public String deletedQuote(Model model) {
 
-		//home(model);
+		home(model, null, null , 0, 0);
 		
 		model.addAttribute("deleteThemeMessage", false);
 		model.addAttribute("saveThemeMessage", false);
@@ -194,7 +194,7 @@ public class WebController {
 	@GetMapping("/savedQuote")
 	public String savedQuote(Model model) {
 
-		//home(model);
+		home(model, null, null , 0, 0);
 		
 		model.addAttribute("deleteThemeMessage", false);
 		model.addAttribute("saveThemeMessage", false);
