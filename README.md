@@ -71,7 +71,7 @@ search button and the options to add or to delete an item.
 **Login**
 
 ```
-You can introduce your email and password (with the opcion to show it up) to access to your account.
+You can introduce your email and password (with the option to show it up) to access to your account.
 ```
 
 ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/Login.png)
