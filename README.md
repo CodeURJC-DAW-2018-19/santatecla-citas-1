@@ -32,7 +32,7 @@ We must install a series of extensions:
 -Java Extension Pack
 -Maven for Java
 -Mustache
--MySQL ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/mysql.png)
+-MySQL [![No Country for Geeks](https://img.shields.io/badge/Colaborando%20en-No%20Country%20for%20Geeks-orange.svg)](http://www.nocountryforgeeks.com/author/gallardo)
 -MySQL syntax
 -Spring Boot Extension Pack ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/spring.png)
 
