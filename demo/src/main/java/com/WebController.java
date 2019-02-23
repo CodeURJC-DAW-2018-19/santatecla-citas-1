@@ -143,11 +143,11 @@ public class WebController {
 
 		model.addAttribute("showNextThemes", !themes.isLast());
 		model.addAttribute("nextPageThemes", themeService.getPageNumber(themes) +1);
-		//model.addAttribute("numPageThemes", themeService.getPageNumber(themes));
+		model.addAttribute("numPageThemes", themeService.getPageNumber(themes));
 
 		model.addAttribute("showNextQuotes", !quotes.isLast());
 		model.addAttribute("nextPageQuotes", quoteService.getPageNumber(quotes) +1);
-		//model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
+		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
     
     return "Home";
   }
