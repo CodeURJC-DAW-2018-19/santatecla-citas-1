@@ -17,6 +17,7 @@
 
 * [Trello](https://trello.com/b/3JEkZVLL/daw)
 
+---------------------
 ### Software Requirements Specification 📄
 
 https://docs.google.com/document/d/1PKqs6eayJti3jBymaytm1CKXEUqmyDpC4xDh7tM-wEk/edit
@@ -53,6 +54,7 @@ Once it has been executed, open the browser and enter the following URL: *https/
 
 YOU ARE READY TO USE OUR WEB APPLICATION
 
+---------------------
 ## Screens
 
 **Pantalla de inicio - Home Screen**
