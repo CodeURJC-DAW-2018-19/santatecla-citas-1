@@ -44,7 +44,7 @@ public class QuoteService {
 		repository.deleteById(id);
 	}
   
-  public List<Quote> findByNameList(String name) {
+  public List<Quote> findByName(String name) {
     return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name);
     /*HashSet<Quote> quotesSet = new HashSet();
 		quotesSet.addAll(repository.findByQuoteContaining(name));
@@ -70,7 +70,6 @@ public class QuoteService {
 		page = new PageRequest(0, pageSize(page));
 
 		return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name, page);
-
 	}
 
 	public int pageSize(Pageable page){

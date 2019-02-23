@@ -36,8 +36,12 @@ public class ThemeService {
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
-  
-  public Page<Theme> findByName(String name, Pageable page) {
+
+	public List<Theme> findByName(String name) {
+        return repository.findByNameContaining(name);
+    }
+
+  	public Page<Theme> findByName(String name, Pageable page) {
 
 		page = new PageRequest(0, pageSize(page));
 
@@ -50,6 +54,10 @@ public class ThemeService {
 
 	public int getPageNumber(Page<Theme> page){
 		return (page.getSize()-4)/4;
-  }
+	}
+	 
+	public List<Theme> findAll() {
+        return repository.findAll();
+    }
   
 }

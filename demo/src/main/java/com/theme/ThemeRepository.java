@@ -11,5 +11,7 @@ public interface ThemeRepository extends JpaRepository<Theme, Long> {
     public Page<Theme> findByNameContaining(String name, Pageable page);
 
     public Page<Theme> findByName(String name, Pageable page);
+
+    public List<Theme> findByNameContaining(String name);
     
 }

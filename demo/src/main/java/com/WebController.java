@@ -155,7 +155,7 @@ public class WebController {
   @GetMapping("/deletedTheme")
 	public String deletedTheme(Model model) {
 
-		home(model);
+		//home(model);
 		
 		model.addAttribute("deleteThemeMessage", true);
 		model.addAttribute("saveThemeMessage", false);
@@ -168,7 +168,7 @@ public class WebController {
 	@GetMapping("/savedTheme")
 	public String savedTheme(Model model) {
 
-		home(model);
+		//home(model);
 		
 		model.addAttribute("deleteThemeMessage", false);
 		model.addAttribute("saveThemeMessage", true);
@@ -181,7 +181,7 @@ public class WebController {
 	@GetMapping("/deletedQuote")
 	public String deletedQuote(Model model) {
 
-		home(model);
+		//home(model);
 		
 		model.addAttribute("deleteThemeMessage", false);
 		model.addAttribute("saveThemeMessage", false);
@@ -194,7 +194,7 @@ public class WebController {
 	@GetMapping("/savedQuote")
 	public String savedQuote(Model model) {
 
-		home(model);
+		//home(model);
 		
 		model.addAttribute("deleteThemeMessage", false);
 		model.addAttribute("saveThemeMessage", false);
@@ -492,7 +492,7 @@ public class WebController {
 			model.addAttribute("quotes", quoteService.findAll());
 			model.addAttribute("searchQuotes", false);
 		} else {
-			List<Quote> quotes = quoteService.findByNameList(name);
+			List<Quote> quotes = quoteService.findByName(name);
 			model.addAttribute("quotes", quotes);
 			model.addAttribute("searchQuotes", true);
 			model.addAttribute("noResults", quotes.isEmpty());
