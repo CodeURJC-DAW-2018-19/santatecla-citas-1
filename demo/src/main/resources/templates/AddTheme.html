@@ -20,13 +20,6 @@
 
   {{>header}}
 
-  <!--<form action='/saveTheme' method="POST">
-        <p>Tema: </p>
-        <input type="text" id= "name" name="name">
-        <input type="submit" value="Enviar">
-        <input type="hidden" name="_csrf" value="{{token}}"/>
-    </form>-->
-
   <div class="tittleCard">
     <div class="card">
       <div class="card-header card-header-text card-header-primary">
@@ -39,6 +32,7 @@
         <form action="/saveTheme" method="POST" enctype="multipart/form-data">
           <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca el nombre del tema"
             required="required">
+            
           <p>Seleccione una imagen para este tema</p>
           <input type="file" class="inputFileHidden" name="file">
 

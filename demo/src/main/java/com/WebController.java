@@ -421,6 +421,7 @@ public class WebController {
 
 	@PostMapping("/saveQuote")
 	public String saveQuote(Model model, Quote quote) {
+
     List<Quote> list = quoteService.findByName(quote.getName());
     
 		if (list.isEmpty()) {
@@ -598,6 +599,7 @@ public class WebController {
 
 	@PostMapping("/saveEditedTheme{idTheme}")
 	public String saveTheme(Model model, Theme theme, @PathVariable Long idTheme) {
+		
 		Optional<Theme> oldTheme = themeService.findOne(idTheme);
 		
 		if(oldTheme.isPresent()){
@@ -624,11 +626,10 @@ public class WebController {
 			Optional<Theme> t = this.themeService.findOne(id);
 
 			if(t.isPresent()){
-				phrase = new Phrase(t.get().getName() + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, BaseColor.BLACK));
+				phrase = new Phrase(t.get().getName() + "\n" + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, BaseColor.BLACK));
 				document.add(phrase);
 			}
 			for(int i = 0; i<quotes.size(); i++){
-				phrase = new Phrase(quotes.get(i).getName() + "\n" + quotes.get(i).getAuthor() + "\n" + quotes.get(i).getBook() + "\n", font);
 				document.add(phrase);
 			}
 			for(int i = 0; i<texts.size(); i++){
@@ -660,7 +661,7 @@ public class WebController {
 		} catch (Exception e){
 			return new ResponseEntity<InputStreamResource>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-}
+	}
 
 	@GetMapping("/error")
 	public String error(Model model) {
