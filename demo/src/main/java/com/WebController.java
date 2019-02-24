@@ -630,6 +630,7 @@ public class WebController {
 				document.add(phrase);
 			}
 			for(int i = 0; i<quotes.size(); i++){
+				phrase = new Phrase("\"" + quotes.get(i).getName() + "\"" + "\n" + "- " + quotes.get(i).getAuthor() + " en " + quotes.get(i).getBook() + "\n" + "\n", font);
 				document.add(phrase);
 			}
 			for(int i = 0; i<texts.size(); i++){
