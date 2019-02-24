@@ -17,7 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.TabElement;
 
 @Entity
-//@Table(name = "users")
 public class User {
 
 	@Id
