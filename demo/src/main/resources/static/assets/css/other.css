@@ -6,7 +6,7 @@ html{
     background-color: #b6deff;
 }
 
-#borrar{
+#delete{
     align-self: center;
     margin-left: 1rem;
     border-radius: 2rem;
@@ -59,7 +59,7 @@ html{
     padding-right: 10%;
 }
 
-.citasCard{
+.quotesCard{
     padding-left: 30%;
     padding-right: 30%;
 }
@@ -86,14 +86,14 @@ html{
     margin: 15px;
 }
 
-.BCentrado{
+.BCenter{
     margin-bottom: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.cita {
+.quote {
     padding: 0rem 1rem 0rem 1rem;
 }
 
@@ -105,7 +105,7 @@ html{
     background-color: #6f19be;
 }
 
-.btGrande{
+.btLarge{
     margin-left: 1rem;
     margin-right: 1rem;
 }
@@ -136,7 +136,7 @@ html{
     margin-top: 3rem;
 }
 
-.bt-guardado{
+.bt-saved{
     margin-top: 5rem;
 }
 

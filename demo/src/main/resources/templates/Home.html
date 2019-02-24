@@ -80,7 +80,7 @@
                   {{#logged}}
                   <a href="/theme/{{id}}" class="card-title">{{name}}</a>
                   {{#admin}}
-                  <a title="Borrar" id="borrar"
+                  <a title="Borrar" id="delete"
                     onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/deleteTheme/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
                     <i class="material-icons">delete_outline</i>
@@ -101,7 +101,7 @@
           {{#showNextThemes}}
           <a title="Cargar más"
             href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}"
-            class="btn btn-info btn-round BCentrado">
+            class="btn btn-info btn-round BCenter">
             <i class="material-icons">more_horiz</i>
           </a>
           {{/showNextThemes}}
@@ -176,7 +176,7 @@
                   {{#logged}}
                   <a href="/quote/{{id}}" class="card-title">"{{name}}"</a>
                   {{#admin}}
-                  <a title="Borrar" id="borrar"
+                  <a title="Borrar" id="delete"
                     onclick="confirmAlert('¿Está seguro de que quiere borrar esta cita?','/deleteQuote/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
                     <i class="material-icons">delete_outline</i>
@@ -197,7 +197,7 @@
           {{#showNextQuotes}}
           <a title="Cargar más"
             href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}"
-            class="btn btn-info btn-round BCentrado">
+            class="btn btn-info btn-round BCenter">
             <i class="material-icons">more_horiz</i>
           </a>
           {{/showNextQuotes}}
@@ -216,7 +216,7 @@
     </div>
   </div>
 
-  <div class="BCentrado">
+  <div class="BCenter">
     <a href="/histogram" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
       Histograma <i class="material-icons">bar_chart</i>
     </a>

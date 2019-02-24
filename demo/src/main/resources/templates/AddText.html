@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Nueva Cita</title>
+  <title>Nuevo Texto</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -32,7 +32,7 @@
         <form action="/addTextToTheme{{themeId}}Save" method="POST">
           <input type="text" class="form-control" id="name" name="text" placeholder="Introduzca el texto"
             required="required">
-          <div class="BCentrado">
+          <div class="BCenter">
             <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
             <input type="hidden" name="_csrf" value="{{token}}" />
           </div>

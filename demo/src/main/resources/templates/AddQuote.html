@@ -23,7 +23,7 @@
   <form action='/saveQuote' method="POST">
     {{#quote}}<input type="hidden" name="id" value="{{id}}" class="form-control" />{{/quote}}
     {{#quote}}
-    <div class="cita">
+    <div class="quote">
       <div class="col-md-12">
         <div class="card" style="padding-bottom: 1rem">
           <div class="card-header card-header-text card-header-primary">
@@ -82,14 +82,14 @@
       </div>
     </div>
 
-    <div class="BCentrado">
+    <div class="BCenter">
       <input type="submit" value="Guardar" class="btn btn-primary btn-lg active" />
     </div>
     <input type="hidden" name="_csrf" value="{{token}}" />
     {{/quote}}
 
     {{^quote}}
-    <div class="cita">
+    <div class="quote">
       <div class="col-md-12">
         <div class="card" style="padding-bottom: 1rem">
           <div class="card-header card-header-text card-header-primary">
@@ -148,7 +148,7 @@
       </div>
     </div>
 
-    <div class="BCentrado">
+    <div class="BCenter">
       <input type="submit" value="Guardar" class="btn btn-primary btn-lg active" />
     </div>
     <input type="hidden" name="_csrf" value="{{token}}" />
