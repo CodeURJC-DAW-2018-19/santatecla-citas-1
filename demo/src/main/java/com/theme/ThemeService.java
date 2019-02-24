@@ -49,7 +49,7 @@ public class ThemeService {
 	}
 
 	public int getPageNumber(Page<Theme> page){
-		return (page.getSize()-4)/4;
+		return (page.getSize() - pageSize)/pageSize;
 	}
 	 
 	public List<Theme> findAll() {

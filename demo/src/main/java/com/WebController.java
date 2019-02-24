@@ -461,13 +461,23 @@ public class WebController {
 	}
 
 	@GetMapping(value="/addQuoteToTheme{id}")
-    public String addQuoteToTheme(Model model, @PathVariable long id) {
+	public String addQuoteToTheme(
+		Model model, 
+		@PathVariable long id, 
+		@RequestParam(value="page", required=false) Integer pageNum) {
 
-        model.addAttribute("quotes", quoteService.findAll());
-        model.addAttribute("themeId", id);
-        updateTabs(model);
+		if(pageNum == null) pageNum = 0;
 
-        return "SelectQuote";
+		Pageable page = PageRequest.of(pageNum, 10);
+		Page<Quote> quotes = quoteService.findAll(page);
+
+    model.addAttribute("quotes", quotes);
+		model.addAttribute("themeId", id);
+		model.addAttribute("showNextQuotesToSelect", !quotes.isLast());
+		model.addAttribute("nextPageSelectQuote", quoteService.getPageNumber(quotes) +1);
+    updateTabs(model);
+
+    return "SelectQuote";
 	}
 
 	@GetMapping(value="/addTextToTheme{id}")
@@ -532,20 +542,30 @@ public class WebController {
 	}
 		
 	@GetMapping("/addQuoteToTheme{id}/searchQuotes")
-	public String selectQuoteSearch(Model model, @PathVariable long id, @RequestParam String name) {
+	public String selectQuoteSearch(Model model, 
+		@PathVariable long id, 
+		@RequestParam String name,
+		@RequestParam(value="page", required=false) Integer pageNum) {
+
+		if(pageNum == null) pageNum = 0;
+
+		Pageable page = PageRequest.of(pageNum, 10);
+		Page<Quote> quotes = quoteService.findAll(page);
 
 		if (name.equals("")) {
-			model.addAttribute("quotes", quoteService.findAll());
+			model.addAttribute("quotes", quotes);
 			model.addAttribute("searchQuotes", false);
 		} else {
-			List<Quote> quotes = quoteService.findByName(name);
+			quotes = quoteService.findByName(name, page);
 			model.addAttribute("quotes", quotes);
 			model.addAttribute("searchQuotes", true);
 			model.addAttribute("noResults", quotes.isEmpty());
 		}
 		model.addAttribute("themeId", id);
 		model.addAttribute("search", name);
-		
+		model.addAttribute("showNextQuotesToSelect", !quotes.isLast());
+		model.addAttribute("nextPageSelectQuote", quoteService.getPageNumber(quotes) +1); 
+
 		updateTabs(model);
 
 		return "SelectQuote";
