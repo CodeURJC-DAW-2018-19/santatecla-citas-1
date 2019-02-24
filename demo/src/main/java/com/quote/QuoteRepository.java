@@ -12,4 +12,5 @@ public interface QuoteRepository extends JpaRepository<Quote, Long> {
     public List<Quote> findByBookContaining(String book);
     public Page<Quote> findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(String quote, String author, String book, Pageable page);
     public List<Quote> findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(String quote, String author, String book);
+    public List<Quote> findByQuote(String quote);
 }

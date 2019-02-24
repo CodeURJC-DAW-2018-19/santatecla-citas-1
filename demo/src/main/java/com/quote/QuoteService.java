@@ -40,9 +40,13 @@ public class QuoteService {
 	public void delete(long id) {
 		repository.deleteById(id);
 	}
+
+	public List<Quote> findByNameStrict(String name){
+		return repository.findByQuote(name);
+	}
   
-  public List<Quote> findByName(String name) {
-    return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name);
+  	public List<Quote> findByName(String name) {
+    	return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name);
     /*HashSet<Quote> quotesSet = new HashSet();
 		quotesSet.addAll(repository.findByQuoteContaining(name));
 		quotesSet.addAll(repository.findByAuthorContaining(name));

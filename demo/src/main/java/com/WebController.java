@@ -390,7 +390,7 @@ public class WebController {
 	@PostMapping("/saveQuote")
 	public String saveQuote(Model model, Quote quote) {
 
-    List<Quote> list = quoteService.findByName(quote.getName());
+    List<Quote> list = quoteService.findByNameStrict(quote.getName());
     
 		if (list.isEmpty()) {
 			quoteService.save(quote);
