@@ -100,6 +100,7 @@ public class DatabaseInitializer {
         // Sample users
 		userRepository.save(new User("user", "pass"));
         userRepository.save(new User("admin", "pass", "ROLE_ADMIN"));
+        userRepository.save(new User("student", "pass"));
 
 	}
 
