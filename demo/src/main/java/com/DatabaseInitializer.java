@@ -25,7 +25,7 @@ public class DatabaseInitializer {
 	public void init() {
 
         // Quotes
-        Quote quote0 = new Quote("El misterio de la vida no es un problema a resolver, sino una realidad a experimentar.", "Frank Herbert", "Duna" );
+        Quote quote0 = new Quote("El misterio de la vida no es un problema a resolver, sino una realidad a experimentar.", "Frank Herbert", "Duna");
         Quote quote1 = new Quote("Estar solo no tiene nada que ver con cuantas personas hay alrededor.","Richard Yates","Revolutionary Road");
         Quote quote2 = new Quote("Sea un hombre o sea más que un hombre. Sea firme con su propósito y firme como una piedra.","Mary Shelley","Frankestein");
         Quote quote3 = new Quote("El hombre débil se vuelve fuerte cuando no tiene nada, porque sólo entonces puede sentir la locura de la desesperación.","Arthur Conan Doyle","La compañía blanca");

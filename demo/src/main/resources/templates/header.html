@@ -1,49 +1,48 @@
-  
-  <div class="shortNav">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        {{#atHome}}
-          <a href="/" class="tabButton" id="activeTab" role="button">
-            <i class="material-icons">home</i> Inicio
-          </a>  
-        {{/atHome}}
-        {{^atHome}}
-          <a href="/" class="tabButton" role="button">
-            <i class="material-icons">home</i> Inicio
-          </a>  
-        {{/atHome}}
-        {{#openTabs}}
-          {{#active}}
-            <div class="tabButton">
-              <a href="/{{type}}/{{id}}" id="activeTab"> {{tabName}} {{id}} </a>
-              <a href="/close/{{type}}/{{id}}" class="material-icons clearIcon closeMessage">clear</a>
-            </div>
-          {{/active}}
-          {{^active}}
-            <div class="tabButton">
-              <a href="/{{type}}/{{id}}"> {{tabName}} {{id}} </a>
-            </div>
-          {{/active}}
-        {{/openTabs}}
-      </ol>
-    </nav>
-  </div>
+<div class="shortNav">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      {{#atHome}}
+      <a href="/" class="tabButton" id="activeTab" role="button">
+        <i class="material-icons">home</i> Inicio
+      </a>
+      {{/atHome}}
+      {{^atHome}}
+      <a href="/" class="tabButton" role="button">
+        <i class="material-icons">home</i> Inicio
+      </a>
+      {{/atHome}}
+      {{#openTabs}}
+      {{#active}}
+      <div class="tabButton">
+        <a href="/{{type}}/{{id}}" id="activeTab"> {{tabName}} {{id}} </a>
+        <a href="/close/{{type}}/{{id}}" class="material-icons clearIcon closeMessage">clear</a>
+      </div>
+      {{/active}}
+      {{^active}}
+      <div class="tabButton">
+        <a href="/{{type}}/{{id}}"> {{tabName}} {{id}} </a>
+      </div>
+      {{/active}}
+      {{/openTabs}}
+    </ol>
+  </nav>
+</div>
 
-  {{^hideLogin}}
-    {{^logged}}
-      <a id="logButton" href="/login" class="btn btn-primary btn-bg active" role="button" aria-pressed="true">
-        LogIn <i class="material-icons">supervised_user_circle</i>
-      </a>
-    {{/logged}} 
-    {{#logged}}
-      <a id="logButton" href="/logout" class="btn btn-primary btn-bg active logout" style="background-color: #6f19be" role="button" aria-pressed="true">
-        LogOut <i class="material-icons">power_settings_new</i>
-      </a>
-    {{/logged}}
-  {{/hideLogin}} 
-  {{#hideLogin}}
-    <a id="logButton" href="/register" class="btn btn-primary btn-bg active"role="button" aria-pressed="true">
-      SignIn <i class="material-icons">person_add</i>
-    </a>
-  {{/hideLogin}} 
- 
+{{^hideLogin}}
+{{^logged}}
+<a id="logButton" href="/login" class="btn btn-primary btn-bg active" role="button" aria-pressed="true">
+  LogIn <i class="material-icons">supervised_user_circle</i>
+</a>
+{{/logged}}
+{{#logged}}
+<a id="logButton" href="/logout" class="btn btn-primary btn-bg active logout" style="background-color: #6f19be"
+  role="button" aria-pressed="true">
+  LogOut <i class="material-icons">power_settings_new</i>
+</a>
+{{/logged}}
+{{/hideLogin}}
+{{#hideLogin}}
+<a id="logButton" href="/register" class="btn btn-primary btn-bg active" role="button" aria-pressed="true">
+  SignIn <i class="material-icons">person_add</i>
+</a>
+{{/hideLogin}}

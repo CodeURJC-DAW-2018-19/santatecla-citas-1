@@ -8,7 +8,8 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
   <link href="../assets/css/material-dashboard/material-dashboard.css?v=2.1.1" rel="stylesheet" />
@@ -17,42 +18,49 @@
 
 <body class="body">
 
-	{{>header}}
-	
-    <!--<form action='/saveTheme' method="POST">
+  {{>header}}
+
+  <!--<form action='/saveTheme' method="POST">
         <p>Tema: </p>
         <input type="text" id= "name" name="name">
         <input type="submit" value="Enviar">
         <input type="hidden" name="_csrf" value="{{token}}"/>
     </form>-->
 
-    <div class="tittleCard">
-      <div class="card">
-        <div class="card-header card-header-text card-header-primary">
-          <div class="card-text">
-            <h4 class="card-title">Añadir tema</h4>
-          </div>
-        </div>
-        <div class="card-body">
-  
-          <form action="/saveTheme" method="POST" enctype="multipart/form-data">
-            <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca el nombre del tema" required="required">
-            <p>Seleccione una imagen para este tema</p>
-            <input type="file" class="inputFileHidden" name="file">
-            
-            <div class="BCentrado">
-              <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
-              <input type="hidden" name="_csrf" value="{{token}}" />
-            </div>
-          </form>
-  
+  <div class="tittleCard">
+    <div class="card">
+      <div class="card-header card-header-text card-header-primary">
+        <div class="card-text">
+          <h4 class="card-title">Añadir tema</h4>
         </div>
       </div>
-    </div>
+      <div class="card-body">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <form action="/saveTheme" method="POST" enctype="multipart/form-data">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca el nombre del tema"
+            required="required">
+          <p>Seleccione una imagen para este tema</p>
+          <input type="file" class="inputFileHidden" name="file">
+
+          <div class="BCentrado">
+            <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
+            <input type="hidden" name="_csrf" value="{{token}}" />
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
-      
+
 </html>

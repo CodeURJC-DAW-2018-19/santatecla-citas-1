@@ -29,7 +29,7 @@ public class QuoteService {
 		return repository.findAll();
 	}
   
-  public Page<Quote> findAll(Pageable page) {
+  	public Page<Quote> findAll(Pageable page) {
 
 		page = new PageRequest(0, pageSize(page));
 
@@ -38,7 +38,7 @@ public class QuoteService {
 
 	public void save(Quote book) {
 		repository.save(book);
-  }
+  	}
 
 	public void delete(long id) {
 		repository.deleteById(id);
@@ -54,7 +54,6 @@ public class QuoteService {
 		quotesList.addAll(quotesSet);
 		return quotesList;*/
 	}
-
 
 	public Page<Quote> findByName(String name, Pageable page) {
 		/*HashSet<Quote> quotesSet = new HashSet();
@@ -79,5 +78,4 @@ public class QuoteService {
 	public int getPageNumber(Page<Quote> page){
 		return (page.getSize()-4)/4;
 	}
-
 }

@@ -64,7 +64,6 @@ public class WebController {
 
 	@PostConstruct
 	public void init() throws IOException {
-
 		if (!Files.exists(FILES_FOLDER)) {
 			Files.createDirectories(FILES_FOLDER);
 		}
@@ -72,11 +71,19 @@ public class WebController {
 
 	@ModelAttribute
 	public void addUserToModel(Model model) {
+
 		this.logged = (userComponent.isLoggedUser());
 		model.addAttribute("logged", this.logged);
+
 		if (this.logged) {
 			model.addAttribute("admin", userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN"));
 			model.addAttribute("userName", userComponent.getLoggedUser().getName());
+		}
+	}
+
+	private void updateTabs(Model model) {
+		if (this.userComponent.isLoggedUser()) {
+			model.addAttribute("openTabs", this.userComponent.getLoggedUser().getOpenTabs());
 		}
 	}
 
@@ -161,6 +168,8 @@ public class WebController {
 		model.addAttribute("saveThemeMessage", false);
 		model.addAttribute("deleteQuoteMessage", false);
 		model.addAttribute("saveQuoteMessage", false);
+		model.addAttribute("repeatThemeMessage", false);
+		model.addAttribute("repeatQuoteMessage", false);
 
 		return "Home";
 	}
@@ -174,9 +183,27 @@ public class WebController {
 		model.addAttribute("saveThemeMessage", true);
 		model.addAttribute("deleteQuoteMessage", false);
 		model.addAttribute("saveQuoteMessage", false);
+		model.addAttribute("repeatThemeMessage", false);
+		model.addAttribute("repeatQuoteMessage", false);
 
 		return "Home";
 	}
+
+	@GetMapping("/repeatedTheme")
+	public String repeatedTheme(Model model) {
+
+		home(model, null, null , 0, 0);
+		
+		model.addAttribute("deleteThemeMessage", false);
+		model.addAttribute("saveThemeMessage", false);
+		model.addAttribute("deleteQuoteMessage", false);
+		model.addAttribute("saveQuoteMessage", false);
+		model.addAttribute("repeatThemeMessage", true);
+		model.addAttribute("repeatQuoteMessage", false);
+
+		return "Home";
+	}
+
 	
 	@GetMapping("/deletedQuote")
 	public String deletedQuote(Model model) {
@@ -187,6 +214,8 @@ public class WebController {
 		model.addAttribute("saveThemeMessage", false);
 		model.addAttribute("deleteQuoteMessage", true);
 		model.addAttribute("saveQuoteMessage", false);
+		model.addAttribute("repeatThemeMessage", false);
+		model.addAttribute("repeatQuoteMessage", false);
 
 		return "Home";
 	}
@@ -200,10 +229,26 @@ public class WebController {
 		model.addAttribute("saveThemeMessage", false);
 		model.addAttribute("deleteQuoteMessage", false);
 		model.addAttribute("saveQuoteMessage", true);
+		model.addAttribute("repeatThemeMessage", false);
+		model.addAttribute("repeatQuoteMessage", false);
 
 		return "Home";
 	}
 
+	@GetMapping("/repeatedQuote")
+	public String repeatedQuote(Model model) {
+
+		home(model, null, null , 0, 0);
+		
+		model.addAttribute("deleteThemeMessage", false);
+		model.addAttribute("saveThemeMessage", false);
+		model.addAttribute("deleteQuoteMessage", false);
+		model.addAttribute("saveQuoteMessage", false);
+		model.addAttribute("repeatThemeMessage", false);
+		model.addAttribute("repeatQuoteMessage", true);
+
+		return "Home";
+	}
 
 	@GetMapping("/quote/{id}")
 	public String showQuote(Model model, @PathVariable long id) {
@@ -346,20 +391,6 @@ public class WebController {
 		return "AddQuote";
 	}
 
-	@PostMapping("/saveQuote")
-	public String saveQuote(Model model, Quote quote) {
-    List<Quote> list = quoteService.findByName(quote.getName());
-    
-		if (list.isEmpty()) {
-			quoteService.save(quote);
-			updateTabs(model);
-			return savedQuote(model);
-		}
-		
-		return "Error";
-
-	}
-
 	@PostMapping("/saveTheme")
 	public String saveTheme(Model model, @RequestParam("name") String name, 
 	@RequestParam("file") MultipartFile file){
@@ -385,7 +416,20 @@ public class WebController {
 			return savedTheme(model);
 		}
 
-		return "Error";
+		return repeatedTheme(model);
+	}
+
+	@PostMapping("/saveQuote")
+	public String saveQuote(Model model, Quote quote) {
+    List<Quote> list = quoteService.findByName(quote.getName());
+    
+		if (list.isEmpty()) {
+			quoteService.save(quote);
+			updateTabs(model);
+			return savedQuote(model);
+		}
+		
+		return repeatedQuote(model);
 	}
 
 	@PostMapping("/saveUser")
@@ -435,27 +479,25 @@ public class WebController {
 
 	@PostMapping(value="/addTextToTheme{id}Save")
   public String saveTextToTheme(Model model, String text, @PathVariable long id) {
+
 		Optional<Theme> theme = this.themeService.findOne(id);
 		Text t = new Text(text);
+
 		if(theme.isPresent()){
 			if(!theme.get().getTexts().contains(t)){
 				theme.get().getTexts().add(t);
 				themeService.save(theme.get());
 			}
 		}
+
     updateTabs(model);
 
     return showTheme(model, id);
 	}
 
-	private void updateTabs(Model model) {
-		if (this.userComponent.isLoggedUser()) {
-			model.addAttribute("openTabs", this.userComponent.getLoggedUser().getOpenTabs());
-		}
-	}
-
 	@GetMapping(value="/close/{type}/{id}")
 	private String closeTab(Model model, @PathVariable String type, @PathVariable long id) {
+		
 		if (type.equals("theme")) {	
 			Optional<Theme> theme = themeService.findOne(id);
 			if(theme.isPresent()) {
@@ -467,23 +509,26 @@ public class WebController {
 				this.userComponent.getLoggedUser().removeTab(quote.get());
 			}
 		}
+
 		return "/GoToHome";
 	}
 
 	@GetMapping("/addQuoteToTheme{theme}/selectQuote{id}")
-    public String selectQuote(Model model, @PathVariable long id, @PathVariable long theme) {
+  public String selectQuote(Model model, @PathVariable long id, @PathVariable long theme) {
 
-        Optional<Quote> quote = quoteService.findOne(id);
-        if(quote.isPresent()) {
-					if(!(themeService.findOne(theme).get().getQuotes().contains(quote.get()))){
-						themeService.findOne(theme).get().getQuotes().add(quote.get());
-						themeService.save(themeService.findOne(theme).get());
-					}
-        }
+			Optional<Quote> quote = quoteService.findOne(id);
+			
+      if(quote.isPresent()) {
+				if(!(themeService.findOne(theme).get().getQuotes().contains(quote.get()))){
+					themeService.findOne(theme).get().getQuotes().add(quote.get());
+					themeService.save(themeService.findOne(theme).get());
+				}
+      }
 
-				updateTabs(model);
-				return showTheme(model, theme);
-		}
+			updateTabs(model);
+
+			return showTheme(model, theme);
+	}
 		
 	@GetMapping("/addQuoteToTheme{id}/searchQuotes")
 	public String selectQuoteSearch(Model model, @PathVariable long id, @RequestParam String name) {
@@ -501,6 +546,7 @@ public class WebController {
 		model.addAttribute("search", name);
 		
 		updateTabs(model);
+
 		return "SelectQuote";
 	}
 
@@ -517,6 +563,7 @@ public class WebController {
 		}
 
 		updateTabs(model);
+
 		return showTheme(model, idTheme);
 	}
 
@@ -530,6 +577,7 @@ public class WebController {
 		}
 
 		updateTabs(model);
+
 		return showTheme(model, idTheme);
 	}
 
@@ -574,6 +622,7 @@ public class WebController {
 			List<Quote> quotes = this.themeService.findOne(id).get().getQuotes();
 			List<Text> texts = this.themeService.findOne(id).get().getTexts();
 			Optional<Theme> t = this.themeService.findOne(id);
+
 			if(t.isPresent()){
 				phrase = new Phrase(t.get().getName() + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, BaseColor.BLACK));
 				document.add(phrase);
@@ -588,18 +637,18 @@ public class WebController {
 			}
 			
 			document.close();
-		}catch(Exception e){
+		} catch(Exception e){
 			e.printStackTrace();
 		}
 		
 		updateTabs(model);
+
 		return "GeneratedPDF";
 	}
 
 	@GetMapping(value="/getpdf")
 	public ResponseEntity<InputStreamResource> getPDF1() {
-		try
-		{
+		try{
 				File file = new File("Tema.pdf");
 				HttpHeaders respHeaders = new HttpHeaders();
 				MediaType mediaType = MediaType.parseMediaType("application/pdf");
@@ -608,8 +657,7 @@ public class WebController {
 				respHeaders.setContentDispositionFormData("attachment", file.getName());
 				InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
 				return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
-		}
-		catch (Exception e){
+		} catch (Exception e){
 			return new ResponseEntity<InputStreamResource>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 }

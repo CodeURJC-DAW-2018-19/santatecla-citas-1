@@ -8,7 +8,8 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
   <link href="../assets/css/material-dashboard/material-dashboard.css?v=2.1.1" rel="stylesheet" />
@@ -16,178 +17,202 @@
 </head>
 
 <body class="body">
-  
-	{{>header}}
-	
+
+  {{>header}}
+
   <div class="row">
     <div class="col-md-6">
-        <div class="card">
-            <div class="card-header card-header-text card-header-primary">
-              <div class="card-text">
-                <h4 class="card-title">Temas</h4>
-              </div>
-            </div>
-            <div class="card-body">
-
-                <nav class="navbar navbar-light bg-light">
-                  
-                    <form class="form-inline" action="/">
-                      <input class="form-control mr-sm-2" type="text" name='searchThemes' placeholder="Buscar un tema" aria-label="Search">
-                      <input name='searchQuotes' value="{{searchThemeString}}" hidden>
-                      <input name='pageTheme' value="0" hidden>
-                      <input name='pageQuote' value="{{numPageQuotes}}" hidden>
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                        Buscar <i class="material-icons">pageview</i>
-                      </button>
-                    </form>
-                </nav>
-              
-                {{#searchThemes}}
-                  <p class="searchResults">Resultados de la búsqueda: "{{searchThemeString}}"</p>
-                  {{#noResultsTheme}}
-                    <p class="searchResults">Ningún resultado</p>
-                  {{/noResultsTheme}}
-                {{/searchThemes}}
-                
-                {{#deleteThemeMessage}}
-                  <div class="homeMessageDeleted">
-                    Tema borrado correctamente
-                    <a href="/" class="material-icons clearIcon closeMessage">clear</a>
-                  </div>
-                {{/deleteThemeMessage}}
-
-                {{#saveThemeMessage}}
-                  <div class="homeMessageSaved">
-                    Tema guardado correctamente
-                    <a href="/" class="material-icons clearIcon closeMessage">clear</a>
-                  </div>
-                {{/saveThemeMessage}}
-
-                <div class="row">
-                  {{#themes}}
-                  <div class="col-md-6">
-                      <div class="card">
-                        <div class="card-body">
-                          {{#logged}}
-                            <a href="/theme/{{id}}" class="card-title">{{name}}</a>
-                          {{#admin}}
-                            <a title="Borrar" id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/deleteTheme/{{id}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
-                              <i class="material-icons">delete_outline</i>
-                            </a>
-                          {{/admin}}
-                          {{/logged}}
-                          {{^logged}}
-                            {{name}}
-                          {{/logged}}
-                        </div>                       
-                      </div>
-                    </div>
-                  {{/themes}}
-                </div>
-
-                <!--<h4>{{numPageThemes}}</h4>-->
-
-                {{#showNextThemes}}
-                <a title="Cargar más" href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}" class="btn btn-info btn-round BCentrado">
-                  <i class="material-icons">more_horiz</i>
-                </a>
-                {{/showNextThemes}}
-
-                {{#admin}}
-              
-                <a href="/addTheme" type="button" class="btn btn-primary btn-lg btn-block">
-                  Añadir Tema <i class="material-icons">add_circle</i>
-                </a>
-              
-                {{/admin}}
-
-            </div> 
+      <div class="card">
+        <div class="card-header card-header-text card-header-primary">
+          <div class="card-text">
+            <h4 class="card-title">Temas</h4>
+          </div>
         </div>
-    </div>
-  
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header card-header-text card-header-primary">
-              <div class="card-text">
-                <h4 class="card-title">Citas</h4>
-              </div>
-            </div>
-            <div class="card-body">
+        <div class="card-body">
 
-                <nav class="navbar navbar-light bg-light">
-                    <form class="form-inline" action="/">
-                      <input name='searchThemes' value="{{searchThemeString}}" hidden>
-                      <input class="form-control mr-sm-2" type="search" name='searchQuotes' placeholder="Buscar una cita" aria-label="Search">
-                      <input name='pageTheme' value="{{numPageThemes}}" hidden>
-                      <input name='pageQuote' value="0" hidden>
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                        Buscar <i class="material-icons">pageview</i>
-                      </button>
-                    </form>
-                </nav>
+          <nav class="navbar navbar-light bg-light">
 
-                {{#searchQuotes}}
-                  <p class="searchResults">Resultados de la búsqueda: "{{searchQuoteString}}"</p>
-                  {{#noResultsQuotes}}
-                    <p class="searchResults">Ningún resultado</p>
-                  {{/noResultsQuotes}}
-                {{/searchQuotes}}
+            <form class="form-inline" action="/">
+              <input class="form-control mr-sm-2" type="text" name='searchThemes' placeholder="Buscar un tema"
+                aria-label="Search">
+              <input name='searchQuotes' value="{{searchThemeString}}" hidden>
+              <input name='pageTheme' value="0" hidden>
+              <input name='pageQuote' value="{{numPageQuotes}}" hidden>
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                Buscar <i class="material-icons">pageview</i>
+              </button>
+            </form>
+          </nav>
 
-                {{#deleteQuoteMessage}}
-                  <div class="homeMessageDeleted">
-                    Cita borrada correctamente
-                    <a href="/" class="material-icons clearIcon closeMessage">clear</a>
-                  </div>
-                {{/deleteQuoteMessage}}
+          {{#searchThemes}}
+          <p class="searchResults">Resultados de la búsqueda: "{{searchThemeString}}"</p>
+          {{#noResultsTheme}}
+          <p class="searchResults">Ningún resultado</p>
+          {{/noResultsTheme}}
+          {{/searchThemes}}
 
-                {{#saveQuoteMessage}}
-                  <div class="homeMessageSaved">
-                    Cita guardada correctamente
-                    <a href="/" class="material-icons clearIcon closeMessage">clear</a>
-                  </div>
-                {{/saveQuoteMessage}}
+          {{#deleteThemeMessage}}
+          <div class="homeMessageDeleted">
+            Tema borrado correctamente
+            <a href="/" class="material-icons clearIcon closeMessage">clear</a>
+          </div>
+          {{/deleteThemeMessage}}
 
-                <div class="row">
-                  {{#quotes}}
-                    <div class="col-md-6">
-                        <div class="card">
-                          <div class="card-body">
-                            {{#logged}}
-                              <a href="/quote/{{id}}" class="card-title">"{{name}}"</a>
-                            {{#admin}}
-                              <a title="Borrar" id="borrar" onclick="confirmAlert('¿Está seguro de que quiere borrar esta cita?','/deleteQuote/{{id}}')" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
-                                <i class="material-icons">delete_outline</i>
-                              </a>
-                            {{/admin}}
-                            {{/logged}}
-                            {{^logged}}
-                              "{{name}}"
-                            {{/logged}}
-                          </div>                       
-                        </div>
-                      </div>
-                  {{/quotes}}
-                </div> 
+          {{#saveThemeMessage}}
+          <div class="homeMessageSaved">
+            Tema guardado correctamente
+            <a href="/" class="material-icons clearIcon closeMessage">clear</a>
+          </div>
+          {{/saveThemeMessage}}
 
-                <!--<h4>{{numPageQuotes}}</h4>-->
+          {{#repeatThemeMessage}}
+          <div class="homeMessageDeleted">
+            El tema ya había sido añadido anteriormente
+            <a href="/" class="material-icons clearIcon closeMessage">clear</a>
+          </div>
+          {{/repeatThemeMessage}}
 
-                {{#showNextQuotes}}
-                <a title="Cargar más" href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}" class="btn btn-info btn-round BCentrado">
-                  <i class="material-icons">more_horiz</i>
-                </a>
-                {{/showNextQuotes}}
-
+          <div class="row">
+            {{#themes}}
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  {{#logged}}
+                  <a href="/theme/{{id}}" class="card-title">{{name}}</a>
                   {{#admin}}
-              
-                  <a href="/addQuote" type="button" class="btn btn-primary btn-lg btn-block">
-                    Añadir Cita <i class="material-icons">add_circle</i>
+                  <a title="Borrar" id="borrar"
+                    onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/deleteTheme/{{id}}')"
+                    class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
+                    <i class="material-icons">delete_outline</i>
                   </a>
                   {{/admin}}
-
-
-               
+                  {{/logged}}
+                  {{^logged}}
+                  {{name}}
+                  {{/logged}}
+                </div>
+              </div>
             </div>
+            {{/themes}}
+          </div>
+
+          <!--<h4>{{numPageThemes}}</h4>-->
+
+          {{#showNextThemes}}
+          <a title="Cargar más"
+            href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}"
+            class="btn btn-info btn-round BCentrado">
+            <i class="material-icons">more_horiz</i>
+          </a>
+          {{/showNextThemes}}
+
+          {{#admin}}
+
+          <a href="/addTheme" type="button" class="btn btn-primary btn-lg btn-block">
+            Añadir Tema <i class="material-icons">add_circle</i>
+          </a>
+
+          {{/admin}}
+
         </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header card-header-text card-header-primary">
+          <div class="card-text">
+            <h4 class="card-title">Citas</h4>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <nav class="navbar navbar-light bg-light">
+            <form class="form-inline" action="/">
+              <input name='searchThemes' value="{{searchThemeString}}" hidden>
+              <input class="form-control mr-sm-2" type="search" name='searchQuotes' placeholder="Buscar una cita"
+                aria-label="Search">
+              <input name='pageTheme' value="{{numPageThemes}}" hidden>
+              <input name='pageQuote' value="0" hidden>
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                Buscar <i class="material-icons">pageview</i>
+              </button>
+            </form>
+          </nav>
+
+          {{#searchQuotes}}
+          <p class="searchResults">Resultados de la búsqueda: "{{searchQuoteString}}"</p>
+          {{#noResultsQuotes}}
+          <p class="searchResults">Ningún resultado</p>
+          {{/noResultsQuotes}}
+          {{/searchQuotes}}
+
+          {{#deleteQuoteMessage}}
+          <div class="homeMessageDeleted">
+            Cita borrada correctamente
+            <a href="/" class="material-icons clearIcon closeMessage">clear</a>
+          </div>
+          {{/deleteQuoteMessage}}
+
+          {{#saveQuoteMessage}}
+          <div class="homeMessageSaved">
+            Cita guardada correctamente
+            <a href="/" class="material-icons clearIcon closeMessage">clear</a>
+          </div>
+          {{/saveQuoteMessage}}
+
+          {{#repeatQuoteMessage}}
+          <div class="homeMessageDeleted">
+            La cita ya había sido guardada anteriormente
+            <a href="/" class="material-icons clearIcon closeMessage">clear</a>
+          </div>
+          {{/repeatQuoteMessage}}
+
+          <div class="row">
+            {{#quotes}}
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  {{#logged}}
+                  <a href="/quote/{{id}}" class="card-title">"{{name}}"</a>
+                  {{#admin}}
+                  <a title="Borrar" id="borrar"
+                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta cita?','/deleteQuote/{{id}}')"
+                    class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
+                    <i class="material-icons">delete_outline</i>
+                  </a>
+                  {{/admin}}
+                  {{/logged}}
+                  {{^logged}}
+                  "{{name}}"
+                  {{/logged}}
+                </div>
+              </div>
+            </div>
+            {{/quotes}}
+          </div>
+
+          <!--<h4>{{numPageQuotes}}</h4>-->
+
+          {{#showNextQuotes}}
+          <a title="Cargar más"
+            href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}"
+            class="btn btn-info btn-round BCentrado">
+            <i class="material-icons">more_horiz</i>
+          </a>
+          {{/showNextQuotes}}
+
+          {{#admin}}
+
+          <a href="/addQuote" type="button" class="btn btn-primary btn-lg btn-block">
+            Añadir Cita <i class="material-icons">add_circle</i>
+          </a>
+          {{/admin}}
+
+
+
+        </div>
+      </div>
     </div>
   </div>
 
@@ -197,9 +222,15 @@
     </a>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   <script src="../assets/js/script.js"></script>
 </body>
 
