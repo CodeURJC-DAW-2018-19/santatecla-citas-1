@@ -6,12 +6,14 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    protected UserRepositoryAuthProvider authenticationProvider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -21,8 +23,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/histogram").permitAll();
         http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests().antMatchers("/register").permitAll();
-        http.authorizeRequests().antMatchers("/searchThemes").permitAll();
-        http.authorizeRequests().antMatchers("/searchQuotes").permitAll();
         http.authorizeRequests().antMatchers("/saveUser").permitAll();
 
         // Private pages (all other pages)
@@ -47,9 +47,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         
     }
-
-    @Autowired
-    protected UserRepositoryAuthProvider authenticationProvider;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

@@ -58,8 +58,6 @@ public class WebController {
 	@Autowired
 	private UserComponent userComponent;
 
-	boolean logged = false;
-
 	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/demo/src/main/resources/static/assets/img");
 
 	@PostConstruct
@@ -71,11 +69,10 @@ public class WebController {
 
 	@ModelAttribute
 	public void addUserToModel(Model model) {
+		Boolean logged = (userComponent.isLoggedUser());
+		model.addAttribute("logged", logged);
 
-		this.logged = (userComponent.isLoggedUser());
-		model.addAttribute("logged", this.logged);
-
-		if (this.logged) {
+		if (logged) {
 			model.addAttribute("admin", userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN"));
 			model.addAttribute("userName", userComponent.getLoggedUser().getName());
 		}
@@ -144,6 +141,8 @@ public class WebController {
 		model.addAttribute("saveThemeMessage", false);
 		model.addAttribute("deleteQuoteMessage", false);
 		model.addAttribute("saveQuoteMessage", false);
+		model.addAttribute("repeatThemeMessage", false);
+    model.addAttribute("repeatQuoteMessage", false);
 
 		//int prevPageThemes = (themeService.getPageNumber(themes)>0)?(themeService.getPageNumber(themes)-1):0;
 		//int prevPageQuotes = (quoteService.getPageNumber(quotes)>0)?(quoteService.getPageNumber(quotes)-1):0;
@@ -165,11 +164,6 @@ public class WebController {
 		home(model, null, null , 0, 0);
 		
 		model.addAttribute("deleteThemeMessage", true);
-		model.addAttribute("saveThemeMessage", false);
-		model.addAttribute("deleteQuoteMessage", false);
-		model.addAttribute("saveQuoteMessage", false);
-		model.addAttribute("repeatThemeMessage", false);
-		model.addAttribute("repeatQuoteMessage", false);
 
 		return "Home";
 	}
@@ -179,12 +173,7 @@ public class WebController {
 
 		home(model, null, null , 0, 0);
 		
-		model.addAttribute("deleteThemeMessage", false);
 		model.addAttribute("saveThemeMessage", true);
-		model.addAttribute("deleteQuoteMessage", false);
-		model.addAttribute("saveQuoteMessage", false);
-		model.addAttribute("repeatThemeMessage", false);
-		model.addAttribute("repeatQuoteMessage", false);
 
 		return "Home";
 	}
@@ -193,13 +182,8 @@ public class WebController {
 	public String repeatedTheme(Model model) {
 
 		home(model, null, null , 0, 0);
-		
-		model.addAttribute("deleteThemeMessage", false);
-		model.addAttribute("saveThemeMessage", false);
-		model.addAttribute("deleteQuoteMessage", false);
-		model.addAttribute("saveQuoteMessage", false);
+	
 		model.addAttribute("repeatThemeMessage", true);
-		model.addAttribute("repeatQuoteMessage", false);
 
 		return "Home";
 	}
@@ -210,12 +194,7 @@ public class WebController {
 
 		home(model, null, null , 0, 0);
 		
-		model.addAttribute("deleteThemeMessage", false);
-		model.addAttribute("saveThemeMessage", false);
 		model.addAttribute("deleteQuoteMessage", true);
-		model.addAttribute("saveQuoteMessage", false);
-		model.addAttribute("repeatThemeMessage", false);
-		model.addAttribute("repeatQuoteMessage", false);
 
 		return "Home";
 	}
@@ -225,12 +204,7 @@ public class WebController {
 
 		home(model, null, null , 0, 0);
 		
-		model.addAttribute("deleteThemeMessage", false);
-		model.addAttribute("saveThemeMessage", false);
-		model.addAttribute("deleteQuoteMessage", false);
 		model.addAttribute("saveQuoteMessage", true);
-		model.addAttribute("repeatThemeMessage", false);
-		model.addAttribute("repeatQuoteMessage", false);
 
 		return "Home";
 	}
@@ -240,11 +214,6 @@ public class WebController {
 
 		home(model, null, null , 0, 0);
 		
-		model.addAttribute("deleteThemeMessage", false);
-		model.addAttribute("saveThemeMessage", false);
-		model.addAttribute("deleteQuoteMessage", false);
-		model.addAttribute("saveQuoteMessage", false);
-		model.addAttribute("repeatThemeMessage", false);
 		model.addAttribute("repeatQuoteMessage", true);
 
 		return "Home";
@@ -407,9 +376,8 @@ public class WebController {
 			  try {
 			    File uploadedFile = new File(FILES_FOLDER.toFile(), fileName);
 			    file.transferTo(uploadedFile);
-
 			  } catch (Exception e) {
-				model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
+					model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
 			  }
 		  }
 			updateTabs(model);

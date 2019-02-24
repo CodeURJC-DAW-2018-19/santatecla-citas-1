@@ -32,6 +32,8 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
+	private ArrayList<TabElement> openTabs = new ArrayList<>();
+
 	public User() {
 		this.roles = new ArrayList<>();
 		this.roles.add("ROLE_USER");
@@ -59,12 +61,10 @@ public class User {
 	public void setPassword(String passwordHash) {
 		this.passwordHash = passwordHash;
 	}	
-
 	
 	public String getPasswordHash() {
 		return passwordHash;
 	}
-
 
 	public List<String> getRoles() {
 		return roles;
@@ -73,8 +73,6 @@ public class User {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
-
-	private ArrayList<TabElement> openTabs = new ArrayList<>();
 		
 	public List<TabElement> getOpenTabs() {
 		return this.openTabs;
@@ -103,15 +101,4 @@ public class User {
 			}
 		}
 	}
-
-
-	/*@Override
-	public boolean equals(Object other) {
-		if (this == other)
-			return true;
-		if (!(other instanceof User))
-			return false;
-		return id == ((User) other).getId();
-	}*/
-
 }
