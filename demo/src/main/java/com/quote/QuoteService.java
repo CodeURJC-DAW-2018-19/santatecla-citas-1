@@ -71,6 +71,6 @@ public class QuoteService {
 	}
 
 	public int getPageNumber(Page<Quote> page){
-		return (page.getSize()-4)/4;
+		return (page.getSize()- pageSize)/pageSize;
 	}
 }

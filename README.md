@@ -102,6 +102,14 @@ This screen allows you to select the quote you want to add to a specific topic
 
 ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/add_quote_from_topic.png)
 
+**Generar PDF - PDF Generator**
+
+```
+This screen allows you to generate a PDF with the content
+```
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/pdf.png)
+
 **Añadir nuevo Tema - Add New Topic**
 
 ```
