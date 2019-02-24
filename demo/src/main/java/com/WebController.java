@@ -99,8 +99,8 @@ public class WebController {
 		if(searchThemes == null) searchThemes = "";
 		if(searchQuotes == null) searchQuotes = "";
 
-		Pageable pageTheme = new PageRequest(pageThemeNum, 10);
-		Pageable pageQuote = new PageRequest(pageQuoteNum, 10);
+		Pageable pageTheme = PageRequest.of(pageThemeNum, 10);
+		Pageable pageQuote = PageRequest.of(pageQuoteNum, 10);
 
 		Page<Theme> themes =  themeService.findAll(pageTheme);
 		Page<Quote> quotes = quoteService.findAll(pageQuote);
@@ -145,8 +145,8 @@ public class WebController {
 		model.addAttribute("deleteQuoteMessage", false);
 		model.addAttribute("saveQuoteMessage", false);
 
-		int prevPageThemes = (themeService.getPageNumber(themes)>0)?(themeService.getPageNumber(themes)-1):0;
-		int prevPageQuotes = (quoteService.getPageNumber(quotes)>0)?(quoteService.getPageNumber(quotes)-1):0;
+		//int prevPageThemes = (themeService.getPageNumber(themes)>0)?(themeService.getPageNumber(themes)-1):0;
+		//int prevPageQuotes = (quoteService.getPageNumber(quotes)>0)?(quoteService.getPageNumber(quotes)-1):0;
 
 		model.addAttribute("showNextThemes", !themes.isLast());
 		model.addAttribute("nextPageThemes", themeService.getPageNumber(themes) +1);
@@ -362,7 +362,7 @@ public class WebController {
   	List<Theme> savedThemes = this.themeService.findAll();
 		model.addAttribute("savedThemes", savedThemes);
 
-		List<MyInteger> numQuotes = new ArrayList();
+		List<MyInteger> numQuotes = new ArrayList<>();
     
 		for(Theme t : savedThemes) {
 			numQuotes.add(new MyInteger(this.themeService.findOne(t.getId()).get().getQuotes().size()));

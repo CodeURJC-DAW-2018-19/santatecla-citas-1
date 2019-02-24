@@ -34,7 +34,7 @@ public class User {
 	private List<String> roles;
 
 	public User() {
-		this.roles = new ArrayList();
+		this.roles = new ArrayList<>();
 		this.roles.add("ROLE_USER");
 	}
 
@@ -75,7 +75,7 @@ public class User {
 		this.roles = roles;
 	}
 
-	private ArrayList<TabElement> openTabs = new ArrayList();
+	private ArrayList<TabElement> openTabs = new ArrayList<>();
 		
 	public List<TabElement> getOpenTabs() {
 		return this.openTabs;
