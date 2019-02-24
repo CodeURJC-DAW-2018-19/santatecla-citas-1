@@ -166,4 +166,4 @@ It shows the number of quotes that each topic has on the web.
 ---------------------
 **Diagrama de clase - Class Diagram**
 
-![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/bbdd.png)
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/diagram.png)
