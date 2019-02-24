@@ -475,6 +475,7 @@ public class WebController {
 		model.addAttribute("themeId", id);
 		model.addAttribute("showNextQuotesToSelect", !quotes.isLast());
 		model.addAttribute("nextPageSelectQuote", quoteService.getPageNumber(quotes) +1);
+		model.addAttribute("search", "");
     updateTabs(model);
 
     return "SelectQuote";
@@ -561,6 +562,7 @@ public class WebController {
 			model.addAttribute("searchQuotes", true);
 			model.addAttribute("noResults", quotes.isEmpty());
 		}
+		model.addAttribute("search", name);
 		model.addAttribute("themeId", id);
 		model.addAttribute("search", name);
 		model.addAttribute("showNextQuotesToSelect", !quotes.isLast());
