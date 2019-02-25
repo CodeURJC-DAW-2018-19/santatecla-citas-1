@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GeneralController{
-
   @Autowired
 	protected QuoteService quoteService;
 
@@ -37,8 +36,8 @@ public class GeneralController{
 
 	@Autowired
 	protected UserComponent userComponent;
-
-	protected static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/demo/src/main/resources/static/assets/img");
+  
+  protected static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/demo/src/main/resources/static/assets/img");
 
 	@PostConstruct
 	public void init() throws IOException {
