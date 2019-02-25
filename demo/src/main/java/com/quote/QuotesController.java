@@ -47,7 +47,7 @@ public class QuotesController extends GeneralController{
 		return "Home";
 	}
 
-	@GetMapping(/*/quote*/"/{id}")
+	@GetMapping("/{id}")
 	public String showQuote(Model model, @PathVariable long id) {
 
 		Optional<Quote> quote = quoteService.findOne(id);
@@ -67,7 +67,7 @@ public class QuotesController extends GeneralController{
 		return "Quotes";
 	}
 
-	@GetMapping("/deleteQuote/{id}")
+	@GetMapping("/deleteQuote{id}")
 	public String deleteQuote(Model model, @PathVariable long id) {
 
 		Optional<Quote> quote = quoteService.findOne(id);
@@ -104,7 +104,7 @@ public class QuotesController extends GeneralController{
 		return repeatedQuote(model);
     }
     
-    @GetMapping("/editQuote/{id}")
+    @GetMapping("/editQuote{id}")
 	public String editQuote(Model model, @PathVariable long id) {
 		
 		Optional<Quote> quote = quoteService.findOne(id);
