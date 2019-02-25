@@ -33,14 +33,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/*").hasAnyRole("ADMIN");
 
         // Login form
-        http.formLogin().loginPage("/login");
+        http.formLogin().loginPage("/user/login");
         http.formLogin().usernameParameter("username");
         http.formLogin().passwordParameter("password");
         http.formLogin().defaultSuccessUrl("/");
-        http.formLogin().failureUrl("/login");
+        http.formLogin().failureUrl("/user/login");
 
         // Logout
-        http.logout().logoutUrl("/logout");
+        http.logout().logoutUrl("/user/logout");
         http.logout().logoutSuccessUrl("/");
 
         // Disable CSRF

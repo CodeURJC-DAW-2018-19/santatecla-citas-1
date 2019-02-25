@@ -47,7 +47,7 @@ public class QuotesController extends GeneralController{
 		return "Home";
 	}
 
-	@GetMapping("/quote/{id}")
+	@GetMapping(/*/quote*/"/{id}")
 	public String showQuote(Model model, @PathVariable long id) {
 
 		Optional<Quote> quote = quoteService.findOne(id);

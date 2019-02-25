@@ -20,7 +20,7 @@
 
   {{>header}}
 
-  <form action='/saveQuote' method="POST">
+  <form action='/quote/saveQuote' method="POST">
     {{#quote}}<input type="hidden" name="id" value="{{id}}" class="form-control" />{{/quote}}
     {{#quote}}
     <div class="quote">

@@ -21,6 +21,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -49,6 +50,17 @@ public class GeneralController{
   protected void updateTabs(Model model) {
 		if (this.userComponent.isLoggedUser()) {
 			model.addAttribute("openTabs", this.userComponent.getLoggedUser().getOpenTabs());
+		}
+	}
+
+	@ModelAttribute
+	public void addUserToModel(Model model) {
+		Boolean logged = (userComponent.isLoggedUser());
+		model.addAttribute("logged", logged);
+
+		if (logged) {
+			model.addAttribute("admin", userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN"));
+			model.addAttribute("userName", userComponent.getLoggedUser().getName());
 		}
 	}
 

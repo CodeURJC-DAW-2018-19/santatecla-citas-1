@@ -54,7 +54,7 @@ public class ThemesController extends GeneralController{
 		return "Home";
 	}
 
-	@GetMapping("/theme/{id}")
+	@GetMapping(/*/theme*/"/{id}")
 	public String showTheme(Model model, @PathVariable long id) {
 
 		Optional<Theme> theme = themeService.findOne(id);

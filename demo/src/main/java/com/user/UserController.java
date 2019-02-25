@@ -13,17 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController extends GeneralController{
     
-  @ModelAttribute
-	public void addUserToModel(Model model) {
-		Boolean logged = (userComponent.isLoggedUser());
-		model.addAttribute("logged", logged);
-
-		if (logged) {
-			model.addAttribute("admin", userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN"));
-			model.addAttribute("userName", userComponent.getLoggedUser().getName());
-		}
-  }
-    
   @GetMapping("/login")
 	public String login(Model model) {
 
