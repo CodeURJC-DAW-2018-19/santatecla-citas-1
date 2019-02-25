@@ -29,7 +29,7 @@
       </div>
       <div class="card-body">
 
-        <form action="/saveEditedTheme{{idTheme}}" method="POST">
+        <form action="/theme/saveEditedTheme{{idTheme}}" method="POST">
           {{#theme}}<input type="hidden" name="id" value="{{id}}" class="form-control" />{{/theme}}
           {{#theme}}
           <input type="text" class="form-control" value="{{name}}" id="name" name="name"

@@ -1,17 +1,30 @@
 package com.theme;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Optional;
 
 import com.GeneralController;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.quote.Quote;
 import com.theme.Text;
 import com.theme.Theme;
 
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -280,5 +293,57 @@ public class ThemesController extends GeneralController{
 		updateTabs(model);
 
     return showTheme(model, idTheme);
+	}
+
+	@GetMapping("/generatePDF{id}")
+	public String generatePDF(Model model, @PathVariable Long id){
+		try{
+			Document document = new Document();
+			PdfWriter.getInstance(document, new FileOutputStream("Tema.pdf"));
+			
+			document.open();
+			Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 16, BaseColor.BLACK);
+			Phrase phrase;
+			List<Quote> quotes = this.themeService.findOne(id).get().getQuotes();
+			List<Text> texts = this.themeService.findOne(id).get().getTexts();
+			Optional<Theme> t = this.themeService.findOne(id);
+
+			if(t.isPresent()){
+				phrase = new Phrase(t.get().getName() + "\n" + "\n", FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, BaseColor.BLACK));
+				document.add(phrase);
+			}
+			for(int i = 0; i<quotes.size(); i++){
+				phrase = new Phrase("\"" + quotes.get(i).getName() + "\"" + "\n" + "- " + quotes.get(i).getAuthor() + " en " + quotes.get(i).getBook() + "\n" + "\n", font);
+				document.add(phrase);
+			}
+			for(int i = 0; i<texts.size(); i++){
+				phrase = new Phrase(texts.get(i).getText() + "\n", font);
+				document.add(phrase);
+			}
+			
+			document.close();
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		updateTabs(model);
+
+		return "GeneratedPDF";
+	}
+
+	@GetMapping(value="/getpdf")
+	public ResponseEntity<InputStreamResource> getPDF1() {
+		try{
+				File file = new File("Tema.pdf");
+				HttpHeaders respHeaders = new HttpHeaders();
+				MediaType mediaType = MediaType.parseMediaType("application/pdf");
+				respHeaders.setContentType(mediaType);
+				respHeaders.setContentLength(file.length());
+				respHeaders.setContentDispositionFormData("attachment", file.getName());
+				InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
+				return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+		} catch (Exception e){
+			return new ResponseEntity<InputStreamResource>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }

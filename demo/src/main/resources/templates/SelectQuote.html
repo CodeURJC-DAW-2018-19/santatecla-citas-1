@@ -51,7 +51,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-body">
-                <a href="/addQuoteToTheme{{themeId}}/selectQuote{{id}}" class="card-title">“{{name}}”</a>
+                <a href="/theme/addQuoteToTheme{{themeId}}/selectQuote{{id}}" class="card-title">“{{name}}”</a>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
 
         {{#showNextQuotesToSelect}}
           <a title="Cargar más"
-            href="/addQuoteToTheme{{themeId}}/searchQuotes?name={{search}}&page={{nextPageSelectQuote}}"
+            href="/theme/addQuoteToTheme{{themeId}}/searchQuotes?name={{search}}&page={{nextPageSelectQuote}}"
             class="btn btn-info btn-round BCenter">
             <i class="material-icons">more_horiz</i>
           </a>

@@ -47,7 +47,7 @@
                 <div class="card-title">
                   Referencia Cita {{id}}
                   <a title="Borrar" id="delete"
-                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteQuote{{id}}FromTheme{{idTheme}}')"
+                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/theme/deleteQuote{{id}}FromTheme{{idTheme}}')"
                     class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
                     <i class="material-icons">delete_outline</i>
                   </a>
@@ -68,7 +68,7 @@
                 <div class="card-title">
                   Referencia Texto {{-index}}
                   <a title="Borrar" id="delete"
-                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteText{{-index}}FromTheme{{idTheme}}')"
+                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/theme/deleteText{{-index}}FromTheme{{idTheme}}')"
                     class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
                     <i class="material-icons">delete_outline</i>
                   </a>
@@ -131,7 +131,7 @@
               <p>"{{text}}"</p>
               {{/texts}}
             </div>
-            <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">
+            <a type="button" href="/theme/generatePDF{{id}}" class="btn btn-default theme-pdf-button">
               Generar PDF <i class="material-icons">picture_as_pdf</i>
             </a>
 
@@ -152,7 +152,7 @@
           </blockquote>
           {{/quotes}}
         </div>
-        <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">
+        <a type="button" href="/theme/generatePDF{{id}}" class="btn btn-default theme-pdf-button">
           Generar PDF <i class="material-icons">picture_as_pdf</i>
         </a>
       </div>

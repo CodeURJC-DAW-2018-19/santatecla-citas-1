@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
@@ -22,6 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -136,5 +140,57 @@ public class GeneralController{
 		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
     
     return "Home";
-  }
+	}
+	
+	@GetMapping("/error")
+	public String error(Model model) {
+		
+		updateTabs(model);
+
+		return "Error";
+	}
+
+	private class MyInteger {
+		private int value;
+		public MyInteger(int v) {
+			value = v;
+		}
+	}
+
+	@GetMapping("/histogram")
+	public String histogram(Model model) {
+  
+  	List<Theme> savedThemes = this.themeService.findAll();
+		model.addAttribute("savedThemes", savedThemes);
+
+		List<MyInteger> numQuotes = new ArrayList<>();
+    
+		for(Theme t : savedThemes) {
+			numQuotes.add(new MyInteger(this.themeService.findOne(t.getId()).get().getQuotes().size()));
+		}
+    
+		model.addAttribute("numQuotes", numQuotes);
+    
+		updateTabs(model);
+
+		return "Histogram";
+	}
+
+	@GetMapping(value="/close/{type}/{id}")
+	private String closeTab(Model model, @PathVariable String type, @PathVariable long id) {
+		
+		if (type.equals("theme")) {	
+			Optional<Theme> theme = themeService.findOne(id);
+			if(theme.isPresent()) {
+				this.userComponent.getLoggedUser().removeTab(theme.get());
+			}
+		} else if(type.equals("quote")) {
+			Optional<Quote> quote = quoteService.findOne(id);
+			if(quote.isPresent()) {
+				this.userComponent.getLoggedUser().removeTab(quote.get());
+			}
+		}
+
+		return "/GoToHome";
+	}
 }
