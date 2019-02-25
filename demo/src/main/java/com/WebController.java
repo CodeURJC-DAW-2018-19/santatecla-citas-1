@@ -1,4 +1,4 @@
-package com;
+/*package com;
 
 import java.util.Optional;
 import java.util.List;
@@ -76,7 +76,7 @@ public class WebController {
 			model.addAttribute("admin", userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN"));
 			model.addAttribute("userName", userComponent.getLoggedUser().getName());
 		}
-	}*/
+	}
 
 	private void updateTabs(Model model) {
 		if (this.userComponent.isLoggedUser()) {
@@ -316,7 +316,7 @@ public class WebController {
 		updateTabs(model);
 
 		return "Register";
-	}*/
+	}
   
   private class MyInteger {
 		private int value;
@@ -473,7 +473,7 @@ public class WebController {
     updateTabs(model);
 
     return showTheme(model, id);
-	}*/
+	}
 
 	@GetMapping(value="/close/{type}/{id}")
 	private String closeTab(Model model, @PathVariable String type, @PathVariable long id) {
@@ -600,7 +600,7 @@ public class WebController {
 		updateTabs(model);
 
     return showTheme(model, idTheme);
-	}*/
+	}
 
 	@GetMapping("/generatePDF{id}")
 	public String generatePDF(Model model, @PathVariable Long id){
@@ -662,4 +662,4 @@ public class WebController {
 		return "Error";
 	}
     
-}
+}*/
