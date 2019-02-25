@@ -48,10 +48,23 @@ You also need to have the latest version of JDK and MAVEN installed on your mach
 
 Once you download the code and have all the extensions, go to VS Code and open the project.
 You must wait for everything to load, it may take a few minutes.
+
+Then, you must create a SQL Database, using MySQL extension, with the following credentials:
+- User: daw
+- Password: DAWGrupo3
+- Port: 3306
+
 Once it is loaded, display the "SPRING-BOOT DASHBOARD" extension, there you should see an item called "demo".
 Place the cursor on the extension and click on run. Then select "demo" in the bar that appears on the screen and press OK.
 Once it has been executed, open the browser and enter the following URL: **https//:localhost:8443**.
 
+There is an admin account registered:
+- User: admin
+- Pass: pass
+
+There are two user accounts registered, one of them is:
+- User: user
+- Pass: pass
 
 YOU ARE READY TO USE OUR WEB APPLICATION
 
