@@ -25,18 +25,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GeneralController{
-	
+
   @Autowired
-	private QuoteService quoteService;
+	protected QuoteService quoteService;
 
 	@Autowired
-	private ThemeService themeService;
+	protected ThemeService themeService;
 
 	@Autowired
-	private UserService userService;
+	protected UserService userService;
 
 	@Autowired
-	private UserComponent userComponent;
+	protected UserComponent userComponent;
 
 	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/demo/src/main/resources/static/assets/img");
 
