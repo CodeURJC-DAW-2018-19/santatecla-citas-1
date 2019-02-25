@@ -1,8 +1,9 @@
-package com;
+package com.quote;
 
 import java.util.List;
 import java.util.Optional;
 
+import com.GeneralController;
 import com.quote.Quote;
 
 import org.springframework.stereotype.Controller;

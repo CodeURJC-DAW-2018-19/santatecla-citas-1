@@ -1,9 +1,10 @@
-package com;
+package com.theme;
 
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
+import com.GeneralController;
 import com.quote.Quote;
 import com.theme.Text;
 import com.theme.Theme;
