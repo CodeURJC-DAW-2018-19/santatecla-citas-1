@@ -158,7 +158,7 @@ public class WebController {
     return "Home";
   }
   
-  @GetMapping("/deletedTheme")
+ /* @GetMapping("/deletedTheme")
 	public String deletedTheme(Model model) {
 
 		home(model, null, null , 0, 0);
@@ -166,9 +166,9 @@ public class WebController {
 		model.addAttribute("deleteThemeMessage", true);
 
 		return "Home";
-	}
+	}*/
 
-	@GetMapping("/savedTheme")
+	/*@GetMapping("/savedTheme")
 	public String savedTheme(Model model) {
 
 		home(model, null, null , 0, 0);
@@ -176,9 +176,9 @@ public class WebController {
 		model.addAttribute("saveThemeMessage", true);
 
 		return "Home";
-	}
+	}*/
 
-	@GetMapping("/repeatedTheme")
+	/*@GetMapping("/repeatedTheme")
 	public String repeatedTheme(Model model) {
 
 		home(model, null, null , 0, 0);
@@ -186,10 +186,10 @@ public class WebController {
 		model.addAttribute("repeatThemeMessage", true);
 
 		return "Home";
-	}
+	}*/
 
 	
-	@GetMapping("/deletedQuote")
+	/*@GetMapping("/deletedQuote")
 	public String deletedQuote(Model model) {
 
 		home(model, null, null , 0, 0);
@@ -197,9 +197,9 @@ public class WebController {
 		model.addAttribute("deleteQuoteMessage", true);
 
 		return "Home";
-	}
+	}*/
 
-	@GetMapping("/savedQuote")
+	/*@GetMapping("/savedQuote")
 	public String savedQuote(Model model) {
 
 		home(model, null, null , 0, 0);
@@ -252,9 +252,9 @@ public class WebController {
 		updateTabs(model);
 
 		return deletedQuote(model);
-	}
+	}*/
 
-	@GetMapping("/theme/{id}")
+	/*@GetMapping("/theme/{id}")
 	public String showTheme(Model model, @PathVariable long id) {
 
 		Optional<Theme> theme = themeService.findOne(id);
@@ -273,9 +273,9 @@ public class WebController {
 		model.addAttribute("idTheme", id);
 		
 		return "Themes";
-	}
+	}*/
 
-	@GetMapping("/deleteTheme/{id}")
+	/*@GetMapping("/deleteTheme/{id}")
 	public String deleteTheme(Model model, @PathVariable long id) {
 
 		Optional<Theme> theme = themeService.findOne(id);
@@ -288,7 +288,7 @@ public class WebController {
 		updateTabs(model);
 
 		return deletedTheme(model);
-	}
+	}*/
 
 	/*@GetMapping("/login")
 	public String login(Model model) {
@@ -344,7 +344,7 @@ public class WebController {
 		return "Histogram";
 	}
 
-	@GetMapping("/addTheme")
+	/*@GetMapping("/addTheme")
 	public String addTheme(Model model) {
 
 		updateTabs(model);
@@ -358,9 +358,9 @@ public class WebController {
 		updateTabs(model);
 
 		return "AddQuote";
-	}
+	}*/
 
-	@PostMapping("/saveTheme")
+	/*@PostMapping("/saveTheme")
 	public String saveTheme(Model model, @RequestParam("name") String name, 
 	@RequestParam("file") MultipartFile file){
 
@@ -385,9 +385,9 @@ public class WebController {
 		}
 
 		return repeatedTheme(model);
-	}
+	}*/
 
-	@PostMapping("/saveQuote")
+	/*@PostMapping("/saveQuote")
 	public String saveQuote(Model model, Quote quote) {
 
     List<Quote> list = quoteService.findByNameStrict(quote.getName());
@@ -399,7 +399,7 @@ public class WebController {
 		}
 		
 		return repeatedQuote(model);
-	}
+	}*/
 
 	/*@PostMapping("/saveUser")
 	public String saveUser(Model model, User user) {
@@ -414,7 +414,7 @@ public class WebController {
 		return "Error";
 	}*/
 
-	@GetMapping("/editQuote/{id}")
+	/*@GetMapping("/editQuote/{id}")
 	public String editQuote(Model model, @PathVariable long id) {
 		
 		Optional<Quote> quote = quoteService.findOne(id);
@@ -426,9 +426,9 @@ public class WebController {
 		updateTabs(model);
 		
 		return "AddQuote";
-	}
+	}*/
 
-	@GetMapping(value="/addQuoteToTheme{id}")
+	/*@GetMapping(value="/addQuoteToTheme{id}")
 	public String addQuoteToTheme(
 		Model model, 
 		@PathVariable long id, 
@@ -447,17 +447,17 @@ public class WebController {
     updateTabs(model);
 
     return "SelectQuote";
-	}
+	}*/
 
-	@GetMapping(value="/addTextToTheme{id}")
+	/*@GetMapping(value="/addTextToTheme{id}")
   public String addTextToTheme(Model model, @PathVariable long id) {
     model.addAttribute("themeId", id);
     updateTabs(model);
 
     return "AddText";
-	}
+	}*/
 
-	@PostMapping(value="/addTextToTheme{id}Save")
+	/*@PostMapping(value="/addTextToTheme{id}Save")
   public String saveTextToTheme(Model model, String text, @PathVariable long id) {
 
 		Optional<Theme> theme = this.themeService.findOne(id);
@@ -473,7 +473,7 @@ public class WebController {
     updateTabs(model);
 
     return showTheme(model, id);
-	}
+	}*/
 
 	@GetMapping(value="/close/{type}/{id}")
 	private String closeTab(Model model, @PathVariable String type, @PathVariable long id) {
@@ -493,7 +493,7 @@ public class WebController {
 		return "/GoToHome";
 	}
 
-	@GetMapping("/addQuoteToTheme{theme}/selectQuote{id}")
+	/*@GetMapping("/addQuoteToTheme{theme}/selectQuote{id}")
   public String selectQuote(Model model, @PathVariable long id, @PathVariable long theme) {
 
 			Optional<Quote> quote = quoteService.findOne(id);
@@ -508,9 +508,9 @@ public class WebController {
 			updateTabs(model);
 
 			return showTheme(model, theme);
-	}
+	}*/
 		
-	@GetMapping("/addQuoteToTheme{id}/searchQuotes")
+	/*@GetMapping("/addQuoteToTheme{id}/searchQuotes")
 	public String selectQuoteSearch(Model model, 
 		@PathVariable long id, 
 		@RequestParam String name,
@@ -539,9 +539,9 @@ public class WebController {
 		updateTabs(model);
 
 		return "SelectQuote";
-	}
+	}*/
 
-	@GetMapping("/deleteQuote{idQuote}FromTheme{idTheme}")
+	/*@GetMapping("/deleteQuote{idQuote}FromTheme{idTheme}")
 	public String deleteQuoteFromTheme(Model model, @PathVariable long idQuote, @PathVariable long idTheme){
 		Optional<Theme> theme = themeService.findOne(idTheme);
 		Optional<Quote> quote = quoteService.findOne(idQuote);
@@ -556,9 +556,9 @@ public class WebController {
 		updateTabs(model);
 
 		return showTheme(model, idTheme);
-	}
+	}*/
 
-	@GetMapping("/deleteText{idText}FromTheme{idTheme}")
+	/*@GetMapping("/deleteText{idText}FromTheme{idTheme}")
 	public String deleteTextFromTheme(Model model, @PathVariable int idText, @PathVariable long idTheme){
 		Optional<Theme> theme = themeService.findOne(idTheme);
 
@@ -570,9 +570,9 @@ public class WebController {
 		updateTabs(model);
 
 		return showTheme(model, idTheme);
-	}
+	}*/
 
-	@GetMapping("/editTheme{id}")
+	/*@GetMapping("/editTheme{id}")
 	public String editTheme(Model model, @PathVariable long id) {
 		
 		Optional<Theme> theme = themeService.findOne(id);
@@ -585,9 +585,9 @@ public class WebController {
 		updateTabs(model);
 		
 		return "EditTheme";
-	}
+	}*/
 
-	@PostMapping("/saveEditedTheme{idTheme}")
+	/*@PostMapping("/saveEditedTheme{idTheme}")
 	public String saveTheme(Model model, Theme theme, @PathVariable Long idTheme) {
 		
 		Optional<Theme> oldTheme = themeService.findOne(idTheme);
@@ -600,7 +600,7 @@ public class WebController {
 		updateTabs(model);
 
     return showTheme(model, idTheme);
-	}
+	}*/
 
 	@GetMapping("/generatePDF{id}")
 	public String generatePDF(Model model, @PathVariable Long id){
