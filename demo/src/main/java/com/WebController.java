@@ -67,7 +67,7 @@ public class WebController {
 		}
 	}
 
-	@ModelAttribute
+	/*@ModelAttribute
 	public void addUserToModel(Model model) {
 		Boolean logged = (userComponent.isLoggedUser());
 		model.addAttribute("logged", logged);
@@ -76,7 +76,7 @@ public class WebController {
 			model.addAttribute("admin", userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN"));
 			model.addAttribute("userName", userComponent.getLoggedUser().getName());
 		}
-	}
+	}*/
 
 	private void updateTabs(Model model) {
 		if (this.userComponent.isLoggedUser()) {
@@ -290,7 +290,7 @@ public class WebController {
 		return deletedTheme(model);
 	}
 
-	@GetMapping("/login")
+	/*@GetMapping("/login")
 	public String login(Model model) {
 
 		model.addAttribute("hideLogin", true);
@@ -316,7 +316,7 @@ public class WebController {
 		updateTabs(model);
 
 		return "Register";
-	}
+	}*/
   
   private class MyInteger {
 		private int value;
@@ -401,7 +401,7 @@ public class WebController {
 		return repeatedQuote(model);
 	}
 
-	@PostMapping("/saveUser")
+	/*@PostMapping("/saveUser")
 	public String saveUser(Model model, User user) {
 
 		User u = userService.findByName(user.getName());
@@ -412,7 +412,7 @@ public class WebController {
 		}
 
 		return "Error";
-	}
+	}*/
 
 	@GetMapping("/editQuote/{id}")
 	public String editQuote(Model model, @PathVariable long id) {
