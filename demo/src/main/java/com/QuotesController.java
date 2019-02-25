@@ -1,49 +1,20 @@
 package com;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.quote.Quote;
-import com.theme.Theme;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class ThemeQuotesController extends GeneralController{
-	@GetMapping("/deletedTheme")
-	public String deletedTheme(Model model) {
+public class QuotesController extends GeneralController{
 
-		home(model, null, null , 0, 0);
-		
-		model.addAttribute("deleteThemeMessage", true);
-
-		return "Home";
-	}
-
-	@GetMapping("/savedTheme")
-	public String savedTheme(Model model) {
-
-		home(model, null, null , 0, 0);
-		
-		model.addAttribute("saveThemeMessage", true);
-
-		return "Home";
-	}
-
-	@GetMapping("/repeatedTheme")
-	public String repeatedTheme(Model model) {
-
-		home(model, null, null , 0, 0);
-	
-		model.addAttribute("repeatThemeMessage", true);
-
-		return "Home";
-	}
-
-	
-	@GetMapping("/deletedQuote")
+    @GetMapping("/deletedQuote")
 	public String deletedQuote(Model model) {
 
 		home(model, null, null , 0, 0);
@@ -76,7 +47,7 @@ public class ThemeQuotesController extends GeneralController{
 	@GetMapping("/quote/{id}")
 	public String showQuote(Model model, @PathVariable long id) {
 
-		Optional<Quote> quote = super.quoteService.findOne(id);
+		Optional<Quote> quote = quoteService.findOne(id);
 
 		if (quote.isPresent()) {
 			Quote q = quote.get();
@@ -106,41 +77,41 @@ public class ThemeQuotesController extends GeneralController{
 		updateTabs(model);
 
 		return deletedQuote(model);
-	}
-
-	@GetMapping("/theme/{id}")
-	public String showTheme(Model model, @PathVariable long id) {
-
-		Optional<Theme> theme = themeService.findOne(id);
-
-		if (theme.isPresent()) {
-			Theme t = theme.get();
-			model.addAttribute("theme", t);
-
-			if (!this.userComponent.getLoggedUser().getOpenTabs().contains(t)) {
-				this.userComponent.getLoggedUser().addTab(t);
-			}
-			this.userComponent.getLoggedUser().setActive(t);
-		}
+    }
+    
+    @GetMapping("/addQuote")
+	public String addQuote(Model model) {
 
 		updateTabs(model);
-		model.addAttribute("idTheme", id);
+
+		return "AddQuote";
+    }
+    
+    @PostMapping("/saveQuote")
+	public String saveQuote(Model model, Quote quote) {
+
+    List<Quote> list = quoteService.findByNameStrict(quote.getName());
+    
+		if (list.isEmpty()) {
+			quoteService.save(quote);
+			updateTabs(model);
+			return savedQuote(model);
+		}
 		
-		return "Themes";
-	}
-
-	@GetMapping("/deleteTheme/{id}")
-	public String deleteTheme(Model model, @PathVariable long id) {
-
-		Optional<Theme> theme = themeService.findOne(id);
-		if (theme.isPresent()) {
-			this.userComponent.getLoggedUser().removeTab(theme.get());
+		return repeatedQuote(model);
+    }
+    
+    @GetMapping("/editQuote/{id}")
+	public String editQuote(Model model, @PathVariable long id) {
+		
+		Optional<Quote> quote = quoteService.findOne(id);
+		
+		if(quote.isPresent()) {
+			model.addAttribute("quote", quote.get());
 		}
-
-		themeService.delete(id);
-
+		
 		updateTabs(model);
-
-		return deletedTheme(model);
+		
+		return "AddQuote";
 	}
 }
