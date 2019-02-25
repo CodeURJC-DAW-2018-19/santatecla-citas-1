@@ -81,7 +81,7 @@
                   <a href="/theme/{{id}}" class="card-title">{{name}}</a>
                   {{#admin}}
                   <a title="Borrar" id="delete"
-                    onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/deleteTheme/{{id}}')"
+                    onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/theme/deleteTheme{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
                     <i class="material-icons">delete_outline</i>
                   </a>
@@ -177,7 +177,7 @@
                   <a href="/quote/{{id}}" class="card-title">"{{name}}"</a>
                   {{#admin}}
                   <a title="Borrar" id="delete"
-                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta cita?','/deleteQuote/{{id}}')"
+                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta cita?','/quote/deleteQuote/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
                     <i class="material-icons">delete_outline</i>
                   </a>

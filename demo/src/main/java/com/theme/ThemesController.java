@@ -88,7 +88,7 @@ public class ThemesController extends GeneralController{
 		return "Themes";
 	}
 
-	@GetMapping("/deleteTheme/{id}")
+	@GetMapping("/deleteTheme{id}")
 	public String deleteTheme(Model model, @PathVariable long id) {
 
 		Optional<Theme> theme = themeService.findOne(id);
@@ -186,7 +186,7 @@ public class ThemesController extends GeneralController{
 	}
 
 
-	@GetMapping("/addQuoteToTheme{theme}/selectQuote{id}")
+	@GetMapping("/addQuoteToTheme{theme}selectQuote{id}")
   public String selectQuote(Model model, @PathVariable long id, @PathVariable long theme) {
 
 			Optional<Quote> quote = quoteService.findOne(id);
@@ -203,7 +203,7 @@ public class ThemesController extends GeneralController{
 			return showTheme(model, theme);
 	}
 		
-	@GetMapping("/addQuoteToTheme{id}/searchQuotes")
+	@GetMapping("/addQuoteToTheme{id}searchQuotes")
 	public String selectQuoteSearch(Model model, 
 		@PathVariable long id, 
 		@RequestParam String name,
