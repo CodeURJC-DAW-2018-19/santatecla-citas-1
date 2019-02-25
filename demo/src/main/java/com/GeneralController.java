@@ -38,16 +38,16 @@ public class GeneralController{
 	@Autowired
 	protected UserComponent userComponent;
 
-	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/demo/src/main/resources/static/assets/img");
+	protected static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/demo/src/main/resources/static/assets/img");
 
 	@PostConstruct
 	public void init() throws IOException {
 		if (!Files.exists(FILES_FOLDER)) {
 			Files.createDirectories(FILES_FOLDER);
 		}
-    }
+  }
     
-    private void updateTabs(Model model) {
+  protected void updateTabs(Model model) {
 		if (this.userComponent.isLoggedUser()) {
 			model.addAttribute("openTabs", this.userComponent.getLoggedUser().getOpenTabs());
 		}

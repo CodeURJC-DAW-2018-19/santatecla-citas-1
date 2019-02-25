@@ -3,11 +3,8 @@ package com;
 import java.util.Optional;
 
 import com.quote.Quote;
-import com.quote.QuoteService;
-import com.theme.ThemeService;
+import com.theme.Theme;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
