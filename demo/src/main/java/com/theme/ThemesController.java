@@ -182,11 +182,13 @@ public class ThemesController extends GeneralController{
 
     updateTabs(model);
 
-    return showTheme(model, id);
+		showTheme(model, id);
+		model.addAttribute("url", id);
+		return "GoToTheme";
 	}
 
 
-	@GetMapping("/addQuoteToTheme/{theme}/selectQuote{id}")
+	@GetMapping("/addQuoteToTheme/{theme}/selectQuote/{id}")
   public String selectQuote(Model model, @PathVariable long id, @PathVariable long theme) {
 
 			Optional<Quote> quote = quoteService.findOne(id);
@@ -200,7 +202,9 @@ public class ThemesController extends GeneralController{
 
 			updateTabs(model);
 
-			return showTheme(model, theme);
+			showTheme(model, theme);
+			model.addAttribute("url", theme);
+			return "GoToTheme";
 	}
 		
 	@GetMapping("/addQuoteToTheme/{id}/searchQuotes")
@@ -248,7 +252,9 @@ public class ThemesController extends GeneralController{
 
 		updateTabs(model);
 
-		return showTheme(model, idTheme);
+		showTheme(model, idTheme);
+		model.addAttribute("url", idTheme);
+		return "GoToTheme";
 	}
 
 	@GetMapping("/deleteText/{idText}/FromTheme/{idTheme}")
@@ -262,7 +268,9 @@ public class ThemesController extends GeneralController{
 
 		updateTabs(model);
 
-		return showTheme(model, idTheme);
+		showTheme(model, idTheme);
+		model.addAttribute("url", idTheme);
+		return "GoToTheme";
 	}
 
 	@GetMapping("/editTheme/{id}")
@@ -292,7 +300,9 @@ public class ThemesController extends GeneralController{
 		
 		updateTabs(model);
 
-    return showTheme(model, idTheme);
+    showTheme(model, idTheme);
+		model.addAttribute("url", idTheme);
+		return "GoToTheme";
 	}
 
 	@GetMapping("/generatePDF/{id}")

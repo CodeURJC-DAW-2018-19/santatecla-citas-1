@@ -12,8 +12,8 @@
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
-  <link href="../assets/css/material-dashboard/material-dashboard.css?v=2.1.1" rel="stylesheet" />
-  <link href="../assets/css/other.css" rel="stylesheet" />
+  <link href="/assets/css/material-dashboard/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+  <link href="/assets/css/other.css" rel="stylesheet" />
 </head>
 
 <body class="body">
@@ -29,7 +29,7 @@
       </div>
       <div class="card-body">
 
-        <form action="/theme/saveEditedTheme{{idTheme}}" method="POST">
+        <form action="/theme/saveEditedTheme/{{idTheme}}" method="POST">
           {{#theme}}<input type="hidden" name="id" value="{{id}}" class="form-control" />{{/theme}}
           {{#theme}}
           <input type="text" class="form-control" value="{{name}}" id="name" name="name"

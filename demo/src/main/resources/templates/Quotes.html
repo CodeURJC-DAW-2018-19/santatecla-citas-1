@@ -12,8 +12,8 @@
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
-  <link href="../assets/css/material-dashboard/material-dashboard.css?v=2.1.1" rel="stylesheet" />
-  <link href="../assets/css/other.css" rel="stylesheet" />
+  <link href="/assets/css/material-dashboard/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+  <link href="/assets/css/other.css" rel="stylesheet" />
 </head>
 
 <body class="body">
@@ -87,10 +87,13 @@
 
   {{#admin}}
   <div class="BCenter">
-    <a href="/quote/editQuote{{id}}" type="button" class="btn btn-primary btn-lg active">Editar</a>
+    <a href="/quote/editQuote/{{id}}" type="button" class="btn btn-primary btn-lg active">Editar</a>
   </div>
   {{/admin}}
 
+  {{/quote}}
+  {{^quote}}
+    <script> window.location.href = "/Error" </script>
   {{/quote}}
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
