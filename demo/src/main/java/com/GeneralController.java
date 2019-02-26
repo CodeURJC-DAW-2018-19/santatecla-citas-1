@@ -1,4 +1,4 @@
-package com;
+/*package com;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -126,4 +126,4 @@ public class GeneralController{
     
     return "Home";
   }
-}
+}*/
