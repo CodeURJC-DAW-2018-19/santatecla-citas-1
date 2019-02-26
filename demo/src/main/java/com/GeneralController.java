@@ -1,4 +1,4 @@
-package com;
+/*package com;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -140,9 +140,9 @@ public class GeneralController{
 		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
     
     return "Home";
-	}
-	
-	@GetMapping("/error")
+  }
+  
+  @GetMapping("/error")
 	public String error(Model model) {
 		
 		updateTabs(model);
