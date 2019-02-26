@@ -30,19 +30,19 @@
 
 {{^hideLogin}}
 {{^logged}}
-<a id="logButton" href="/login" class="btn btn-primary btn-bg active" role="button" aria-pressed="true">
+<a id="logButton" href="/user/login" class="btn btn-primary btn-bg active" role="button" aria-pressed="true">
   LogIn <i class="material-icons">supervised_user_circle</i>
 </a>
 {{/logged}}
 {{#logged}}
-<a id="logButton" href="/logout" class="btn btn-primary btn-bg active logout" style="background-color: #6f19be"
+<a id="logButton" href="/user/logout" class="btn btn-primary btn-bg active logout" style="background-color: #6f19be"
   role="button" aria-pressed="true">
   LogOut <i class="material-icons">power_settings_new</i>
 </a>
 {{/logged}}
 {{/hideLogin}}
 {{#hideLogin}}
-<a id="logButton" href="/register" class="btn btn-primary btn-bg active" role="button" aria-pressed="true">
+<a id="logButton" href="/user/register" class="btn btn-primary btn-bg active" role="button" aria-pressed="true">
   SignIn <i class="material-icons">person_add</i>
 </a>
 {{/hideLogin}}

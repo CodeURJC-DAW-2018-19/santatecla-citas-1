@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
@@ -21,35 +24,47 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GeneralController{
-	
   @Autowired
-	private QuoteService quoteService;
+	protected QuoteService quoteService;
 
 	@Autowired
-	private ThemeService themeService;
+	protected ThemeService themeService;
 
 	@Autowired
-	private UserService userService;
+	protected UserService userService;
 
 	@Autowired
-	private UserComponent userComponent;
-
-	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/demo/src/main/resources/static/assets/img");
+	protected UserComponent userComponent;
+  
+  protected static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/demo/src/main/resources/static/assets/img");
 
 	@PostConstruct
 	public void init() throws IOException {
 		if (!Files.exists(FILES_FOLDER)) {
 			Files.createDirectories(FILES_FOLDER);
 		}
-    }
+  }
     
-    private void updateTabs(Model model) {
+  protected void updateTabs(Model model) {
 		if (this.userComponent.isLoggedUser()) {
 			model.addAttribute("openTabs", this.userComponent.getLoggedUser().getOpenTabs());
+		}
+	}
+
+	@ModelAttribute
+	public void addUserToModel(Model model) {
+		Boolean logged = (userComponent.isLoggedUser());
+		model.addAttribute("logged", logged);
+
+		if (logged) {
+			model.addAttribute("admin", userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN"));
+			model.addAttribute("userName", userComponent.getLoggedUser().getName());
 		}
 	}
 
@@ -126,4 +141,56 @@ public class GeneralController{
     
     return "Home";
   }
-}*/
+  
+  @GetMapping("/error")
+	public String error(Model model) {
+		
+		updateTabs(model);
+
+		return "Error";
+	}
+
+	private class MyInteger {
+		private int value;
+		public MyInteger(int v) {
+			value = v;
+		}
+	}
+
+	@GetMapping("/histogram")
+	public String histogram(Model model) {
+  
+  	List<Theme> savedThemes = this.themeService.findAll();
+		model.addAttribute("savedThemes", savedThemes);
+
+		List<MyInteger> numQuotes = new ArrayList<>();
+    
+		for(Theme t : savedThemes) {
+			numQuotes.add(new MyInteger(this.themeService.findOne(t.getId()).get().getQuotes().size()));
+		}
+    
+		model.addAttribute("numQuotes", numQuotes);
+    
+		updateTabs(model);
+
+		return "Histogram";
+	}
+
+	@GetMapping(value="/close/{type}/{id}")
+	private String closeTab(Model model, @PathVariable String type, @PathVariable long id) {
+		
+		if (type.equals("theme")) {	
+			Optional<Theme> theme = themeService.findOne(id);
+			if(theme.isPresent()) {
+				this.userComponent.getLoggedUser().removeTab(theme.get());
+			}
+		} else if(type.equals("quote")) {
+			Optional<Quote> quote = quoteService.findOne(id);
+			if(quote.isPresent()) {
+				this.userComponent.getLoggedUser().removeTab(quote.get());
+			}
+		}
+
+		return "/GoToHome";
+	}
+}

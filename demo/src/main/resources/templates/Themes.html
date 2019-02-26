@@ -12,18 +12,19 @@
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
-  <link href="../assets/css/material-dashboard/material-dashboard.css?v=2.1.1" rel="stylesheet" />
-  <link href="../assets/css/other.css" rel="stylesheet" />
+  <link href="/assets/css/material-dashboard/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+  <link href="/assets/css/other.css" rel="stylesheet" />
 </head>
 
 <body class="body">
 
   {{>header}}
 
+  {{#theme}}
+
   <div class="col-md-12">
     <div class="card">
-      {{#theme}}
-      <img id="img-theme" src="../assets/img/image-{{id}}.jpg" class="rounded float-right">
+      <img id="img-theme" src="/assets/img/image-{{id}}.jpg" class="rounded float-right">
       {{#admin}}
       <div class="row">
         <div class="col-md-6">
@@ -34,7 +35,7 @@
                   <h3 class="card-title">{{name}}</h3>
                 </div>
                 <div class="col-md-6">
-                  <a id="edit" href="/editTheme{{id}}" class="btn btn-primary btn-sm active">Editar</a>
+                  <a id="edit" href="/theme/editTheme/{{id}}" class="btn btn-primary btn-sm active">Editar</a>
                 </div>
               </div>
             </div>
@@ -47,7 +48,7 @@
                 <div class="card-title">
                   Referencia Cita {{id}}
                   <a title="Borrar" id="delete"
-                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteQuote{{id}}FromTheme{{idTheme}}')"
+                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/theme/deleteQuote/{{id}}/FromTheme/{{idTheme}}')"
                     class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
                     <i class="material-icons">delete_outline</i>
                   </a>
@@ -68,7 +69,7 @@
                 <div class="card-title">
                   Referencia Texto {{-index}}
                   <a title="Borrar" id="delete"
-                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/deleteText{{-index}}FromTheme{{idTheme}}')"
+                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta referencia?','/theme/deleteText/{{-index}}/FromTheme/{{idTheme}}')"
                     class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
                     <i class="material-icons">delete_outline</i>
                   </a>
@@ -131,7 +132,7 @@
               <p>"{{text}}"</p>
               {{/texts}}
             </div>
-            <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">
+            <a type="button" href="/theme/generatePDF/{{id}}" class="btn btn-default theme-pdf-button">
               Generar PDF <i class="material-icons">picture_as_pdf</i>
             </a>
 
@@ -152,15 +153,19 @@
           </blockquote>
           {{/quotes}}
         </div>
-        <a type="button" href="/generatePDF{{id}}" class="btn btn-default theme-pdf-button">
+        <a type="button" href="/theme/generatePDF/{{id}}" class="btn btn-default theme-pdf-button">
           Generar PDF <i class="material-icons">picture_as_pdf</i>
         </a>
       </div>
       {{/admin}}
 
-      {{/theme}}
     </div>
   </div>
+
+  {{/theme}}
+  {{^theme}}
+    <script> window.location.href = "/Error" </script>
+  {{/theme}}
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -171,7 +176,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <script src="../assets/js/script.js"></script>
+  <script src="/assets/js/script.js"></script>
 
 </body>
 
