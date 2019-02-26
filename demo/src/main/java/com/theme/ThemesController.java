@@ -234,7 +234,7 @@ public class ThemesController extends GeneralController{
 		return "SelectQuote";
 	}
 
-	@GetMapping("/deleteQuote{idQuote}/FromTheme{idTheme}")
+	@GetMapping("/deleteQuote/{idQuote}/FromTheme/{idTheme}")
 	public String deleteQuoteFromTheme(Model model, @PathVariable long idQuote, @PathVariable long idTheme){
 		Optional<Theme> theme = themeService.findOne(idTheme);
 		Optional<Quote> quote = quoteService.findOne(idQuote);
