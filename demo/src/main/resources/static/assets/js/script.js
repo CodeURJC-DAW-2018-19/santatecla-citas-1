@@ -7,8 +7,8 @@ function confirmAlert(message, url) {
 
 function addSomethingToTheme(id) {
     if(document.getElementById('exampleRadios1').checked)  {
-        window.location.href = "/theme/addQuoteToTheme" + id;
+        window.location.href = "/theme/addQuoteToTheme/" + id;
     } else {
-        window.location.href = "/theme/addTextToTheme" + id;
+        window.location.href = "/theme/addTextToTheme/" + id;
     }
 }
