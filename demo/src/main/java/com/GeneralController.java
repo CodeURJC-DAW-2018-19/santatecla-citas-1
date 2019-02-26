@@ -191,6 +191,6 @@ public class GeneralController{
 			}
 		}
 
-		return "/GoToHome";
+		return home(model, null, null, null, null);
 	}
 }

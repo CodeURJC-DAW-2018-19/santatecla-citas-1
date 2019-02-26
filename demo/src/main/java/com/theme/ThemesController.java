@@ -182,9 +182,7 @@ public class ThemesController extends GeneralController{
 
     updateTabs(model);
 
-		showTheme(model, id);
-		model.addAttribute("url", id);
-		return "GoToTheme";
+		return showTheme(model, id);
 	}
 
 
@@ -202,9 +200,7 @@ public class ThemesController extends GeneralController{
 
 			updateTabs(model);
 
-			showTheme(model, theme);
-			model.addAttribute("url", theme);
-			return "GoToTheme";
+			return showTheme(model, theme);
 	}
 		
 	@GetMapping("/addQuoteToTheme/{id}/searchQuotes")
@@ -252,9 +248,7 @@ public class ThemesController extends GeneralController{
 
 		updateTabs(model);
 
-		showTheme(model, idTheme);
-		model.addAttribute("url", idTheme);
-		return "GoToTheme";
+		return showTheme(model, idTheme);
 	}
 
 	@GetMapping("/deleteText/{idText}/FromTheme/{idTheme}")
@@ -268,9 +262,7 @@ public class ThemesController extends GeneralController{
 
 		updateTabs(model);
 
-		showTheme(model, idTheme);
-		model.addAttribute("url", idTheme);
-		return "GoToTheme";
+		return showTheme(model, idTheme);
 	}
 
 	@GetMapping("/editTheme/{id}")
@@ -300,9 +292,7 @@ public class ThemesController extends GeneralController{
 		
 		updateTabs(model);
 
-    showTheme(model, idTheme);
-		model.addAttribute("url", idTheme);
-		return "GoToTheme";
+		return showTheme(model, idTheme);
 	}
 
 	@GetMapping("/generatePDF/{id}")
