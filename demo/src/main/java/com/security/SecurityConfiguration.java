@@ -19,18 +19,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         
         // Public pages
+        http.authorizeRequests().antMatchers("/assets/**").permitAll();
         http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeRequests().antMatchers("/histogram").permitAll();
-        http.authorizeRequests().antMatchers("/login").permitAll();
-        http.authorizeRequests().antMatchers("/register").permitAll();
-        http.authorizeRequests().antMatchers("/saveUser").permitAll();
+        http.authorizeRequests().antMatchers("/user/login").permitAll();
+        http.authorizeRequests().antMatchers("/user/register").permitAll();
+        http.authorizeRequests().antMatchers("/user/saveUser").permitAll();
 
         // Private pages (all other pages)
         http.authorizeRequests().antMatchers("/quote/*").hasAnyRole("USER");
         http.authorizeRequests().antMatchers("/theme/*").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/generatePDF*").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/getpdf").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/*").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/theme/generatePDF/*").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/theme/getpdf").hasAnyRole("USER");
+        http.authorizeRequests().anyRequest().hasAnyRole("ADMIN");
 
         // Login form
         http.formLogin().loginPage("/user/login");
