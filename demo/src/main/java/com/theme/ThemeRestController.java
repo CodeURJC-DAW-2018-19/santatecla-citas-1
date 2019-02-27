@@ -2,6 +2,7 @@ package com.theme;
 
 import java.util.List;
 
+import com.quote.Quote;
 import com.quote.QuoteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ public class ThemeRestController{
     @GetMapping(value="/themes/")
     public List<Theme> themes(){
         return this.themeService.findAll();
+    }
+
+    @GetMapping(value="/quotes/")
+    public List<Quote> quotes(){
+        return this.quoteService.findAll();
     }
     
 }
