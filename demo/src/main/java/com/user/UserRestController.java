@@ -37,16 +37,17 @@ public class UserRestController{
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
-		User findUser = userService.findOne(id);
+		User findUser = userService.findByName(newUser.getName());
 
 		//If the user is already sign in or already exists
-		if((userComponent.getLoggedUser() != null || findUser != null) && !userComponent.isAdmin(){
+		if((userComponent.getLoggedUser() != null || findUser != null) && !userComponent.isAdmin()){
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
 
 		User user = new User();
 		user.setName(newUser.getName());
 		user.setPasswordHash(newUser.getPasswordHash());
+		userService.save(user);
 
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
