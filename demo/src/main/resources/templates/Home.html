@@ -76,21 +76,23 @@
 
           <!--<h4>{{numPageThemes}}</h4>-->
 
-          {{#showNextThemes}}
+          <button onclick="loadThemes(this.id)" type="buttom" id="lThemes" value="1" title="Cargar más" class="btn btn-info btn-round BCenter">
+            <i class="material-icons">more_horiz</i>
+          </button>
+
+          <!--{{#showNextThemes}}
           <a title="Cargar más"
             href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}"
             class="btn btn-info btn-round BCenter">
             <i class="material-icons">more_horiz</i>
           </a>
-          {{/showNextThemes}}
+          {{/showNextThemes}}-->
 
-          <!--MUSTACHE #ADMIN-->
-
+          {{#admin}}
           <a href="/theme/addTheme" type="button" class="btn btn-primary btn-lg btn-block">
             Añadir Tema <i class="material-icons">add_circle</i>
           </a>
-
-          <!--MUSTACHE /ADMIN-->
+          {{/admin}}
 
         </div>
       </div>
@@ -150,16 +152,19 @@
 
           <!--<h4>{{numPageQuotes}}</h4>-->
 
-          {{#showNextQuotes}}
+          <button onclick="loadQuotes(this.id)" type="buttom" id="lQuotes" value="1" title="Cargar más" class="btn btn-info btn-round BCenter">
+            <i class="material-icons">more_horiz</i>
+          </button>
+
+          <!--{{#showNextQuotes}}
           <a title="Cargar más"
             href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}"
             class="btn btn-info btn-round BCenter">
             <i class="material-icons">more_horiz</i>
           </a>
-          {{/showNextQuotes}}
+          {{/showNextQuotes}}-->
 
           {{#admin}}
-
           <a href="/quote/addQuote" type="button" class="btn btn-primary btn-lg btn-block">
             Añadir Cita <i class="material-icons">add_circle</i>
           </a>

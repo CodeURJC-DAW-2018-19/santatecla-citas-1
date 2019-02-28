@@ -24,7 +24,9 @@ public class ThemeService {
 
 	public Page<Theme> findAll(Pageable page) {
 
-		return repository.findAll(PageRequest.of(0, pageSize(page)));
+		page = new PageRequest(0, pageSize(page));
+
+		return repository.findAll(page);
 	}
 
 	public void save(Theme theme) {
