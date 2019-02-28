@@ -18,7 +18,6 @@ $(document).ready(function(){
         url:"https://localhost:8443/quotes/",
         dataType: 'json'
     }).done(function(data) {
-        console.log(data);
         for(var i=0; i<data.length; i++){
             $("#home-quotes").append(
                 "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/quote/"+data[i].id+"\" class=\"card-title\">"+data[i].name+"</a>"+

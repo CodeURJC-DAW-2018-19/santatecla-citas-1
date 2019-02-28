@@ -2,17 +2,16 @@ package com.theme;
 
 import java.util.List;
 
-import com.quote.Quote;
-import com.quote.QuoteService;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ThemeRestController{
-    @Autowired
-	protected QuoteService quoteService;
 
 	@Autowired
     protected ThemeService themeService;
@@ -22,9 +21,11 @@ public class ThemeRestController{
         return this.themeService.findAll();
     }
 
-    @GetMapping(value="/quotes/")
-    public List<Quote> quotes(){
-        return this.quoteService.findAll();
+    @PostMapping(value="/themes/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Theme newTheme(@RequestBody Theme theme){
+        this.themeService.save(theme);
+        return theme;
     }
     
 }
