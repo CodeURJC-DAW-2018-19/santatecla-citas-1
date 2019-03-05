@@ -3,6 +3,8 @@ package com.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +22,8 @@ public class UserRestController{
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public ResponseEntity<User> login() {
+	@GetMapping(value="/logIn")
+	public ResponseEntity<User> logIn() {
 		if (userComponent.getLoggedUser() != null){
 			return new ResponseEntity<>(userComponent.getLoggedUser(), HttpStatus.OK);
 		}
@@ -31,7 +33,7 @@ public class UserRestController{
 		
 	}
 
-	@RequestMapping(value="/register", method=RequestMethod.POST)
+	@PostMapping(value="/register")
 	public ResponseEntity<User> register(@RequestBody User newUser) {
 		if(newUser == null){
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -49,7 +51,7 @@ public class UserRestController{
 		user.setPasswordHash(newUser.getPasswordHash());
 		userService.save(user);
 
-		return new ResponseEntity<>(HttpStatus.CREATED);
+		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}
 	
 	
