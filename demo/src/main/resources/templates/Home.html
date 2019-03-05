@@ -72,8 +72,8 @@
           </div>
           {{/repeatThemeMessage}}
 
-          {{#themes}}
           <div class="row" id="home-themes">
+            {{#themes}}
               <div class="col-md-6">
                 <div class="card">
                   <div class="card-body">
@@ -85,8 +85,8 @@
                   </div>
                 </div>
               </div>
+              {{/themes}}
           </div>
-          {{/themes}}
           <!--<h4>{{numPageThemes}}</h4>-->
 
           <button onclick="loadThemes(this.id)" type="buttom" id="lThemes" value="1" title="Cargar más" class="btn btn-info btn-round BCenter">
@@ -161,23 +161,21 @@
           </div>
           {{/repeatQuoteMessage}}
 
-          {{#quotes}}
           <div class="row" id="home-quotes">
-              <div class="row" id="home-quotes">
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-body">
-                        <a href="/quote/{{id}}" class="card-title">{{name}}</a>
-                        <a title="Borrar" id="delete" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/quote/deleteQuote/{{id}}')"
-                        class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
-                          <i class="material-icons">delete_outline</i>
-                        </a>
-                      </div>
-                    </div>
+              {{#quotes}}
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <a href="/quote/{{id}}" class="card-title">{{name}}</a>
+                    <a title="Borrar" id="delete" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/quote/deleteQuote/{{id}}')"
+                    class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
+                      <i class="material-icons">delete_outline</i>
+                    </a>
                   </div>
+                </div>
               </div>
+              {{/quotes}}
           </div>
-          {{/quotes}}
 
           <!--<h4>{{numPageQuotes}}</h4>-->
 
