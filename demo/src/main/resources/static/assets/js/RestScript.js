@@ -2,7 +2,7 @@
     $(document).ready(function(){
         var p = document.getElementById(id).value;
         $.ajax({
-            url:"https://localhost:8443/themes/?page="+p,
+            url:"https://localhost:8443/api/themes/?page="+p,
             dataType: 'json'
         }).done(function(data) {
             var suma = parseInt(p) + parseInt(1);
@@ -22,7 +22,7 @@ function loadQuotes(id){
     $(document).ready(function(){
         var p = document.getElementById(id).value;
         $.ajax({
-            url:"https://localhost:8443/quotes/?page="+p,
+            url:"https://localhost:8443/api/quotes/?page="+p,
             dataType: 'json'
         }).done(function(data) {
             var suma = parseInt(p) + parseInt(1);
