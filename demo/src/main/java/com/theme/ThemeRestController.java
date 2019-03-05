@@ -17,12 +17,12 @@ public class ThemeRestController{
 	@Autowired
     protected ThemeService themeService;
     
-    @GetMapping(value="/themes/")
+    @GetMapping(value="/api/themes/")
     public Page<Theme> themes(@PageableDefault Pageable page){
         return this.themeService.findAll(page);
     }
 
-    @PostMapping(value="/themes/")
+    @PostMapping(value="/api/themes/")
     @ResponseStatus(HttpStatus.CREATED)
     public Theme newTheme(@RequestBody Theme theme){
         this.themeService.save(theme);

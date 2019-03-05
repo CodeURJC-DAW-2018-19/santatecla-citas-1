@@ -12,7 +12,7 @@ public class QuoteRestController{
     @Autowired
 	protected QuoteService quoteService;
 
-    @GetMapping(value="/quotes/")
+    @GetMapping(value="/api/quotes/")
     public Page<Quote> quotes(@PageableDefault Pageable page){
         return this.quoteService.findAll(page);
     }
