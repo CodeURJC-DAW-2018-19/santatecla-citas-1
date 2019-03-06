@@ -19,9 +19,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception{
         
         http.antMatcher("/api/**");
-
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/").permitAll();		
-		
+			
 		// User
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user").permitAll();		
 		
