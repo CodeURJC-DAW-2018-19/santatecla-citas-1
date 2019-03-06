@@ -2,6 +2,9 @@ package com.theme;
 
 import java.util.Optional;
 
+import com.quote.Quote;
+import com.quote.QuoteService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +27,9 @@ public class ThemeRestController{
 
 	@Autowired
     protected ThemeService themeService;
+
+    @Autowired
+    protected QuoteService quoteService;
     
     @GetMapping(value="/")
     public Page<Theme> themes(@PageableDefault Pageable page){
@@ -61,7 +67,67 @@ public class ThemeRestController{
         Optional<Theme> t = this.themeService.findOne(id);
         if(t.isPresent()){
             t.get().update(theme);
+            this.themeService.save(t.get());
             return new ResponseEntity<>(t.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping(value="/addTextToTheme{id}")
+    public ResponseEntity<Theme> addTextToTheme(@RequestBody Text text, @PathVariable long id){
+        Optional<Theme> t =this.themeService.findOne(id);
+        if(t.isPresent()){
+            t.get().getTexts().add(text);
+            this.themeService.save(t.get());
+            return new ResponseEntity<>(t.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping(value="/deleteText{idText}/FromTheme{idTheme}")
+    public ResponseEntity<Theme> deleteTextFromTheme(@PathVariable long idText, @PathVariable long idTheme){
+        Optional<Theme> t =this.themeService.findOne(idTheme);
+        if(t.isPresent()){
+            Text text = new Text();
+            text.setId(idText);
+            if(t.get().getTexts().contains(text)){
+                t.get().getTexts().remove(text);
+                this.themeService.save(t.get());
+                return new ResponseEntity<>(t.get(), HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping(value="/addQuote{idQuote}ToTheme{idTheme}")
+    public ResponseEntity<Theme> addQuoteToTheme(@PathVariable long idQuote, @PathVariable long idTheme){
+        Optional<Theme> t =this.themeService.findOne(idTheme);
+        Optional<Quote> q = this.quoteService.findOne(idQuote);
+        if(t.isPresent()){
+            if(q.isPresent()){
+                if(!t.get().getQuotes().contains(q.get())){
+                    t.get().getQuotes().add(q.get());
+                    this.themeService.save(t.get());
+                    return new ResponseEntity<>(t.get(), HttpStatus.OK);
+                }
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping(value="/deleteQuote{idQuote}/FromTheme{idTheme}")
+    public ResponseEntity<Theme> deleteQuoteFromTheme(@PathVariable long idQuote, @PathVariable long idTheme){
+        Optional<Theme> t =this.themeService.findOne(idTheme);
+        Optional<Quote> q = this.quoteService.findOne(idQuote);
+        if(t.isPresent()){
+            if(q.isPresent()){
+                t.get().getQuotes().remove(q.get());
+                this.themeService.save(t.get());
+                return new ResponseEntity<>(t.get(), HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

@@ -69,4 +69,16 @@ public class Quote extends TabElement{
         return false;
     }
 
+    public void update(Quote q1){
+        if(q1.getName()!=null){
+            this.quote = q1.getName();
+        }
+        if(q1.getAuthor() != null){
+            this.author = q1.getAuthor();
+        }
+        if(q1.getBook() != null){
+            this.book = q1.getBook();
+        }
+    }
+
 }
