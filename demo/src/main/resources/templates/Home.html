@@ -35,7 +35,7 @@
             <form class="form-inline" action="/">
               <input class="form-control mr-sm-2" type="text" name='searchThemes' placeholder="Buscar un tema"
                 aria-label="Search">
-              <input name='searchQuotes' value="{{searchThemeString}}" hidden>
+              <input name='searchQuotes' value="{{searchQuoteString}}" hidden>
               <input name='pageTheme' value="0" hidden>
               <input name='pageQuote' value="{{numPageQuotes}}" hidden>
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
@@ -72,46 +72,39 @@
           </div>
           {{/repeatThemeMessage}}
 
-          <div class="row">
+          <div class="row" id="home-themes">
             {{#themes}}
-            <div class="col-md-6">
-              <div class="card">
-                <div class="card-body">
-                  {{#logged}}
-                  <a href="/theme/{{id}}" class="card-title">{{name}}</a>
-                  {{#admin}}
-                  <a title="Borrar" id="delete"
-                    onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/theme/deleteTheme/{{id}}')"
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <a href="/theme/{{id}}" class="card-title">{{name}}</a>
+                    <a title="Borrar" id="delete" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/theme/deleteTheme/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
-                    <i class="material-icons">delete_outline</i>
-                  </a>
-                  {{/admin}}
-                  {{/logged}}
-                  {{^logged}}
-                  {{name}}
-                  {{/logged}}
+                      <i class="material-icons">delete_outline</i>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-            {{/themes}}
+              {{/themes}}
           </div>
-
           <!--<h4>{{numPageThemes}}</h4>-->
 
-          {{#showNextThemes}}
+          <button onclick="loadThemes(this.id)" type="buttom" id="lThemes" value="1" title="Cargar más" class="btn btn-info btn-round BCenter">
+            <i class="material-icons">more_horiz</i>
+          </button>
+
+          <!--{{#showNextThemes}}
           <a title="Cargar más"
             href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}"
             class="btn btn-info btn-round BCenter">
             <i class="material-icons">more_horiz</i>
           </a>
-          {{/showNextThemes}}
+          {{/showNextThemes}}-->
 
           {{#admin}}
-
           <a href="/theme/addTheme" type="button" class="btn btn-primary btn-lg btn-block">
             Añadir Tema <i class="material-icons">add_circle</i>
           </a>
-
           {{/admin}}
 
         </div>
@@ -168,42 +161,37 @@
           </div>
           {{/repeatQuoteMessage}}
 
-          <div class="row">
-            {{#quotes}}
-            <div class="col-md-6">
-              <div class="card">
-                <div class="card-body">
-                  {{#logged}}
-                  <a href="/quote/{{id}}" class="card-title">"{{name}}"</a>
-                  {{#admin}}
-                  <a title="Borrar" id="delete"
-                    onclick="confirmAlert('¿Está seguro de que quiere borrar esta cita?','/quote/deleteQuote/{{id}}')"
+          <div class="row" id="home-quotes">
+              {{#quotes}}
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <a href="/quote/{{id}}" class="card-title">{{name}}</a>
+                    <a title="Borrar" id="delete" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/quote/deleteQuote/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
-                    <i class="material-icons">delete_outline</i>
-                  </a>
-                  {{/admin}}
-                  {{/logged}}
-                  {{^logged}}
-                  "{{name}}"
-                  {{/logged}}
+                      <i class="material-icons">delete_outline</i>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-            {{/quotes}}
+              {{/quotes}}
           </div>
 
           <!--<h4>{{numPageQuotes}}</h4>-->
 
-          {{#showNextQuotes}}
+          <button onclick="loadQuotes(this.id)" type="buttom" id="lQuotes" value="1" title="Cargar más" class="btn btn-info btn-round BCenter">
+            <i class="material-icons">more_horiz</i>
+          </button>
+
+          <!--{{#showNextQuotes}}
           <a title="Cargar más"
             href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}"
             class="btn btn-info btn-round BCenter">
             <i class="material-icons">more_horiz</i>
           </a>
-          {{/showNextQuotes}}
+          {{/showNextQuotes}}-->
 
           {{#admin}}
-
           <a href="/quote/addQuote" type="button" class="btn btn-primary btn-lg btn-block">
             Añadir Cita <i class="material-icons">add_circle</i>
           </a>
@@ -222,9 +210,7 @@
     </a>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
@@ -232,6 +218,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   <script src="/assets/js/script.js"></script>
+  <script src="/assets/js/RestScript.js"></script>
 </body>
 
 </html>

@@ -30,7 +30,9 @@ public class QuoteService {
   
   	public Page<Quote> findAll(Pageable page) {
 
-		return repository.findAll(PageRequest.of(0, pageSize(page)));
+		page = new PageRequest(0, pageSize(page));
+
+		return repository.findAll(page);
 	}
 
 	public void save(Quote book) {

@@ -72,4 +72,8 @@ public class Theme extends TabElement {
         return false;
     }
 
+    public void update(Theme t){
+        this.name = t.getName();
+    }
+
 }
