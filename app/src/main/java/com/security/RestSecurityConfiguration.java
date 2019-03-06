@@ -21,7 +21,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter{
         http.antMatcher("/api/**");
 			
 		// User
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user").permitAll();		
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user").permitAll();		
 		
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user/?*").hasAnyRole("ADMIN");		
@@ -48,8 +48,8 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter{
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/histogram").permitAll();
 		
 		// Access
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user/logIn").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user/register").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user/login").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user/register").permitAll();
         
         // Do not redirect when logout
 		http.logout().logoutSuccessHandler((rq, rs, a) -> { });

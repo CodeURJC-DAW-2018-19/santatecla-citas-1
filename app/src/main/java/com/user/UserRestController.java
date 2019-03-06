@@ -22,7 +22,7 @@ public class UserRestController{
 	@Autowired
 	private UserService userService;
 
-	@GetMapping(value="/logIn")
+	@GetMapping(value="/login")
 	public ResponseEntity<User> logIn() {
 		if (userComponent.getLoggedUser() != null){
 			return new ResponseEntity<>(userComponent.getLoggedUser(), HttpStatus.OK);
