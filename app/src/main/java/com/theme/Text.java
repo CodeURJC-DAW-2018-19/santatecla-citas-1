@@ -35,4 +35,10 @@ public class Text{
 	public void setId(long id) {
 		this.id = id;
     }
+
+    @Override
+    public boolean equals(Object t2){
+        Text t = (Text) t2;
+        return this.id == t.getId();
+    }
 }
