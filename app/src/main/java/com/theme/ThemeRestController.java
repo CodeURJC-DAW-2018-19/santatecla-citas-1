@@ -1,15 +1,24 @@
 package com.theme;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Optional;
 
 import com.quote.Quote;
 import com.quote.QuoteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -130,5 +139,25 @@ public class ThemeRestController{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "/PDF{id}", produces = "application/pdf")
+    public ResponseEntity<InputStreamResource> downloadPDFFile(@PathVariable long id){
+        try{
+            if(this.themeService.findOne(id).isPresent()){
+                byte[] pdf = this.themeService.generatePDF(id);
+                HttpHeaders respHeaders = new HttpHeaders();
+                MediaType mediaType = MediaType.parseMediaType("application/pdf");
+                respHeaders.setContentType(mediaType);
+                respHeaders.setContentLength(pdf.length);
+                InputStream is = new ByteArrayInputStream(pdf);
+                InputStreamResource isr = new InputStreamResource(is);
+                return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }catch(Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
