@@ -26,27 +26,16 @@ public class UserRestController{
 	@GetMapping(value="/login")
 	public ResponseEntity<User> logIn() {
 		if (userComponent.getLoggedUser() != null){
-			return new ResponseEntity<User>(userComponent.getLoggedUser(), HttpStatus.OK);
+			return new ResponseEntity<>(userComponent.getLoggedUser(), HttpStatus.OK);
 		}
 		else{
-			return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 		
 	}
 
 	@PostMapping(value="/register")
-	@ResponseStatus(HttpStatus.CREATED)
-	public User newUser(@RequestBody User user){
-		User newUser = new User(user.getName(), user.getPasswordHash());
-		userService.save(newUser);
-		return newUser;
-	}
-
-
-
-
-
-	/*public ResponseEntity<User> register(@RequestBody User newUser) {
+	public ResponseEntity<User> register(@RequestBody User newUser) {
 		if(newUser == null){
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
@@ -64,7 +53,7 @@ public class UserRestController{
 		userService.save(user);
 
 		return new ResponseEntity<>(user, HttpStatus.CREATED);
-	}*/
+	}
 	
 	
 }

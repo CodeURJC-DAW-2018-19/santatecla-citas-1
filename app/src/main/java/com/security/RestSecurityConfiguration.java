@@ -21,18 +21,13 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter{
         http.antMatcher("/api/**");
 			
 		// User
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user").permitAll();		
-		
-		//http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user").hasAnyRole("ADMIN", "USER");
-		//http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user/?*").hasAnyRole("ADMIN");		
-		//http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/?*").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user").permitAll();	
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user/login").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user/register").permitAll();	
 		
 		// Theme
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/theme/**").hasAnyRole("USER", "ADMIN");				
-		
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/theme/generatePDF").hasAnyRole("USER", "ADMIN");
-		
-		//http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/theme/**").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/theme/addTheme").hasAnyRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/theme/deleteTheme").hasAnyRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/theme/editTheme").hasAnyRole("ADMIN");
@@ -40,17 +35,12 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		// Quotes
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/quote/**").hasAnyRole("USER", "ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/quote/addQuote").hasAnyRole("ADMIN");
-		//http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/quote/?*").hasAnyRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/quote/editQuote").hasAnyRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/quote/deleteQuote").hasAnyRole("ADMIN");
 		
         // Histogram
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/histogram").permitAll();
 		
-		// Access
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user/login").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user/register").permitAll();
-        
         // Do not redirect when logout
 		http.logout().logoutSuccessHandler((rq, rs, a) -> { });
 		
