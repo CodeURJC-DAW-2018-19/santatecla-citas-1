@@ -42,7 +42,7 @@ public class GeneralController{
 	@Autowired
 	protected UserComponent userComponent;
   
-  protected static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/app/src/main/resources/static/assets/img");
+  protected static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/app/src/main/resources/static/assets/img/themes");
 
 	@PostConstruct
 	public void init() throws IOException {
