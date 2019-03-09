@@ -77,11 +77,18 @@
               <div class="col-md-6">
                 <div class="card">
                   <div class="card-body">
+                    {{#loged}}
                     <a href="/theme/{{id}}" class="card-title">{{name}}</a>
+                    {{/loged}}
+                    {{^loged}}
+                      {{name}}
+                    {{/loged}}
+                    {{#admin}}
                     <a title="Borrar" id="delete" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/theme/deleteTheme/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
                       <i class="material-icons">delete_outline</i>
                     </a>
+                    {{/admin}}
                   </div>
                 </div>
               </div>
@@ -161,16 +168,29 @@
           </div>
           {{/repeatQuoteMessage}}
 
+          {{#admin}}
+          <li id="isAdmin" style="display:none">1</li>
+          {{/admin}}
+          {{^admin}}
+          <li id="isAdmin" style="display:none">0</li>
+          {{/admin}}
           <div class="row" id="home-quotes">
               {{#quotes}}
               <div class="col-md-6">
                 <div class="card">
                   <div class="card-body">
+                    {{#loged}}
                     <a href="/quote/{{id}}" class="card-title">{{name}}</a>
+                    {{/loged}}
+                    {{^loged}}
+                      {{name}}
+                    {{/loged}}
+                    {{#admin}}
                     <a title="Borrar" id="delete" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/quote/deleteQuote/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
                       <i class="material-icons">delete_outline</i>
                     </a>
+                    {{/admin}}
                   </div>
                 </div>
               </div>
