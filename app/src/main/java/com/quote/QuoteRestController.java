@@ -30,7 +30,7 @@ public class QuoteRestController{
     }
     
     @GetMapping(value="/{id}")
-    public ResponseEntity<Quote> concreteThemes(@PathVariable long id){
+    public ResponseEntity<Quote> concreteQuote(@PathVariable long id){
         Optional<Quote> q = this.quoteService.findOne(id);
         if(q.isPresent()){
             return new ResponseEntity<>(q.get(), HttpStatus.OK);
@@ -40,13 +40,13 @@ public class QuoteRestController{
 
     @PostMapping(value="/")
     @ResponseStatus(HttpStatus.CREATED)
-    public Quote newTheme(@RequestBody Quote quote){
+    public Quote newQuote(@RequestBody Quote quote){
         this.quoteService.save(quote);
         return quote;
     }
     
     @DeleteMapping(value="/{id}")
-    public ResponseEntity<Quote> deleteTheme(@PathVariable long id){
+    public ResponseEntity<Quote> deleteQuote(@PathVariable long id){
         Optional<Quote> q = this.quoteService.findOne(id);
         if(q.isPresent()){
             this.quoteService.delete(id);
@@ -56,7 +56,7 @@ public class QuoteRestController{
     }
 
     @PutMapping(value="/{id}")
-    public ResponseEntity<Quote> updateTheme(@PathVariable long id, @RequestBody Quote quote){
+    public ResponseEntity<Quote> updateQuote(@PathVariable long id, @RequestBody Quote quote){
         Optional<Quote> q = this.quoteService.findOne(id);
         if(q.isPresent()){
             q.get().update(quote);
