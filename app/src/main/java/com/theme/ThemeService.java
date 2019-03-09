@@ -32,7 +32,7 @@ public class ThemeService {
 
 	public Page<Theme> findAll(Pageable page) {
 
-		page = new PageRequest(0, pageSize(page));
+		page = PageRequest.of(0, pageSize(page));
 
 		return repository.findAll(page);
 	}

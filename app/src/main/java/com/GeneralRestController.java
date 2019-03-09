@@ -28,7 +28,7 @@ public class GeneralRestController{
                 this.numQuotes = n;
             }
         }
-        public List<HistogramNode> histogram = new ArrayList();
+        public List<HistogramNode> histogram = new ArrayList<>();
         public void add(String t, Integer n) {
             this.histogram.add(new HistogramNode(t, n));
         }

@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/theme")
 public class ThemesController extends GeneralController{
+	
 	@GetMapping("/deletedTheme")
 	public String deletedTheme(Model model) {
 
@@ -107,28 +108,29 @@ public class ThemesController extends GeneralController{
 
 	@PostMapping("/saveTheme")
 	public String saveTheme(Model model, @RequestParam("name") String name, 
-	@RequestParam("file") MultipartFile file){
+		@RequestParam("file") MultipartFile file){
 
 		Theme theme = new Theme(name);
     
-    List<Theme> list = themeService.findByName(theme.getName());
+    	List<Theme> list = themeService.findByName(theme.getName());
     
 		if (list.isEmpty()) {
 			String fileName = "img-themes-" + theme.getId() + ".png";
 			theme.setImagePath("/assets/img/themes/"+fileName);
 			themeService.save(theme);
 
-		  if (!file.isEmpty()) {
-			  try {
-			    File uploadedFile = new File(FILES_FOLDER.toFile(), fileName);
-			    file.transferTo(uploadedFile);
-			  } catch (Exception e) {
+			if (!file.isEmpty()) {
+				try {
+			   		File uploadedFile = new File(FILES_FOLDER.toFile(), fileName);
+			    	file.transferTo(uploadedFile);
+				} catch (Exception e) {
 					model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
-			  }
-		  }
+				}
+			}
+
 			updateTabs(model);
 			return savedTheme(model);
-		}
+		}	
 
 		return repeatedTheme(model);
 	}
@@ -144,26 +146,26 @@ public class ThemesController extends GeneralController{
 		Pageable page = PageRequest.of(pageNum, 6);
 		Page<Quote> quotes = quoteService.findAll(page);
 
-    model.addAttribute("quotes", quotes);
+    	model.addAttribute("quotes", quotes);
 		model.addAttribute("themeId", id);
 		//model.addAttribute("showNextQuotesToSelect", !quotes.isLast());
 		//model.addAttribute("nextPageSelectQuote", quoteService.getPageNumber(quotes) +1);
 		model.addAttribute("search", "");
-    updateTabs(model);
+    	updateTabs(model);
 
-    return "SelectQuote";
+    	return "SelectQuote";
 	}
 
 	@GetMapping(value="/addTextToTheme/{id}")
-  public String addTextToTheme(Model model, @PathVariable long id) {
-    model.addAttribute("themeId", id);
-    updateTabs(model);
+  	public String addTextToTheme(Model model, @PathVariable long id) {
+    	model.addAttribute("themeId", id);
+    	updateTabs(model);
 
-    return "AddText";
+    	return "AddText";
 	}
 
 	@PostMapping(value="/addTextToTheme/{id}/Save")
-  public String saveTextToTheme(Model model, String text, @PathVariable long id) {
+  	public String saveTextToTheme(Model model, String text, @PathVariable long id) {
 
 		Optional<Theme> theme = this.themeService.findOne(id);
 		Text t = new Text(text);
@@ -175,27 +177,27 @@ public class ThemesController extends GeneralController{
 			}
 		}
 
-    updateTabs(model);
+    	updateTabs(model);
 
 		return showTheme(model, id);
 	}
 
 
 	@GetMapping("/addQuoteToTheme/{theme}/selectQuote/{id}")
-  public String selectQuote(Model model, @PathVariable long id, @PathVariable long theme) {
+	public String selectQuote(Model model, @PathVariable long id, @PathVariable long theme) {
 
-			Optional<Quote> quote = quoteService.findOne(id);
+		Optional<Quote> quote = quoteService.findOne(id);
 			
-      if(quote.isPresent()) {
+      	if(quote.isPresent()) {
 				if(!(themeService.findOne(theme).get().getQuotes().contains(quote.get()))){
 					themeService.findOne(theme).get().getQuotes().add(quote.get());
 					themeService.save(themeService.findOne(theme).get());
 				}
-      }
+      	}
 
-			updateTabs(model);
+		updateTabs(model);
 
-			return showTheme(model, theme);
+		return showTheme(model, theme);
 	}
 		
 	@GetMapping("/addQuoteToTheme/{id}/searchQuotes")
@@ -218,6 +220,7 @@ public class ThemesController extends GeneralController{
 			model.addAttribute("searchQuotes", true);
 			model.addAttribute("noResults", quotes.isEmpty());
 		}
+
 		model.addAttribute("search", name);
 		model.addAttribute("themeId", id);
 		model.addAttribute("search", name);

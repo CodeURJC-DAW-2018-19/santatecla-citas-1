@@ -19,17 +19,17 @@
 <body class="body">
 
   {{>header}}
-  
+
   {{#logged}}
-    {{#admin}}
-      <li id="isAdmin" style="display:none">1</li>
-    {{/admin}}
-    {{^admin}}
-      <li id="isAdmin" style="display:none">0</li>
-    {{/admin}}
+  {{#admin}}
+  <li id="isAdmin" style="display:none">1</li>
+  {{/admin}}
+  {{^admin}}
+  <li id="isAdmin" style="display:none">0</li>
+  {{/admin}}
   {{/logged}}
   {{^logged}}
-      <li id="isAdmin" style="display:none">2</li>
+  <li id="isAdmin" style="display:none">2</li>
   {{/logged}}
 
   <div class="row">
@@ -86,29 +86,31 @@
 
           <div class="row" id="home-themes">
             {{#themes}}
-              <div class="col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    {{#logged}}
-                    <a href="/theme/{{id}}" class="card-title">{{name}}</a>
-                    {{/logged}}
-                    {{^logged}}
-                      {{name}}
-                    {{/logged}}
-                    {{#admin}}
-                    <a title="Borrar" id="delete" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/theme/deleteTheme/{{id}}')"
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  {{#logged}}
+                  <a href="/theme/{{id}}" class="card-title">{{name}}</a>
+                  {{/logged}}
+                  {{^logged}}
+                  {{name}}
+                  {{/logged}}
+                  {{#admin}}
+                  <a title="Borrar" id="delete"
+                    onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/theme/deleteTheme/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
-                      <i class="material-icons">delete_outline</i>
-                    </a>
-                    {{/admin}}
-                  </div>
+                    <i class="material-icons">delete_outline</i>
+                  </a>
+                  {{/admin}}
                 </div>
               </div>
-              {{/themes}}
+            </div>
+            {{/themes}}
           </div>
 
           {{#plusButtonThemes}}
-          <button onclick="loadThemes(this.id)" type="buttom" id="lThemes" value="1" title="Cargar más" class="btn btn-info btn-round BCenter">
+          <button onclick="loadThemes(this.id)" type="buttom" id="lThemes" value="1" title="Cargar más"
+            class="btn btn-info btn-round BCenter">
             <i class="material-icons">more_horiz</i>
           </button>
           {{/plusButtonThemes}}
@@ -182,30 +184,32 @@
           {{/repeatQuoteMessage}}
 
           <div class="row" id="home-quotes">
-              {{#quotes}}
-              <div class="col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    {{#logged}}
-                    <a href="/quote/{{id}}" class="card-title">{{name}}</a>
-                    {{/logged}}
-                    {{^logged}}
-                      {{name}}
-                    {{/logged}}
-                    {{#admin}}
-                    <a title="Borrar" id="delete" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/quote/deleteQuote/{{id}}')"
+            {{#quotes}}
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  {{#logged}}
+                  <a href="/quote/{{id}}" class="card-title">{{name}}</a>
+                  {{/logged}}
+                  {{^logged}}
+                  {{name}}
+                  {{/logged}}
+                  {{#admin}}
+                  <a title="Borrar" id="delete"
+                    onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/quote/deleteQuote/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
-                      <i class="material-icons">delete_outline</i>
-                    </a>
-                    {{/admin}}
-                  </div>
+                    <i class="material-icons">delete_outline</i>
+                  </a>
+                  {{/admin}}
                 </div>
               </div>
-              {{/quotes}}
+            </div>
+            {{/quotes}}
           </div>
 
           {{#plusButtonQuotes}}
-          <button onclick="loadQuotes(this.id)" type="buttom" id="lQuotes" value="1" title="Cargar más" class="btn btn-info btn-round BCenter">
+          <button onclick="loadQuotes(this.id)" type="buttom" id="lQuotes" value="1" title="Cargar más"
+            class="btn btn-info btn-round BCenter">
             <i class="material-icons">more_horiz</i>
           </button>
           {{/plusButtonQuotes}}
