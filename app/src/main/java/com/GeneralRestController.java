@@ -18,9 +18,6 @@ public class GeneralRestController{
 
 	@Autowired
     protected ThemeService themeService;
- 
-
-
 
     private class Histogram {
         private class HistogramNode {
