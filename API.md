@@ -9,6 +9,57 @@ When a new resource is generated, 201 Created is returned.
 
 When a request is successfully made, 200 OK is returned.
 
-# Methods accessible by anonymous users
-The following requests will be allowed to any user even if they are not registered.
 
+# Register
+#### URL
+
+	< /user/register >
+
+* #### Method:
+
+	`POST`
+	
+* #### Parameters:
+
+	* Body
+        {
+            "name": "Alex",
+            "password": "daw3"
+        }
+   
+* #### Request:
+        {
+            "name": "Alex",
+            "passwordHash": "$2a$10$9BOGsXrFLKZRqC8Wd8Aa/O6iyy2GjIoGqikpROhP2kJmt6WSUhznS",
+            "roles": [
+                "ROLE_USER"
+            ],
+            "openTabs": []
+        }
+
+# LogIn
+#### URL
+
+	< /user/login >
+
+* #### Method:
+
+	`GET`
+	
+* #### Parameters:
+
+	* Authorization
+
+        Username: Alex
+        Password: pass
+   
+* #### Request:
+
+{
+    "name": "Alex",
+    "passwordHash": "$2a$10$9BOGsXrFLKZRqC8Wd8Aa/O6iyy2GjIoGqikpROhP2kJmt6WSUhznS",
+    "roles": [
+        "ROLE_USER"
+    ],
+    "openTabs": []
+}

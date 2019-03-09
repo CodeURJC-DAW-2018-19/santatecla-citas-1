@@ -35,8 +35,8 @@ public class QuoteService {
 		return repository.findAll(page);
 	}
 
-	public void save(Quote book) {
-		repository.save(book);
+	public void save(Quote quote) {
+		repository.save(quote);
   	}
 
 	public void delete(long id) {
