@@ -28,7 +28,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		// Theme
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/").hasAnyRole("USER", "ADMIN");	
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/{id}").hasAnyRole("USER", "ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/{id}/image").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/image/{id}").hasAnyRole("USER","ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/PDF{id}").hasAnyRole("USER", "ADMIN");
         
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/{id}/image").hasAnyRole("ADMIN");
@@ -49,7 +49,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter{
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/quotes/").hasAnyRole("ADMIN");
         
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/quotes/{id}").hasAnyRole("ADMIN");
-        
+
         http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/quotes/{id}").hasAnyRole("ADMIN");
 		
         // Histogram
