@@ -1,4 +1,5 @@
 cd ../app
 docker run -it --rm -v "%cd%":/usr/src/project -w /usr/src/project maven:alpine mvn package
-docker build -t app .
+copy target\app-0.0.1-SNAPSHOT.jar ..\docker\build\
 cd ../docker
+docker build -t app .
