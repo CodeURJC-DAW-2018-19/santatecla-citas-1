@@ -19,6 +19,13 @@
 <body class="body">
 
   {{>header}}
+    
+  {{#admin}}
+    <li id="isAdmin" style="display:none">1</li>
+  {{/admin}}
+  {{^admin}}
+    <li id="isAdmin" style="display:none">0</li>
+  {{/admin}}
 
   <div class="row">
     <div class="col-md-6">
@@ -77,12 +84,12 @@
               <div class="col-md-6">
                 <div class="card">
                   <div class="card-body">
-                    {{#loged}}
+                    {{#logged}}
                     <a href="/theme/{{id}}" class="card-title">{{name}}</a>
-                    {{/loged}}
-                    {{^loged}}
+                    {{/logged}}
+                    {{^logged}}
                       {{name}}
-                    {{/loged}}
+                    {{/logged}}
                     {{#admin}}
                     <a title="Borrar" id="delete" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/theme/deleteTheme/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
@@ -168,23 +175,17 @@
           </div>
           {{/repeatQuoteMessage}}
 
-          {{#admin}}
-          <li id="isAdmin" style="display:none">1</li>
-          {{/admin}}
-          {{^admin}}
-          <li id="isAdmin" style="display:none">0</li>
-          {{/admin}}
           <div class="row" id="home-quotes">
               {{#quotes}}
               <div class="col-md-6">
                 <div class="card">
                   <div class="card-body">
-                    {{#loged}}
+                    {{#logged}}
                     <a href="/quote/{{id}}" class="card-title">{{name}}</a>
-                    {{/loged}}
-                    {{^loged}}
+                    {{/logged}}
+                    {{^logged}}
                       {{name}}
-                    {{/loged}}
+                    {{/logged}}
                     {{#admin}}
                     <a title="Borrar" id="delete" onclick="confirmAlert('¿Está seguro de que quiere borrar este tema?','/quote/deleteQuote/{{id}}')"
                     class="btn btn-primary btn-sm active pull-right" role="button" aria-pressed="true">
