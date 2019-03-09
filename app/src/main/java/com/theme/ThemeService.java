@@ -1,14 +1,8 @@
 package com.theme;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Optional;
-
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
