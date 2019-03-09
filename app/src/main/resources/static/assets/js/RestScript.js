@@ -21,9 +21,14 @@ function loadThemes(id){
                     "<a title=\"Borrar\" id=\"delete\"onclick=\"confirmAlert('¿Está seguro de que quiere borrar este tema?','/theme/deleteTheme/"+data.content[i].id+"')\""+
                     "class=\"btn btn-primary btn-sm active pull-right\" role=\"button\" aria-pressed=\"true\"><i class=\"material-icons\">delete_outline</i></a>"+
                     "</div></div></div>");
-                }else{
+                }else if(admin.textContent == 2){
                     $("#home-themes").append(
                         "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\">"+data.content[i].name+
+                        "</div></div></div>");
+                }else{
+                    $("#home-themes").append(
+                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/theme/"+data.content[i].id+
+                        "\" class=\"card-title\">"+data.content[i].name+"</a>"+
                         "</div></div></div>");
                 }
             }
@@ -54,9 +59,14 @@ function loadQuotes(id){
                     "<a title=\"Borrar\" id=\"delete\"onclick=\"confirmAlert('¿Está seguro de que quiere borrar esta cita?','/quote/deleteQuote/"+data.content[i].id+"')\""+
                     "class=\"btn btn-primary btn-sm active pull-right\" role=\"button\" aria-pressed=\"true\"><i class=\"material-icons\">delete_outline</i></a>"+
                     "</div></div></div>");
-                }else{
+                }else if(admin.textContent == 2){
                     $("#home-quotes").append(
                         "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\">"+data.content[i].name+
+                        "</div></div></div>");
+                }else{
+                    $("#home-quotes").append(
+                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/quote/"+data.content[i].id+
+                        "\" class=\"card-title\">"+data.content[i].name+"</a>"+
                         "</div></div></div>");
                 }
             }
