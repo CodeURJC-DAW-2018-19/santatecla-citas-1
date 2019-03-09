@@ -43,7 +43,7 @@ public class ImageService {
 		File uploadedFile = new File(FILES_FOLDER.toFile(), pathStore);
 		file.transferTo(uploadedFile);
 		
-		theme.get().setImagePath(imageName);
+		theme.get().setImagePath("/assets/img/themes/"+imageName);
 		themeService.save(theme.get());
 	}
 	

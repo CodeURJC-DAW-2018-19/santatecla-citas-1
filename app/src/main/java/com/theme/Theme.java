@@ -40,7 +40,7 @@ public class Theme extends TabElement {
         this.name = name;
         this.quotes = new ArrayList<Quote>();
         this.texts = new ArrayList<Text>();
-        this.imagePath = "default-theme.png";
+        this.imagePath = "/assets/img/themes/default-theme.png";
     }
 
     public List<Quote> getQuotes(){

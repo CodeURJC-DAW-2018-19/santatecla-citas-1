@@ -123,7 +123,7 @@ public class ThemesController extends GeneralController{
     
 		if (list.isEmpty()) {
 			String fileName = "img-themes-" + theme.getId() + ".png";
-			theme.setImagePath(fileName);
+			theme.setImagePath("/assets/img/themes/"+fileName);
 			themeService.save(theme);
 
 		  if (!file.isEmpty()) {

@@ -102,7 +102,7 @@ public class ThemeRestController{
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		
 		Path image = imageService.getImage("app" + File.separator + "src" + File.separator + "main" + File.separator + 
-        "resources" + File.separator + "static" + File.separator + "assets" + File.separator + "img" + File.separator + "themes" + File.separator + theme.get().getImagePath());
+        "resources" + File.separator + "static" + File.separator + theme.get().getImagePath());
 		        
         if (!Files.exists(image))
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
