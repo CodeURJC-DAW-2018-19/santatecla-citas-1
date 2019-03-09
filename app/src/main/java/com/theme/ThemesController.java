@@ -149,13 +149,13 @@ public class ThemesController extends GeneralController{
 
 		if(pageNum == null) pageNum = 0;
 
-		Pageable page = PageRequest.of(pageNum, 10);
+		Pageable page = PageRequest.of(pageNum, 6);
 		Page<Quote> quotes = quoteService.findAll(page);
 
     model.addAttribute("quotes", quotes);
 		model.addAttribute("themeId", id);
-		model.addAttribute("showNextQuotesToSelect", !quotes.isLast());
-		model.addAttribute("nextPageSelectQuote", quoteService.getPageNumber(quotes) +1);
+		//model.addAttribute("showNextQuotesToSelect", !quotes.isLast());
+		//model.addAttribute("nextPageSelectQuote", quoteService.getPageNumber(quotes) +1);
 		model.addAttribute("search", "");
     updateTabs(model);
 

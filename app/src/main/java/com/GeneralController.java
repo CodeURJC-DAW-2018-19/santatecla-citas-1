@@ -138,6 +138,32 @@ public class GeneralController{
 		model.addAttribute("showNextQuotes", !quotes.isLast());
 		model.addAttribute("nextPageQuotes", quoteService.getPageNumber(quotes) +1);
 		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
+
+		if (searchThemes == null || searchThemes.equals("")) {
+            model.addAttribute("themes", themes);
+            model.addAttribute("searchThemes", false);
+        } else {
+            themes = themeService.findByName(searchThemes, pageTheme);
+            model.addAttribute("themes", themes);
+            model.addAttribute("searchThemes", true);
+            model.addAttribute("noResultsTheme", themes.isEmpty());    
+        }
+
+        boolean plusButtonThemes = themeService.pageSize(pageTheme) < themes.getTotalElements(); 
+        model.addAttribute("plusButtonThemes", plusButtonThemes);
+
+        if (searchQuotes == null || searchQuotes.equals("")) {
+            model.addAttribute("quotes", quotes);
+            model.addAttribute("searchQuotes", false);
+        } else {
+            quotes = quoteService.findByName(searchQuotes, pageQuote);
+            model.addAttribute("quotes", quotes);
+            model.addAttribute("searchQuotes", true);
+            model.addAttribute("noResultsQuotes", quotes.isEmpty());
+        }
+
+        boolean plusButtonQuotes = quoteService.pageSize(pageQuote) < quotes.getTotalElements(); 
+        model.addAttribute("plusButtonQuotes", plusButtonQuotes);
     
     return "Home";
   }
