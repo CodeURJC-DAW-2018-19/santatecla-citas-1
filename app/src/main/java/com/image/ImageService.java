@@ -49,7 +49,7 @@ public class ImageService {
 	
 	public void dowloadImage(HttpServletResponse res, Path image) throws IOException {
 		FileInputStream fis = new FileInputStream(image.toString());
-		res.setContentType("image/jpeg");
+		res.setContentType("image/png");
 		res.setContentLength((int) image.toFile().length());
 		IOUtils.copy(fis, res.getOutputStream());
 		
