@@ -1,10 +1,16 @@
    function loadThemes(id){
     $(document).ready(function(){
         var p = document.getElementById(id).value;
+
+        $('#lThemes').html("<img src='/assets/img/spinner.gif'/>");
+
         $.ajax({
             url:"https://localhost:8443/api/themes/?page="+p,
             dataType: 'json'
         }).done(function(data) {
+
+            $('#lThemes').html("<i class='material-icons'>more_horiz</i>");
+
             var suma = parseInt(p) + parseInt(1);
             document.getElementById(id).value= suma ; 
             for(var i=(p*6); i<data.content.length; i++){
@@ -21,10 +27,16 @@
 function loadQuotes(id){
     $(document).ready(function(){
         var p = document.getElementById(id).value;
+
+        $('#lQuotes').html("<img src='/assets/img/spinner.gif'/>");
+
         $.ajax({
             url:"https://localhost:8443/api/quotes/?page="+p,
             dataType: 'json'
         }).done(function(data) {
+
+            $('#lQuotes').html("<i class='material-icons'>more_horiz</i>");
+
             var suma = parseInt(p) + parseInt(1);
             document.getElementById(id).value= suma ; 
             for(var i=(p*6); i<data.content.length; i++){

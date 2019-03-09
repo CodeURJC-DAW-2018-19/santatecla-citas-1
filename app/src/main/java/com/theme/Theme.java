@@ -22,6 +22,8 @@ public class Theme extends TabElement {
     protected long id;
     
     private String name;
+
+    private String imagePath;
     
     private String type = "theme";
     private String tabName = "Tema";
@@ -38,6 +40,7 @@ public class Theme extends TabElement {
         this.name = name;
         this.quotes = new ArrayList<Quote>();
         this.texts = new ArrayList<Text>();
+        this.imagePath = "default-theme.png";
     }
 
     public List<Quote> getQuotes(){
@@ -76,5 +79,13 @@ public class Theme extends TabElement {
     public void update(Theme t){
         this.name = t.getName();
     }
+
+    public String getImagePath() {
+		return this.imagePath;
+    }
+    
+    public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 
 }

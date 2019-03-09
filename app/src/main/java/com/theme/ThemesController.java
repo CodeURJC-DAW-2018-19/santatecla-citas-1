@@ -122,8 +122,9 @@ public class ThemesController extends GeneralController{
     List<Theme> list = themeService.findByName(theme.getName());
     
 		if (list.isEmpty()) {
+			String fileName = "img-themes-" + theme.getId() + ".png";
+			theme.setImagePath(fileName);
 			themeService.save(theme);
-      String fileName = "image-" + theme.getId() + ".jpg";
 
 		  if (!file.isEmpty()) {
 			  try {

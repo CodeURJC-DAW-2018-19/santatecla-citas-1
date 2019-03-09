@@ -6,7 +6,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import javax.servlet.http.HttpServletResponse;
+
+import com.image.ImageService;
 import com.quote.Quote;
 import com.quote.QuoteService;
 
@@ -27,8 +33,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/themes")
@@ -39,6 +48,9 @@ public class ThemeRestController{
 
     @Autowired
     protected QuoteService quoteService;
+
+    @Autowired
+	private ImageService imageService;
     
     @GetMapping(value="/")
     public Page<Theme> themes(@PageableDefault Pageable page){
@@ -60,6 +72,49 @@ public class ThemeRestController{
         this.themeService.save(theme);
         return theme;
     }
+
+    @RequestMapping(value = "/{id}/image", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<Theme> uploadThemeImage(@PathVariable long id, @RequestParam("file") MultipartFile file) {
+		
+		Optional<Theme> theme = themeService.findOne(id);
+		
+		if (theme == null)
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		if (file == null || file.isEmpty())
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		
+		try {
+			imageService.uploadThemeImage(theme, file);
+			return new ResponseEntity<Theme>(theme.get(), HttpStatus.OK);
+		}
+		catch (IOException ex) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}			
+    }
+    
+    @RequestMapping(value = "/image/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Theme> getThemeImage(@PathVariable long id, HttpServletResponse res) {
+
+		Optional<Theme> theme = themeService.findOne(id);
+		
+		if (theme == null)
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		Path image = imageService.getImage("app" + File.separator + "src" + File.separator + "main" + File.separator + 
+        "resources" + File.separator + "static" + File.separator + "assets" + File.separator + "img" + File.separator + "themes" + File.separator + theme.get().getImagePath());
+		        
+        if (!Files.exists(image))
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		try {
+			imageService.dowloadImage(res, image);
+			return new ResponseEntity<>(theme.get(), HttpStatus.OK);	
+		}
+		catch (IOException io) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
     
     @DeleteMapping(value="/{id}")
     public ResponseEntity<Theme> deleteTheme(@PathVariable long id){
