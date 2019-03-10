@@ -327,7 +327,7 @@ When a request is successfully made, 200 OK is returned.
 * #### Parameters:
 
     * URL
-            - id = [int]
+        - id = [int]
 	* Body
 
             {
@@ -357,7 +357,7 @@ When a request is successfully made, 200 OK is returned.
 * #### Parameters:
 
     * URL
-            - id = [int]
+        - id = [int]
 
    
 * #### Request:
@@ -382,7 +382,8 @@ When a request is successfully made, 200 OK is returned.
 * #### Parameters:
 
     * URL
-            - id = [int]
+        - id = [int]
+
     *Body
             {
                 "text": "Esto es una prueba de la API Rest de la Fase 3 de DAW"
@@ -416,6 +417,7 @@ When a request is successfully made, 200 OK is returned.
 * #### Parameters:
 
     *Body
+
             {
                 "author": "Henry Ford",
                 "book": "Desconocido",
@@ -753,7 +755,7 @@ When a request is successfully made, 200 OK is returned.
 ## View Histogram
 ### URL
 
-    < /histogram/ >
+    < /histogram >
 
 * #### Method:
 
