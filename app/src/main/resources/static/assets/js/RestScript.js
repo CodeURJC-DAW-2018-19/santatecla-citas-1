@@ -3,12 +3,14 @@ function loadThemes(id){
         var p = document.getElementById(id).value;
         var admin = document.getElementById("isAdmin");
 
-        $('#lThemes').html("<img src='/assets/img/spinner.gif'/>");
+        $('#spinnerThemes').html("<img style='height: 5rem' style src='/assets/img/spinner.gif'/>");
 
         $.ajax({
             url:"/api/themes/?page="+p,
             dataType: 'json'
         }).done(function(data) {
+
+            $('#spinnerThemes').empty();
 
             $('#lThemes').html("<i class='material-icons'>more_horiz</i>");
 
@@ -41,6 +43,7 @@ function loadThemes(id){
                 document.getElementById(id).disabled = true;
                 document.getElementById(id).style.display = 'none';
             }
+
         });
     });
 }
@@ -50,12 +53,14 @@ function loadQuotes(id){
         var p = document.getElementById(id).value;
         var admin = document.getElementById("isAdmin");
 
-        $('#lQuotes').html("<img src='/assets/img/spinner.gif'/>");
+        $('#spinnerQuotes').html("<img style='height: 5rem' src='/assets/img/spinner.gif'/>");
 
         $.ajax({
             url:"/api/quotes/?page="+p,
             dataType: 'json'
         }).done(function(data) {
+
+            $('#spinnerQuotes').empty();
 
             $('#lQuotes').html("<i class='material-icons'>more_horiz</i>");
 
@@ -88,6 +93,7 @@ function loadQuotes(id){
                 document.getElementById(id).disabled = true;
                 document.getElementById(id).style.display = 'none';
             }
+
         });
     });
 }
@@ -98,23 +104,34 @@ function loadSelectQuotes(id){
         var ti = document.getElementById("tID");
         var ii = document.getElementById("ID");
 
-        $('#lSelectQuotes').html("<img src='/assets/img/spinner.gif'/>");
+        $('#spinnerSelectQuotes').html("<img style='height: 5rem' src='/assets/img/spinner.gif'/>");
 
         $.ajax({
             url:"/api/quotes/?page="+p,
             dataType: 'json'
         }).done(function(data) {
 
+            $('#spinnerSelectQuotes').empty();
+
             $('#lSelectQuotes').html("<i class='material-icons'>more_horiz</i>");
 
             var suma = parseInt(p) + parseInt(1);
             document.getElementById(id).value= suma ; 
             
+            var j3 = 0;
+
             for(var i=(p*6); i<data.content.length; i++){
-                    $("#select-quotes").append(
-                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/theme/addQuoteToTheme/"+ti.textContent+"/selectQuote/"+(i+1)+"\" class=\"card-title\">"
-                        +data.content[i].name+"</a>"+"</div></div></div>");
+                j3++;
+                $("#select-quotes").append(
+                    "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/theme/addQuoteToTheme/"+ti.textContent+"/selectQuote/"+(i+1)+"\" class=\"card-title\">"
+                    +data.content[i].name+"</a>"+"</div></div></div>");
             }
+
+            if( j3 < 6 ){
+                document.getElementById(id).disabled = true;
+                document.getElementById(id).style.display = 'none';
+            }
+
         });
     });
 }
