@@ -43,12 +43,12 @@ public class GeneralController{
 	@Autowired
 	protected UserComponent userComponent;
   
-	protected static Path FILES_FOLDER = Paths.get(System.getProperty("user.dir") + File.separator + "img" + File.separator + "themes" + File.separator);
+	protected static Path PROJECT_FOLDER = Paths.get(System.getProperty("user.dir"), "themes-images");
 	
 	@PostConstruct
 	public void init() throws IOException {
-		if (!Files.exists(FILES_FOLDER)) {
-			Files.createDirectories(FILES_FOLDER);
+		if (!Files.exists(PROJECT_FOLDER)) {
+			Files.createDirectories(PROJECT_FOLDER);
 		}
   }
     
