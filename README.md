@@ -205,13 +205,6 @@ First of all, we need to install Docker:
 
 * [![Docker](https://img.shields.io/badge/Install-Docker-blue.svg)](https://www.docker.com/)
 
-Having already Docker installed, we must use the console (Using Windows CMD or Linux Terminal is the **_cd_** command) to go to the docker folder (at the root of our repository). Then, follow the next steps, which consist of a set of commands, to run the app:
-
-First, there are two ways to get the app image:
-- Running the script **.\create_image** - This command will create the JAR file of our app and build the app image.
- It could take a few seconds.
-- Building the image from our DockerHub repository with the command **docker build -t sigma98/app:3.0.0 .**
-
-After that, execute **docker-compose up** - This command will run up the containers: db (database) and app.
+Having already Docker installed, we must use the console (Using Windows CMD or Linux Terminal is the **_cd_** command) to go to the docker folder (at the root of our repository) and execute **docker-compose up**, this command will run up the containers: db (database) and app (sigma98/app:3.0.0 on DockerHub).
 
 YOU ARE READY TO USE OUR WEB APPLICATION USING DOCKER
