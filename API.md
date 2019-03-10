@@ -22,6 +22,7 @@ When a request is successfully made, 200 OK is returned.
 * #### Parameters:
 
 	* Body
+    
         {
             "name": "Alex",
             "password": "daw3"
