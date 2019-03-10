@@ -175,9 +175,10 @@ public class ThemesController extends GeneralController{
 			}
 		}
 
-    	updateTabs(model);
+		updateTabs(model);
+		model.addAttribute("id", id);
 
-		return showTheme(model, id);
+		return "ThemeRedirect";
 	}
 
 
