@@ -1,5 +1,6 @@
 package com;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,8 +43,8 @@ public class GeneralController{
 	@Autowired
 	protected UserComponent userComponent;
   
-  protected static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/app/src/main/resources/static/assets/img/themes");
-
+	protected static Path FILES_FOLDER = Paths.get(System.getProperty("user.dir") + File.separator + "img" + File.separator + "themes" + File.separator);
+	
 	@PostConstruct
 	public void init() throws IOException {
 		if (!Files.exists(FILES_FOLDER)) {

@@ -1,5 +1,6 @@
 package com.theme;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class Theme extends TabElement {
         this.name = name;
         this.quotes = new ArrayList<Quote>();
         this.texts = new ArrayList<Text>();
-        this.imagePath = "/assets/img/themes/default-theme.png";
+        this.imagePath = System.getProperty("user.dir") + File.separator + "img" + File.separator + "themes" + File.separator + "default.png";
     }
 
     public List<Quote> getQuotes(){

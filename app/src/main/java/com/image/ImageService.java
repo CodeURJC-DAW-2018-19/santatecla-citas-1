@@ -37,13 +37,12 @@ public class ImageService {
 	public void uploadThemeImage(Optional<Theme> theme, MultipartFile file) throws IOException {
 		
 		String imageName = "img-theme-" + theme.get().getId() +  ".png";
-        String pathStore = "app" + File.separator + "src" + File.separator + "main" + File.separator + 
-        "resources" + File.separator + "static" + File.separator + "assets" + File.separator + "img" + File.separator + "themes" + File.separator + imageName;		
+        String pathStore = "img" + File.separator + "themes" + File.separator + imageName;		
 		
 		File uploadedFile = new File(FILES_FOLDER.toFile(), pathStore);
 		file.transferTo(uploadedFile);
 		
-		theme.get().setImagePath("/assets/img/themes/"+imageName);
+		theme.get().setImagePath(pathStore);
 		themeService.save(theme.get());
 	}
 	
