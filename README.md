@@ -182,6 +182,16 @@ It shows the number of quotes that each topic has on the web.
 ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/diagram.png)
 
 ---------------------
+**Diagrama de clases API REST - Class Diagram of REST API**
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/RestDiagram.png)
+
+---------------------
+**Diagrama de Seguridad - Security Diagram**
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/SecurityDiagram.png)
+
+---------------------
 ## REST API documentation
 
 [REST API] (https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/API.md)
