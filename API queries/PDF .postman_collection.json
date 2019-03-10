@@ -1,0 +1,64 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PDF ",
+		"_postman_id": "183d4d99-f51a-52c8-d01d-474a4c4e0aba",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New User Carol",
+			"request": {
+				"url": "https://localhost:8443/api/user/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46cGFzcw==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Alex\",\n\t\"password\": \"daw3\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login Carol",
+			"request": {
+				"url": "https://localhost:8443/api/user/login",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic QWxleDpkYXcz",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PDF generate",
+			"request": {
+				"url": "https://localhost:8443/api/themes/PDF16",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

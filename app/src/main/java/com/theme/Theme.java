@@ -24,8 +24,8 @@ public class Theme extends TabElement {
     
     private String name;
     
-    private String type = "theme";
-    private String tabName = "Tema";
+    //private String type = "theme";
+    //private String tabName = "Tema";
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Quote> quotes;

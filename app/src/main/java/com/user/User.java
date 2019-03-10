@@ -34,6 +34,11 @@ public class User {
 
 	private ArrayList<TabElement> openTabs = new ArrayList<>();
 
+
+	public User(long id) {
+		this.id = id;
+	}
+
 	public User() {
 		this.roles = new ArrayList<>();
 		this.roles.add("ROLE_USER");
@@ -53,7 +58,7 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = new BCryptPasswordEncoder().encode(passwordHash);
 	}
@@ -84,6 +89,11 @@ public class User {
 
 	public void removeTab(TabElement te) {
 		this.openTabs.remove(te);
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", roles=" + roles + ", name=" + name + ", password=" +passwordHash+ "]";
 	}
 
 	public void setActive(TabElement te) {

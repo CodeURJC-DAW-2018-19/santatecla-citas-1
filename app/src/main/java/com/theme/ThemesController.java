@@ -8,8 +8,6 @@ import java.util.Optional;
 
 import com.GeneralController;
 import com.quote.Quote;
-import com.theme.Text;
-import com.theme.Theme;
 
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;

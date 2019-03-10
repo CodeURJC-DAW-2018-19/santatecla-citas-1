@@ -26,17 +26,31 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter{
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user/register").permitAll();	
 		
 		// Theme
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/theme/**").hasAnyRole("USER", "ADMIN");				
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/theme/generatePDF").hasAnyRole("USER", "ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/theme/addTheme").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/theme/deleteTheme").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/theme/editTheme").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/").hasAnyRole("USER", "ADMIN");	
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/{id}").hasAnyRole("USER", "ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/image/{id}").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/PDF{id}").hasAnyRole("USER", "ADMIN");
+        
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/{id}/image").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/").hasAnyRole("ADMIN");			
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/addTextToTheme{id}").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/addQuote{idQuote}ToTheme{idTheme}").hasAnyRole("ADMIN");
+
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/themes/{id}").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/themes/deleteText{idText}/FromTheme{idTheme}").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/themes/deleteQuote{idQuote}/FromTheme{idTheme}").hasAnyRole("ADMIN");
+
+        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/themes/{id}").hasAnyRole("ADMIN");
 		
 		// Quotes
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/quote/**").hasAnyRole("USER", "ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/quote/addQuote").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/quote/editQuote").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/quote/deleteQuote").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/quotes/").hasAnyRole("USER", "ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/quotes/{id}").hasAnyRole("USER", "ADMIN");
+
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/quotes/").hasAnyRole("ADMIN");
+        
+        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/quotes/{id}").hasAnyRole("ADMIN");
+
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/quotes/{id}").hasAnyRole("ADMIN");
 		
         // Histogram
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/histogram").permitAll();

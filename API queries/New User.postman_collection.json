@@ -1,0 +1,167 @@
+{
+	"variables": [],
+	"info": {
+		"name": "New User",
+		"_postman_id": "43994873-d661-463c-e825-3dee4246add1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New User Alex",
+			"request": {
+				"url": "https://localhost:8443/api/user/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46cGFzcw==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Alex\",\n\t\"password\": \"daw3\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login Alex",
+			"request": {
+				"url": "https://localhost:8443/api/user/login",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic QWxleDpkYXcz",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show themes",
+			"request": {
+				"url": "https://localhost:8443/api/themes/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"texts\": \"Esto es una prueba para insertar texto a través de POSTMAN en la APIREST\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show specefic Theme",
+			"request": {
+				"url": "https://localhost:8443/api/themes/16",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show Quotes page 2 ",
+			"request": {
+				"url": {
+					"raw": "https://localhost:8443/api/quotes/?page=2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"quotes",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "new theme",
+			"request": {
+				"url": "https://localhost:8443/api/themes/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"DAW\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add quote",
+			"request": {
+				"url": "https://localhost:8443/api/quotes/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"author\": \"Henry Ford\",\n    \"book\": \"Desconocido\",\n    \"name\": \"Tanto si piensas que puedes, como si piensas que no puedes, estas en lo cierto\"\n                }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show Histogram ",
+			"request": {
+				"url": "https://localhost:8443/api/histogram",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

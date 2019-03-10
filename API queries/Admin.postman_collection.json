@@ -1,0 +1,338 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Admin",
+		"_postman_id": "bf1122ae-8567-6cb8-d26e-f801d7f77561",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LogIn Admin",
+			"request": {
+				"url": "https://localhost:8443/api/user/login",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46cGFzcw==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "new theme (only name)",
+			"request": {
+				"url": "https://localhost:8443/api/themes/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"DAW\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show themes",
+			"request": {
+				"url": "https://localhost:8443/api/themes/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"texts\": \"Esto es una prueba para insertar texto a través de POSTMAN en la APIREST\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show specefic Theme",
+			"request": {
+				"url": "https://localhost:8443/api/themes/16",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add text to theme",
+			"request": {
+				"url": "https://localhost:8443/api/themes/addTextToTheme24",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"text\":\"Esto es una prueba de la API Rest de la Fase 3 de DAW\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add quote",
+			"request": {
+				"url": "https://localhost:8443/api/quotes/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"author\": \"Henry Ford\",\n    \"book\": \"Desconocido\",\n    \"name\": \"Tanto si piensas que puedes, como si piensas que no puedes, estas en lo cierto\"\n                }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add Quote to Theme",
+			"request": {
+				"url": "https://localhost:8443/api/themes/addQuote26ToTheme24",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "refresh themes",
+			"request": {
+				"url": "https://localhost:8443/api/themes/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"texts\": \"Esto es una prueba para insertar texto a través de POSTMAN en la APIREST\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show Quotes",
+			"request": {
+				"url": "https://localhost:8443/api/quotes/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show Quotes page 2",
+			"request": {
+				"url": {
+					"raw": "https://localhost:8443/api/quotes/?page=2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"quotes",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show specific quote",
+			"request": {
+				"url": "https://localhost:8443/api/quotes/6",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "edit Theme",
+			"request": {
+				"url": "https://localhost:8443/api/themes/24",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"FRASES CELEBRES\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add image",
+			"request": {
+				"url": "https://localhost:8443/api/themes/24/image",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"value": "",
+							"description": "",
+							"type": "file"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show image",
+			"request": {
+				"url": "https://localhost:8443/api/themes/image/24",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete Quote from Theme",
+			"request": {
+				"url": "https://localhost:8443/api/themes/deleteQuote26/FromTheme24",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete Text from Theme",
+			"request": {
+				"url": "https://localhost:8443/api/themes/deleteText25/FromTheme24",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete theme",
+			"request": {
+				"url": "https://localhost:8443/api/themes/24",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "edit quote",
+			"request": {
+				"url": "https://localhost:8443/api/quotes/6",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"author\": \"Carlos \",\n    \"book\": \"El \",\n    \"name\": \" tendré una vida entera en la que morir.\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete Quote",
+			"request": {
+				"url": "https://localhost:8443/api/quotes/6",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "show Histogram",
+			"request": {
+				"url": "https://localhost:8443/api/histogram",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
