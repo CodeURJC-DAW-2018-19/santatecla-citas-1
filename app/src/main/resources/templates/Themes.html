@@ -24,7 +24,7 @@
 
   <div class="col-md-12">
     <div class="card">
-      <img id="img-theme" src="{{imagePath}}" class="rounded float-right">
+      <img id="img-theme" src="/themes-images/{{id}}" class="rounded float-right">
       {{#admin}}
       <div class="row">
         <div class="col-md-6">
@@ -164,7 +164,7 @@
 
   {{/theme}}
   {{^theme}}
-    <script> window.location.href = "/Error" </script>
+  <script> window.location.href = "/Error" </script>
   {{/theme}}
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

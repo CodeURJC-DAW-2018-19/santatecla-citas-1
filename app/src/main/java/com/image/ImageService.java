@@ -2,6 +2,7 @@ package com.image;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,18 +37,16 @@ public class ImageService {
 	
 	public void uploadThemeImage(Optional<Theme> theme, MultipartFile file) throws IOException {
 		
-		String imageName = "img-theme-" + theme.get().getId() +  ".png";
-        String pathStore = "app" + File.separator + "src" + File.separator + "main" + File.separator + 
-        "resources" + File.separator + "static" + File.separator + "assets" + File.separator + "img" + File.separator + "themes" + File.separator + imageName;		
+		String imageName = theme.get().getId() +  ".png";
+		String pathStore = "themes-images" + File.separator + imageName;
 		
 		File uploadedFile = new File(FILES_FOLDER.toFile(), pathStore);
 		file.transferTo(uploadedFile);
 		
-		theme.get().setImagePath("/assets/img/themes/"+imageName);
 		themeService.save(theme.get());
 	}
 	
-	public void dowloadImage(HttpServletResponse res, Path image) throws IOException {
+	public void downloadImage(HttpServletResponse res, Path image) throws IOException {
 		FileInputStream fis = new FileInputStream(image.toString());
 		res.setContentType("image/png");
 		res.setContentLength((int) image.toFile().length());
@@ -60,4 +59,19 @@ public class ImageService {
 	public Path getImage(String path) {
 		return FILES_FOLDER.resolve(path);
 	}
+
+	public Path handleFileDownload(long id) {
+
+		String fileName = id + ".png";
+
+		Path imagesPath = FILES_FOLDER.resolve("themes-images");
+		Path image = imagesPath.resolve(fileName);
+
+		if (!Files.exists(image)) {
+			image = imagesPath.resolve("0.png");
+		}
+
+		return image;
+	}
+
 }

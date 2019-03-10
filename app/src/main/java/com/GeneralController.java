@@ -1,5 +1,6 @@
 package com;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,16 +43,16 @@ public class GeneralController{
 	@Autowired
 	protected UserComponent userComponent;
   
-  protected static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir")+"/app/src/main/resources/static/assets/img/themes");
-
+	protected static Path PROJECT_FOLDER = Paths.get(System.getProperty("user.dir"), "themes-images");
+	
 	@PostConstruct
 	public void init() throws IOException {
-		if (!Files.exists(FILES_FOLDER)) {
-			Files.createDirectories(FILES_FOLDER);
+		if (!Files.exists(PROJECT_FOLDER)) {
+			Files.createDirectories(PROJECT_FOLDER);
 		}
   }
     
-  protected void updateTabs(Model model) {
+  	protected void updateTabs(Model model) {
 		if (this.userComponent.isLoggedUser()) {
 			model.addAttribute("openTabs", this.userComponent.getLoggedUser().getOpenTabs());
 		}
@@ -70,18 +71,18 @@ public class GeneralController{
 
 	@GetMapping("/")
 	public String home(Model model,
-	  @RequestParam(value="searchThemes", required=false) String searchThemes,
+		@RequestParam(value="searchThemes", required=false) String searchThemes,
 		@RequestParam(value="searchQuotes", required=false) String searchQuotes,
 		@RequestParam(value="pageTheme", required=false) Integer pageThemeNum,
 		@RequestParam(value="pageQuote", required=false) Integer pageQuoteNum) {
     
-    if(pageThemeNum == null) pageThemeNum = 0;
-    if(pageQuoteNum == null) pageQuoteNum = 0;
-    if(searchThemes == null) searchThemes = "";
-    if(searchQuotes == null) searchQuotes = "";
+    	if(pageThemeNum == null) pageThemeNum = 0;
+    	if(pageQuoteNum == null) pageQuoteNum = 0;
+    	if(searchThemes == null) searchThemes = "";
+    	if(searchQuotes == null) searchQuotes = "";
 
-		Pageable pageTheme = PageRequest.of(pageThemeNum, 10);
-		Pageable pageQuote = PageRequest.of(pageQuoteNum, 10);
+		Pageable pageTheme = PageRequest.of(pageThemeNum, 6);
+		Pageable pageQuote = PageRequest.of(pageQuoteNum, 6);
 
 		Page<Theme> themes =  themeService.findAll(pageTheme);
 		Page<Quote> quotes = quoteService.findAll(pageQuote);
@@ -92,24 +93,30 @@ public class GeneralController{
 		model.addAttribute("searchQuotes", false);
 		
 		if (searchThemes == null || searchThemes.equals("")) {
-			model.addAttribute("themes", themes);
-			model.addAttribute("searchThemes", false);
-		} else {
-			themes = themeService.findByName(searchThemes, pageTheme);
-			model.addAttribute("themes", themes);
-			model.addAttribute("searchThemes", true);
-			model.addAttribute("noResultsTheme", themes.isEmpty());	
-		}
+      		model.addAttribute("themes", themes);
+      		model.addAttribute("searchThemes", false);
+    	} else {
+      		themes = themeService.findByName(searchThemes, pageTheme);
+      		model.addAttribute("themes", themes);
+      		model.addAttribute("searchThemes", true);
+      		model.addAttribute("noResultsTheme", themes.isEmpty());    
+    	}
 
-		if (searchQuotes == null || searchQuotes.equals("")) {
-			model.addAttribute("quotes", quotes);
-			model.addAttribute("searchQuotes", false);
-		} else {
-			quotes = quoteService.findByName(searchQuotes, pageQuote);
-			model.addAttribute("quotes", quotes);
-			model.addAttribute("searchQuotes", true);
-			model.addAttribute("noResultsQuotes", quotes.isEmpty());
-		}
+    	boolean plusButtonThemes = themeService.pageSize(pageTheme) < themes.getTotalElements(); 
+    	model.addAttribute("plusButtonThemes", plusButtonThemes);
+
+    	if (searchQuotes == null || searchQuotes.equals("")) {
+    		model.addAttribute("quotes", quotes);
+     		model.addAttribute("searchQuotes", false);
+    	} else {
+     		quotes = quoteService.findByName(searchQuotes, pageQuote);
+      		model.addAttribute("quotes", quotes);
+    		model.addAttribute("searchQuotes", true);
+      		model.addAttribute("noResultsQuotes", quotes.isEmpty());
+    	}
+
+    	boolean plusButtonQuotes = quoteService.pageSize(pageQuote) < quotes.getTotalElements(); 
+    	model.addAttribute("plusButtonQuotes", plusButtonQuotes);
 
 		model.addAttribute("searchThemeString", searchThemes);	
 		model.addAttribute("searchQuoteString", searchQuotes);	
@@ -121,12 +128,12 @@ public class GeneralController{
 		model.addAttribute("atHome", true);		
 		updateTabs(model);
     
-    model.addAttribute("deleteThemeMessage", false);
+    	model.addAttribute("deleteThemeMessage", false);
 		model.addAttribute("saveThemeMessage", false);
 		model.addAttribute("deleteQuoteMessage", false);
 		model.addAttribute("saveQuoteMessage", false);
 		model.addAttribute("repeatThemeMessage", false);
-    model.addAttribute("repeatQuoteMessage", false);
+    	model.addAttribute("repeatQuoteMessage", false);
 
 		//int prevPageThemes = (themeService.getPageNumber(themes)>0)?(themeService.getPageNumber(themes)-1):0;
 		//int prevPageQuotes = (quoteService.getPageNumber(quotes)>0)?(quoteService.getPageNumber(quotes)-1):0;
@@ -139,10 +146,10 @@ public class GeneralController{
 		model.addAttribute("nextPageQuotes", quoteService.getPageNumber(quotes) +1);
 		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
     
-    return "Home";
+    	return "Home";
   }
   
-  @GetMapping("/error")
+  	@GetMapping("/error")
 	public String error(Model model) {
 		
 		updateTabs(model);
@@ -181,16 +188,21 @@ public class GeneralController{
 		
 		if (type.equals("theme")) {	
 			Optional<Theme> theme = themeService.findOne(id);
+			
 			if(theme.isPresent()) {
 				this.userComponent.getLoggedUser().removeTab(theme.get());
 			}
+
 		} else if(type.equals("quote")) {
 			Optional<Quote> quote = quoteService.findOne(id);
+			
 			if(quote.isPresent()) {
 				this.userComponent.getLoggedUser().removeTab(quote.get());
 			}
+
 		}
 
 		return home(model, null, null, null, null);
 	}
+	
 }

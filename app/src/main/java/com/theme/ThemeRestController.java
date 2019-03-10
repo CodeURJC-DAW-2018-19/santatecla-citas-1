@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.Optional;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
 import javax.servlet.http.HttpServletResponse;
 
 import com.image.ImageService;
@@ -95,16 +96,15 @@ public class ThemeRestController{
 		Optional<Theme> theme = themeService.findOne(id);
 		
 		if (theme == null)
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		
-		Path image = imageService.getImage("app" + File.separator + "src" + File.separator + "main" + File.separator + 
-        "resources" + File.separator + "static" + File.separator + theme.get().getImagePath());
-		        
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            
+        Path image = imageService.handleFileDownload(id);
+
         if (!Files.exists(image))
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		
 		try {
-			imageService.dowloadImage(res, image);
+			imageService.downloadImage(res, image);
 			return new ResponseEntity<>(theme.get(), HttpStatus.OK);	
 		}
 		catch (IOException io) {
@@ -146,7 +146,9 @@ public class ThemeRestController{
 
     @DeleteMapping(value="/deleteText{idText}/FromTheme{idTheme}")
     public ResponseEntity<Theme> deleteTextFromTheme(@PathVariable long idText, @PathVariable long idTheme){
+        
         Optional<Theme> t =this.themeService.findOne(idTheme);
+        
         if(t.isPresent()){
             Text text = new Text();
             text.setId(idText);
@@ -157,13 +159,16 @@ public class ThemeRestController{
             }
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping(value="/addQuote{idQuote}ToTheme{idTheme}")
     public ResponseEntity<Theme> addQuoteToTheme(@PathVariable long idQuote, @PathVariable long idTheme){
+        
         Optional<Theme> t =this.themeService.findOne(idTheme);
         Optional<Quote> q = this.quoteService.findOne(idQuote);
+        
         if(t.isPresent()){
             if(q.isPresent()){
                 if(!t.get().getQuotes().contains(q.get())){
@@ -174,13 +179,16 @@ public class ThemeRestController{
             }
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping(value="/deleteQuote{idQuote}/FromTheme{idTheme}")
     public ResponseEntity<Theme> deleteQuoteFromTheme(@PathVariable long idQuote, @PathVariable long idTheme){
+        
         Optional<Theme> t =this.themeService.findOne(idTheme);
         Optional<Quote> q = this.quoteService.findOne(idQuote);
+        
         if(t.isPresent()){
             if(q.isPresent()){
                 t.get().getQuotes().remove(q.get());
@@ -189,6 +197,7 @@ public class ThemeRestController{
             }
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 

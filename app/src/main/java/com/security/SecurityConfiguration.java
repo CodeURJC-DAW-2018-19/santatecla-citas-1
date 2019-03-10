@@ -20,7 +20,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         
         // Public pages
         http.authorizeRequests().antMatchers("/assets/**").permitAll();
+        http.authorizeRequests().antMatchers("/themes-images/*").permitAll();
         http.authorizeRequests().antMatchers("/").permitAll();
+        http.authorizeRequests().antMatchers("/close/**").permitAll();
         http.authorizeRequests().antMatchers("/histogram").permitAll();
         http.authorizeRequests().antMatchers("/user/login").permitAll();
         http.authorizeRequests().antMatchers("/user/register").permitAll();

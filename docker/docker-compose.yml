@@ -10,8 +10,10 @@ services:
             MYSQL_USER: daw
             MYSQL_PASSWORD: DAWGrupo3
     app:
-        build: ../app
-        restart: always
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        restart: on-failure
         links:
             - db
         depends_on:

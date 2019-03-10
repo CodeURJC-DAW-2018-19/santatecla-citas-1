@@ -42,27 +42,32 @@ public class QuoteRestController{
     @ResponseStatus(HttpStatus.CREATED)
     public Quote newQuote(@RequestBody Quote quote){
         this.quoteService.save(quote);
+        
         return quote;
     }
     
     @DeleteMapping(value="/{id}")
     public ResponseEntity<Quote> deleteQuote(@PathVariable long id){
         Optional<Quote> q = this.quoteService.findOne(id);
+        
         if(q.isPresent()){
             this.quoteService.delete(id);
             return new ResponseEntity<>(q.get(), HttpStatus.OK);
         }
+
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping(value="/{id}")
     public ResponseEntity<Quote> updateQuote(@PathVariable long id, @RequestBody Quote quote){
         Optional<Quote> q = this.quoteService.findOne(id);
+        
         if(q.isPresent()){
             q.get().update(quote);
             this.quoteService.save(q.get());
             return new ResponseEntity<>(q.get(), HttpStatus.OK);
         }
+
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

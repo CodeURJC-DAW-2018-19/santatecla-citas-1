@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController extends GeneralController{
     
-  @GetMapping("/login")
+  	@GetMapping("/login")
 	public String login(Model model) {
 
 		model.addAttribute("hideLogin", true);
@@ -38,9 +38,9 @@ public class UserController extends GeneralController{
 		updateTabs(model);
 
 		return "Register";
-  }
+  	}
     
-  @PostMapping("/saveUser")
+  	@PostMapping("/saveUser")
 	public String saveUser(Model model, User user) {
 
 		User u = userService.findByName(user.getName());

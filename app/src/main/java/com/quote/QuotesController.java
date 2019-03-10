@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/quote")
 public class QuotesController extends GeneralController{
 
-    @GetMapping("/deletedQuote")
+	@GetMapping("/deletedQuote")
 	public String deletedQuote(Model model) {
 
 		home(model, null, null , 0, 0);
@@ -82,7 +82,7 @@ public class QuotesController extends GeneralController{
 		return deletedQuote(model);
     }
     
-    @GetMapping("/addQuote")
+  	@GetMapping("/addQuote")
 	public String addQuote(Model model) {
 
 		updateTabs(model);
@@ -90,7 +90,7 @@ public class QuotesController extends GeneralController{
 		return "AddQuote";
     }
     
-    @PostMapping("/saveQuote")
+  	@PostMapping("/saveQuote")
 	public String saveQuote(Model model, Quote quote) {
 
     List<Quote> list = quoteService.findByNameStrict(quote.getName());
@@ -104,7 +104,7 @@ public class QuotesController extends GeneralController{
 		return repeatedQuote(model);
     }
     
-    @GetMapping("/editQuote/{id}")
+  	@GetMapping("/editQuote/{id}")
 	public String editQuote(Model model, @PathVariable long id) {
 		
 		Optional<Quote> quote = quoteService.findOne(id);
