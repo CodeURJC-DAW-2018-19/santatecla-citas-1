@@ -98,14 +98,13 @@ public class ThemeRestController{
 		if (theme == null)
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		
-		Path image = imageService.getImage("app" + File.separator + "src" + File.separator + "main" + File.separator + 
-        "resources" + File.separator + "static" + File.separator + theme.get().getImagePath());
+		Path image = imageService.getImage(Long.toString(theme.get().getId()));
 		        
         if (!Files.exists(image))
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		
 		try {
-			imageService.dowloadImage(res, image);
+			imageService.downloadImage(res, image);
 			return new ResponseEntity<>(theme.get(), HttpStatus.OK);	
 		}
 		catch (IOException io) {

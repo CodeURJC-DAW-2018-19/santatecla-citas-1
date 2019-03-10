@@ -6,7 +6,7 @@ function loadThemes(id){
         $('#lThemes').html("<img src='/assets/img/spinner.gif'/>");
 
         $.ajax({
-            url:"https://localhost:8443/api/themes/?page="+p,
+            url:"/api/themes/?page="+p,
             dataType: 'json'
         }).done(function(data) {
 
@@ -53,7 +53,7 @@ function loadQuotes(id){
         $('#lQuotes').html("<img src='/assets/img/spinner.gif'/>");
 
         $.ajax({
-            url:"https://localhost:8443/api/quotes/?page="+p,
+            url:"/api/quotes/?page="+p,
             dataType: 'json'
         }).done(function(data) {
 
@@ -101,7 +101,7 @@ function loadSelectQuotes(id){
         $('#lSelectQuotes').html("<img src='/assets/img/spinner.gif'/>");
 
         $.ajax({
-            url:"https://localhost:8443/api/quotes/?page="+p,
+            url:"/api/quotes/?page="+p,
             dataType: 'json'
         }).done(function(data) {
 

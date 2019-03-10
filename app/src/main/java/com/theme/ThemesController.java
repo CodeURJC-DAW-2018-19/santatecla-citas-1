@@ -115,15 +115,15 @@ public class ThemesController extends GeneralController{
     	List<Theme> list = themeService.findByName(theme.getName());
     
 		if (list.isEmpty()) {
-			String fileName = "img-themes-" + theme.getId() + ".png";
-			theme.setImagePath("/assets/img/themes/"+fileName);
+			themeService.save(theme);
+			String fileName = Long.toString(theme.getId());
 			themeService.save(theme);
 
-			if (!file.isEmpty()) {
-				try {
-			   		File uploadedFile = new File(FILES_FOLDER.toFile(), fileName);
-			    	file.transferTo(uploadedFile);
-				} catch (Exception e) {
+		  if (!file.isEmpty()) {
+			  try {
+			    File uploadedFile = new File(PROJECT_FOLDER.toFile(), fileName + ".png");
+			    file.transferTo(uploadedFile);
+			  } catch (Exception e) {
 					model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
 				}
 			}
