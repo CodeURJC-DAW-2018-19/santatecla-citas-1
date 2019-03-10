@@ -38,7 +38,7 @@ public class ImageService {
 	public void uploadThemeImage(Optional<Theme> theme, MultipartFile file) throws IOException {
 		
 		String imageName = theme.get().getId() +  ".png";
-        String pathStore = "img" + File.separator + "themes" + File.separator + imageName;		
+		String pathStore = "themes-images" + File.separator + imageName;
 		
 		File uploadedFile = new File(FILES_FOLDER.toFile(), pathStore);
 		file.transferTo(uploadedFile);
