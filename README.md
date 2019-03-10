@@ -194,4 +194,22 @@ It shows the number of quotes that each topic has on the web.
 ---------------------
 ## REST API documentation
 
-[REST API] (https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/API.md)
+[REST API 📄](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/API.md)
+
+---------------------
+## Docker Environment
+
+Now, we will explain what to do to execute our application on Docker.
+
+First of all, we need to install Docker:
+
+* [![Docker](https://img.shields.io/badge/Install-Docker-blue.svg)](https://www.docker.com/)
+
+Having already Docker installed, we must use the console (Using Windows CMD or Linux Terminal is the **_cd_** command) to go to the Docker folder.
+
+Then, follow the next steps, which consist of a set of commands:
+
+- **.\create_image** - This command will create the Docker image. It could take a few seconds.
+- **docker-compose up** - This command will run up the containers: BBDD and Application.
+
+YOU ARE READY TO USE OUR WEB APPLICATION USING DOCKER
