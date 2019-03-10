@@ -22,13 +22,14 @@ When a request is successfully made, 200 OK is returned.
 * #### Parameters:
 
 	* Body
+
+            {
+                "name": "Alex",
+                "password": "daw3"
+            }
     
-        {
-            "name": "Alex",
-            "password": "daw3"
-        }
-   
 * #### Request:
+
         {
             "name": "Alex",
             "passwordHash": "$2a$10$9BOGsXrFLKZRqC8Wd8Aa/O6iyy2GjIoGqikpROhP2kJmt6WSUhznS",
