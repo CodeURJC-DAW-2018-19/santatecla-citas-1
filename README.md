@@ -209,10 +209,10 @@ Having already Docker installed, we must use the console (Using Windows CMD or L
 
    First, there are two ways to get the app image:
 
-      - Running the script **.\create_image** - This command will create the JAR file of our app and build the app image.
+      - Running the script .\create_image - This command will create the JAR file of our app and build the app image.
         It could take a few seconds.
 
-      - Building the image from our DockerHub repository with the command  **docker build -t sigma98/app:3.0.0**
+      - Building the image from our DockerHub repository with the command  docker build -t sigma98/app:3.0.0
 
    After that, execute **docker-compose up** - This command will run up the containers: db (database) and app.
 
