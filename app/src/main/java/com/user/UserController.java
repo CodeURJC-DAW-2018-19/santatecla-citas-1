@@ -47,7 +47,7 @@ public class UserController extends GeneralController{
 		if (u == null) {
 			userService.save(user);
 			updateTabs(model);
-			return "/login";
+			return this.login(model);
 		}
 
 		return "Error";
