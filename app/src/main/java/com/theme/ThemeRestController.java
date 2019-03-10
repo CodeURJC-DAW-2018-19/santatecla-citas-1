@@ -96,10 +96,10 @@ public class ThemeRestController{
 		Optional<Theme> theme = themeService.findOne(id);
 		
 		if (theme == null)
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		
-		Path image = imageService.getImage(Long.toString(theme.get().getId()));
-		        
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            
+        Path image = imageService.handleFileDownload(id);
+
         if (!Files.exists(image))
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		

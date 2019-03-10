@@ -60,7 +60,7 @@ public class ImageService {
 		return FILES_FOLDER.resolve(path);
 	}
 
-	public Path handleFileDownload(long id) throws FileNotFoundException, IOException {
+	public Path handleFileDownload(long id) {
 
 		String fileName = id + ".png";
 
