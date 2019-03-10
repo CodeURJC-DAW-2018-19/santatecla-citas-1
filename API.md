@@ -10,7 +10,7 @@ When a new resource is generated, 201 Created is returned.
 When a request is successfully made, 200 OK is returned.
 
 
-# Register
+## Register a new user
 #### URL
 
 	< /user/register >
@@ -37,7 +37,7 @@ When a request is successfully made, 200 OK is returned.
             "openTabs": []
         }
 
-# LogIn
+## LogIn
 #### URL
 
 	< /user/login >
@@ -50,16 +50,427 @@ When a request is successfully made, 200 OK is returned.
 
 	* Authorization
 
-        Username: Alex
-        Password: pass
+                Username: Alex
+                Password: pass
    
 * #### Request:
 
-{
-    "name": "Alex",
-    "passwordHash": "$2a$10$9BOGsXrFLKZRqC8Wd8Aa/O6iyy2GjIoGqikpROhP2kJmt6WSUhznS",
-    "roles": [
-        "ROLE_USER"
-    ],
-    "openTabs": []
-}
+        {
+            "name": "Alex",
+            "passwordHash": "$2a$10$9BOGsXrFLKZRqC8Wd8Aa/O6iyy2GjIoGqikpROhP2kJmt6WSUhznS",
+            "roles": [
+                "ROLE_USER"
+            ],
+            "openTabs": []
+        }
+
+## View themes
+#### URL
+
+	< /themes/ >
+
+* #### Method:
+
+	`GET`
+	
+* #### Parameters:
+
+	* Without parameters it only shows the first page, if you want to see the    topics of more pages you should put /?page={page} then in the url-
+
+        - page = [int]
+
+   
+* #### Request:
+
+        {
+            "content": [
+                {
+                    "id": 16,
+                    "name": "Amor",
+                    "imagePath": "/assets/img/themes/default-theme.png",
+                    "quotes": [
+                        {
+                            "id": 10,
+                            "author": "Victor Hugo",
+                            "book": "Los miserables",
+                            "name": "Es en las noches de diciembre, cuando el termómetro está a cero, cuando más pensamos en el sol."
+                        },
+                        {
+                            "id": 15,
+                            "author": "Miguel de Cervantes",
+                            "book": "Don Quijote de la Mancha",
+                            "name": "Amor y deseo son dos cosas diferentes; que no todo lo que se ama se desea, ni todo lo que se desea se ama."
+                        }
+                    ],
+                    "texts": []
+                },
+                {
+                    "id": 17,
+                    "name": "Sabiduria",
+                    "imagePath": "/assets/img/themes/default-theme.png",
+                    "quotes": [
+                        {
+                            "id": 9,
+                            "author": "Charles Dickens",
+                            "book": "Vieja tienda de curiosidades",
+                            "name": "El sol es débil cuando se eleva primero, y cobra fuerza y coraje a medida que avanza el día."
+                        },
+                        {
+                            "id": 14,
+                            "author": "J.R.R. Tolkien",
+                            "book": "El Señor de los Anillos",
+                            "name": "No todo lo que es de oro reluce, ni toda la gente errante anda perdida."
+                        }
+                    ],
+                    "texts": []
+                },
+                {
+                    "id": 18,
+                    "name": "Valores",
+                    "imagePath": "/assets/img/themes/default-theme.png",
+                    "quotes": [
+                        {
+                            "id": 3,
+                            "author": "Mary Shelley",
+                            "book": "Frankestein",
+                            "name": "Sea un hombre o sea más que un hombre. Sea firme con su propósito y firme como una piedra."
+                        },
+                        {
+                            "id": 4,
+                            "author": "Arthur Conan Doyle",
+                            "book": "La compañía blanca",
+                            "name": "El hombre débil se vuelve fuerte cuando no tiene nada, porque sólo entonces puede sentir la locura de la desesperación."
+                        },
+                        {
+                            "id": 5,
+                            "author": "Leo Tolstoy",
+                            "book": "Anna Karenina",
+                            "name": "Si buscas la perfección nunca estarás contento."
+                        },
+                        {
+                            "id": 8,
+                            "author": "Henry James",
+                            "book": "El retrato de una dama",
+                            "name": "Llamo a la gente “rica” cuando son capaces de satisfacer las necesidades de su imaginación."
+                        },
+                        {
+                            "id": 11,
+                            "author": "Charles Dickens",
+                            "book": "David Copperfield",
+                            "name": "Mi consejo es: nunca hagas mañana lo que puedes hacer hoy. La procrastinación es la ladrona del tiempo."
+                        },
+                        {
+                            "id": 12,
+                            "author": "William Shakespeare",
+                            "book": "Enrique VI",
+                            "name": "Luchar hasta el último aliento."
+                        },
+                        {
+                            "id": 13,
+                            "author": "Philip Roth",
+                            "book": "El animal moribundo",
+                            "name": "Deja de preocuparte por envejecer y piensa en crecer."
+                        }
+                    ],
+                    "texts": []
+                },
+                {
+                    "id": 19,
+                    "name": "Vida",
+                    "imagePath": "/assets/img/themes/default-theme.png",
+                    "quotes": [
+                        {
+                            "id": 1,
+                            "author": "Frank Herbert",
+                            "book": "Duna",
+                            "name": "El misterio de la vida no es un problema a resolver, sino una realidad a experimentar."
+                        },
+                        {
+                            "id": 2,
+                            "author": "Richard Yates",
+                            "book": "Revolutionary Road",
+                            "name": "Estar solo no tiene nada que ver con cuantas personas hay alrededor."
+                        },
+                        {
+                            "id": 6,
+                            "author": "Carlos Ruiz Zafón",
+                            "book": "El Juego del Ángel",
+                            "name": "No puedo morir aún doctor. Todavía no. Tengo cosas que hacer. Después de todo, tendré una vida entera en la que morir."
+                        }
+                    ],
+                    "texts": []
+                },
+                {
+                    "id": 20,
+                    "name": "Esperanza",
+                    "imagePath": "/assets/img/themes/default-theme.png",
+                    "quotes": [
+                        {
+                            "id": 7,
+                            "author": "H.G. Wells",
+                            "book": "La isla del doctor Moreau",
+                            "name": "Tengo esperanza o podría no vivir."
+                        }
+                    ],
+                    "texts": []
+                },
+                {
+                    "id": 24,
+                    "name": "DAW-Prueba API Rest",
+                    "imagePath": null,
+                    "quotes": [],
+                    "texts": []
+                }
+            ],
+            "pageable": {
+                "sort": {
+                    "sorted": false,
+                    "unsorted": true,
+                    "empty": true
+                },
+                "offset": 0,
+                "pageSize": 6,
+                "pageNumber": 0,
+                "paged": true,
+                "unpaged": false
+            },
+            "last": true,
+            "totalElements": 6,
+            "totalPages": 1,
+            "size": 6,
+            "number": 0,
+            "sort": {
+                "sorted": false,
+                "unsorted": true,
+                "empty": true
+            },
+            "numberOfElements": 6,
+            "first": true,
+            "empty": false
+        }
+
+## View an specific theme
+#### URL
+
+	< /themes/{id} >
+
+* #### Method:
+
+	`GET`
+	
+* #### Parameters:
+
+	* URL
+            - id = [int]
+
+   
+* #### Request:
+
+        {
+            "id": 16,
+            "name": "Amor",
+            "imagePath": "/assets/img/themes/default-theme.png",
+            "quotes": [
+                {
+                    "id": 10,
+                    "author": "Victor Hugo",
+                    "book": "Los miserables",
+                    "name": "Es en las noches de diciembre, cuando el termómetro está a cero, cuando más pensamos en el sol."
+                },
+                {
+                    "id": 15,
+                    "author": "Miguel de Cervantes",
+                    "book": "Don Quijote de la Mancha",
+                    "name": "Amor y deseo son dos cosas diferentes; que no todo lo que se ama se desea, ni todo lo que se desea se ama."
+                }
+            ],
+            "texts": []
+        }
+
+## Add new Theme (only Administrator)
+#### URL
+
+	< /themes/ >
+
+* #### Method:
+
+	`POST`
+	
+* #### Parameters:
+
+	* Body
+
+            {
+                "name": "String"
+            }
+
+   
+* #### Request:
+
+        {
+            "id": 24,
+            "name": "DAW-Prueba API Rest",
+            "imagePath": null,
+            "quotes": null,
+            "texts": null
+        }
+
+## Edit Theme (only Administrator)
+#### URL
+
+	< /themes/{id} >
+
+* #### Method:
+
+	`PUT`
+	
+* #### Parameters:
+
+    * URL
+            - id = [int]
+	* Body
+
+            {
+                "name": "String"
+            }
+
+   
+* #### Request:
+
+        {
+            "id": 24,
+            "name": "FRASES CELEBRES",
+            "imagePath": null,
+            "quotes": [],
+            "texts": []
+        }
+
+## Delete Theme (only Administrator)
+#### URL
+
+	< /themes/{id} >
+
+* #### Method:
+
+	`DELETE`
+	
+* #### Parameters:
+
+    * URL
+            - id = [int]
+
+   
+* #### Request:
+
+        {
+            "id": 24,
+            "name": "FRASES CELEBRES",
+            "imagePath": null,
+            "quotes": [],
+            "texts": []
+        }
+
+## Add Text to Theme (only Administrator)
+#### URL
+
+	< /themes/addTextToTheme{id} >
+
+* #### Method:
+
+	`POST`
+	
+* #### Parameters:
+
+    * URL
+            - id = [int]
+    *Body
+            {
+                "text": "String"
+            }
+
+   
+* #### Request:
+
+        {
+            "id": 24,
+            "name": "FRASES CELEBRES",
+            "imagePath": null,
+            "quotes": [],
+            "texts": [
+                {
+                    "id": 25,
+                    "text": "Esto es una prueba de la API Rest de la Fase 3 de DAW"
+                }
+            ]
+        }
+
+## Add new quote (only Administrator)
+#### URL
+
+	< /quotes/ >
+
+* #### Method:
+
+	`POST`
+	
+* #### Parameters:
+
+    *Body
+            {
+                "author": "String",
+                "book": "String",
+                "name": "String"     
+            }
+
+   
+* #### Request:
+
+        {
+            "id": 26,
+            "author": "Henry Ford",
+            "book": "Desconocido",
+            "name": "Tanto si piensas que puedes, como si piensas que no puedes, estas en lo cierto"
+        }
+
+
+## Add Quote to Theme (only Administrator)
+#### URL
+
+	< /themes/addQuote{idQuote}ToTheme{idTheme} >
+
+* #### Method:
+
+	`POST`
+	
+* #### Parameters:
+
+    * URL
+            - idQuote = [int]
+            - idTheme = [int]
+       
+* #### Request:
+
+        {
+            "id": 24,
+            "name": "FRASES CELEBRES",
+            "imagePath": null,
+            "quotes": [
+                {
+                    "id": 26,
+                    "author": "Henry Ford",
+                    "book": "Desconocido",
+                    "name": "Tanto si piensas que puedes, como si piensas que no puedes, estas en lo cierto"
+                }
+            ],
+            "texts": [
+                {
+                    "id": 25,
+                    "text": "Esto es una prueba de la API Rest de la Fase 3 de DAW"
+                }
+            ]
+        }
+
+## Add Image to Theme
+### URL
+
+
