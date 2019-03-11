@@ -27,6 +27,8 @@ public class Theme extends TabElement {
     private String type = "theme";
     private String tabName = "Tema";
 
+    private long imagePath;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Quote> quotes;
 
@@ -76,6 +78,14 @@ public class Theme extends TabElement {
 
     public void update(Theme t){
         this.name = t.getName();
+    }
+
+    public long getImagePath() {
+        return this.id;
+    }
+    
+    public void setImagePath(long i) {
+        this.imagePath = i;
     }
 
 }
