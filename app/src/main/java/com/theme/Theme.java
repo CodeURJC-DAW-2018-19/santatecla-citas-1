@@ -19,7 +19,7 @@ import com.quote.*;
 public class Theme extends TabElement {
         
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     
     private String name;

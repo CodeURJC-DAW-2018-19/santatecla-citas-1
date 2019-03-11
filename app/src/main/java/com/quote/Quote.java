@@ -11,7 +11,7 @@ import com.TabElement;
 public class Quote extends TabElement{
         
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
 
     private String quote;
