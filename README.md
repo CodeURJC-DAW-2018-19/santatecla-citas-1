@@ -205,6 +205,6 @@ First of all, we need to install Docker:
 
 * [![Docker](https://img.shields.io/badge/Install-Docker-blue.svg)](https://www.docker.com/)
 
-Having already Docker installed, we must use the console (Using Windows CMD or Linux Terminal is the **_cd_** command) to go to the docker folder (at the root of our repository) and execute **docker-compose up**, this command will run up the containers: db (database) and app (sigma98/app:3.0.1 on DockerHub).
+Having already Docker installed, we must use the console (Using Windows CMD or Linux Terminal is the **_cd_** command) to go to the docker folder (at the root of our repository) and execute **docker-compose up**, this command will run up the containers: db (database) and app (sigma98/app:3.0.3 on DockerHub).
 
 YOU ARE READY TO USE OUR WEB APPLICATION USING DOCKER
