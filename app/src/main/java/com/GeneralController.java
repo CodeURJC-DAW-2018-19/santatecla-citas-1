@@ -19,6 +19,7 @@ import com.user.UserComponent;
 import com.user.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +31,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class GeneralController{
+public class GeneralController implements ErrorController{
   @Autowired
 	protected QuoteService quoteService;
 
@@ -147,8 +148,10 @@ public class GeneralController{
 		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
     
     	return "Home";
-  }
-  
+	}
+
+	private static final String PATH = "/error";
+
   	@GetMapping("/error")
 	public String error(Model model) {
 		
@@ -156,6 +159,11 @@ public class GeneralController{
 
 		return "Error";
 	}
+
+    @Override
+    public String getErrorPath() {
+        return PATH;
+    }
 
 	private class MyInteger {
 		private int value;

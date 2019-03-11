@@ -182,6 +182,29 @@ It shows the number of quotes that each topic has on the web.
 ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/diagram.png)
 
 ---------------------
+**Diagrama de clases API REST - Class Diagram of REST API**
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/RestDiagram.png)
+
+---------------------
+**Diagrama de Seguridad - Security Diagram**
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/SecurityDiagram.png)
+
+---------------------
 ## REST API documentation
 
-[REST API] (https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/API.md)
+[REST API 📄](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/API.md)
+
+---------------------
+## Docker Environment
+
+Now, we will explain what to do to execute our application on Docker.
+
+First of all, we need to install Docker:
+
+* [![Docker](https://img.shields.io/badge/Install-Docker-blue.svg)](https://www.docker.com/)
+
+Having already Docker installed, we must use the console (Using Windows CMD or Linux Terminal is the **_cd_** command) to go to the docker folder (at the root of our repository) and execute **docker-compose up**, this command will run up the containers: db (database) and app (sigma98/app:3.0.0 on DockerHub).
+
+YOU ARE READY TO USE OUR WEB APPLICATION USING DOCKER
