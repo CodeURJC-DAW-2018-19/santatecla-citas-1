@@ -295,12 +295,10 @@ public class ThemesController extends GeneralController{
 	@GetMapping("/generatePDF/{id}")
 	public ResponseEntity<InputStreamResource> generatePDF(Model model, @PathVariable Long id){
 		try{
-			byte[] pdf = this.themeService.generatePDF(id);
+			InputStream is = this.themeService.generatePDF(id);
 			HttpHeaders respHeaders = new HttpHeaders();
 			MediaType mediaType = MediaType.parseMediaType("application/pdf");
 			respHeaders.setContentType(mediaType);
-			respHeaders.setContentLength(pdf.length);
-			InputStream is = new ByteArrayInputStream(pdf);
 			InputStreamResource isr = new InputStreamResource(is);
 			updateTabs(model);
 			return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);

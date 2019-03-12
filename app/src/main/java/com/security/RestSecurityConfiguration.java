@@ -28,17 +28,17 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		// Theme
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/").permitAll();	
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/{id}").hasAnyRole("USER", "ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/image/{id}").hasAnyRole("USER","ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/PDF{id}").hasAnyRole("USER", "ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/{id}/image/").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/themes/{id}/PDF").hasAnyRole("USER", "ADMIN");
         
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/{id}/image").hasAnyRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/").hasAnyRole("ADMIN");			
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/addTextToTheme{id}").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/addQuote{idQuote}ToTheme{idTheme}").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/{id}/text").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/themes/{idTheme}/quote/{idQuote}").hasAnyRole("ADMIN");
 
         http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/themes/{id}").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/themes/deleteText{idText}/FromTheme{idTheme}").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/themes/deleteQuote{idQuote}/FromTheme{idTheme}").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/themes/{idTheme}/text/{idText}").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/themes/{idTheme}/quote/{idQuote}").hasAnyRole("ADMIN");
 
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/themes/{id}").hasAnyRole("ADMIN");
 		
