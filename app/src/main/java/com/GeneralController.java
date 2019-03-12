@@ -1,12 +1,9 @@
 package com;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
@@ -174,17 +171,8 @@ public class GeneralController implements ErrorController{
 
 	@GetMapping("/histogram")
 	public String histogram(Model model) {
-  
-  	List<Theme> savedThemes = this.themeService.findAll();
-		model.addAttribute("savedThemes", savedThemes);
-
-		List<MyInteger> numQuotes = new ArrayList<>();
-    
-		for(Theme t : savedThemes) {
-			numQuotes.add(new MyInteger(this.themeService.findOne(t.getId()).get().getQuotes().size()));
-		}
-    
-		model.addAttribute("numQuotes", numQuotes);
+		
+		model.addAttribute("histogram", this.themeService.getHistogram().getHistogramList());
     
 		updateTabs(model);
 

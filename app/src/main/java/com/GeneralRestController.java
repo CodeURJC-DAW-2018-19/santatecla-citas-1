@@ -1,8 +1,6 @@
 package com;
 
-import java.util.ArrayList;
-import java.util.List;
-import com.theme.Theme;
+import com.theme.Histogram;
 import com.theme.ThemeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,29 +17,11 @@ public class GeneralRestController{
 	@Autowired
     protected ThemeService themeService;
 
-    private class Histogram {
-        private class HistogramNode {
-            public String theme;
-            public Integer numQuotes;
-            public HistogramNode(String t, int n) {
-                this.theme = t;
-                this.numQuotes = n;
-            }
-        }
-        public List<HistogramNode> histogram = new ArrayList<>();
-        public void add(String t, Integer n) {
-            this.histogram.add(new HistogramNode(t, n));
-        }
-    }
-
     @GetMapping("/histogram")
 	public ResponseEntity<Histogram> histogram() {
-        List<Theme> savedThemes = this.themeService.findAll();
-        Histogram histogram = new Histogram();
-        for(Theme t : savedThemes) {
-			histogram.add(t.getName(), t.getQuotes().size());
-		}
-        return new ResponseEntity<Histogram>(histogram, HttpStatus.OK);
+
+        return new ResponseEntity<Histogram>(this.themeService.getHistogram(), HttpStatus.OK);
+
     }
     
 }
