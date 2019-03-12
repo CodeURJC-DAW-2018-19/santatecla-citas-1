@@ -1,6 +1,8 @@
 package com.theme;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,7 +68,7 @@ public class ThemeService {
         return repository.findAll();
 	}
 	
-	public byte[] generatePDF(Long id){
+	public InputStream generatePDF(Long id){
 		try{
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			Document document = new Document();
@@ -92,7 +94,7 @@ public class ThemeService {
 			}
 			
 			document.close();
-			return baos.toByteArray();
+			return new ByteArrayInputStream(baos.toByteArray());
 		} catch(Exception e){
 			e.printStackTrace();
 			return null;

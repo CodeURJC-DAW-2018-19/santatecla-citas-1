@@ -90,7 +90,7 @@ public class ThemeRestController{
 		}			
     }
     
-    @RequestMapping(value = "/image/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/image", method = RequestMethod.GET)
 	public ResponseEntity<Theme> getThemeImage(@PathVariable long id, HttpServletResponse res) {
 
 		Optional<Theme> theme = themeService.findOne(id);
@@ -133,7 +133,7 @@ public class ThemeRestController{
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping(value="/addTextToTheme{id}")
+    @PostMapping(value="/{id}/text")
     public ResponseEntity<Theme> addTextToTheme(@RequestBody Text text, @PathVariable long id){
         Optional<Theme> t =this.themeService.findOne(id);
         if(t.isPresent()){
@@ -144,7 +144,7 @@ public class ThemeRestController{
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping(value="/deleteText{idText}/FromTheme{idTheme}")
+    @DeleteMapping(value="/{idTheme}/text/{idText}")
     public ResponseEntity<Theme> deleteTextFromTheme(@PathVariable long idText, @PathVariable long idTheme){
         
         Optional<Theme> t =this.themeService.findOne(idTheme);
@@ -163,7 +163,7 @@ public class ThemeRestController{
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping(value="/addQuote{idQuote}ToTheme{idTheme}")
+    @PostMapping(value="/{idTheme}/quote/{idQuote}")
     public ResponseEntity<Theme> addQuoteToTheme(@PathVariable long idQuote, @PathVariable long idTheme){
         
         Optional<Theme> t =this.themeService.findOne(idTheme);
@@ -183,7 +183,7 @@ public class ThemeRestController{
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping(value="/deleteQuote{idQuote}/FromTheme{idTheme}")
+    @DeleteMapping(value="/{idTheme}/quote/{idQuote}")
     public ResponseEntity<Theme> deleteQuoteFromTheme(@PathVariable long idQuote, @PathVariable long idTheme){
         
         Optional<Theme> t =this.themeService.findOne(idTheme);
@@ -201,16 +201,14 @@ public class ThemeRestController{
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(value = "/PDF{id}", produces = "application/pdf")
+    @GetMapping(value = "/{id}/PDF", produces = "application/pdf")
     public ResponseEntity<InputStreamResource> downloadPDFFile(@PathVariable long id){
         try{
             if(this.themeService.findOne(id).isPresent()){
-                byte[] pdf = this.themeService.generatePDF(id);
+                InputStream is = this.themeService.generatePDF(id);
                 HttpHeaders respHeaders = new HttpHeaders();
                 MediaType mediaType = MediaType.parseMediaType("application/pdf");
                 respHeaders.setContentType(mediaType);
-                respHeaders.setContentLength(pdf.length);
-                InputStream is = new ByteArrayInputStream(pdf);
                 InputStreamResource isr = new InputStreamResource(is);
                 return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
             }
