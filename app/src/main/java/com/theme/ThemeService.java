@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Optional;
 
+import com.theme.Histogram;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
@@ -98,5 +99,14 @@ public class ThemeService {
 			return null;
 		}
 	}
-  
+
+	public Histogram getHistogram() {
+		List<Theme> themes = this.findAll();
+		Histogram histogram = new Histogram();
+		for(Theme t : themes) {
+			histogram.add(t.getName(), t.getQuotes().size());
+		}
+		return histogram;
+	}
+
 }

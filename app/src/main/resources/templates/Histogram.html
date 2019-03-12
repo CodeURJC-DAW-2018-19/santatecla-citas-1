@@ -32,15 +32,15 @@
             </div>
 
             <ul id="savedThemes" style="display: none">
-                {{#savedThemes}}
-                <li>{{name}}</li>
-                {{/savedThemes}}
+                {{#histogram}}
+                <li>{{theme}}</li>
+                {{/histogram}}
             </ul>
 
             <ul id="numQuotes" style="display: none">
-                {{#numQuotes}}
-                <li>{{value}}</li>
-                {{/numQuotes}}
+                {{#histogram}}
+                <li>{{numQuotes}}</li>
+                {{/histogram}}
             </ul>
 
             <!-- prepare a DOM container with width and height -->
