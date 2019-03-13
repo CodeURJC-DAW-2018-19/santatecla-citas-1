@@ -10,6 +10,7 @@ import java.nio.file.Path;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.image.ImageService;
 import com.quote.Quote;
 import com.quote.QuoteService;
@@ -40,6 +41,8 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/api/themes")
 public class ThemeRestController{
 
+    interface VisitorView extends Theme.Visitor{}
+
 	@Autowired
     protected ThemeService themeService;
 
@@ -51,6 +54,12 @@ public class ThemeRestController{
     
     @GetMapping(value="/")
     public Page<Theme> themes(@PageableDefault Pageable page){
+        return this.themeService.findAll(page);
+    }
+
+    @GetMapping(value="/visitor")
+    @JsonView(VisitorView.class)
+    public Page<Theme> themesVisitor(@PageableDefault Pageable page){
         return this.themeService.findAll(page);
     }
 

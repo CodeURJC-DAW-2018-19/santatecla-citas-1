@@ -6,17 +6,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.TabElement;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Quote extends TabElement{
+
+    public interface Visitor {}
         
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
 
+    @JsonView(Visitor.class)
     private String quote;
+    
     private String author;
     private String book;
+
     private String type = "quote";
     private String tabName = "Cita";
 

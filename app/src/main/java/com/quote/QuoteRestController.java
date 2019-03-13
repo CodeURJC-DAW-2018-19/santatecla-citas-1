@@ -2,6 +2,8 @@ package com.quote;
 
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,11 +23,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/quotes")
 public class QuoteRestController{
+
+    interface VisitorView extends Quote.Visitor{}
+
     @Autowired
 	protected QuoteService quoteService;
 
     @GetMapping(value="/")
     public Page<Quote> quotes(@PageableDefault Pageable page){
+        return this.quoteService.findAll(page);
+    }
+
+    @GetMapping(value="/visitor")
+    @JsonView(VisitorView.class)
+    public Page<Quote> quotesVisitor(@PageableDefault Pageable page){
         return this.quoteService.findAll(page);
     }
     

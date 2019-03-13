@@ -13,15 +13,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import com.TabElement;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.quote.*;
 
 @Entity
 public class Theme extends TabElement {
+
+    public interface Visitor {}
         
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
     
+    @JsonView(Visitor.class)
     private String name;
     
     private String type = "theme";
