@@ -1,6 +1,5 @@
 package com.theme;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +17,9 @@ import com.quote.*;
 
 @Entity
 public class Theme extends TabElement {
-
-    public interface Visitor {}
-        
+      
     @Id
+    @JsonView(Logged.class)
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
     
@@ -33,9 +31,11 @@ public class Theme extends TabElement {
 
     private long imagePath;
 
+    @JsonView(Logged.class)
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Quote> quotes;
 
+    @JsonView(Logged.class)
     @ManyToMany(cascade=CascadeType.ALL)
     private List<Text> texts;
 

@@ -1,7 +1,5 @@
 package com.theme;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
@@ -10,20 +8,17 @@ import java.nio.file.Path;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.image.ImageService;
+import com.GeneralRestController;
 import com.quote.Quote;
-import com.quote.QuoteService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,28 +34,20 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/themes")
-public class ThemeRestController{
+public class ThemeRestController extends GeneralRestController {
 
     interface VisitorView extends Theme.Visitor{}
-
-	@Autowired
-    protected ThemeService themeService;
-
-    @Autowired
-    protected QuoteService quoteService;
-
-    @Autowired
-	private ImageService imageService;
+    interface LoggedView extends Quote.Logged{}
     
     @GetMapping(value="/")
-    public Page<Theme> themes(@PageableDefault Pageable page){
-        return this.themeService.findAll(page);
-    }
-
-    @GetMapping(value="/visitor")
-    @JsonView(VisitorView.class)
-    public Page<Theme> themesVisitor(@PageableDefault Pageable page){
-        return this.themeService.findAll(page);
+    public MappingJacksonValue themes(@PageableDefault Pageable page){
+        MappingJacksonValue result = new MappingJacksonValue(this.themeService.findAll(page));
+        if (userComponent.isLoggedUser()) {
+            result.setSerializationView(LoggedView.class);
+        } else {
+            result.setSerializationView(VisitorView.class);
+        }
+        return result;      
     }
 
     @GetMapping(value="/{id}")

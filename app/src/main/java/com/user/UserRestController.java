@@ -1,6 +1,7 @@
 package com.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.GeneralRestController;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,23 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/user")
-public class UserRestController{
+public class UserRestController extends GeneralRestController {
     
-    @Autowired
-	private UserComponent userComponent;
-	
-	@Autowired
-	private UserService userService;
-
 	@GetMapping(value="/login")
 	public ResponseEntity<User> logIn() {
-		if (userComponent.getLoggedUser() != null){
+		if (this.userComponent.getLoggedUser() != null){
 			return new ResponseEntity<>(userComponent.getLoggedUser(), HttpStatus.OK);
-		}
-		else{
+		} else {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
-		
 	}
 
 	@PostMapping(value="/register")

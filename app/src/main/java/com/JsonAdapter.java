@@ -17,25 +17,24 @@ import java.io.IOException;
 @Configuration
 public class JsonAdapter implements WebMvcConfigurer {
 
-        @Bean
-        public Jackson2ObjectMapperBuilder jacksonBuilder() {
-            return new Jackson2ObjectMapperBuilder().failOnUnknownProperties(false).serializerByType(Page.class,
-                    new JsonPageSerializer());
-        }
-
-        public class JsonPageSerializer extends JsonSerializer<Page> {
-
-            @Override
-            public void serialize(Page page, JsonGenerator jsonGen, SerializerProvider serializerProvider)
-                    throws IOException, JsonProcessingException {
-
-                ObjectMapper om = new ObjectMapper().disable(MapperFeature.DEFAULT_VIEW_INCLUSION);
-                jsonGen.writeStartObject();
-                jsonGen.writeFieldName("content");
-                jsonGen.writeRawValue(
-                        om.writerWithView(serializerProvider.getActiveView()).writeValueAsString(page.getContent()));
-                jsonGen.writeEndObject();
-            }
-
-        }
+    @Bean
+    public Jackson2ObjectMapperBuilder jacksonBuilder() {
+        return new Jackson2ObjectMapperBuilder().failOnUnknownProperties(false).serializerByType(Page.class,
+                new JsonPageSerializer());
     }
+
+    public class JsonPageSerializer extends JsonSerializer<Page> {
+
+        @Override
+        public void serialize(Page page, JsonGenerator jsonGen, SerializerProvider serializerProvider)
+                throws IOException, JsonProcessingException {
+
+            ObjectMapper om = new ObjectMapper().disable(MapperFeature.DEFAULT_VIEW_INCLUSION);
+            jsonGen.writeStartObject();
+            jsonGen.writeFieldName("content");
+            jsonGen.writeRawValue(om.writerWithView(serializerProvider.getActiveView()).writeValueAsString(page.getContent()));
+            jsonGen.writeEndObject();
+        }
+
+    }
+}

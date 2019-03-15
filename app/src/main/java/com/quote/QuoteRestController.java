@@ -2,14 +2,12 @@ package com.quote;
 
 import java.util.Optional;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import com.GeneralRestController;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,22 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/quotes")
-public class QuoteRestController{
+public class QuoteRestController extends GeneralRestController{
 
     interface VisitorView extends Quote.Visitor{}
-
-    @Autowired
-	protected QuoteService quoteService;
+    interface LoggedView extends Quote.Logged{}
 
     @GetMapping(value="/")
-    public Page<Quote> quotes(@PageableDefault Pageable page){
-        return this.quoteService.findAll(page);
-    }
-
-    @GetMapping(value="/visitor")
-    @JsonView(VisitorView.class)
-    public Page<Quote> quotesVisitor(@PageableDefault Pageable page){
-        return this.quoteService.findAll(page);
+    public MappingJacksonValue quotes(@PageableDefault Pageable page){
+        MappingJacksonValue result = new MappingJacksonValue(this.quoteService.findAll(page));
+        if (userComponent.isLoggedUser()) {
+            result.setSerializationView(LoggedView.class);
+        } else {
+            result.setSerializationView(VisitorView.class);
+        }
+        return result;
     }
     
     @GetMapping(value="/{id}")

@@ -11,16 +11,18 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Quote extends TabElement{
 
-    public interface Visitor {}
-        
     @Id
+    @JsonView(Logged.class)
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
 
     @JsonView(Visitor.class)
     private String quote;
     
+    @JsonView(Logged.class)
     private String author;
+    
+    @JsonView(Logged.class)
     private String book;
 
     private String type = "quote";
