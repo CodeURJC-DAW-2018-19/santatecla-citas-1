@@ -8,13 +8,14 @@ import { CovalentHttpModule } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, FormsModule, /*BrowserAnimationsModule*/,
+  imports: [BrowserModule, HttpClientModule, FormsModule, /*BrowserAnimationsModule*/,
     CovalentLayoutModule,
     CovalentStepsModule,
     CovalentHttpModule.forRoot(),
