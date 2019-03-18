@@ -16,4 +16,13 @@ export class ThemesService {
       }
     )
   }
+
+  getTheme(id: number){
+    this.http.get("http://localhost:8443/api/themes/"+id).map(
+      response => {
+        let themes = response.json();
+        return themes;
+      }
+    )
+  }
 }
