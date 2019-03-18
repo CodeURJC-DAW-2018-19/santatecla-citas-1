@@ -50,9 +50,9 @@ public class ThemeService {
 
 	public List<Theme> findByName(String name) {
         return repository.findByNameContaining(name);
-    }
+  }
 
-  	public Page<Theme> findByName(String name, Pageable page) {
+  public Page<Theme> findByName(String name, Pageable page) {
 
 		return repository.findByNameContaining(name, PageRequest.of(0, pageSize(page)));
 	}

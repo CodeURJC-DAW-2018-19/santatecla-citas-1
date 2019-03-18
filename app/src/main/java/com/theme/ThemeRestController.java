@@ -50,6 +50,17 @@ public class ThemeRestController extends GeneralRestController {
         return result;      
     }
 
+    @GetMapping(value="/search/{name}")
+    public MappingJacksonValue searchThemes(@PageableDefault Pageable page, @PathVariable String name){
+        MappingJacksonValue result = new MappingJacksonValue(this.themeService.findByName(name, page));
+        if (userComponent.isLoggedUser()) {
+            result.setSerializationView(LoggedView.class);
+        } else {
+            result.setSerializationView(VisitorView.class);
+        }
+        return result;      
+    }
+
     @GetMapping(value="/{id}")
     public ResponseEntity<Theme> concreteThemes(@PathVariable long id){
         Optional<Theme> t = this.themeService.findOne(id);
