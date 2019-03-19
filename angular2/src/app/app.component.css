@@ -1,5 +1,17 @@
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+.example-large-box {
+  margin: 16px;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.card {
+  margin: 1rem;
+}
+
+.histogramButton {
+
+}
+
+.upperBar {
+  background-color: mediumslateblue;
 }
