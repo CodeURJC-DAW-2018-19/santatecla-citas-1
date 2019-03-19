@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './theme.service';
+import { QuoteService } from './quote.service';
 import { Theme } from './theme';
 
 @Component({
@@ -16,7 +17,9 @@ export class AppComponent implements OnInit {
 
   theme: Theme;
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService, private quoteService: QuoteService) {}
+
+  quotes = this.quoteService.getQuotes();
 
   ngOnInit() {
     /*this.themeService.getTheme(16)
