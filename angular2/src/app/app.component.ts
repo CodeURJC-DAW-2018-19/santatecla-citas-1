@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './theme.service';
-import { Observable } from 'rxjs';
-
-interface Theme {
-  name: string;
-}
+import { Theme } from './theme';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +12,15 @@ export class AppComponent implements OnInit {
 
   title = 'My First Angular App';
 
-  themes: Observable<Theme[]>;
+  theme: Theme;
 
   constructor(private themeService: ThemeService) {}
 
-
   ngOnInit() {
-
+    this.themeService.getTheme(16)
+      .subscribe((data: Theme) => this.theme = {
+        name: data['name']
+      });
   }
 
 }
