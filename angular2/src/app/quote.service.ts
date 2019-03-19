@@ -7,10 +7,6 @@ export class QuoteService {
   constructor(private http: HttpClient) { }
 
   getQuotes() {
-    return [
-      { name: 'Elem1', check: true },
-      { name: 'Elem2', check: true },
-      { name: 'Elem3', check: false }
-    ];
+    return this.http.get('https://localhost:8080/api/quotes/');
   }
 }

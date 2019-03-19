@@ -1,3 +1,4 @@
+import { Quote } from './quote.model';
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './theme.service';
 import { QuoteService } from './quote.service';
@@ -17,13 +18,16 @@ export class AppComponent implements OnInit {
 
   private themes: Theme[] = [];
 
-  constructor(private themeService: ThemeService, private quoteService: QuoteService) {}
+  private quotes: Quote[] = [];
 
-  quotes = this.quoteService.getQuotes();
+  constructor(private themeService: ThemeService, private quoteService: QuoteService) {}
 
   ngOnInit() {
     this.themeService.getThemes()
       .subscribe((data: Theme[]) => this.themes = data['content']
+    );
+    this.quoteService.getQuotes()
+      .subscribe((data: Quote[]) => this.quotes = data['content']
     );
   }
 
