@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './theme.service';
-import { Theme } from './theme';
+import { Theme } from './theme.model';
 
 @Component({
   selector: 'app-root',
@@ -12,17 +12,17 @@ import { Theme } from './theme';
 
 export class AppComponent implements OnInit {
 
-  title = 'My First Angular App';
+  private title = 'My First Angular App';
 
-  theme: Theme;
+  private themes: Theme[] = [];
 
   constructor(private themeService: ThemeService) {}
 
   ngOnInit() {
-    /*this.themeService.getTheme(16)
-      .subscribe((data: Theme) => this.theme = {
-        name: data['name']
-      });*/
+    this.themeService.getThemes()
+      .subscribe((data: Theme[]) => this.themes = data['content']
+    );
+    //this.themes = [{name: 'Libertad'}, {name: 'Amor'}];
   }
 
 }

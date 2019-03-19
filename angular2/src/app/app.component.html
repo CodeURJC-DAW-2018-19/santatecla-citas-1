@@ -22,7 +22,9 @@
         <mat-chip-list>
           <mat-chip color="primary" selected>Añadir</mat-chip>
         </mat-chip-list>
-        <mat-card class="card">Tema 1
+        <div *ngFor = "let theme of themes" >
+        <mat-card class="card" >
+            {{theme.name}}
           <button mat-mini-fab color="warn">
             <mat-icon>delete</mat-icon>
           </button>
@@ -30,6 +32,7 @@
             <mat-icon>border_color</mat-icon>
           </button>
         </mat-card>
+      </div>
       </div>
     </mat-tab>
     <mat-tab label="Citas">
