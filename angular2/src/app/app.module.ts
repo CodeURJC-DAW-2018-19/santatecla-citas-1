@@ -11,6 +11,7 @@ import {MatButtonModule, MatCheckboxModule, MatCardModule, MatDividerModule,
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ThemeService } from './theme.service';
+import { QuoteService } from './quote.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ThemeService } from './theme.service';
     MatFormFieldModule,
     MatChipsModule
   ],
-  providers: [ThemeService],
+  providers: [ThemeService, QuoteService],
   bootstrap: [AppComponent]
 })
 

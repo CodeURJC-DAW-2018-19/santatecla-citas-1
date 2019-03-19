@@ -1,4 +1,7 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
 
 <!--<div>
     <mat-form-field appearance="outline">
@@ -11,7 +14,7 @@
 
 <div class="upperBar">
   <button mat-fab color="primary">
-      <mat-icon>supervised_user_circle</mat-icon>
+    <mat-icon>supervised_user_circle</mat-icon>
   </button>
 </div>
 
@@ -40,23 +43,25 @@
         <mat-chip-list>
           <mat-chip color="primary" selected>Añadir</mat-chip>
         </mat-chip-list>
-        <mat-card class="card">Cita 1
-          <button mat-mini-fab color="warn">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button mat-mini-fab color="primary">
-            <mat-icon>border_color</mat-icon>
-          </button>
-        </mat-card>
+        <div *ngFor="let quote of quotes" >
+          <mat-card class="card"
+            >{{quote.name}}
+            <button mat-mini-fab color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary">
+              <mat-icon>border_color</mat-icon>
+            </button>
+          </mat-card>
+        </div>
       </div>
     </mat-tab>
   </mat-tab-group>
 </div>
 
 <div class="histogramButton">
-  <button mat-raised-button color="primary">Histograma
+  <button mat-raised-button color="primary">
+    Histograma
     <mat-icon>bar_chart</mat-icon>
   </button>
 </div>
-
-
