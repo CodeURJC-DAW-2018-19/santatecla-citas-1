@@ -8,14 +8,25 @@ import {MatButtonModule, MatCheckboxModule, MatCardModule, MatDividerModule,
         MatListModule, MatSidenavModule, MatTabsModule, MatIconModule, MatFormFieldModule,
         MatChipsModule} from '@angular/material';
 
+import { routing } from './app.routing';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ThemeService } from './theme.service';
-import { QuoteService } from './quote.service';
+
+import { ThemeComponent } from './theme/theme.component';
+import { ThemeService } from './theme/theme.service';
+
+import { QuoteComponent } from './quote/quote.component';
+import { QuoteService } from './quote/quote.service';
+
+import { ElementListComponent } from './element-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ElementListComponent,
+    ThemeComponent,
+    QuoteComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +42,8 @@ import { QuoteService } from './quote.service';
     MatTabsModule,
     MatIconModule,
     MatFormFieldModule,
-    MatChipsModule
+    MatChipsModule,
+    routing
   ],
   providers: [ThemeService, QuoteService],
   bootstrap: [AppComponent]
