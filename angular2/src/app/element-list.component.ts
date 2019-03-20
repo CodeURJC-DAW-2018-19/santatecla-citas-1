@@ -15,8 +15,8 @@ import { QuoteService } from './quote/quote.service';
 
 export class ElementListComponent {
 
-  themes: string[];
-  quotes: string[];
+  themes: Theme[];
+  quotes: Quote[];
 
   constructor(private themeService: ThemeService, private quoteService: QuoteService) {}
 
