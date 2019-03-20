@@ -7,6 +7,6 @@ export class QuoteService {
   constructor(private http: HttpClient) { }
 
   getQuotes() {
-    return this.http.get('https://localhost:8080/api/quotes/');
+    return this.http.get('/api/quotes/');
   }
 }

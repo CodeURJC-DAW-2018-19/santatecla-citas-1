@@ -8,10 +8,10 @@ export class ThemeService {
   constructor(private http: HttpClient) { }
 
   getThemes() {
-    return this.http.get('https://localhost:8080/api/themes/');
+    return this.http.get('/api/themes/');
   }
 
   getTheme(id: number) {
-    return this.http.get('https://localhost:8080/api/themes/' + id);
+    return this.http.get('/api/themes/' + id);
   }
 }
