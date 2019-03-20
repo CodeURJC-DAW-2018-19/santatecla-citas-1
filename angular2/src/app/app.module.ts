@@ -49,9 +49,11 @@ import { AppComponent } from './app.component';
 
 import { ThemeComponent } from './theme/theme.component';
 import { ThemeService } from './theme/theme.service';
+import { FormThemeComponent } from './theme/formTheme.component';
 
 import { QuoteComponent } from './quote/quote.component';
 import { QuoteService } from './quote/quote.service';
+import { FormQuoteComponent } from './quote/formQuote.component';
 
 import { LoginComponent } from './login/login.component';
 
@@ -63,6 +65,8 @@ import { ElementListComponent } from './element-list.component';
     ElementListComponent,
     ThemeComponent,
     QuoteComponent,
+    FormQuoteComponent,
+    FormThemeComponent,
     LoginComponent
   ],
   imports: [
