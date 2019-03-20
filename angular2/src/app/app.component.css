@@ -12,6 +12,14 @@
 
 }
 
+.enterLoginBotton {
+  margin-left: 1rem;
+}
+
+.search {
+  margin-left: 1rem;
+}
+
 .upperBar {
   background-color: mediumslateblue;
   margin: 16px;
