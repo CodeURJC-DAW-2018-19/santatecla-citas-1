@@ -14,20 +14,18 @@ import { Theme } from './theme.model';
 
 export class AppComponent implements OnInit {
 
-  private title = 'My First Angular App';
+  themes: Theme[] = [];
 
-  private themes: Theme[] = [];
-
-  private quotes: Quote[] = [];
+  quotes: Quote[] = [];
 
   constructor(private themeService: ThemeService, private quoteService: QuoteService) {}
 
   ngOnInit() {
     this.themeService.getThemes()
-      .subscribe((data: Theme[]) => this.themes = data['content']
+      .subscribe((data: Theme[]) => this.themes = data[' content ']
     );
     this.quoteService.getQuotes()
-      .subscribe((data: Quote[]) => this.quotes = data['content']
+      .subscribe((data: Quote[]) => this.quotes = data[' content ']
     );
   }
 
