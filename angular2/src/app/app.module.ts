@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Angular Material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -62,6 +63,12 @@ import { QuoteService } from './quote/quote.service';
 import { FormQuoteComponent } from './quote/formQuote.component';
 
 import { LoginComponent } from './login/login.component';
+import { LoginObject } from './login/login.object';
+import { LoginService } from './login/login.service';
+import { Session } from './login/session.model';
+import { User } from './login/user.model';
+import { StorageService } from './login/storage.service';
+
 
 import { RegisterComponent } from './register/register.component';
 
@@ -125,9 +132,9 @@ import { HistogramComponent } from './histogram/histogram.component';
     CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, CovalentExpansionPanelModule,
     CovalentStepsModule, CovalentLoadingModule, CovalentDialogsModule, CovalentSearchModule, CovalentPagingModule,
     CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule,
-    NgxChartsModule
+    NgxChartsModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [ThemeService, QuoteService],
+  providers: [ThemeService, QuoteService, LoginService, StorageService],
   bootstrap: [AppComponent]
 })
 

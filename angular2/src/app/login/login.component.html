@@ -4,15 +4,15 @@
     <mat-tab-group dynamicHeight>
       <mat-tab label="Login">
         <div class="example-large-box mat-elevation-z4">
-          <form>
+          <form id="login-form" #lForm="ngForm" [formGroup]="loginForm" (ngSubmit)="submitLogin()" novalidate>
             <mat-card class="card">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Nombre">
+                <input matInput formControlName="username" placeholder="Nombre">
               </mat-form-field>
             </mat-card>
             <mat-card class="card">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Contraseña">
+                <input matInput formControlName="password" placeholder="Contraseña">
               </mat-form-field>
             </mat-card>
             <div class="enterLoginBotton">

@@ -24,6 +24,15 @@ public class UserRestController extends GeneralRestController {
 		}
 	}
 
+	@PostMapping(value="/login")
+	public ResponseEntity<User> logInPRUEBA(@RequestBody User n){
+		System.out.println(n.getName());
+		if(n.getName().equals("admin")){
+			return new ResponseEntity<>(n, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+	}
+
 	@PostMapping(value="/register")
 	public ResponseEntity<User> register(@RequestBody User newUser) {
 		if(newUser == null){
