@@ -9,4 +9,8 @@ export class QuoteService {
   getQuotes() {
     return this.http.get('/api/quotes/');
   }
+
+  getQuote(id: number) {
+    return this.http.get('/api/quotes/' + id);
+  }
 }

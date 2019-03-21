@@ -16,12 +16,12 @@
             <mat-chip [routerLink]="['/formTheme']" color="primary" selected>Añadir</mat-chip>
           </mat-chip-list>
           <div *ngFor = "let theme of themes" >
-          <mat-card class="card" >
+          <mat-card class="card" [routerLink]="['/theme']">
               {{theme.name}}
             <button mat-mini-fab color="warn">
               <mat-icon>delete</mat-icon>
             </button>
-            <button mat-mini-fab color="primary">
+            <button mat-mini-fab color="primary" [routerLink]="['/formTheme']">
               <mat-icon>border_color</mat-icon>
             </button>
           </mat-card>
@@ -36,12 +36,12 @@
             <mat-chip [routerLink]="['/formQuote']" color="primary" selected>Añadir</mat-chip>
           </mat-chip-list>
           <div *ngFor="let quote of quotes" >
-            <mat-card class="card">
+            <mat-card class="card" [routerLink]="['/quote']">
                 {{quote.quote}}
               <button mat-mini-fab color="warn">
                 <mat-icon>delete</mat-icon>
               </button>
-              <button mat-mini-fab color="primary">
+              <button mat-mini-fab color="primary" [routerLink]="['/formQuote']">
                 <mat-icon>border_color</mat-icon>
               </button>
             </mat-card>

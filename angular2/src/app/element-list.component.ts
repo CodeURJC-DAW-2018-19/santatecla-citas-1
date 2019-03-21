@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Theme } from './theme/theme.model';
 import { ThemeService } from './theme/theme.service';
@@ -13,7 +13,7 @@ import { QuoteService } from './quote/quote.service';
   ]
 })
 
-export class ElementListComponent {
+export class ElementListComponent implements OnInit {
 
   themes: Theme[];
   quotes: Quote[];
