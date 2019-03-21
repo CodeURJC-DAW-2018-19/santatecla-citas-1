@@ -42,6 +42,12 @@ import {
   MatTreeModule,
 } from '@angular/material';
 
+// For the histogram
+import { CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, CovalentExpansionPanelModule,
+  CovalentStepsModule, CovalentLoadingModule, CovalentDialogsModule, CovalentSearchModule, CovalentPagingModule,
+  CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule } from '@covalent/core';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { routing } from './app.routing';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -57,7 +63,11 @@ import { FormQuoteComponent } from './quote/formQuote.component';
 
 import { LoginComponent } from './login/login.component';
 
+import { RegisterComponent } from './register/register.component';
+
 import { ElementListComponent } from './element-list.component';
+
+import { HistogramComponent } from './histogram/histogram.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +77,9 @@ import { ElementListComponent } from './element-list.component';
     QuoteComponent,
     FormQuoteComponent,
     FormThemeComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    HistogramComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +121,11 @@ import { ElementListComponent } from './element-list.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    routing
+    routing,
+    CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, CovalentExpansionPanelModule,
+    CovalentStepsModule, CovalentLoadingModule, CovalentDialogsModule, CovalentSearchModule, CovalentPagingModule,
+    CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule,
+    NgxChartsModule
   ],
   providers: [ThemeService, QuoteService],
   bootstrap: [AppComponent]
