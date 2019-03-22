@@ -8,11 +8,13 @@
             <mat-card class="card">
               <mat-form-field class="example-full-width">
                 <input matInput formControlName="username" placeholder="Nombre">
+                <mat-hint style="color: red;" *ngIf="submitted && error && !loginForm.controls.username.hasError('required')">{{error.message}}</mat-hint>
               </mat-form-field>
             </mat-card>
             <mat-card class="card">
               <mat-form-field class="example-full-width">
                 <input matInput formControlName="password" placeholder="Contraseña">
+                <mat-hint style="color: red;" *ngIf="submitted && error && !loginForm.controls.password.hasError('required')">{{error.message}}</mat-hint>
               </mat-form-field>
             </mat-card>
             <div class="enterLoginBotton">

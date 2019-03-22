@@ -46,4 +46,9 @@ export class StorageService{
     let session = this.getCurrentSession();
     return (session && session.token) ? session.token : null;
   }
+
+  logout(): void{
+    this.removeCurrentSession();
+    this.router.navigate(['/login']);
+  }
 }

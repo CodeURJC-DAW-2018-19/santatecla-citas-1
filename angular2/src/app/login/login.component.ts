@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   public loginForm: FormGroup;
   public submitted = false;
-  public error: {code: number, message: string} = null;
+  public error: {message: string} = null;
   constructor(private formBuilder: FormBuilder,
               private authenticationService: LoginService,
               private storageService: StorageService,
@@ -33,15 +33,15 @@ export class LoginComponent {
   public submitLogin() {
     this.submitted = true;
     this.error = null;
-    if(this.loginForm.valid) {
+    if (this.loginForm.valid) {
       this.authenticationService.login(new LoginObject(this.loginForm.value)).subscribe(
         data => this.correctLogin(data),
-        error => this.error = JSON.parse(error._body)
-      )
+        error => this.error = {message : 'Wrong credentials'}
+      );
     }
   }
   private correctLogin(data){
     this.storageService.setCurrentSession(data);
-    this.router.navigate(['/histogram']);
+    this.router.navigate(['']);
   }
 }

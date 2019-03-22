@@ -9,13 +9,13 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  private basePath = 'https://localhost:8080/api/user/login';
+  private basePath = 'https://localhost:8080/api/user/';
 
   login(loginObj: LoginObject): Observable<LoginObject>{
-    return this.http.post<LoginObject>(this.basePath, loginObj);
+    return this.http.post<LoginObject>(this.basePath + 'login', loginObj);
   }
 
   logout() {
-    return this.http.post(this.basePath, {});
+    return this.http.post(this.basePath + 'logout', {});
   }
 }
