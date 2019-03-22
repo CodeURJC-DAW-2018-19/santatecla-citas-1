@@ -65,6 +65,8 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter{
 
         // Disable CSRF
         http.csrf().disable();
+
+        http.logout().logoutUrl("/user/logout");
         
     }
 

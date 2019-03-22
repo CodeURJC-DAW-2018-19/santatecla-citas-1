@@ -1,9 +1,14 @@
 package com.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.GeneralRestController;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +26,34 @@ public class UserRestController extends GeneralRestController {
 			return new ResponseEntity<>(userComponent.getLoggedUser(), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+	}
+
+	@PostMapping(value="/login")
+	public ResponseEntity<User> logInPRUEBA(@RequestBody User n){
+		String username = n.getName();
+		String password = n.getPasswordHash();
+
+		User user = this.userService.findByName(username);
+
+		if (user == null) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+
+		if (!new BCryptPasswordEncoder().matches(password, user.getPasswordHash())) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		} else {
+
+			userComponent.setLoggedUser(user);
+
+			List<SimpleGrantedAuthority> roles = new ArrayList<>();
+			for (String role : user.getRoles()) {
+				roles.add(new SimpleGrantedAuthority(role));
+			}
+
+			userComponent.setLoggedUser(user);
+			
+			return new ResponseEntity<>(userComponent.getLoggedUser(), HttpStatus.OK);
 		}
 	}
 
