@@ -20,9 +20,46 @@ export class ElementListComponent implements OnInit {
   quotes: Quote[];
   logged = this.userStorage.isAuthenticated();
 
-  constructor(private themeService: ThemeService, private quoteService: QuoteService, private userStorage: StorageService) {}
+  searchName: string;
+
+  pageNumber: number;
+
+  constructor(private themeService: ThemeService, private quoteService: QuoteService, private userStorage: StorageService) {
+    this.pageNumber = 0;
+  }
 
   ngOnInit() {
+    this.showAllThemesAndQuotes();
+  }
+
+  search(name: string) {
+    if (name !== '') {
+    this.themeService.searchTheme(name)
+      .subscribe((data: Theme[]) => this.themes = data['content']
+    );
+    this.quoteService.searchQuote(name)
+      .subscribe((data: Quote[]) => this.quotes = data['content']
+    );
+    } else {
+      this.showAllThemesAndQuotes();
+    }
+  }
+
+  quotesByPage(page: number) {
+    if (page !== 0) {
+    this.themeService.getThemes()
+      .subscribe((data: Theme[]) => this.themes = data['content']
+    );
+    this.quoteService.getQuotesByPage(page)
+      .subscribe((data: Quote[]) => this.quotes = data['content']
+    );
+    } else {
+      this.showAllThemesAndQuotes();
+    }
+    this.pageNumber++;
+  }
+
+  showAllThemesAndQuotes() {
     this.themeService.getThemes()
       .subscribe((data: Theme[]) => this.themes = data['content']
     );

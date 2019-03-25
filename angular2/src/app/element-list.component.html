@@ -2,8 +2,8 @@
 <div class="search">
   <mat-form-field appearance="outline">
       <mat-label>Buscador</mat-label>
-      <input matInput>
-      <mat-icon matSuffix>search</mat-icon>
+      <input matInput [(ngModel)]="searchName">
+      <mat-icon matSuffix (click)="search(searchName)">search</mat-icon>
   </mat-form-field>
 </div>
 
@@ -16,20 +16,20 @@
             <mat-chip [routerLink]="['/formTheme']" color="primary" *ngIf="logged">Añadir</mat-chip>
           </mat-chip-list>
           <div *ngFor = "let theme of themes" >
-          <mat-card class="card">
-          <div *ngIf="logged" [routerLink]="['/theme']">{{theme.name}}</div>
-          <div *ngIf="!logged">{{theme.name}}</div>
+            <mat-card class="card">
+              <div *ngIf="logged" [routerLink]="['/theme', theme.id]">{{theme.name}}</div>
+              <div *ngIf="!logged">{{theme.name}}</div>
 
-            <div *ngIf="logged">
-              <button mat-mini-fab color="warn">
-                <mat-icon>delete</mat-icon>
-              </button>
-              <button mat-mini-fab color="primary" [routerLink]="['/formTheme']">
-                <mat-icon>border_color</mat-icon>
-              </button>
-            </div>
-          </mat-card>
-        </div>
+              <div *ngIf="logged">
+                <button mat-mini-fab color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-mini-fab color="primary" [routerLink]="['/formTheme']">
+                  <mat-icon>border_color</mat-icon>
+                </button>
+              </div>
+            </mat-card>
+          </div>
         </div>
       </mat-tab>
 
@@ -41,7 +41,7 @@
           </mat-chip-list>
           <div *ngFor="let quote of quotes" >
             <mat-card class="card">
-                <div *ngIf="logged" [routerLink]="['/quote']">{{quote.quote}}</div>
+                <div *ngIf="logged" [routerLink]="['/quote', quote.id]">{{quote.quote}}</div>
                 <div *ngIf="!logged">{{quote.quote}}</div>
 
                 <div *ngIf="logged">
@@ -54,6 +54,9 @@
                 </div>
             </mat-card>
           </div>
+          <button>
+            <mat-icon matSuffix (click)="quotesByPage(pageNumber + 1)">more_horiz</mat-icon>
+          </button>
         </div>
       </mat-tab>
     </mat-tab-group>
