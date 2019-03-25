@@ -54,8 +54,11 @@
                 </div>
             </mat-card>
           </div>
-          <button>
-            <mat-icon matSuffix (click)="quotesByPage(pageNumber + 1)">more_horiz</mat-icon>
+          <button mat-mini-fab color="primary">
+            <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">more_horiz</mat-icon>
+          </button>
+          <button mat-mini-fab color="primary">
+            <mat-icon matSuffix (click)="loadLess()">keyboard_capslock</mat-icon>
           </button>
         </div>
       </mat-tab>
