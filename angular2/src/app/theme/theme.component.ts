@@ -13,15 +13,19 @@ import { ThemeService } from './theme.service';
 
 export class ThemeComponent {
 
-  /*theme: Theme;
+  theme: Theme;
 
   constructor(private themeService: ThemeService, private router: Router, activatedRoute: ActivatedRoute) {
 
     let id = activatedRoute.snapshot.params['id'];
     this.themeService.getTheme(id)
-      .subscribe((data: Theme[]) => this.theme = data['content']
+      .subscribe((data: Theme) => this.theme = {
+        id: data['id'],
+        name: data['name'],
+        quotes: data['quotes']
+      }
     );
 
-  }*/
+  }
 
 }

@@ -3,20 +3,20 @@
   <mat-card class="card" >
     <mat-tab-group dynamicHeight>
       <mat-tab label="Temas">
-        <div class="example-large-box mat-elevation-z4">
+        <div class="example-large-box mat-elevation-z4" *ngFor = "let quote of theme.quotes">
             <mat-card class="card" >
-              Referencia cita 1
+              Referencia cita {{quote.id}}
               <button mat-mini-fab color="warn">
                 <mat-icon>delete</mat-icon>
               </button>
               <mat-card class="card">
-                  Cita 1
+                {{quote.quote}}
               </mat-card>
               <mat-card class="card">
-                  Autor
+                {{quote.author}}
               </mat-card>
               <mat-card class="card">
-                  Obra
+                {{quote.book}}
               </mat-card>
             </mat-card>
         </div>
@@ -36,9 +36,11 @@
               HTML
             </mat-card>
             <mat-card class="card" >
-              <h3>Tema</h3>
-              <p>"Cita 1"</p>
-              <p>Autor - Obra</p>
+              <h3>{{theme.name}}</h3>
+              <div *ngFor = "let quote of theme.quotes">
+                <p>"{{quote.quote}}"</p>
+                <p>{{quote.author}} - {{quote.book}}</p>
+              </div>
             </mat-card>
         </div>
 
