@@ -3,7 +3,7 @@ package com;
 public class TabElement {
     
     public interface Visitor {}
-    public interface Logged {}
+    public interface Logged extends Visitor{}
 
     protected boolean active;
 
