@@ -6,22 +6,35 @@ import java.util.List;
 public class Histogram {
 
     private class HistogramNode {
-        public String theme;
-        public int numQuotes;
-        public HistogramNode(String t, int n) {
-            this.theme = t;
-            this.numQuotes = n;
+
+        public String name;
+        public Serie[] series = new Serie[1];
+
+        private class Serie {
+
+            public String name = "Citas";
+            public int value;
+
+            public Serie(int n) {
+                this.value = n;
+            }
         }
+
+        public HistogramNode(String theme, int n) {
+            this.name = theme;
+            this.series[0] = new Serie(n);
+        }
+        
     }
 
-    public List<HistogramNode> histogramList = new ArrayList<>();
+    public List<HistogramNode> histogram = new ArrayList<>();
 
     public void add(String t, int n) {
-        this.histogramList.add(new HistogramNode(t, n));
+        this.histogram.add(new HistogramNode(t, n));
     }
 
     public List<HistogramNode> getHistogramList() {
-        return this.histogramList;
+        return this.histogram;
     }
 
 }
