@@ -6,45 +6,24 @@ import {User} from './user.model';
 @Injectable()
 export class StorageService{
 
-  private localStorageService;
-  private currentSession: Session = null;
+  private currentUser: User = null;
 
-  constructor(private router: Router) {
-    this.localStorageService = localStorage;
-    this.currentSession = this.loadSessionData();
-  }
+  constructor(private router: Router) {}
 
-  setCurrentSession(session: Session): void {
-    this.currentSession = session;
-    this.localStorageService.setItem('currentUser', JSON.stringify(session));
-  }
-
-  loadSessionData(): Session{
-    let sessionStr = this.localStorageService.getItem('currentUser');
-    return (sessionStr) ? JSON.parse(sessionStr) : null;
-  }
-
-  getCurrentSession(): Session {
-    return this.currentSession;
-  }
-
-  removeCurrentSession(): void {
-    this.localStorageService.removeItem('currentUser');
-    this.currentSession = null;
+  setCurrentUser(user: User): void {
+    this.currentUser = user;
   }
 
   getCurrentUser(): User {
-    let session: Session = this.getCurrentSession();
-    return (session && session.user) ? session.user : null;
+    return this.currentUser;
+  }
+
+  removeCurrentSession(): void {
+    this.currentUser = null;
   }
 
   isAuthenticated(): boolean {
-    return (this.getCurrentToken() != null) ? true : false;
-  }
-
-  getCurrentToken(): string {
-    let session = this.getCurrentSession();
-    return (session && session.token) ? session.token : null;
+    return (this.currentUser != null) ? true : false;
   }
 
   logout(): void{

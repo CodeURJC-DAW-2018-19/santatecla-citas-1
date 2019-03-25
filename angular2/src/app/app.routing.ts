@@ -1,3 +1,4 @@
+import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ElementListComponent } from './element-list.component';
 import { ThemeComponent } from './theme/theme.component';
