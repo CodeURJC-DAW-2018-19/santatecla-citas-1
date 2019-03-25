@@ -14,6 +14,7 @@ import { ThemeService } from './theme.service';
 export class ThemeComponent {
 
   theme: Theme;
+  image: any;
 
   constructor(private themeService: ThemeService, private router: Router, activatedRoute: ActivatedRoute) {
 
@@ -26,6 +27,24 @@ export class ThemeComponent {
       }
     );
 
+    this.themeService.getImage(id)
+      .subscribe(data => {
+        this.createImageFromBlob(data);
+      }, error => {
+        console.log(error);
+      });
+
   }
+
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+       this.image = reader.result;
+    }, false);
+
+    if (image) {
+       reader.readAsDataURL(image);
+    }
+ }
 
 }

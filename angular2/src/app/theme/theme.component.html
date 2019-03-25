@@ -3,6 +3,7 @@
   <mat-card class="card" >
     <mat-tab-group dynamicHeight>
       <mat-tab label="Temas">
+        <img [src]="image" alt="{{theme.name}}Image" class="themeImage">
         <div class="example-large-box mat-elevation-z4" *ngFor = "let quote of theme.quotes">
             <mat-card class="card" >
               Referencia cita {{quote.id}}
