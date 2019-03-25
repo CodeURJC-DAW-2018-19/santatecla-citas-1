@@ -11,6 +11,10 @@ export class ThemeService {
     return this.http.get('/api/themes/');
   }
 
+  getThemesByPage(page: number) {
+    return this.http.get('/api/themes/?page=' + page);
+  }
+
   getTheme(id: number) {
     return this.http.get('/api/themes/' + id);
   }

@@ -3,7 +3,7 @@
   <mat-form-field appearance="outline">
       <mat-label>Buscador</mat-label>
       <input matInput [(ngModel)]="searchName">
-      <mat-icon matSuffix (click)="search(searchName)" >search</mat-icon>
+      <mat-icon matSuffix (click)="search(searchName)">search</mat-icon>
   </mat-form-field>
 </div>
 
@@ -46,6 +46,9 @@
               </button>
             </mat-card>
           </div>
+          <button>
+            <mat-icon matSuffix (click)="quotesByPage(pageNumber + 1)">more_horiz</mat-icon>
+          </button>
         </div>
       </mat-tab>
     </mat-tab-group>

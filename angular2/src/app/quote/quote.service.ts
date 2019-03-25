@@ -10,6 +10,10 @@ export class QuoteService {
     return this.http.get('/api/quotes/');
   }
 
+  getQuotesByPage(page: number) {
+    return this.http.get('/api/quotes/?page=' + page);
+  }
+
   getQuote(id: number) {
     return this.http.get('/api/quotes/' + id);
   }

@@ -20,7 +20,11 @@ export class ElementListComponent implements OnInit {
 
   searchName: string;
 
-  constructor(private themeService: ThemeService, private quoteService: QuoteService) {}
+  pageNumber: number;
+
+  constructor(private themeService: ThemeService, private quoteService: QuoteService) {
+    this.pageNumber = 0;
+  }
 
   ngOnInit() {
     this.showAllThemesAndQuotes();
@@ -37,6 +41,20 @@ export class ElementListComponent implements OnInit {
     } else {
       this.showAllThemesAndQuotes();
     }
+  }
+
+  quotesByPage(page: number) {
+    if (page !== 0) {
+    this.themeService.getThemes()
+      .subscribe((data: Theme[]) => this.themes = data['content']
+    );
+    this.quoteService.getQuotesByPage(page)
+      .subscribe((data: Quote[]) => this.quotes = data['content']
+    );
+    } else {
+      this.showAllThemesAndQuotes();
+    }
+    this.pageNumber++;
   }
 
   showAllThemesAndQuotes() {
