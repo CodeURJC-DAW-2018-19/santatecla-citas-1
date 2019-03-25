@@ -13,4 +13,9 @@ export class QuoteService {
   getQuote(id: number) {
     return this.http.get('/api/quotes/' + id);
   }
+
+  searchQuote(name: string) {
+    return this.http.get('/api/quotes/search/' + name);
+  }
+
 }
