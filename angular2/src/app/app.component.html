@@ -8,9 +8,16 @@ rel="stylesheet"
   <button mat-icon-button [routerLink]="['/']">
     <mat-icon>home</mat-icon>
   </button>
-  <button mat-fab color="primary" [routerLink]="['/login']">
-    <mat-icon>supervised_user_circle</mat-icon>
-  </button>
+  <div *ngIf="!logged">
+    <button mat-fab color="primary" [routerLink]="['/login']" >
+      <mat-icon>supervised_user_circle</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="logged">
+    <button mat-fab color="primary" (click)="logout()">
+      <mat-icon>remove</mat-icon>
+    </button>
+  </div>
 </div>
 
 <router-outlet></router-outlet>

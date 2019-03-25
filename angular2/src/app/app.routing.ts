@@ -1,3 +1,4 @@
+import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ElementListComponent } from './element-list.component';
 import { ThemeComponent } from './theme/theme.component';
@@ -9,7 +10,7 @@ import { FormThemeComponent } from './theme/formTheme.component';
 import { HistogramComponent } from './histogram/histogram.component';
 
 const appRoutes = [
-  { path: '' , component: ElementListComponent  },
+  { path: '' , component: ElementListComponent, AppComponent },
   { path: 'theme', component: ThemeComponent  },
   { path: 'quote', component: QuoteComponent  },
   { path: 'formQuote', component: FormQuoteComponent  },
