@@ -34,7 +34,7 @@ export class LoginComponent {
     this.submitted = true;
     this.error = null;
     if (this.loginForm.valid) {
-      this.authenticationService.login(new LoginObject(this.loginForm.value)).subscribe(
+      this.authenticationService.logIn(this.loginForm.value.username, this.loginForm.value.password).subscribe(
         data => this.correctLogin(data),
         error => this.error = {message : 'Wrong credentials'}
       );
