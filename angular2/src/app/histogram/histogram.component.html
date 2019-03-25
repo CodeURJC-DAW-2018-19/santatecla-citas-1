@@ -13,10 +13,10 @@
                   </mat-card-title>
                   <mat-divider></mat-divider>
                   <div class="pad">
-                    <div [style.height.px]="250">
+                    <div [style.height.rem]="20">
                       <ngx-charts-bar-vertical-2d
                         [scheme]="{ domain: [ '#4DD0E1', '#BA68C8', '#FF7043' ] }"
-                        [results]="multi"
+                        [results]="histogram"
                         [barPadding]="18"
                         [groupPadding]="28"
                         [gradient]="true"

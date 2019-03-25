@@ -41,7 +41,7 @@ export class LoginComponent {
     }
   }
   private correctLogin(data){
-    this.storageService.setCurrentSession(data);
+    this.storageService.setCurrentUser(data);
     this.router.navigate(['']);
   }
 }

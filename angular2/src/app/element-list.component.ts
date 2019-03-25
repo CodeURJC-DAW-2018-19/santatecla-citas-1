@@ -1,3 +1,4 @@
+import { StorageService } from './login/storage.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Theme } from './theme/theme.model';
@@ -17,13 +18,15 @@ export class ElementListComponent implements OnInit {
 
   themes: Theme[];
   quotes: Quote[];
+  logged = this.userStorage.isAuthenticated();
 
   searchName: string;
   pageThemes: number;
   pageQuotes: number;
 
-  constructor(private themeService: ThemeService, private quoteService: QuoteService) {}
-
+  constructor(private themeService: ThemeService, private quoteService: QuoteService, private userStorage: StorageService) {
+  }
+  
   ngOnInit() {
     this.resetPages();
     this.showAllThemesAndQuotes();

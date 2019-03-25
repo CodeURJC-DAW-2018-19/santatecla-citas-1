@@ -75,6 +75,7 @@ import { RegisterComponent } from './register/register.component';
 import { ElementListComponent } from './element-list.component';
 
 import { HistogramComponent } from './histogram/histogram.component';
+import { HistogramService } from './histogram/histogram.service';
 
 @NgModule({
   declarations: [
@@ -134,7 +135,7 @@ import { HistogramComponent } from './histogram/histogram.component';
     CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule,
     NgxChartsModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [ThemeService, QuoteService, LoginService, StorageService],
+  providers: [ThemeService, QuoteService, LoginService, StorageService, HistogramService],
   bootstrap: [AppComponent]
 })
 
