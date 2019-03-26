@@ -1,37 +1,30 @@
 
 <div>
-  <mat-card class="card" >
-    <mat-tab-group dynamicHeight>
-      <mat-tab label="Histograma">
-        <div class="example-large-box mat-elevation-z4">
-            <div flex-gt-sm="50">
-                <mat-card>
-                  <mat-card-title>
-                    <div layout="row" layout-align="start center">
-                      <span flex>Citas por temas</span>
-                    </div>
-                  </mat-card-title>
-                  <mat-divider></mat-divider>
-                  <div class="pad">
-                    <div [style.height.rem]="20">
-                      <ngx-charts-bar-vertical-2d
-                        [scheme]="{ domain: [ '#4DD0E1', '#BA68C8', '#FF7043' ] }"
-                        [results]="histogram"
-                        [barPadding]="18"
-                        [groupPadding]="28"
-                        [gradient]="true"
-                        [xAxis]="true"
-                        [yAxis]="true"
-                        [legend]="false"
-                        [showXAxisLabel]="false"
-                        [showYAxisLabel]="false">
-                      </ngx-charts-bar-vertical-2d>
-                    </div>
-                  </div>
-                </mat-card>
-              </div>
-        </div>
-      </mat-tab>
-    </mat-tab-group>
+
+  <mat-card class="example-large-box mat-elevation-z4">
+    <mat-card-title style="padding: 1rem">
+      <div layout="row" layout-align="start center">
+        <span flex>Citas por tema</span>
+      </div>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+
+    <div class="pad">
+      <div style="height: 28rem; padding: 0.5rem;">
+        <ngx-charts-bar-vertical-2d
+          [scheme]="{ domain: [ '#4DD0E1', '#BA68C8', '#FF7043' ] }"
+          [results]="histogram"
+          [barPadding]="18"
+          [groupPadding]="28"
+          [gradient]="true"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="false"
+          [showXAxisLabel]="false"
+          [showYAxisLabel]="false">
+        </ngx-charts-bar-vertical-2d>
+      </div>
+    </div>
   </mat-card>
+
 </div>

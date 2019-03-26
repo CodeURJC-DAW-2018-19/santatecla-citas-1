@@ -21,7 +21,9 @@
 }
 
 .search {
-  margin-left: 1rem;
+  margin-top: 2rem;
+  margin-left: 12%;
+  width: 75%;
 }
 
 .upperBar {
@@ -57,5 +59,4 @@
 .element-list {
   padding: 0.5rem;
   background-color: #f1f6fa;
-  cursor: pointer;
 }
