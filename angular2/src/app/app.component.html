@@ -4,14 +4,16 @@ href="https://fonts.googleapis.com/icon?family=Material+Icons"
 rel="stylesheet"
 />
 
-<div class="upperBar">
-
-  <button mat-icon-button [routerLink]="['/']">
-    <mat-icon>home</mat-icon>
-  </button>
+<div class="upperBar" style="padding: 0.5rem">
 
   <div td-toolbar-content layout="row" layout-align="start center" flex>
-      <login></login>
+      <login class="right-button"></login>
+  </div>
+
+  <div style="padding: 0.1rem">
+    <button mat-icon-button [routerLink]="['/']">
+      <mat-icon>home</mat-icon>
+    </button>
   </div>
 
 </div>
