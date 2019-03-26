@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Angular Material
@@ -62,12 +62,8 @@ import { QuoteComponent } from './quote/quote.component';
 import { QuoteService } from './quote/quote.service';
 import { FormQuoteComponent } from './quote/formQuote.component';
 
-import { LoginComponent } from './login/login.component';
-import { LoginObject } from './login/login.object';
-import { LoginService } from './login/login.service';
-import { Session } from './login/session.model';
-import { User } from './login/user.model';
-import { StorageService } from './login/storage.service';
+import { LoginComponent } from './login.component';
+import { LoginService } from './auth/login.service';
 
 
 import { RegisterComponent } from './register/register.component';
@@ -76,6 +72,8 @@ import { ElementListComponent } from './element-list.component';
 
 import { HistogramComponent } from './histogram/histogram.component';
 import { HistogramService } from './histogram/histogram.service';
+import { BasicAuthInterceptor } from './auth/auth.interceptor';
+import { ErrorInterceptor } from './auth/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -135,7 +133,9 @@ import { HistogramService } from './histogram/histogram.service';
     CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule,
     NgxChartsModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [ThemeService, QuoteService, LoginService, StorageService, HistogramService],
+  providers: [ThemeService, QuoteService, LoginService, HistogramService,
+      { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 

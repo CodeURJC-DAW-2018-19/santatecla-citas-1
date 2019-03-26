@@ -3,6 +3,8 @@ package com.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.GeneralRestController;
 
 import org.springframework.http.HttpStatus;
@@ -22,39 +24,12 @@ public class UserRestController extends GeneralRestController {
     
 	@GetMapping(value="/login")
 	public ResponseEntity<User> logIn() {
-		if (this.userComponent.getLoggedUser() != null){
-			return new ResponseEntity<>(userComponent.getLoggedUser(), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		}
-	}
-
-	@PostMapping(value="/login")
-	public ResponseEntity<User> logInPRUEBA(@RequestBody User n){
-		String username = n.getName();
-		String password = n.getPasswordHash();
-
-		User user = this.userService.findByName(username);
-
-		if (user == null) {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		}
-
-		if (!new BCryptPasswordEncoder().matches(password, user.getPasswordHash())) {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		} else {
-
-			userComponent.setLoggedUser(user);
-
-			List<SimpleGrantedAuthority> roles = new ArrayList<>();
-			for (String role : user.getRoles()) {
-				roles.add(new SimpleGrantedAuthority(role));
-			}
-
-			userComponent.setLoggedUser(user);
-			
-			return new ResponseEntity<>(userComponent.getLoggedUser(), HttpStatus.OK);
-		}
+        if (!userComponent.isLoggedUser()) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } else {
+			User loggedUser = userComponent.getLoggedUser();
+            return new ResponseEntity<>(loggedUser, HttpStatus.OK);
+        }
 	}
 
 	@PostMapping(value="/register")
@@ -77,6 +52,15 @@ public class UserRestController extends GeneralRestController {
 
 		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}
+
+	public ResponseEntity<Boolean> logOut(HttpSession session) {
+        if (!userComponent.isLoggedUser()) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } else {
+            session.invalidate();
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        }
+}
 	
 	
 }

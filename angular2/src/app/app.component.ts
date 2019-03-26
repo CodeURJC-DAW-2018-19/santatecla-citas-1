@@ -1,4 +1,4 @@
-import { StorageService } from './login/storage.service';
+import { LoginService } from './auth/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,11 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent {
-  logged = this.userStorage.isAuthenticated();
+  private logged = this.loginService.isLogged;
 
-  constructor(private userStorage: StorageService) {}
+  constructor(private loginService: LoginService){}
 
-  logout() {
-    this.userStorage.removeCurrentSession();
+  logout(){
+    this.loginService.logOut();
   }
 }

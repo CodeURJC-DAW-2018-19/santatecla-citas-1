@@ -1,4 +1,4 @@
-import { StorageService } from './login/storage.service';
+import { LoginService } from './auth/login.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Theme } from './theme/theme.model';
@@ -18,15 +18,15 @@ export class ElementListComponent implements OnInit {
 
   themes: Theme[];
   quotes: Quote[];
-  logged = this.userStorage.isAuthenticated();
+  logged = this.loginService.isLogged;
 
   searchName: string;
   pageThemes: number;
   pageQuotes: number;
 
-  constructor(private themeService: ThemeService, private quoteService: QuoteService, private userStorage: StorageService) {
+  constructor(private themeService: ThemeService, private quoteService: QuoteService, private loginService: LoginService) {
   }
-  
+
   ngOnInit() {
     this.resetPages();
     this.showAllThemesAndQuotes();
@@ -72,7 +72,9 @@ export class ElementListComponent implements OnInit {
 
   showAllThemesAndQuotes() {
     this.themeService.getThemes()
-      .subscribe((data: Theme[]) => this.themes = data['content']
+      .subscribe((data: Theme[]) => {
+      console.log(data);
+      this.themes = data['content'];}
     );
     this.quoteService.getQuotes()
       .subscribe((data: Quote[]) => this.quotes = data['content']
