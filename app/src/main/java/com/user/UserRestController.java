@@ -53,6 +53,7 @@ public class UserRestController extends GeneralRestController {
 		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}
 
+	@GetMapping(value="/logout")
 	public ResponseEntity<Boolean> logOut(HttpSession session) {
         if (!userComponent.isLoggedUser()) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
