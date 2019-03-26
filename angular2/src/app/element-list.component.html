@@ -13,13 +13,13 @@
       <mat-tab label="Temas">
 
         <mat-chip-list>
-          <mat-chip [routerLink]="['/formTheme']" color="primary" *ngIf="loginService.isLogged">Añadir</mat-chip>
+          <mat-chip [routerLink]="['/formTheme']" color="primary" *ngIf="loginService.isAdmin">Añadir</mat-chip>
         </mat-chip-list>
 
         <div *ngFor = "let theme of themes" >
           <mat-card class="card element-list">
 
-            <div *ngIf="loginService.isLogged">
+            <div *ngIf="loginService.isAdmin">
 
               <button mat-mini-fab color="warn" class="right-button">
                 <mat-icon>delete</mat-icon>
@@ -43,13 +43,13 @@
       <mat-tab label="Citas">
 
         <mat-chip-list>
-          <mat-chip [routerLink]="['/formQuote']" color="primary"  *ngIf="loginService.isLogged" selected>Añadir</mat-chip>
+          <mat-chip [routerLink]="['/formQuote']" color="primary"  *ngIf="loginService.isAdmin" selected>Añadir</mat-chip>
         </mat-chip-list>
 
         <div *ngFor="let quote of quotes" >
           <mat-card class="card element-list">
 
-            <div *ngIf="loginService.isLogged">
+            <div *ngIf="loginService.isAdmin">
 
               <button mat-mini-fab color="warn" class="right-button">
                 <mat-icon>delete</mat-icon>

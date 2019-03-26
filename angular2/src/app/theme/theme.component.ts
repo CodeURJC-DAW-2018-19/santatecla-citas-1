@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { Theme } from './theme.model';
 import { ThemeService } from './theme.service';
+import { LoginService } from '../auth/login.service';
 
 @Component({
   templateUrl: './theme.component.html',
@@ -16,7 +17,8 @@ export class ThemeComponent {
   theme: Theme;
   image: any;
 
-  constructor(private themeService: ThemeService, private router: Router, activatedRoute: ActivatedRoute) {
+  constructor(private themeService: ThemeService, private router: Router, activatedRoute: ActivatedRoute,
+              private loginService: LoginService) {
 
     let id = activatedRoute.snapshot.params['id'];
     this.themeService.getTheme(id)
