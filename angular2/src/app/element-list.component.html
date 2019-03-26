@@ -1,9 +1,9 @@
 
 <div class="search">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" style="width:100%">
       <mat-label>Buscador</mat-label>
       <input matInput [(ngModel)]="searchName">
-      <mat-icon matSuffix (click)="search(searchName)">search</mat-icon>
+      <mat-icon matSuffix (click)="search(searchName)" style="cursor: pointer">search</mat-icon>
   </mat-form-field>
 </div>
 
@@ -31,10 +31,14 @@
 
             </div>
 
-            <div *ngIf="loginService.isLogged" style="padding: 0.7rem" [routerLink]="['/theme', theme.id]">{{theme.name}}</div>
+            <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;" [routerLink]="['/theme', theme.id]">{{theme.name}}</div>
             <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">{{theme.name}}</div>
 
           </mat-card>
+        </div>
+
+        <div style="text-align: center">
+          <p *ngIf="themes.length === 0" style="margin: 2rem"> Ningún resultado </p>
         </div>
 
       </mat-tab>
@@ -61,10 +65,14 @@
 
             </div>
 
-            <div *ngIf="loginService.isLogged" style="padding: 0.7rem" [routerLink]="['/quote', quote.id]">{{quote.quote}}</div>
+            <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;" [routerLink]="['/quote', quote.id]">{{quote.quote}}</div>
             <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">{{quote.quote}}</div>
 
           </mat-card>
+        </div>
+
+        <div style="text-align: center">
+          <p *ngIf="quotes.length === 0" style="margin: 2rem"> Ningún resultado </p>
         </div>
 
         <button mat-mini-fab color="primary">
