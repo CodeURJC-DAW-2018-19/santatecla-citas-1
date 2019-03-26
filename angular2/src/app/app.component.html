@@ -5,19 +5,15 @@ rel="stylesheet"
 />
 
 <div class="upperBar">
+
   <button mat-icon-button [routerLink]="['/']">
     <mat-icon>home</mat-icon>
   </button>
-  <div *ngIf="!loginService.isLogged">
-    <button mat-fab color="primary" [routerLink]="['/login']" >
-      <mat-icon>supervised_user_circle</mat-icon>
-    </button>
+
+  <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <login></login>
   </div>
-  <div *ngIf="loginService.isLogged">
-    <button mat-fab color="primary" (click)="logout()">
-      <mat-icon>remove</mat-icon>
-    </button>
-  </div>
+
 </div>
 
 <router-outlet></router-outlet>
