@@ -1,22 +1,27 @@
 
-<div>
+<div *ngIf="theme">
   <mat-card class="card" >
     <mat-tab-group dynamicHeight>
       <mat-tab label="Temas">
-        <form>
+        <form #themeForm="ngForm">
+            <div *ngIf="theme.id"><label>Id: </label>{{ theme.id }}</div>
           <div class="example-large-box mat-elevation-z4">
             <mat-card class="card">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Tema">
+                <input matInput placeholder="Tema" [(ngModel)]="theme.name" #themeFormElement
+                #themeFormControl="ngModel"
+                name="name"
+                required>
               </mat-form-field>
             </mat-card>
-            <div class="enterLoginBotton">
-              <button mat-raised-button color="primary">
-                Guardar <mat-icon>save</mat-icon>
-              </button>
-            </div>
+
           </div>
         </form>
+        <div class="enterLoginBotton">
+          <button mat-raised-button color="primary" (click)="save()" [disabled]="themeForm === undefined || (themeForm && !themeForm.valid)">
+            Guardar <mat-icon>save</mat-icon>
+          </button>
+        </div>
       </mat-tab>
     </mat-tab-group>
   </mat-card>
