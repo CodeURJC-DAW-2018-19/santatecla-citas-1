@@ -45,4 +45,8 @@ export class ThemeService {
 
   }
 
+  getPDF(id: number) {
+    return this.http.get('api/themes/' + id + '/PDF', {responseType: 'blob'});
+  }
+
 }
