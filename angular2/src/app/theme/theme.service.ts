@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Theme } from './theme.model';
 
 
 @Injectable()
@@ -25,6 +26,23 @@ export class ThemeService {
 
   searchTheme(name: string) {
     return this.http.get('/api/themes/search/' + name);
+  }
+
+  saveTheme(theme: Theme): Observable<Theme> {
+    const body = JSON.stringify(theme);
+
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+        });
+
+        if (!theme.id) {
+            return this.http
+                .post<Theme>('/api/themes/', body, { headers });
+        } else {
+            return this.http
+                .put<Theme>('/api/themes/' + theme.id, body, { headers });
+        }
+
   }
 
 }
