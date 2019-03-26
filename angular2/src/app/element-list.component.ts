@@ -18,7 +18,6 @@ export class ElementListComponent implements OnInit {
 
   themes: Theme[];
   quotes: Quote[];
-  logged = this.loginService.isLogged;
 
   searchName: string;
   pageThemes: number;
