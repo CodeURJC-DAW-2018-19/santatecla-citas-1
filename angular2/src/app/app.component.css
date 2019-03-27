@@ -21,7 +21,6 @@
 }
 
 .search {
-  margin-top: 2rem;
   margin-left: 12%;
   width: 75%;
 }
@@ -87,5 +86,6 @@
 }
 
 body {
-  margin-top: 4rem;
+  padding-top: 4rem;
+  height: auto;
 }

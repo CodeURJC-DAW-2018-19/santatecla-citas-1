@@ -62,10 +62,10 @@ import { QuoteComponent } from './quote/quote.component';
 import { QuoteService } from './quote/quote.service';
 import { FormQuoteComponent } from './quote/formQuote.component';
 
-import { LoginComponent } from './login.component';
+import { LoginComponent } from './auth/login.component';
 import { LoginService } from './auth/login.service';
 
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './auth/register.component';
 
 import { ElementListComponent } from './element-list.component';
 

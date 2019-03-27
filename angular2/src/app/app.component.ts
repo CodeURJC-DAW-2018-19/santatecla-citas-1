@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   addTab(type: string, id: number) {
-    for (let t of this.tabs) {
+    for (const t of this.tabs) {
       if ((t.type === type) && (t.id === id)) {
         return;
       }
