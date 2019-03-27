@@ -65,7 +65,6 @@ import { FormQuoteComponent } from './quote/formQuote.component';
 import { LoginComponent } from './login.component';
 import { LoginService } from './auth/login.service';
 
-
 import { RegisterComponent } from './register/register.component';
 
 import { ElementListComponent } from './element-list.component';
@@ -135,7 +134,7 @@ import { ErrorInterceptor } from './auth/error.interceptor';
   ],
   providers: [ThemeService, QuoteService, LoginService, HistogramService,
       { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
+      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 

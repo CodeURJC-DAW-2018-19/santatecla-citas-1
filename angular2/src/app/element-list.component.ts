@@ -7,6 +7,8 @@ import { ThemeService } from './theme/theme.service';
 import { Quote } from './quote/quote.model';
 import { QuoteService } from './quote/quote.service';
 
+import { AppComponent } from './app.component';
+
 @Component({
   templateUrl: './element-list.component.html',
   styleUrls: [
@@ -23,8 +25,8 @@ export class ElementListComponent implements OnInit {
   pageThemes: number;
   pageQuotes: number;
 
-  constructor(private themeService: ThemeService, private quoteService: QuoteService, private loginService: LoginService) {
-  }
+  constructor(private themeService: ThemeService, private quoteService: QuoteService,
+              private loginService: LoginService, private appComponent: AppComponent) {}
 
   ngOnInit() {
     this.resetPages();
@@ -72,7 +74,6 @@ export class ElementListComponent implements OnInit {
   showAllThemesAndQuotes() {
     this.themeService.getThemes()
       .subscribe((data: Theme[]) => {
-      console.log(data);
       this.themes = data['content'];}
     );
     this.quoteService.getQuotes()

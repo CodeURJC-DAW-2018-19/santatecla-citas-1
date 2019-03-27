@@ -28,9 +28,11 @@
 
 .upperBar {
   background-color: mediumslateblue;
-  margin: 16px;
-  border-radius: 8px;
   padding: 0.5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
 }
 
 .example-section {
@@ -59,4 +61,33 @@
 .element-list {
   padding: 0.5rem;
   background-color: #f1f6fa;
+}
+
+.tab {
+  background-color: mediumslateblue;
+  color: #ffffff;
+  border-radius: 5px 5px 0 0;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  box-shadow: none;
+}
+
+.activeTab {
+  background-color: #9ab1fa;
+  color: #000000;
+}
+
+.closeTab {
+  transform: scale(0.75);
+}
+
+.closeTab:hover {
+  color: #ffffff;
+}
+
+body {
+  margin-top: 4rem;
 }

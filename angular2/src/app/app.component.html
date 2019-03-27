@@ -4,17 +4,56 @@ href="https://fonts.googleapis.com/icon?family=Material+Icons"
 rel="stylesheet"
 />
 
-<div class="upperBar" style="padding: 0.5rem">
+<div class="upperBar">
 
   <div td-toolbar-content layout="row" layout-align="start center" flex>
-      <login class="right-button"></login>
+      <login class="right-button" style="margin-right: 2rem"></login>
   </div>
 
-  <div style="padding: 0.1rem">
+  <div style="display: inline; padding: 0.1rem;">
+
     <button mat-icon-button [routerLink]="['/']">
       <mat-icon>home</mat-icon>
     </button>
+
+    <span *ngFor = "let tab of tabs">
+
+      <div class="mat-elevation-z4 tab activeTab" style="display: inline" *ngIf="tab.active">
+
+        <div [routerLink]="[tab.type, tab.id]" style="display: inline; cursor: pointer;">
+          <span *ngIf="(tab.type==='theme')">
+              Tema {{tab.id}}
+          </span>
+          <span *ngIf="(tab.type==='quote')">
+              Cita {{tab.id}}
+          </span>
+        </div>
+
+        <button class="closeTab" [routerLink]="['/']" mat-icon-button (click)="removeTab(tab.type, tab.id)">
+          <mat-icon>close</mat-icon>
+        </button>
+
+      </div>
+
+      <div class="mat-elevation-z4 tab" style="display: inline" *ngIf="!tab.active">
+
+        <div [routerLink]="[tab.type, tab.id]" style="display: inline; cursor: pointer;" *ngIf="(tab.type==='theme')">
+          Tema {{tab.id}}
+        </div>
+        <div [routerLink]="[tab.type, tab.id]" style="display: inline; cursor: pointer;" *ngIf="(tab.type==='quote')">
+          Cita {{tab.id}}
+        </div>
+
+        <button class="closeTab" mat-icon-button (click)="removeTab(tab.type, tab.id)">
+          <mat-icon>close</mat-icon>
+        </button>
+
+      </div>
+
+    </span>
+
   </div>
+
 
 </div>
 
