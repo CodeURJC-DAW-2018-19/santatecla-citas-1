@@ -65,7 +65,6 @@
 
 .tab {
   background-color: mediumslateblue;
-  color: #ffffff;
   border-radius: 5px 5px 0 0;
   border-top: 1px solid black;
   border-left: 1px solid black;
@@ -77,7 +76,6 @@
 
 .activeTab {
   background-color: #9ab1fa;
-  color: #000000;
 }
 
 .closeTab {

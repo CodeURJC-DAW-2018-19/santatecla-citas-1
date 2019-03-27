@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Quote } from './quote.model';
 import { QuoteService } from './quote.service';
@@ -11,22 +11,24 @@ import { QuoteService } from './quote.service';
   ]
 })
 
-export class QuoteComponent {
+export class QuoteComponent implements OnInit {
 
   quote: Quote;
 
-  constructor(private themeService: QuoteService, private router: Router, activatedRoute: ActivatedRoute) {
+  constructor(private themeService: QuoteService, private activatedRoute: ActivatedRoute) {}
 
-    let id = activatedRoute.snapshot.params['id'];
-    this.themeService.getQuote(id)
-      .subscribe((data: Quote) => this.quote = {
-        id: data['id'],
-        quote: data['quote'],
-        author: data['author'],
-        book: data['book']
-      }
-    );
-
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      let id = params['id'];
+      this.themeService.getQuote(id)
+        .subscribe((data: Quote) => this.quote = {
+          id: data['id'],
+          quote: data['quote'],
+          author: data['author'],
+          book: data['book']
+        }
+      );
+    });
   }
 
 }

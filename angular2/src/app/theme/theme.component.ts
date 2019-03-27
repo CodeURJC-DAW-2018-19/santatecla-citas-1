@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { saveAs } from 'file-saver';
 import { Theme } from './theme.model';
 import { ThemeService } from './theme.service';
@@ -12,32 +12,33 @@ import { LoginService } from '../auth/login.service';
   ]
 })
 
-export class ThemeComponent {
+export class ThemeComponent implements OnInit {
 
   theme: Theme;
   image: any;
   id: number;
 
-  constructor(private themeService: ThemeService, private router: Router, activatedRoute: ActivatedRoute,
-              private loginService: LoginService) {
+  constructor(private themeService: ThemeService,  private activatedRoute: ActivatedRoute, private loginService: LoginService) {}
 
-    this.id = activatedRoute.snapshot.params['id'];
-    this.themeService.getTheme(this.id)
-      .subscribe((data: Theme) => this.theme = {
-        id: data['id'],
-        name: data['name'],
-        quotes: data['quotes']
-      }
-    );
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this.id = params['id'];
+      this.themeService.getTheme(this.id)
+        .subscribe((data: Theme) => this.theme = {
+          id: data['id'],
+          name: data['name'],
+          quotes: data['quotes']
+        }
+      );
 
-    this.themeService.getImage(this.id)
-      .subscribe(data => {
-        this.createImageFromBlob(data);
-      }, error => {
-        console.log(error);
-      }
-    );
-
+      this.themeService.getImage(this.id)
+        .subscribe(data => {
+          this.createImageFromBlob(data);
+        }, error => {
+          console.log(error);
+        }
+      );
+    });
   }
 
   createImageFromBlob(image: Blob) {
