@@ -1,11 +1,15 @@
-
 <body>
-
   <div class="search">
-    <mat-form-field appearance="outline" style="width:100%" (keyup.enter)="search(searchName)">
-        <mat-label>Buscador</mat-label>
-        <input matInput [(ngModel)]="searchName">
-        <mat-icon matSuffix (click)="search(searchName)" style="cursor: pointer">search</mat-icon>
+    <mat-form-field
+      appearance="outline"
+      style="width:100%"
+      (keyup.enter)="search(searchName)"
+    >
+      <mat-label>Buscador</mat-label>
+      <input matInput [(ngModel)]="searchName" />
+      <mat-icon matSuffix (click)="search(searchName)" style="cursor: pointer"
+        >search</mat-icon
+      >
     </mat-form-field>
   </div>
 
@@ -13,34 +17,44 @@
     <mat-card class="card" style="margin-top: -1rem">
       <mat-tab-group dynamicHeight>
         <mat-tab label="Temas">
-
-          <div *ngFor = "let theme of themes" >
+          <div *ngFor="let theme of themes">
             <mat-card class="card element-list">
-
               <div *ngIf="loginService.isAdmin">
-
                 <button mat-mini-fab color="warn" class="right-button">
                   <mat-icon>delete</mat-icon>
                 </button>
 
-                <button mat-mini-fab color="primary" class="right-button" [routerLink]="['/formTheme']">
+                <button
+                  mat-mini-fab
+                  color="primary"
+                  class="right-button"
+                  [routerLink]="['/formTheme']"
+                >
                   <mat-icon>border_color</mat-icon>
                 </button>
-
               </div>
 
-              <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;" [routerLink]="['/theme', theme.id]" (click)="tabService.addTab('theme', theme.id)">{{theme.name}}</div>
-              <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">{{theme.name}}</div>
-
+              <div
+                *ngIf="loginService.isLogged"
+                style="padding: 0.7rem; cursor: pointer;"
+                [routerLink]="['/theme', theme.id]"
+                (click)="tabService.addTab('theme', theme.id)"
+              >
+                {{ theme.name }}
+              </div>
+              <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">
+                {{ theme.name }}
+              </div>
             </mat-card>
           </div>
 
           <div style="text-align: center">
-            <p *ngIf="themes.length === 0" style="margin: 2rem"> Ningún resultado </p>
+            <p *ngIf="themes.length === 0" style="margin: 2rem">
+              Ningún resultado
+            </p>
           </div>
 
           <div style="margin-top: 2rem; text-align: center">
-
             <button mat-mini-fab color="primary" style="margin-right: 1rem">
               <mat-icon matSuffix>more_horiz</mat-icon>
             </button>
@@ -49,58 +63,89 @@
               <mat-icon matSuffix>keyboard_capslock</mat-icon>
             </button>
 
-            <button mat-mini-fab color="primary" style="margin-left: 1rem" *ngIf="loginService.isAdmin">
-              <mat-icon  [routerLink]="['/formTheme']">add</mat-icon>
+            <button
+              mat-mini-fab
+              color="primary"
+              style="margin-left: 1rem"
+              *ngIf="loginService.isAdmin"
+            >
+              <mat-icon [routerLink]="['/formTheme']">add</mat-icon>
             </button>
 
-          </div>
+            <button mat-mini-fab color="primary">
+              <mat-icon matSuffix (click)="showThemesByPage(pageThemes + 1)"
+                >more_horiz</mat-icon
+              >
+            </button>
 
+            <button mat-mini-fab color="primary">
+              <mat-icon matSuffix (click)="loadLess()"
+                >keyboard_capslock</mat-icon
+              >
+            </button>
+          </div>
         </mat-tab>
 
-
         <mat-tab label="Citas">
-
-          <div *ngFor="let quote of quotes" >
+          <div *ngFor="let quote of quotes">
             <mat-card class="card element-list">
-
               <div *ngIf="loginService.isAdmin">
-
                 <button mat-mini-fab color="warn" class="right-button">
                   <mat-icon>delete</mat-icon>
                 </button>
 
-                <button mat-mini-fab color="primary" class="right-button" [routerLink]="['/formQuote']">
+                <button
+                  mat-mini-fab
+                  color="primary"
+                  class="right-button"
+                  [routerLink]="['/formQuote']"
+                >
                   <mat-icon>border_color</mat-icon>
                 </button>
-
               </div>
 
-              <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;" [routerLink]="['/quote', quote.id]" (click)="tabService.addTab('quote', quote.id)">{{quote.quote}}</div>
-              <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">{{quote.quote}}</div>
-
+              <div
+                *ngIf="loginService.isLogged"
+                style="padding: 0.7rem; cursor: pointer;"
+                [routerLink]="['/quote', quote.id]"
+                (click)="tabService.addTab('quote', quote.id)"
+              >
+                {{ quote.quote }}
+              </div>
+              <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">
+                {{ quote.quote }}
+              </div>
             </mat-card>
           </div>
 
           <div style="text-align: center">
-            <p *ngIf="quotes.length === 0" style="margin: 2rem"> Ningún resultado </p>
+            <p *ngIf="quotes.length === 0" style="margin: 2rem">
+              Ningún resultado
+            </p>
           </div>
 
           <div style="margin-top: 2rem; text-align: center">
-
             <button mat-mini-fab color="primary" style="margin-right: 1rem">
-              <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">more_horiz</mat-icon>
+              <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)"
+                >more_horiz</mat-icon
+              >
             </button>
 
             <button mat-mini-fab color="primary">
-              <mat-icon matSuffix (click)="loadLess()">keyboard_capslock</mat-icon>
+              <mat-icon matSuffix (click)="loadLess()"
+                >keyboard_capslock</mat-icon
+              >
             </button>
 
-            <button mat-mini-fab color="primary" style="margin-left: 1rem" *ngIf="loginService.isAdmin">
-              <mat-icon  [routerLink]="['/formQuote']">add</mat-icon>
+            <button
+              mat-mini-fab
+              color="primary"
+              style="margin-left: 1rem"
+              *ngIf="loginService.isAdmin"
+            >
+              <mat-icon [routerLink]="['/formQuote']">add</mat-icon>
             </button>
-
           </div>
-
         </mat-tab>
       </mat-tab-group>
     </mat-card>
@@ -112,5 +157,4 @@
       <mat-icon>bar_chart</mat-icon>
     </button>
   </div>
-
 </body>

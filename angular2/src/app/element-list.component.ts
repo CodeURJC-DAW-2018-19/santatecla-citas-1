@@ -69,6 +69,22 @@ export class ElementListComponent implements OnInit {
       this.showAllThemesAndQuotes();
     }
     this.pageQuotes++;
+    this.pageThemes = 0;
+  }
+
+  showThemesByPage(page: number) {
+    if (page !== 0) {
+    this.themeService.getThemesByPage(page)
+      .subscribe((data: Theme[]) => this.themes = data['content']
+    );
+    this.quoteService.getQuotes()
+      .subscribe((data: Quote[]) => this.quotes = data['content']
+    );
+    } else {
+      this.showAllThemesAndQuotes();
+    }
+    this.pageThemes++;
+    this.pageQuotes = 0;
   }
 
   showAllThemesAndQuotes() {

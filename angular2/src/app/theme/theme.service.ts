@@ -31,11 +31,11 @@ export class ThemeService {
   saveTheme(theme: Theme): Observable<Theme> {
     const body = JSON.stringify(theme);
 
-        const headers = new HttpHeaders({
+    const headers = new HttpHeaders({
             'Content-Type': 'application/json',
         });
 
-        if (!theme.id) {
+    if (!theme.id) {
             return this.http
                 .post<Theme>('/api/themes/', body, { headers });
         } else {
