@@ -45,11 +45,11 @@
               <mat-icon matSuffix>more_horiz</mat-icon>
             </button>
 
-            <button mat-mini-fab color="primary" style="margin-right: 1rem">
+            <button mat-mini-fab color="primary">
               <mat-icon matSuffix>keyboard_capslock</mat-icon>
             </button>
 
-            <button mat-mini-fab color="primary">
+            <button mat-mini-fab color="primary" style="margin-left: 1rem" *ngIf="loginService.isAdmin">
               <mat-icon  [routerLink]="['/formTheme']">add</mat-icon>
             </button>
 
@@ -91,11 +91,11 @@
               <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">more_horiz</mat-icon>
             </button>
 
-            <button mat-mini-fab color="primary" style="margin-right: 1rem">
+            <button mat-mini-fab color="primary">
               <mat-icon matSuffix (click)="loadLess()">keyboard_capslock</mat-icon>
             </button>
 
-            <button mat-mini-fab color="primary">
+            <button mat-mini-fab color="primary" style="margin-left: 1rem" *ngIf="loginService.isAdmin">
               <mat-icon  [routerLink]="['/formQuote']">add</mat-icon>
             </button>
 
