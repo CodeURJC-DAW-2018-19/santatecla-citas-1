@@ -69,6 +69,8 @@ import { RegisterComponent } from './auth/register.component';
 
 import { ElementListComponent } from './element-list.component';
 
+import { TabService } from './tabs/tab.service';
+
 import { HistogramComponent } from './histogram/histogram.component';
 import { HistogramService } from './histogram/histogram.service';
 import { BasicAuthInterceptor } from './auth/auth.interceptor';
@@ -132,7 +134,7 @@ import { ErrorInterceptor } from './auth/error.interceptor';
     CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule,
     NgxChartsModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [ThemeService, QuoteService, LoginService, HistogramService,
+  providers: [ThemeService, QuoteService, LoginService, HistogramService, TabService,
       { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]

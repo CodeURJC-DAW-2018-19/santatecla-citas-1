@@ -16,7 +16,7 @@ rel="stylesheet"
       <mat-icon>home</mat-icon>
     </button>
 
-    <span *ngFor = "let tab of tabs">
+    <span *ngFor = "let tab of tabService.tabs">
 
       <div class="mat-elevation-z4 tab activeTab" style="display: inline" *ngIf="tab.active">
 

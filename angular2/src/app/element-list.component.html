@@ -33,7 +33,7 @@
 
               </div>
 
-              <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;" [routerLink]="['/theme', theme.id]" (click)="appComponent.addTab('theme', theme.id)">{{theme.name}}</div>
+              <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;" [routerLink]="['/theme', theme.id]" (click)="tabService.addTab('theme', theme.id)">{{theme.name}}</div>
               <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">{{theme.name}}</div>
 
             </mat-card>
@@ -67,7 +67,7 @@
 
               </div>
 
-              <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;" [routerLink]="['/quote', quote.id]" (click)="appComponent.addTab('quote', quote.id)">{{quote.quote}}</div>
+              <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;" [routerLink]="['/quote', quote.id]" (click)="tabService.addTab('quote', quote.id)">{{quote.quote}}</div>
               <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">{{quote.quote}}</div>
 
             </mat-card>

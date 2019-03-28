@@ -7,7 +7,7 @@ import { ThemeService } from './theme/theme.service';
 import { Quote } from './quote/quote.model';
 import { QuoteService } from './quote/quote.service';
 
-import { AppComponent } from './app.component';
+import { TabService } from './tabs/tab.service';
 
 @Component({
   templateUrl: './element-list.component.html',
@@ -26,7 +26,7 @@ export class ElementListComponent implements OnInit {
   pageQuotes: number;
 
   constructor(private themeService: ThemeService, private quoteService: QuoteService,
-              private loginService: LoginService, private appComponent: AppComponent) {}
+              private loginService: LoginService, private tabService: TabService) {}
 
   ngOnInit() {
     this.resetPages();
