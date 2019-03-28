@@ -29,7 +29,7 @@ rel="stylesheet"
           </span>
         </div>
 
-        <button class="closeTab" [routerLink]="['/']" mat-icon-button (click)="removeTab(tab.type, tab.id)">
+        <button class="closeTab" [routerLink]="['/']" mat-icon-button (click)="tabService.removeTab(tab.type, tab.id)">
           <mat-icon>close</mat-icon>
         </button>
 
@@ -44,7 +44,7 @@ rel="stylesheet"
           Cita {{tab.id}}
         </div>
 
-        <button class="closeTab" mat-icon-button (click)="removeTab(tab.type, tab.id)">
+        <button class="closeTab" mat-icon-button (click)="tabService.removeTab(tab.type, tab.id)">
           <mat-icon>close</mat-icon>
         </button>
 

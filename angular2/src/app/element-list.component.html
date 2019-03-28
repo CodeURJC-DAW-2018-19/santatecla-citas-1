@@ -14,10 +14,6 @@
       <mat-tab-group dynamicHeight>
         <mat-tab label="Temas">
 
-          <mat-chip-list>
-            <mat-chip [routerLink]="['/formTheme']" color="primary" *ngIf="loginService.isAdmin">Añadir</mat-chip>
-          </mat-chip-list>
-
           <div *ngFor = "let theme of themes" >
             <mat-card class="card element-list">
 
@@ -43,14 +39,26 @@
             <p *ngIf="themes.length === 0" style="margin: 2rem"> Ningún resultado </p>
           </div>
 
+          <div style="margin-top: 2rem; text-align: center">
+
+            <button mat-mini-fab color="primary" style="margin-right: 1rem">
+              <mat-icon matSuffix>more_horiz</mat-icon>
+            </button>
+
+            <button mat-mini-fab color="primary" style="margin-right: 1rem">
+              <mat-icon matSuffix>keyboard_capslock</mat-icon>
+            </button>
+
+            <button mat-mini-fab color="primary">
+              <mat-icon  [routerLink]="['/formTheme']">add</mat-icon>
+            </button>
+
+          </div>
+
         </mat-tab>
 
 
         <mat-tab label="Citas">
-
-          <mat-chip-list>
-            <mat-chip [routerLink]="['/formQuote']" color="primary"  *ngIf="loginService.isAdmin" selected>Añadir</mat-chip>
-          </mat-chip-list>
 
           <div *ngFor="let quote of quotes" >
             <mat-card class="card element-list">
@@ -77,13 +85,21 @@
             <p *ngIf="quotes.length === 0" style="margin: 2rem"> Ningún resultado </p>
           </div>
 
-          <button mat-mini-fab color="primary">
-            <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">more_horiz</mat-icon>
-          </button>
+          <div style="margin-top: 2rem; text-align: center">
 
-          <button mat-mini-fab color="primary">
-            <mat-icon matSuffix (click)="loadLess()">keyboard_capslock</mat-icon>
-          </button>
+            <button mat-mini-fab color="primary" style="margin-right: 1rem">
+              <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">more_horiz</mat-icon>
+            </button>
+
+            <button mat-mini-fab color="primary" style="margin-right: 1rem">
+              <mat-icon matSuffix (click)="loadLess()">keyboard_capslock</mat-icon>
+            </button>
+
+            <button mat-mini-fab color="primary">
+              <mat-icon  [routerLink]="['/formQuote']">add</mat-icon>
+            </button>
+
+          </div>
 
         </mat-tab>
       </mat-tab-group>
