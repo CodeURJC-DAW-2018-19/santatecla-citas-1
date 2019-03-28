@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tab } from './tab.model';
-
+import { LoginService } from '../auth/login.service';
 
 @Injectable()
 export class TabService {
 
   _tabs: Tab[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private loginService: LoginService, private http: HttpClient) {}
 
   addTab(type: string, id: number) {
     for (const t of this._tabs) {
@@ -28,6 +28,9 @@ export class TabService {
   }
 
   get tabs() {
+    if (!this.loginService.isLogged) {
+      this._tabs = [];
+    }
     return this._tabs;
   }
 
