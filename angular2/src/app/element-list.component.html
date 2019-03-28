@@ -55,13 +55,17 @@
           </div>
 
           <div style="margin-top: 2rem; text-align: center">
-            <button mat-mini-fab color="primary" style="margin-right: 1rem">
-              <mat-icon matSuffix>more_horiz</mat-icon>
-            </button>
+              <button mat-mini-fab color="primary">
+                  <mat-icon matSuffix (click)="showThemesByPage(pageThemes + 1)">
+                    more_horiz
+                  </mat-icon>
+                </button>
 
-            <button mat-mini-fab color="primary">
-              <mat-icon matSuffix>keyboard_capslock</mat-icon>
-            </button>
+                <button mat-mini-fab color="primary">
+                  <mat-icon matSuffix (click)="loadLess()">
+                    keyboard_capslock
+                  </mat-icon>
+                </button>
 
             <button
               mat-mini-fab
@@ -70,18 +74,6 @@
               *ngIf="loginService.isAdmin"
             >
               <mat-icon [routerLink]="['/formTheme']">add</mat-icon>
-            </button>
-
-            <button mat-mini-fab color="primary">
-              <mat-icon matSuffix (click)="showThemesByPage(pageThemes + 1)"
-                >more_horiz</mat-icon
-              >
-            </button>
-
-            <button mat-mini-fab color="primary">
-              <mat-icon matSuffix (click)="loadLess()"
-                >keyboard_capslock</mat-icon
-              >
             </button>
           </div>
         </mat-tab>
@@ -126,15 +118,15 @@
 
           <div style="margin-top: 2rem; text-align: center">
             <button mat-mini-fab color="primary" style="margin-right: 1rem">
-              <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)"
-                >more_horiz</mat-icon
-              >
+              <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">
+                more_horiz
+              </mat-icon>
             </button>
 
             <button mat-mini-fab color="primary">
-              <mat-icon matSuffix (click)="loadLess()"
-                >keyboard_capslock</mat-icon
-              >
+              <mat-icon matSuffix (click)="loadLess()">
+                keyboard_capslock
+              </mat-icon>
             </button>
 
             <button
