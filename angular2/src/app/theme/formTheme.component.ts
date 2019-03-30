@@ -15,7 +15,10 @@ export class FormThemeComponent {
   newBook: boolean;
   theme: Theme;
 
-    constructor(private _router: Router, activatedRoute: ActivatedRoute, private service: ThemeService) {
+    constructor(
+      private _router: Router,
+      activatedRoute: ActivatedRoute,
+      private service: ThemeService) {
         const id = activatedRoute.snapshot.params['id'];
         if (id) {
           this.service.getTheme(id)
@@ -25,10 +28,10 @@ export class FormThemeComponent {
             quotes: data['quotes']
           }
         );
-            this.newBook = false;
+          this.newBook = false;
         } else {
-            this.theme = { name: '', id: null, quotes: []};
-            this.newBook = true;
+          this.theme = { name: '', quotes: []};
+          this.newBook = true;
         }
     }
 
@@ -39,7 +42,7 @@ export class FormThemeComponent {
     save() {
         this.service.saveTheme(this.theme).subscribe(
             _ => {},
-            (error: Error) => console.error('Error creating new book: ' + error),
+            (error: Error) => console.error('Error creating new theme: ' + error),
         );
         window.history.back();
     }

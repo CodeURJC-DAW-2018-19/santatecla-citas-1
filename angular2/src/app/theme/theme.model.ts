@@ -1,7 +1,7 @@
 import { Quote } from '../quote/quote.model';
 
 export interface Theme {
-  id: number;
+  id?: number;
   name: string;
   quotes: Quote[];
 }

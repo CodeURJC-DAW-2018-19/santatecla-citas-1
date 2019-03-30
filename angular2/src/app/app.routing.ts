@@ -10,9 +10,10 @@ import { HistogramComponent } from './histogram/histogram.component';
 const appRoutes = [
   { path: '' , component: ElementListComponent  },
   { path: 'theme/:id', component: ThemeComponent  },
+  { path: 'newTheme', component: FormThemeComponent  },
+  { path: 'theme/edit/:id', component: FormThemeComponent },
   { path: 'quote/:id', component: QuoteComponent  },
   { path: 'formQuote', component: FormQuoteComponent  },
-  { path: 'formTheme', component: FormThemeComponent  },
   { path: 'register', component: RegisterComponent  },
   { path: 'histogram', component: HistogramComponent  }
 ];

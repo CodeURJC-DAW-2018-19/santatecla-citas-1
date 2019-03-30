@@ -19,21 +19,6 @@
         <mat-tab label="Temas">
           <div *ngFor="let theme of themes">
             <mat-card class="card element-list">
-              <div *ngIf="loginService.isAdmin">
-                <button mat-mini-fab color="warn" class="right-button">
-                  <mat-icon>delete</mat-icon>
-                </button>
-
-                <button
-                  mat-mini-fab
-                  color="primary"
-                  class="right-button"
-                  [routerLink]="['/formTheme']"
-                >
-                  <mat-icon>border_color</mat-icon>
-                </button>
-              </div>
-
               <div
                 *ngIf="loginService.isLogged"
                 style="padding: 0.7rem; cursor: pointer;"
@@ -72,8 +57,9 @@
               color="primary"
               style="margin-left: 1rem"
               *ngIf="loginService.isAdmin"
+
             >
-              <mat-icon [routerLink]="['/formTheme']">add</mat-icon>
+              <mat-icon (click)="newTheme()">add</mat-icon>
             </button>
           </div>
         </mat-tab>

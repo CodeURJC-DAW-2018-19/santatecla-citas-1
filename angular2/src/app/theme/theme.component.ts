@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { saveAs } from 'file-saver';
 import { Theme } from './theme.model';
 import { ThemeService } from './theme.service';
 import { LoginService } from '../auth/login.service';
+import { TdDialogService } from '@covalent/core';
 
 @Component({
   templateUrl: './theme.component.html',
@@ -18,7 +19,14 @@ export class ThemeComponent implements OnInit {
   image: any;
   id: number;
 
-  constructor(private themeService: ThemeService,  private activatedRoute: ActivatedRoute, private loginService: LoginService) {}
+  constructor(
+    private router: Router,
+    private themeService: ThemeService,
+    private activatedRoute: ActivatedRoute,
+    private loginService: LoginService,
+    private _dialogService: TdDialogService,) {
+
+    }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -59,6 +67,25 @@ export class ThemeComponent implements OnInit {
         var blob = new Blob([response], {type: mediaType});
         saveAs(blob, 'theme.pdf');
       })
+  }
+
+  removeTheme() {
+    this._dialogService.openConfirm({
+        message: '¿ Seguro que desea eliminar el tema ' + this.theme.name + '?',
+        title: 'Confirmación',
+        width: '500px',
+        height: '175px'
+    }).afterClosed().subscribe((accept: boolean) => {
+        if (accept) {
+            this.themeService
+                .removeTheme(this.theme)
+                .subscribe((_) => this.router.navigate(['/']), (error) => console.error(error));
+        }
+    });
+  }
+
+  editTheme() {
+    this.router.navigate(['/theme/edit', this.theme.id]);
   }
 
 }

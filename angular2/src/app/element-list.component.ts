@@ -1,6 +1,8 @@
 import { LoginService } from './auth/login.service';
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { Theme } from './theme/theme.model';
 import { ThemeService } from './theme/theme.service';
 
@@ -25,8 +27,12 @@ export class ElementListComponent implements OnInit {
   pageThemes: number;
   pageQuotes: number;
 
-  constructor(private themeService: ThemeService, private quoteService: QuoteService,
-              private loginService: LoginService, private tabService: TabService) {}
+  constructor(
+    private router: Router,
+    private themeService: ThemeService,
+    private quoteService: QuoteService,
+    private loginService: LoginService,
+    private tabService: TabService) {}
 
   ngOnInit() {
     this.resetPages();
@@ -97,4 +103,7 @@ export class ElementListComponent implements OnInit {
     );
   }
 
+  newTheme() {
+    this.router.navigate(['/newTheme']);
+  }
 }

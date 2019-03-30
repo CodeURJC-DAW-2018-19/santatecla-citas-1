@@ -32,17 +32,19 @@ export class ThemeService {
     const body = JSON.stringify(theme);
 
     const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-        });
+      'Content-Type': 'application/json',
+    });
 
     if (!theme.id) {
-            return this.http
-                .post<Theme>('/api/themes/', body, { headers });
-        } else {
-            return this.http
-                .put<Theme>('/api/themes/' + theme.id, body, { headers });
-        }
+      return this.http.post<Theme>('/api/themes/', body, { headers });
+    } else {
+      return this.http.put<Theme>('/api/themes/' + theme.id, body, { headers });
+    }
 
+  }
+
+  removeTheme(theme: Theme): Observable<Theme> {
+    return this.http.delete<Theme>('/api/themes/' + theme.id);
   }
 
   getPDF(id: number) {

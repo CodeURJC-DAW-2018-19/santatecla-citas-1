@@ -52,9 +52,19 @@
   height: 5rem;
 }
 
+.button {
+  margin-right: 1rem;
+}
+
 .right-button {
   float: right;
   margin-right: 1rem;
+}
+
+.right-button-theme {
+  float: right;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
 }
 
 .element-list {
@@ -88,4 +98,8 @@
 body {
   padding-top: 4rem;
   height: auto;
+}
+
+.themeTitle {
+  position: absolute;
 }
