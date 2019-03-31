@@ -92,4 +92,17 @@ export class ThemeComponent implements OnInit {
     this.themeService.addQuote(this.theme);
   }
 
+  deleteQuote() {
+    this._dialogService.openConfirm({
+      message: '¿ Seguro que desea eliminar la referencia de esta cita en este tema?',
+      title: 'Confirmación',
+      width: '500px',
+      height: '200'
+    }).afterClosed().subscribe((accept: boolean) => {
+        if (accept) {
+          this.themeService.removeQuote(this.theme);
+        }
+    });
+  }
+
 }

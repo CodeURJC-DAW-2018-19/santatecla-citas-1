@@ -64,4 +64,8 @@ export class ThemeService {
     return this.http.post<Theme>('api/themes/' + theme.id + '/quote/2', body, { headers });
   }
 
+  removeQuote(theme: Theme) {
+    return this.http.delete('api/themes/' + theme.id + '/quote/10');
+  }
+
 }
