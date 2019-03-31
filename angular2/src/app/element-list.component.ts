@@ -23,9 +23,14 @@ export class ElementListComponent implements OnInit {
   themes: Theme[];
   quotes: Quote[];
 
+  restThemes: number;
+  restQuotes: string;
+
   searchName: string;
   pageThemes: number;
   pageQuotes: number;
+
+  spinner = false;
 
   constructor(
     private router: Router,
@@ -79,6 +84,7 @@ export class ElementListComponent implements OnInit {
   }
 
   showThemesByPage(page: number) {
+    this.spinner = true;
     if (page !== 0) {
     this.themeService.getThemesByPage(page)
       .subscribe((data: Theme[]) => this.themes = data['content']

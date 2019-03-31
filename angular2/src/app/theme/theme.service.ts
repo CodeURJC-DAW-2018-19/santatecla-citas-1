@@ -1,3 +1,4 @@
+import { Quote } from './../quote/quote.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -49,6 +50,18 @@ export class ThemeService {
 
   getPDF(id: number) {
     return this.http.get('api/themes/' + id + '/PDF', {responseType: 'blob'});
+  }
+
+  addQuote(theme: Theme): Observable<Theme> {
+    const body = JSON.stringify(theme);
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    console.log("AAAAAA");
+
+    return this.http.post<Theme>('api/themes/' + theme.id + '/quote/2', body, { headers });
   }
 
 }

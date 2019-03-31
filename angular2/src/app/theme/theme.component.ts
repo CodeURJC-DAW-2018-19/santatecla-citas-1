@@ -88,4 +88,8 @@ export class ThemeComponent implements OnInit {
     this.router.navigate(['/theme/edit', this.theme.id]);
   }
 
+  add() {
+    this.themeService.addQuote(this.theme);
+  }
+
 }

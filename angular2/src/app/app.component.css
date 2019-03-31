@@ -52,6 +52,10 @@
   height: 5rem;
 }
 
+.delete {
+  margin-left: 1rem;
+}
+
 .button {
   margin-right: 1rem;
 }
@@ -102,4 +106,10 @@ body {
 
 .themeTitle {
   position: absolute;
+}
+
+.authorAndBook {
+  background-color: #9ab1fa;
+  margin: 1rem;
+  border-radius: 8px;
 }

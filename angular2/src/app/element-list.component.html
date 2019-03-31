@@ -39,8 +39,11 @@
             </p>
           </div>
 
+          <mat-progress-bar *ngIf="spinner"  mode="indeterminate"></mat-progress-bar>
+
           <div style="margin-top: 2rem; text-align: center">
-              <button mat-mini-fab color="primary">
+              <button mat-mini-fab color="primary" style="margin-right: 1rem"
+              matBadge="6"  matBadgeColor="accent">
                   <mat-icon matSuffix (click)="showThemesByPage(pageThemes + 1)">
                     more_horiz
                   </mat-icon>
@@ -103,7 +106,8 @@
           </div>
 
           <div style="margin-top: 2rem; text-align: center">
-            <button mat-mini-fab color="primary" style="margin-right: 1rem">
+            <button mat-mini-fab color="primary" style="margin-right: 1rem"
+            matBadge="6"  matBadgeColor="accent">
               <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">
                 more_horiz
               </mat-icon>
