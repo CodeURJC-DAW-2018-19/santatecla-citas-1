@@ -1443,7 +1443,7 @@ var ThemeService = /** @class */ (function () {
         return this.http.get('/api/themes/' + id);
     };
     ThemeService.prototype.getImage = function (id) {
-        return this.http.get('api/themes/' + id + '/image', { responseType: 'blob' });
+        return this.http.get('/api/themes/' + id + '/image', { responseType: 'blob' });
     };
     ThemeService.prototype.searchTheme = function (name) {
         return this.http.get('/api/themes/search/' + name);

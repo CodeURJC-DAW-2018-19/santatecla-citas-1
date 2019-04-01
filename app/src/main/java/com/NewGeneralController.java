@@ -9,7 +9,7 @@ public class NewGeneralController implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/new").setViewName("forward:/new/index.html");
+        registry.addViewController("/new/").setViewName("forward:/new/index.html");
     }
 
 }
