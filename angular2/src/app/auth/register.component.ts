@@ -18,7 +18,7 @@ export class RegisterComponent {
     private router: Router,
     activatedRoute: ActivatedRoute,
     private service: LoginService) {
-        this.user = { name: '', roles: ['user'], passwordHash: ''};
+        this.user = { name: '', roles: ['user'], authdata: ''};
         this.newUser = true;
   }
 

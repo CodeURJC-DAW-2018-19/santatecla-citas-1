@@ -9,7 +9,7 @@ export interface User {
     id?: number;
     name: string;
     roles: string[];
-    passwordHash: string;
+    authdata: string;
 }
 
 @Injectable()
@@ -41,7 +41,7 @@ export class LoginService {
 
                 if (user) {
                     this.setCurrentUser(user);
-                    user.passwordHash = auth;
+                    user.authdata = auth;
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
 
