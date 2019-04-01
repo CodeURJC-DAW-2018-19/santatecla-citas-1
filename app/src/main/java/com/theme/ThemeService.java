@@ -68,6 +68,10 @@ public class ThemeService {
 	public List<Theme> findAll() {
         return repository.findAll();
 	}
+
+	public int findSize(){
+		return repository.findAll().size();
+	}
 	
 	public InputStream generatePDF(Long id){
 		try{

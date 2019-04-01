@@ -36,6 +36,17 @@ public class QuoteRestController extends GeneralRestController{
         return result;
     }
 
+    @GetMapping(value="/size")
+    public MappingJacksonValue quotesSize(){
+        MappingJacksonValue result = new MappingJacksonValue(this.quoteService.findSize());
+        if (userComponent.isLoggedUser()) {
+            result.setSerializationView(LoggedView.class);
+        } else {
+            result.setSerializationView(VisitorView.class);
+        }
+        return result;
+    }
+
     @GetMapping(value="/search/{name}")
     public MappingJacksonValue searchQuotes(@PageableDefault Pageable page, @PathVariable String name){
         MappingJacksonValue result = new MappingJacksonValue(this.quoteService.findByName(name, page));

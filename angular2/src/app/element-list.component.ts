@@ -27,8 +27,14 @@ export class ElementListComponent implements OnInit {
   restQuotes: string;
 
   searchName: string;
+  pageSize: number;
   pageThemes: number;
   pageQuotes: number;
+
+  themesSize: number;
+  quotesSize: number;
+
+  remainingQuotes: number;
 
   spinner = false;
 
@@ -42,16 +48,24 @@ export class ElementListComponent implements OnInit {
   ngOnInit() {
     this.resetPages();
     this.showAllThemesAndQuotes();
+    this.getQuotesSize();
+    this.getThemesSize();
+    this.pageSize = 6;
   }
 
-  resetPages(){
+  resetPages() {
     this.pageThemes = 0;
     this.pageQuotes = 0;
   }
 
-  loadLess(){
-    this.resetPages();
-    this.showAllThemesAndQuotes();
+  loadLessQuotes() {
+    this.pageQuotes = 0;
+    this.showAllQuotes();
+  }
+
+  loadLessThemes() {
+    this.pageThemes = 0;
+    this.showAllThemes();
   }
 
   search(name: string) {
@@ -80,7 +94,7 @@ export class ElementListComponent implements OnInit {
       this.showAllThemesAndQuotes();
     }
     this.pageQuotes++;
-    this.pageThemes = 0;
+    this.getRemainingQuotes();
   }
 
   showThemesByPage(page: number) {
@@ -96,7 +110,6 @@ export class ElementListComponent implements OnInit {
       this.showAllThemesAndQuotes();
     }
     this.pageThemes++;
-    this.pageQuotes = 0;
   }
 
   showAllThemesAndQuotes() {
@@ -109,6 +122,19 @@ export class ElementListComponent implements OnInit {
     );
   }
 
+  showAllThemes() {
+    this.themeService.getThemes()
+      .subscribe((data: Theme[]) => {
+      this.themes = data['content']; }
+    );
+  }
+
+  showAllQuotes() {
+    this.quoteService.getQuotes()
+      .subscribe((data: Quote[]) => this.quotes = data['content']
+    );
+  }
+
   newTheme() {
     this.router.navigate(['/newTheme']);
   }
@@ -116,4 +142,22 @@ export class ElementListComponent implements OnInit {
   newQuote() {
     this.router.navigate(['/newQuote']);
   }
+
+  getThemesSize() {
+    this.themeService.getSize()
+      .subscribe((data: number) => this.themesSize = data
+    );
+  }
+
+  getQuotesSize() {
+    this.quoteService.getSize()
+      .subscribe((data: number) => this.quotesSize = data
+    );
+  }
+
+  getRemainingQuotes() {
+    const op = this.quotesSize - this.pageSize * this.pageQuotes;
+    this.remainingQuotes = (op > 0) ?  op : 0;
+  }
+
 }
