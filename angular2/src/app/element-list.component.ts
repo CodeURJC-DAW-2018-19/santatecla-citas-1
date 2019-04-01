@@ -10,6 +10,7 @@ import { Quote } from './quote/quote.model';
 import { QuoteService } from './quote/quote.service';
 
 import { TabService } from './tabs/tab.service';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   templateUrl: './element-list.component.html',
@@ -35,6 +36,10 @@ export class ElementListComponent implements OnInit {
   quotesSize: number;
 
   remainingQuotes: number;
+  loadMoreQuotes: boolean;
+
+  remainingThemes: number;
+  loadMoreThemes: boolean;
 
   spinner = false;
 
@@ -48,9 +53,14 @@ export class ElementListComponent implements OnInit {
   ngOnInit() {
     this.resetPages();
     this.showAllThemesAndQuotes();
+
+    // Pages size and matBadge init
     this.getQuotesSize();
     this.getThemesSize();
     this.pageSize = 6;
+    this.loadMoreQuotes = true;
+    //console.log(this.quotesSize);
+    //console.log(this.pageSize)
   }
 
   resetPages() {
@@ -60,12 +70,16 @@ export class ElementListComponent implements OnInit {
 
   loadLessQuotes() {
     this.pageQuotes = 0;
-    this.showAllQuotes();
+    this.loadMoreQuotes = true;
+    this.showFirstQuotes();
+    this.getRemainingQuotes();
   }
 
   loadLessThemes() {
     this.pageThemes = 0;
-    this.showAllThemes();
+    this.loadMoreThemes = true;
+    this.showFirstThemes();
+    this.getRemainingQuotes();
   }
 
   search(name: string) {
@@ -110,6 +124,7 @@ export class ElementListComponent implements OnInit {
       this.showAllThemesAndQuotes();
     }
     this.pageThemes++;
+    this.getRemainingThemes();
   }
 
   showAllThemesAndQuotes() {
@@ -120,19 +135,25 @@ export class ElementListComponent implements OnInit {
     this.quoteService.getQuotes()
       .subscribe((data: Quote[]) => this.quotes = data['content']
     );
+
+    this.getRemainingQuotes();
+    this.getRemainingThemes();
   }
 
-  showAllThemes() {
+  showFirstThemes() {
     this.themeService.getThemes()
-      .subscribe((data: Theme[]) => {
-      this.themes = data['content']; }
+      .subscribe((data: Theme[]) => { this.themes = data['content']; }
     );
+
+    this.getRemainingQuotes();
   }
 
-  showAllQuotes() {
+  showFirstQuotes() {
     this.quoteService.getQuotes()
       .subscribe((data: Quote[]) => this.quotes = data['content']
     );
+
+    this.getRemainingThemes();
   }
 
   newTheme() {
@@ -145,19 +166,32 @@ export class ElementListComponent implements OnInit {
 
   getThemesSize() {
     this.themeService.getSize()
-      .subscribe((data: number) => this.themesSize = data
+      .subscribe((data: number) => {
+        this.themesSize = data;
+        this.getRemainingThemes();
+      }
     );
   }
 
   getQuotesSize() {
     this.quoteService.getSize()
-      .subscribe((data: number) => this.quotesSize = data
+      .subscribe((data: number) => {
+        this.quotesSize = data;
+        this.getRemainingQuotes();
+      }
     );
   }
 
   getRemainingQuotes() {
-    const op = this.quotesSize - this.pageSize * this.pageQuotes;
+    const op = this.quotesSize - this.pageSize - (this.pageSize * this.pageQuotes);
     this.remainingQuotes = (op > 0) ?  op : 0;
+    this.loadMoreQuotes = this.remainingQuotes !== 0;
+  }
+
+  getRemainingThemes() {
+    const op = this.themesSize - this.pageSize - (this.pageSize * this.pageThemes);
+    this.remainingThemes = (op > 0) ?  op : 0;
+    this.loadMoreThemes = this.remainingThemes !== 0;
   }
 
 }
