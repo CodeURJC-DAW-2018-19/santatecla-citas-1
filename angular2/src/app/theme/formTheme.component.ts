@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class FormThemeComponent {
 
-  newBook: boolean;
+  newTheme: boolean;
   theme: Theme;
 
     constructor(
@@ -28,10 +28,10 @@ export class FormThemeComponent {
             quotes: data['quotes']
           }
         );
-          this.newBook = false;
+          this.newTheme = false;
         } else {
           this.theme = { name: '', quotes: []};
-          this.newBook = true;
+          this.newTheme = true;
         }
     }
 

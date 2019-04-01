@@ -16,6 +16,22 @@
               {{quote.book}}
             </mat-card>
           </div>
+
+          <div>
+            <button mat-mini-fab color="warn" class="right-button" (click)="removeTheme()" >
+              <mat-icon>delete</mat-icon>
+            </button>
+
+            <button
+              mat-mini-fab
+              color="primary"
+              class="right-button"
+              (click)="editQuote()"
+            >
+              <mat-icon>border_color</mat-icon>
+            </button>
+          </div>
+
         </mat-tab>
       </mat-tab-group>
     </mat-card>

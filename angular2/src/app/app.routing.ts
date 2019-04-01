@@ -13,7 +13,8 @@ const appRoutes = [
   { path: 'newTheme', component: FormThemeComponent  },
   { path: 'theme/edit/:id', component: FormThemeComponent },
   { path: 'quote/:id', component: QuoteComponent  },
-  { path: 'formQuote', component: FormQuoteComponent  },
+  { path: 'newQuote', component: FormQuoteComponent  },
+  { path: 'quote/edit/:id', component: FormQuoteComponent  },
   { path: 'register', component: RegisterComponent  },
   { path: 'histogram', component: HistogramComponent  }
 ];

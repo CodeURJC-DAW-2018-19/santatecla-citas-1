@@ -112,4 +112,8 @@ export class ElementListComponent implements OnInit {
   newTheme() {
     this.router.navigate(['/newTheme']);
   }
+
+  newQuote() {
+    this.router.navigate(['/newQuote']);
+  }
 }

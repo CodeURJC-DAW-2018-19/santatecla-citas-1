@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Quote } from './quote.model';
 
 @Injectable()
 export class QuoteService {
@@ -20,6 +21,25 @@ export class QuoteService {
 
   searchQuote(name: string) {
     return this.http.get('/api/quotes/search/' + name);
+  }
+
+  saveQuote(quote: Quote): Observable<Quote> {
+    const body = JSON.stringify(quote);
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    if (!quote.id) {
+      return this.http.post<Quote>('/api/quotes/', body, { headers });
+    } else {
+      return this.http.put<Quote>('/api/quotes/' + quote.id, body, { headers });
+    }
+
+  }
+
+  removeQuote(quote: Quote): Observable<Quote> {
+    return this.http.delete<Quote>('/api/quotes/' + quote.id);
   }
 
 }
