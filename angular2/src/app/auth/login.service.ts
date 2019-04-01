@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 const URL = '/api';
 
@@ -8,7 +9,7 @@ export interface User {
     id?: number;
     name: string;
     roles: string[];
-    authdata: string;
+    passwordHash: string;
 }
 
 @Injectable()
@@ -40,7 +41,7 @@ export class LoginService {
 
                 if (user) {
                     this.setCurrentUser(user);
-                    user.authdata = auth;
+                    user.passwordHash = auth;
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
 
@@ -55,6 +56,17 @@ export class LoginService {
                 return response;
             }),
         );
+    }
+
+    saveUser(user: User): Observable<User> {
+      const body = JSON.stringify(user);
+
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
+
+      return this.http.post<User>('/api/user/register', body);
+
     }
 
     private setCurrentUser(user: User) {

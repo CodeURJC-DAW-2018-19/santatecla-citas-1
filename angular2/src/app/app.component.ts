@@ -2,6 +2,8 @@ import { LoginService } from './auth/login.service';
 import { Component } from '@angular/core';
 import { TabService } from './tabs/tab.service';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,10 +14,17 @@ import { TabService } from './tabs/tab.service';
 
 export class AppComponent {
 
-  constructor(private loginService: LoginService, private tabService: TabService) {}
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private tabService: TabService) {}
 
   logout() {
     this.loginService.logOut();
+  }
+
+  register() {
+    this.router.navigate(['/register']);
   }
 
 }
