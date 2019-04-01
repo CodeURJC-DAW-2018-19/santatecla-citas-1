@@ -24,6 +24,14 @@ export class ThemeService {
     return this.http.get('api/themes/' + id + '/image', {responseType: 'blob'});
   }
 
+  uploadImage(id: number, file: any) {
+    const formData = new FormData();
+
+    formData.append('file', file);
+
+    return this.http.post('api/themes/' + id + '/image', formData);
+  }
+
   searchTheme(name: string) {
     return this.http.get('/api/themes/search/' + name);
   }

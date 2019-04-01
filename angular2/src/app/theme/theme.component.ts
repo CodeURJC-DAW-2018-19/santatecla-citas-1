@@ -6,6 +6,10 @@ import { ThemeService } from './theme.service';
 import { LoginService } from '../auth/login.service';
 import { TdDialogService } from '@covalent/core';
 
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
 @Component({
   templateUrl: './theme.component.html',
   styleUrls: [
@@ -17,6 +21,7 @@ export class ThemeComponent implements OnInit {
 
   theme: Theme;
   image: any;
+  newImage: ImageSnippet;
   id: number;
 
   constructor(
@@ -101,6 +106,37 @@ export class ThemeComponent implements OnInit {
     }).afterClosed().subscribe((accept: boolean) => {
         if (accept) {
           this.themeService.removeQuote(this.theme);
+        }
+    });
+  }
+
+  changeImage(imageInput: any) {
+    this._dialogService.openConfirm({
+      message: '¿ Seguro que desea cambiar la imagen de este tema?',
+      title: 'Confirmación',
+      width: '500px',
+      height: '200'
+    }).afterClosed().subscribe((accept: boolean) => {
+        if (accept) {
+          const file: File = imageInput.files[0];
+          const reader = new FileReader();
+
+          console.log(file);
+
+          reader.addEventListener('load', (event: any) => {
+
+            this.newImage = new ImageSnippet(event.target.result, file);
+
+            this.themeService.uploadImage(this.theme.id, this.newImage.file).subscribe(
+              _ => {},
+              (error: Error) => console.error('Error creating new image: ' + error),
+            );
+
+            // window.history.back();
+
+          });
+
+          reader.readAsDataURL(file);
         }
     });
   }

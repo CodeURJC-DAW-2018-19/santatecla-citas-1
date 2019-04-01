@@ -71,6 +71,11 @@
   margin-top: 1rem;
 }
 
+.inputFileButton {
+  width: 1.5rem;
+  display: none;
+}
+
 .element-list {
   padding: 0.5rem;
   background-color: #f1f6fa;
