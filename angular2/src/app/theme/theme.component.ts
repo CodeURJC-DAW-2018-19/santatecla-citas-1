@@ -88,11 +88,14 @@ export class ThemeComponent implements OnInit {
     this.router.navigate(['/theme/edit', this.theme.id]);
   }
 
-  add() {
-    this.themeService.addQuote(this.theme);
+  add(idT: number) {
+    this.themeService.addQuote(this.theme).subscribe(
+      (_) => this.router.navigate(['/theme/' + idT]),
+      (error) => console.log(error)
+    );
   }
 
-  deleteQuote() {
+  deleteQuote(idQ: number, idT: number) {
     this._dialogService.openConfirm({
       message: '¿ Seguro que desea eliminar la referencia de esta cita en este tema?',
       title: 'Confirmación',
@@ -100,7 +103,9 @@ export class ThemeComponent implements OnInit {
       height: '200'
     }).afterClosed().subscribe((accept: boolean) => {
         if (accept) {
-          this.themeService.removeQuote(this.theme);
+          this.themeService.removeQuote(this.theme, idQ).subscribe(
+            (_) => this.router.navigate(['/theme/' + idT]),
+            (error) => console.log(error));
         }
     });
   }
