@@ -6,6 +6,10 @@ import { ThemeService } from './theme.service';
 import { LoginService } from '../auth/login.service';
 import { TdDialogService } from '@covalent/core';
 
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
 @Component({
   templateUrl: './theme.component.html',
   styleUrls: [
@@ -17,6 +21,7 @@ export class ThemeComponent implements OnInit {
 
   theme: Theme;
   image: any;
+  newImage: ImageSnippet;
   id: number;
 
   constructor(
@@ -71,8 +76,10 @@ export class ThemeComponent implements OnInit {
 
   removeTheme() {
     this._dialogService.openConfirm({
-        message: '¿ Seguro que desea eliminar el tema ' + this.theme.name + '?',
+        message: '¿Seguro que desea eliminar el tema ' + this.theme.name + '?',
         title: 'Confirmación',
+        cancelButton: 'Cancelar',
+        acceptButton: 'Borrar',
         width: '500px',
         height: '175px'
     }).afterClosed().subscribe((accept: boolean) => {
@@ -94,13 +101,41 @@ export class ThemeComponent implements OnInit {
 
   deleteQuote() {
     this._dialogService.openConfirm({
-      message: '¿ Seguro que desea eliminar la referencia de esta cita en este tema?',
+      message: '¿Seguro que desea eliminar la referencia de esta cita en este tema?',
       title: 'Confirmación',
+      cancelButton: 'Cancelar',
+      acceptButton: 'Borrar',
       width: '500px',
       height: '200'
     }).afterClosed().subscribe((accept: boolean) => {
         if (accept) {
           this.themeService.removeQuote(this.theme);
+        }
+    });
+  }
+
+  changeImage(imageInput: any) {
+    this._dialogService.openConfirm({
+      message: '¿Seguro que desea cambiar la imagen de este tema?',
+      title: 'Confirmación',
+      cancelButton: 'Cancelar',
+      acceptButton: 'Aceptar',
+      width: '500px',
+      height: '200'
+    }).afterClosed().subscribe((accept: boolean) => {
+        if (accept) {
+          const file: File = imageInput.files[0];
+          const reader = new FileReader();
+          reader.addEventListener('load', (event: any) => {
+            this.newImage = new ImageSnippet(event.target.result, file);
+            this.themeService.uploadImage(this.theme.id, this.newImage.file).subscribe(
+              _ => {
+                this.ngOnInit();
+              },
+              (error: Error) => console.error('Error creating new image: ' + error),
+            );
+          });
+          reader.readAsDataURL(file);
         }
     });
   }

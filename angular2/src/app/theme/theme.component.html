@@ -20,6 +20,11 @@
               <mat-icon>border_color</mat-icon>
             </button>
 
+            <button mat-mini-fab color="accent" class="right-button-theme" (click)="fileInput.click()">
+              <input #fileInput type="file" [(ngModel)]="newImage" class="inputFileButton" (change)="changeImage(fileInput)">
+              <mat-icon>insert_photo</mat-icon>
+            </button>
+
             <h1>{{theme.name}}</h1>
           </mat-card>
 
