@@ -1,0 +1,7 @@
+<body>
+    <div *ngFor="let quote of quotes">
+      <button mat color="warn"(click)="add(quote.id)" >
+        {{quote.quote}}
+      </button>
+    </div>
+</body>

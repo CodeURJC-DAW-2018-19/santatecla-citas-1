@@ -57,6 +57,7 @@ import { AppComponent } from './app.component';
 import { ThemeComponent } from './theme/theme.component';
 import { ThemeService } from './theme/theme.service';
 import { FormThemeComponent } from './theme/formTheme.component';
+import { SelectQuoteComponent } from './theme/selectQuote.component';
 
 import { QuoteComponent } from './quote/quote.component';
 import { QuoteService } from './quote/quote.service';
@@ -86,7 +87,8 @@ import { ErrorInterceptor } from './auth/error.interceptor';
     FormThemeComponent,
     LoginComponent,
     RegisterComponent,
-    HistogramComponent
+    HistogramComponent,
+    SelectQuoteComponent
   ],
   imports: [
     BrowserModule,

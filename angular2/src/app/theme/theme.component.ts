@@ -23,6 +23,7 @@ export class ThemeComponent implements OnInit {
   image: any;
   newImage: ImageSnippet;
   id: number;
+  selectQuote = false;
 
   constructor(
     private router: Router,
@@ -95,14 +96,11 @@ export class ThemeComponent implements OnInit {
     this.router.navigate(['/theme/edit', this.theme.id]);
   }
 
-  add(idT: number) {
-    this.themeService.addQuote(this.theme).subscribe(
-      (_) => this.router.navigate(['/theme/' + idT]),
-      (error) => console.log(error)
-    );
+  add() {
+    this.router.navigate(['/theme/selectQuote', this.theme.id]);
   }
 
-  deleteQuote(idQ: number, idT: number) {
+  deleteQuote(idQ: number) {
     this._dialogService.openConfirm({
       message: '¿Seguro que desea eliminar la referencia de esta cita en este tema?',
       title: 'Confirmación',
@@ -113,7 +111,7 @@ export class ThemeComponent implements OnInit {
     }).afterClosed().subscribe((accept: boolean) => {
         if (accept) {
           this.themeService.removeQuote(this.theme, idQ).subscribe(
-            (_) => this.router.navigate(['/theme/' + idT]),
+            (_) => this.ngOnInit(),
             (error) => console.log(error));
         }
     });

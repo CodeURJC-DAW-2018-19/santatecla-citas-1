@@ -63,14 +63,8 @@ export class ThemeService {
     return this.http.get('api/themes/' + id + '/PDF', {responseType: 'blob'});
   }
 
-  addQuote(theme: Theme): Observable<Theme> {
-    const body = JSON.stringify(theme);
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
-    return this.http.post<Theme>('/api/themes/' + theme.id + '/quote/4', null);
+  addQuote(idT: number, idQ: number): Observable<Theme> {
+    return this.http.post<Theme>('/api/themes/' + idT + '/quote/' + idQ, null);
   }
 
   removeQuote(theme: Theme, id: number) {
