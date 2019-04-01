@@ -70,13 +70,11 @@ export class ThemeService {
       'Content-Type': 'application/json',
     });
 
-    console.log("AAAAAA");
-
-    return this.http.post<Theme>('api/themes/' + theme.id + '/quote/2', body, { headers });
+    return this.http.post<Theme>('/api/themes/' + theme.id + '/quote/4', null);
   }
 
-  removeQuote(theme: Theme) {
-    return this.http.delete('api/themes/' + theme.id + '/quote/10');
+  removeQuote(theme: Theme, id: number) {
+    return this.http.delete('/api/themes/' + theme.id + '/quote/' + id);
   }
 
 }

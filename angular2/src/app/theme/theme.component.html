@@ -31,7 +31,7 @@
           <div class="example-large-box mat-elevation-z4" *ngFor = "let quote of theme.quotes">
               <mat-card class="card" >
                 Referencia cita {{quote.id}}
-                <button mat-mini-fab color="warn" *ngIf="loginService.isAdmin" class="delete" (click)="deleteQuote()" >
+                <button mat-mini-fab color="warn" *ngIf="loginService.isAdmin" class="delete" (click)="deleteQuote(quote.id, theme.id)" >
                   <mat-icon>delete</mat-icon>
                 </button>
                 <mat-card class="card">
@@ -57,7 +57,7 @@
                   <mat-checkbox class="example-margin">Referencia a cita</mat-checkbox>
                   <mat-checkbox class="example-margin">Texto</mat-checkbox>
                   <mat-chip-list>
-                    <mat-chip color="accent" selected (click)="add()" >Añadir</mat-chip>
+                    <mat-chip color="accent" selected (click)="add(theme.id)" >Añadir</mat-chip>
                   </mat-chip-list>
               </section>
           </div>
