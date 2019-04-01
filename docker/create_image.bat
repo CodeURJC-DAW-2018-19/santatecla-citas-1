@@ -1,3 +1,11 @@
+cd ../angular2
+
+:: Build angular app
+npm install
+npm run ng build --prod --baseHref=https://localhost:8080/new/
+mkdir ..\app\src\main\resources\static\new
+copy /Y dist\angular2\* ..\app\src\main\resources\static\new
+
 cd ../app
 
 :: Create jar

@@ -13,6 +13,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref" : "/new/",
+            "deployUrl": "/new/",
             "outputPath": "dist/angular2",
             "index": "src/index.html",
             "main": "src/main.ts",
