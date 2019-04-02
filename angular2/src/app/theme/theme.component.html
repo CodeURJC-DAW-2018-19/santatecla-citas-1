@@ -2,38 +2,40 @@
 <body>
 
   <div>
-    <mat-card class="card" >
+    <mat-card class="card">
       <mat-tab-group dynamicHeight>
         <mat-tab label="Temas">
-          <mat-card class="card" >
+          <mat-card class="card">
             <img [src]="image" alt="{{theme.name}}Image" class="themeImage">
-            <button mat-mini-fab color="warn" class="right-button-theme" (click)="removeTheme()">
-              <mat-icon>delete</mat-icon>
-            </button>
+            <span *ngIf="loginService.isAdmin">
+              <button mat-mini-fab color="warn" class="right-button-theme" (click)="removeTheme()">
+                <mat-icon>delete</mat-icon>
+              </button>
 
-            <button *ngIf="edit" mat-mini-fab color="primary" class="right-button-theme" (click)="save()">
-              <mat-icon>border_color</mat-icon>
-            </button>
+              <button *ngIf="edit" mat-mini-fab color="primary" class="right-button-theme" (click)="save()">
+                <mat-icon>border_color</mat-icon>
+              </button>
 
-            <button *ngIf="!edit" mat-mini-fab color="primary" class="right-button-theme" (click)="editTheme()">
-              <mat-icon>border_color</mat-icon>
-            </button>
+              <button *ngIf="!edit" mat-mini-fab color="primary" class="right-button-theme" (click)="editTheme()">
+                <mat-icon>border_color</mat-icon>
+              </button>
 
-            <button mat-mini-fab color="accent" class="right-button-theme" (click)="fileInput.click()">
-              <input #fileInput type="file" [(ngModel)]="newImage" class="inputFileButton" (change)="changeImage(fileInput)">
-              <mat-icon>insert_photo</mat-icon>
-            </button>
+              <button mat-mini-fab color="accent" class="right-button-theme" (click)="fileInput.click()">
+                <input #fileInput type="file" [(ngModel)]="newImage" class="inputFileButton" (change)="changeImage(fileInput)">
+                <mat-icon>insert_photo</mat-icon>
+              </button>
+            </span>
 
             <h1 style="font-size: 2rem" *ngIf="!edit">{{theme.name}}</h1>
 
-            <form *ngIf="edit" (keyup.enter)="save()">
+            <form *ngIf="edit && loginService.isAdmin" (keyup.enter)="save()">
               <input style="font-size: 2rem; margin-top: 1rem;; width: 50%;" type="text" [(ngModel)]="name" name="name" required>
             </form>
 
           </mat-card>
 
-          <div class="example-large-box mat-elevation-z4" *ngFor = "let quote of theme.quotes">
-              <mat-card class="card" >
+          <div class="example-large-box mat-elevation-z4 bg" *ngIf="loginService.isAdmin">
+              <mat-card class="card" *ngFor = "let quote of theme.quotes">
                 Referencia cita {{quote.id}}
                 <button mat-mini-fab color="warn" *ngIf="loginService.isAdmin" class="delete" (click)="deleteQuote(quote.id, theme.id)" >
                   <mat-icon>delete</mat-icon>
@@ -56,7 +58,7 @@
               </mat-card>
           </div>
 
-          <div class="example-large-box mat-elevation-z4" *ngIf="loginService.isAdmin">
+          <div class="example-large-box mat-elevation-z4 bg" *ngIf="loginService.isAdmin">
               <section class="example-section">
                   <mat-checkbox class="example-margin">Referencia a cita</mat-checkbox>
                   <mat-checkbox class="example-margin">Texto</mat-checkbox>
@@ -66,10 +68,10 @@
               </section>
           </div>
 
-          <div class="example-large-box mat-elevation-z4">
-              <mat-card class="card" >
+          <div class="example-large-box mat-elevation-z4 bg">
+              <div style="margin-left: 1rem">
                 HTML
-              </mat-card>
+              </div>
               <mat-card class="card" >
                 <h3>{{theme.name}}</h3>
                 <div *ngFor = "let quote of theme.quotes">
@@ -79,10 +81,13 @@
               </mat-card>
           </div>
 
-          <button mat-raised-button color="primary" class="pdfButton" (click)="getPDF()">
-              Generar PDF
+          <div style="text-align: center">
+            <button mat-raised-button color="primary" (click)="getPDF()">
+              Descargar PDF
               <mat-icon>picture_as_pdf</mat-icon>
-          </button>
+            </button>
+          </div>
+
         </mat-tab>
       </mat-tab-group>
     </mat-card>

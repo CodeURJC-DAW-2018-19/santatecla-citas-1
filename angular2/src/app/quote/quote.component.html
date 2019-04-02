@@ -2,38 +2,46 @@
 <body>
 
   <div>
-    <mat-card class="card" >
+    <mat-card class="card">
       <mat-tab-group dynamicHeight>
         <mat-tab label="Citas">
-          <div class="example-large-box mat-elevation-z4">
+          <div class="example-large-box mat-elevation-z4 bg">
 
-            <mat-card *ngIf="!edit" class="card">
-              {{quote.quote}}
-            </mat-card>
-            <mat-card *ngIf="!edit" class="card">
-              {{quote.author}}
-            </mat-card>
-            <mat-card *ngIf="!edit" class="card">
-              {{quote.book}}
-            </mat-card>
+            <span *ngIf="!edit">
+              <mat-card class="card">
+                {{quote.quote}}
+              </mat-card>
 
-            <form (keyup.enter)="save()">
-              <mat-card *ngIf="edit" class="card">
+              <div style="padding-top: 2rem; margin-left: 2rem">Autor</div>
+              <mat-card class="card">
+                {{quote.author}}
+              </mat-card>
+
+              <div style="padding-top: 2rem; margin-left: 2rem">Libro</div>
+              <mat-card class="card">
+                {{quote.book}}
+              </mat-card>
+            </span>
+
+            <form (keyup.enter)="save()" *ngIf="edit">
+              <mat-card class="card">
                 <input style="font-size: 1rem; width: 99%;" type="text" [(ngModel)]="name" name="name">
               </mat-card>
 
-              <mat-card *ngIf="edit" class="card">
+              <div style="padding-top: 2rem; margin-left: 2rem">Autor</div>
+              <mat-card class="card">
                 <input style="font-size: 1rem; width: 99%;" type="text" [(ngModel)]="author" name="author">
               </mat-card>
 
-              <mat-card *ngIf="edit" class="card">
+              <div style="padding-top: 2rem; margin-left: 2rem">Libro</div>
+              <mat-card class="card">
                 <input style="font-size: 1rem; width: 99%;" type="text" [(ngModel)]="book" name="book">
               </mat-card>
             </form>
 
           </div>
 
-          <div>
+          <div *ngIf="loginService.isAdmin">
             <button mat-mini-fab color="warn" class="right-button" (click)="removeTheme()" >
               <mat-icon>delete</mat-icon>
             </button>
@@ -45,7 +53,6 @@
             <button *ngIf="!edit" mat-mini-fab color="primary" class="right-button" (click)="editQuote()">
               <mat-icon>border_color</mat-icon>
             </button>
-
           </div>
 
         </mat-tab>

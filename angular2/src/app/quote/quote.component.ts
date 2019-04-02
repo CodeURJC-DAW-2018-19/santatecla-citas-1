@@ -4,6 +4,7 @@ import { TdDialogService } from '@covalent/core';
 
 import { Quote } from './quote.model';
 import { QuoteService } from './quote.service';
+import { LoginService } from '../auth/login.service';
 
 @Component({
   templateUrl: './quote.component.html',
@@ -24,7 +25,8 @@ export class QuoteComponent implements OnInit {
     private router: Router,
     private quoteService: QuoteService,
     private _dialogService: TdDialogService,
-    private activatedRoute: ActivatedRoute) {}
+    private activatedRoute: ActivatedRoute,
+    private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
