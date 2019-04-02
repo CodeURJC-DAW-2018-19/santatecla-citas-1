@@ -97,13 +97,15 @@ export class ElementListComponent implements OnInit {
   }
 
   showQuotesByPage(page: number) {
+    this.spinner = true;
     if (page !== 0) {
-    this.themeService.getThemes()
-      .subscribe((data: Theme[]) => this.themes = data['content']
-    );
-    this.quoteService.getQuotesByPage(page)
-      .subscribe((data: Quote[]) => this.quotes = data['content']
-    );
+      this.themeService.getThemes().subscribe((data: Theme[]) => {
+        this.themes = data['content'];
+        this.quoteService.getQuotesByPage(page).subscribe((data1: Quote[]) => {
+          this.quotes = data1['content'];
+          this.spinner = false;
+        });
+      });
     } else {
       this.showAllThemesAndQuotes();
     }
@@ -114,12 +116,13 @@ export class ElementListComponent implements OnInit {
   showThemesByPage(page: number) {
     this.spinner = true;
     if (page !== 0) {
-    this.themeService.getThemesByPage(page)
-      .subscribe((data: Theme[]) => this.themes = data['content']
-    );
-    this.quoteService.getQuotes()
-      .subscribe((data: Quote[]) => this.quotes = data['content']
-    );
+      this.themeService.getThemesByPage(page).subscribe((data: Theme[]) => {
+        this.themes = data['content'];
+        this.quoteService.getQuotes().subscribe((data1: Quote[]) => {
+          this.quotes = data1['content'];
+          this.spinner = false;
+        });
+      });
     } else {
       this.showAllThemesAndQuotes();
     }
