@@ -1,8 +1,6 @@
 cd ../angular2
 
-:: Build angular app
-npm install
-npm run ng build --prod --baseHref=https://localhost:8080/new/
+:: Copy generated resources on static
 copy /Y dist\angular2\* ..\app\src\main\resources\static\new
 
 cd ../app
@@ -16,11 +14,10 @@ cd ..
 copy themes-images docker\build\themes-images\
 cd docker
 
-:: Delete containers and images
+:: Delete containers and app image
+FOR /f "tokens=*" %%i IN ('docker ps -aq') DO docker stop %%i
 FOR /f "tokens=*" %%i IN ('docker ps -aq') DO docker rm %%i
 docker rmi app
 
 :: Build app image
 docker build -t app .
-
-docker-compose up
