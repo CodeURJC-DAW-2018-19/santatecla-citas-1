@@ -15,22 +15,31 @@ import { QuoteService } from './quote.service';
 export class QuoteComponent implements OnInit {
 
   quote: Quote;
+  edit = false;
+  name: string;
+  author: string;
+  book: string;
 
   constructor(
     private router: Router,
-    private themeService: QuoteService,
+    private quoteService: QuoteService,
     private _dialogService: TdDialogService,
     private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
-      this.themeService.getQuote(id)
-        .subscribe((data: Quote) => this.quote = {
-          id: data['id'],
-          quote: data['quote'],
-          author: data['author'],
-          book: data['book']
+      this.quoteService.getQuote(id)
+        .subscribe((data: Quote) => {
+          this.quote = {
+            id: data['id'],
+            quote: data['quote'],
+            author: data['author'],
+            book: data['book']
+          };
+          this.name = this.quote.quote;
+          this.author = this.quote.author;
+          this.book = this.quote.book;
         }
       );
     });
@@ -44,15 +53,29 @@ export class QuoteComponent implements OnInit {
         height: '175px'
     }).afterClosed().subscribe((accept: boolean) => {
         if (accept) {
-            this.themeService
+            this.quoteService
                 .removeQuote(this.quote)
                 .subscribe((_) => this.router.navigate(['/']), (error) => console.error(error));
         }
     });
   }
 
+
   editQuote() {
-    this.router.navigate(['/quote/edit', this.quote.id]);
+    this.edit = true;
+  }
+
+  save() {
+    if ((this.name !== '') && (this.author !== '') && (this.book !== '')) {
+      this.edit = false;
+      this.quote.quote = this.name;
+      this.quote.author =this.author;
+      this.quote.book = this.book;
+      this.quoteService.saveQuote(this.quote).subscribe(
+          _ => {},
+          (error: Error) => console.error('Error creating new theme: ' + error),
+      );
+    }
   }
 
 }

@@ -40,10 +40,13 @@ export class ThemeComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
       this.themeService.getTheme(this.id)
-        .subscribe((data: Theme) => this.theme = {
-          id: data['id'],
-          name: data['name'],
-          quotes: data['quotes']
+        .subscribe((data: Theme) => {
+          this.theme = {
+            id: data['id'],
+            name: data['name'],
+            quotes: data['quotes']
+          };
+          this.name = this.theme.name;
         }
       );
 
@@ -146,12 +149,14 @@ export class ThemeComponent implements OnInit {
   }
 
   save() {
-    this.edit = false;
-    this.theme.name = this.name;
-    this.themeService.saveTheme(this.theme).subscribe(
-        _ => {},
-        (error: Error) => console.error('Error creating new theme: ' + error),
-    );
+    if (this.name !== '') {
+      this.edit = false;
+      this.theme.name = this.name;
+      this.themeService.saveTheme(this.theme).subscribe(
+          _ => {},
+          (error: Error) => console.error('Error creating new theme: ' + error),
+      );
+    }
   }
 
 }

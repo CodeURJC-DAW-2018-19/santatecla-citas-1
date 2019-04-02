@@ -27,7 +27,7 @@
             <h1 style="font-size: 2rem" *ngIf="!edit">{{theme.name}}</h1>
 
             <form *ngIf="edit" (keyup.enter)="save()">
-              <input style="font-size: 2rem; margin-top: 1rem;" type="text" [(ngModel)]="name" name="name" required>
+              <input style="font-size: 2rem; margin-top: 1rem;; width: 50%;" type="text" [(ngModel)]="name" name="name" required>
             </form>
 
           </mat-card>
