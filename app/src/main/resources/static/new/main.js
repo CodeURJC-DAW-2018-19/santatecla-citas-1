@@ -63,7 +63,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".example-large-box {\r\n  margin: 16px;\r\n  border-radius: 8px;\r\n  padding: 16px;\r\n}\r\n\r\n.card {\r\n  margin: 1rem;\r\n}\r\n\r\n.histogramButton {\r\n  margin-left: 1rem;\r\n}\r\n\r\n.pdfButton {\r\n  margin-left: 1rem;\r\n}\r\n\r\n.enterLoginBotton {\r\n  margin-left: 1rem;\r\n}\r\n\r\n.search {\r\n  margin-left: 12%;\r\n  width: 75%;\r\n}\r\n\r\n.upperBar {\r\n  background-color: mediumslateblue;\r\n  padding: 0.5rem;\r\n  position: fixed;\r\n  top: 0;\r\n  width: 100%;\r\n  z-index: 20;\r\n}\r\n\r\n.example-section {\r\n  display: flex;\r\n  align-content: center;\r\n  align-items: center;\r\n  height: 60px;\r\n}\r\n\r\n.example-margin {\r\n  margin: 0 10px;\r\n}\r\n\r\n.themeImage {\r\n  margin-top: 0.5rem;\r\n  border-radius: 8px;\r\n  width: 100%;\r\n  height: 5rem;\r\n}\r\n\r\n.delete {\r\n  margin-left: 1rem;\r\n}\r\n\r\n.button {\r\n  margin-right: 1rem;\r\n}\r\n\r\n.right-button {\r\n  float: right;\r\n  margin-right: 1rem;\r\n}\r\n\r\n.right-button-theme {\r\n  float: right;\r\n  margin-right: 0.5rem;\r\n  margin-top: 1rem;\r\n}\r\n\r\n.element-list {\r\n  padding: 0.5rem;\r\n  background-color: #f1f6fa;\r\n}\r\n\r\n.tab {\r\n  background-color: mediumslateblue;\r\n  border-radius: 5px 5px 0 0;\r\n  border-top: 1px solid black;\r\n  border-left: 1px solid black;\r\n  border-right: 1px solid black;\r\n  padding: 0.5rem;\r\n  margin-left: 0.5rem;\r\n  box-shadow: none;\r\n}\r\n\r\n.activeTab {\r\n  background-color: #9ab1fa;\r\n}\r\n\r\n.closeTab {\r\n  -webkit-transform: scale(0.75);\r\n          transform: scale(0.75);\r\n}\r\n\r\n.closeTab:hover {\r\n  color: #ffffff;\r\n}\r\n\r\nbody {\r\n  padding-top: 4rem;\r\n  height: auto;\r\n}\r\n\r\n.themeTitle {\r\n  position: absolute;\r\n}\r\n\r\n.authorAndBook {\r\n  background-color: #9ab1fa;\r\n  margin: 1rem;\r\n  border-radius: 8px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFZO0VBQ1osa0JBQWtCO0VBQ2xCLGFBQWE7QUFDZjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixVQUFVO0FBQ1o7O0FBRUE7RUFDRSxpQ0FBaUM7RUFDakMsZUFBZTtFQUNmLGVBQWU7RUFDZixNQUFNO0VBQ04sV0FBVztFQUNYLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGFBQWE7RUFDYixxQkFBcUI7RUFDckIsbUJBQW1CO0VBQ25CLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsa0JBQWtCO0VBQ2xCLFdBQVc7RUFDWCxZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxZQUFZO0VBQ1osa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsWUFBWTtFQUNaLG9CQUFvQjtFQUNwQixnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxlQUFlO0VBQ2YseUJBQXlCO0FBQzNCOztBQUVBO0VBQ0UsaUNBQWlDO0VBQ2pDLDBCQUEwQjtFQUMxQiwyQkFBMkI7RUFDM0IsNEJBQTRCO0VBQzVCLDZCQUE2QjtFQUM3QixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLDhCQUFzQjtVQUF0QixzQkFBc0I7QUFDeEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsaUJBQWlCO0VBQ2pCLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixZQUFZO0VBQ1osa0JBQWtCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhhbXBsZS1sYXJnZS1ib3gge1xyXG4gIG1hcmdpbjogMTZweDtcclxuICBib3JkZXItcmFkaXVzOiA4cHg7XHJcbiAgcGFkZGluZzogMTZweDtcclxufVxyXG5cclxuLmNhcmQge1xyXG4gIG1hcmdpbjogMXJlbTtcclxufVxyXG5cclxuLmhpc3RvZ3JhbUJ1dHRvbiB7XHJcbiAgbWFyZ2luLWxlZnQ6IDFyZW07XHJcbn1cclxuXHJcbi5wZGZCdXR0b24ge1xyXG4gIG1hcmdpbi1sZWZ0OiAxcmVtO1xyXG59XHJcblxyXG4uZW50ZXJMb2dpbkJvdHRvbiB7XHJcbiAgbWFyZ2luLWxlZnQ6IDFyZW07XHJcbn1cclxuXHJcbi5zZWFyY2gge1xyXG4gIG1hcmdpbi1sZWZ0OiAxMiU7XHJcbiAgd2lkdGg6IDc1JTtcclxufVxyXG5cclxuLnVwcGVyQmFyIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiBtZWRpdW1zbGF0ZWJsdWU7XHJcbiAgcGFkZGluZzogMC41cmVtO1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICB0b3A6IDA7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgei1pbmRleDogMjA7XHJcbn1cclxuXHJcbi5leGFtcGxlLXNlY3Rpb24ge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgaGVpZ2h0OiA2MHB4O1xyXG59XHJcblxyXG4uZXhhbXBsZS1tYXJnaW4ge1xyXG4gIG1hcmdpbjogMCAxMHB4O1xyXG59XHJcblxyXG4udGhlbWVJbWFnZSB7XHJcbiAgbWFyZ2luLXRvcDogMC41cmVtO1xyXG4gIGJvcmRlci1yYWRpdXM6IDhweDtcclxuICB3aWR0aDogMTAwJTtcclxuICBoZWlnaHQ6IDVyZW07XHJcbn1cclxuXHJcbi5kZWxldGUge1xyXG4gIG1hcmdpbi1sZWZ0OiAxcmVtO1xyXG59XHJcblxyXG4uYnV0dG9uIHtcclxuICBtYXJnaW4tcmlnaHQ6IDFyZW07XHJcbn1cclxuXHJcbi5yaWdodC1idXR0b24ge1xyXG4gIGZsb2F0OiByaWdodDtcclxuICBtYXJnaW4tcmlnaHQ6IDFyZW07XHJcbn1cclxuXHJcbi5yaWdodC1idXR0b24tdGhlbWUge1xyXG4gIGZsb2F0OiByaWdodDtcclxuICBtYXJnaW4tcmlnaHQ6IDAuNXJlbTtcclxuICBtYXJnaW4tdG9wOiAxcmVtO1xyXG59XHJcblxyXG4uZWxlbWVudC1saXN0IHtcclxuICBwYWRkaW5nOiAwLjVyZW07XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjZmYTtcclxufVxyXG5cclxuLnRhYiB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogbWVkaXVtc2xhdGVibHVlO1xyXG4gIGJvcmRlci1yYWRpdXM6IDVweCA1cHggMCAwO1xyXG4gIGJvcmRlci10b3A6IDFweCBzb2xpZCBibGFjaztcclxuICBib3JkZXItbGVmdDogMXB4IHNvbGlkIGJsYWNrO1xyXG4gIGJvcmRlci1yaWdodDogMXB4IHNvbGlkIGJsYWNrO1xyXG4gIHBhZGRpbmc6IDAuNXJlbTtcclxuICBtYXJnaW4tbGVmdDogMC41cmVtO1xyXG4gIGJveC1zaGFkb3c6IG5vbmU7XHJcbn1cclxuXHJcbi5hY3RpdmVUYWIge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM5YWIxZmE7XHJcbn1cclxuXHJcbi5jbG9zZVRhYiB7XHJcbiAgdHJhbnNmb3JtOiBzY2FsZSgwLjc1KTtcclxufVxyXG5cclxuLmNsb3NlVGFiOmhvdmVyIHtcclxuICBjb2xvcjogI2ZmZmZmZjtcclxufVxyXG5cclxuYm9keSB7XHJcbiAgcGFkZGluZy10b3A6IDRyZW07XHJcbiAgaGVpZ2h0OiBhdXRvO1xyXG59XHJcblxyXG4udGhlbWVUaXRsZSB7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG59XHJcblxyXG4uYXV0aG9yQW5kQm9vayB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzlhYjFmYTtcclxuICBtYXJnaW46IDFyZW07XHJcbiAgYm9yZGVyLXJhZGl1czogOHB4O1xyXG59XHJcbiJdfQ== */"
+module.exports = ".example-large-box {\r\n  margin: 16px;\r\n  border-radius: 8px;\r\n  padding: 16px;\r\n}\r\n\r\n.card {\r\n  margin: 1rem;\r\n}\r\n\r\n.histogramButton {\r\n  margin-left: 1rem;\r\n}\r\n\r\n.pdfButton {\r\n  margin-left: 1rem;\r\n}\r\n\r\n.enterLoginBotton {\r\n  margin-left: 1rem;\r\n}\r\n\r\n.search {\r\n  margin-left: 12%;\r\n  width: 75%;\r\n}\r\n\r\n.upperBar {\r\n  background-color: mediumslateblue;\r\n  padding: 0.5rem;\r\n  position: fixed;\r\n  top: 0;\r\n  width: 100%;\r\n  z-index: 20;\r\n}\r\n\r\n.example-section {\r\n  display: flex;\r\n  align-content: center;\r\n  align-items: center;\r\n  height: 60px;\r\n}\r\n\r\n.example-margin {\r\n  margin: 0 10px;\r\n}\r\n\r\n.themeImage {\r\n  margin-top: 0.5rem;\r\n  border-radius: 8px;\r\n  width: 100%;\r\n  height: 5rem;\r\n}\r\n\r\n.delete {\r\n  margin-left: 1rem;\r\n}\r\n\r\n.button {\r\n  margin-right: 1rem;\r\n}\r\n\r\n.right-button {\r\n  float: right;\r\n  margin-right: 1rem;\r\n}\r\n\r\n.right-button-theme {\r\n  float: right;\r\n  margin-right: 0.5rem;\r\n  margin-top: 1rem;\r\n}\r\n\r\n.inputFileButton {\r\n  width: 1.5rem;\r\n  display: none;\r\n}\r\n\r\n.element-list {\r\n  padding: 0.5rem;\r\n  background-color: #f1f6fa;\r\n}\r\n\r\n.tab {\r\n  background-color: mediumslateblue;\r\n  border-radius: 5px 5px 0 0;\r\n  border-top: 1px solid black;\r\n  border-left: 1px solid black;\r\n  border-right: 1px solid black;\r\n  padding: 0.5rem;\r\n  margin-left: 0.5rem;\r\n  box-shadow: none;\r\n}\r\n\r\n.activeTab {\r\n  background-color: #9ab1fa;\r\n}\r\n\r\n.closeTab {\r\n  -webkit-transform: scale(0.75);\r\n          transform: scale(0.75);\r\n}\r\n\r\n.closeTab:hover {\r\n  color: #ffffff;\r\n}\r\n\r\nbody {\r\n  padding-top: 4rem;\r\n  height: auto;\r\n}\r\n\r\n.themeTitle {\r\n  position: absolute;\r\n}\r\n\r\n.authorAndBook {\r\n  background-color: #9ab1fa;\r\n  margin: 1rem;\r\n  border-radius: 8px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFZO0VBQ1osa0JBQWtCO0VBQ2xCLGFBQWE7QUFDZjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixVQUFVO0FBQ1o7O0FBRUE7RUFDRSxpQ0FBaUM7RUFDakMsZUFBZTtFQUNmLGVBQWU7RUFDZixNQUFNO0VBQ04sV0FBVztFQUNYLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGFBQWE7RUFDYixxQkFBcUI7RUFDckIsbUJBQW1CO0VBQ25CLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsa0JBQWtCO0VBQ2xCLFdBQVc7RUFDWCxZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxZQUFZO0VBQ1osa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsWUFBWTtFQUNaLG9CQUFvQjtFQUNwQixnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsYUFBYTtBQUNmOztBQUVBO0VBQ0UsZUFBZTtFQUNmLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLGlDQUFpQztFQUNqQywwQkFBMEI7RUFDMUIsMkJBQTJCO0VBQzNCLDRCQUE0QjtFQUM1Qiw2QkFBNkI7RUFDN0IsZUFBZTtFQUNmLG1CQUFtQjtFQUNuQixnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FBRUE7RUFDRSw4QkFBc0I7VUFBdEIsc0JBQXNCO0FBQ3hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQixZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSx5QkFBeUI7RUFDekIsWUFBWTtFQUNaLGtCQUFrQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmV4YW1wbGUtbGFyZ2UtYm94IHtcclxuICBtYXJnaW46IDE2cHg7XHJcbiAgYm9yZGVyLXJhZGl1czogOHB4O1xyXG4gIHBhZGRpbmc6IDE2cHg7XHJcbn1cclxuXHJcbi5jYXJkIHtcclxuICBtYXJnaW46IDFyZW07XHJcbn1cclxuXHJcbi5oaXN0b2dyYW1CdXR0b24ge1xyXG4gIG1hcmdpbi1sZWZ0OiAxcmVtO1xyXG59XHJcblxyXG4ucGRmQnV0dG9uIHtcclxuICBtYXJnaW4tbGVmdDogMXJlbTtcclxufVxyXG5cclxuLmVudGVyTG9naW5Cb3R0b24ge1xyXG4gIG1hcmdpbi1sZWZ0OiAxcmVtO1xyXG59XHJcblxyXG4uc2VhcmNoIHtcclxuICBtYXJnaW4tbGVmdDogMTIlO1xyXG4gIHdpZHRoOiA3NSU7XHJcbn1cclxuXHJcbi51cHBlckJhciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogbWVkaXVtc2xhdGVibHVlO1xyXG4gIHBhZGRpbmc6IDAuNXJlbTtcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgdG9wOiAwO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIHotaW5kZXg6IDIwO1xyXG59XHJcblxyXG4uZXhhbXBsZS1zZWN0aW9uIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGhlaWdodDogNjBweDtcclxufVxyXG5cclxuLmV4YW1wbGUtbWFyZ2luIHtcclxuICBtYXJnaW46IDAgMTBweDtcclxufVxyXG5cclxuLnRoZW1lSW1hZ2Uge1xyXG4gIG1hcmdpbi10b3A6IDAuNXJlbTtcclxuICBib3JkZXItcmFkaXVzOiA4cHg7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgaGVpZ2h0OiA1cmVtO1xyXG59XHJcblxyXG4uZGVsZXRlIHtcclxuICBtYXJnaW4tbGVmdDogMXJlbTtcclxufVxyXG5cclxuLmJ1dHRvbiB7XHJcbiAgbWFyZ2luLXJpZ2h0OiAxcmVtO1xyXG59XHJcblxyXG4ucmlnaHQtYnV0dG9uIHtcclxuICBmbG9hdDogcmlnaHQ7XHJcbiAgbWFyZ2luLXJpZ2h0OiAxcmVtO1xyXG59XHJcblxyXG4ucmlnaHQtYnV0dG9uLXRoZW1lIHtcclxuICBmbG9hdDogcmlnaHQ7XHJcbiAgbWFyZ2luLXJpZ2h0OiAwLjVyZW07XHJcbiAgbWFyZ2luLXRvcDogMXJlbTtcclxufVxyXG5cclxuLmlucHV0RmlsZUJ1dHRvbiB7XHJcbiAgd2lkdGg6IDEuNXJlbTtcclxuICBkaXNwbGF5OiBub25lO1xyXG59XHJcblxyXG4uZWxlbWVudC1saXN0IHtcclxuICBwYWRkaW5nOiAwLjVyZW07XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjZmYTtcclxufVxyXG5cclxuLnRhYiB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogbWVkaXVtc2xhdGVibHVlO1xyXG4gIGJvcmRlci1yYWRpdXM6IDVweCA1cHggMCAwO1xyXG4gIGJvcmRlci10b3A6IDFweCBzb2xpZCBibGFjaztcclxuICBib3JkZXItbGVmdDogMXB4IHNvbGlkIGJsYWNrO1xyXG4gIGJvcmRlci1yaWdodDogMXB4IHNvbGlkIGJsYWNrO1xyXG4gIHBhZGRpbmc6IDAuNXJlbTtcclxuICBtYXJnaW4tbGVmdDogMC41cmVtO1xyXG4gIGJveC1zaGFkb3c6IG5vbmU7XHJcbn1cclxuXHJcbi5hY3RpdmVUYWIge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM5YWIxZmE7XHJcbn1cclxuXHJcbi5jbG9zZVRhYiB7XHJcbiAgdHJhbnNmb3JtOiBzY2FsZSgwLjc1KTtcclxufVxyXG5cclxuLmNsb3NlVGFiOmhvdmVyIHtcclxuICBjb2xvcjogI2ZmZmZmZjtcclxufVxyXG5cclxuYm9keSB7XHJcbiAgcGFkZGluZy10b3A6IDRyZW07XHJcbiAgaGVpZ2h0OiBhdXRvO1xyXG59XHJcblxyXG4udGhlbWVUaXRsZSB7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG59XHJcblxyXG4uYXV0aG9yQW5kQm9vayB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzlhYjFmYTtcclxuICBtYXJnaW46IDFyZW07XHJcbiAgYm9yZGVyLXJhZGl1czogOHB4O1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -152,18 +152,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _theme_theme_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./theme/theme.component */ "./src/app/theme/theme.component.ts");
 /* harmony import */ var _theme_theme_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./theme/theme.service */ "./src/app/theme/theme.service.ts");
 /* harmony import */ var _theme_formTheme_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./theme/formTheme.component */ "./src/app/theme/formTheme.component.ts");
-/* harmony import */ var _quote_quote_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./quote/quote.component */ "./src/app/quote/quote.component.ts");
-/* harmony import */ var _quote_quote_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./quote/quote.service */ "./src/app/quote/quote.service.ts");
-/* harmony import */ var _quote_formQuote_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./quote/formQuote.component */ "./src/app/quote/formQuote.component.ts");
-/* harmony import */ var _auth_login_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./auth/login.component */ "./src/app/auth/login.component.ts");
-/* harmony import */ var _auth_login_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./auth/login.service */ "./src/app/auth/login.service.ts");
-/* harmony import */ var _auth_register_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./auth/register.component */ "./src/app/auth/register.component.ts");
-/* harmony import */ var _element_list_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./element-list.component */ "./src/app/element-list.component.ts");
-/* harmony import */ var _tabs_tab_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./tabs/tab.service */ "./src/app/tabs/tab.service.ts");
-/* harmony import */ var _histogram_histogram_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./histogram/histogram.component */ "./src/app/histogram/histogram.component.ts");
-/* harmony import */ var _histogram_histogram_service__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./histogram/histogram.service */ "./src/app/histogram/histogram.service.ts");
-/* harmony import */ var _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./auth/auth.interceptor */ "./src/app/auth/auth.interceptor.ts");
-/* harmony import */ var _auth_error_interceptor__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./auth/error.interceptor */ "./src/app/auth/error.interceptor.ts");
+/* harmony import */ var _theme_selectQuote_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./theme/selectQuote.component */ "./src/app/theme/selectQuote.component.ts");
+/* harmony import */ var _quote_quote_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./quote/quote.component */ "./src/app/quote/quote.component.ts");
+/* harmony import */ var _quote_quote_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./quote/quote.service */ "./src/app/quote/quote.service.ts");
+/* harmony import */ var _quote_formQuote_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./quote/formQuote.component */ "./src/app/quote/formQuote.component.ts");
+/* harmony import */ var _auth_login_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./auth/login.component */ "./src/app/auth/login.component.ts");
+/* harmony import */ var _auth_login_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./auth/login.service */ "./src/app/auth/login.service.ts");
+/* harmony import */ var _auth_register_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./auth/register.component */ "./src/app/auth/register.component.ts");
+/* harmony import */ var _element_list_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./element-list.component */ "./src/app/element-list.component.ts");
+/* harmony import */ var _tabs_tab_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./tabs/tab.service */ "./src/app/tabs/tab.service.ts");
+/* harmony import */ var _histogram_histogram_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./histogram/histogram.component */ "./src/app/histogram/histogram.component.ts");
+/* harmony import */ var _histogram_histogram_service__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./histogram/histogram.service */ "./src/app/histogram/histogram.service.ts");
+/* harmony import */ var _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./auth/auth.interceptor */ "./src/app/auth/auth.interceptor.ts");
+/* harmony import */ var _auth_error_interceptor__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./auth/error.interceptor */ "./src/app/auth/error.interceptor.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 
 
 
@@ -193,6 +195,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -200,14 +204,15 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"],
-                _element_list_component__WEBPACK_IMPORTED_MODULE_21__["ElementListComponent"],
+                _element_list_component__WEBPACK_IMPORTED_MODULE_22__["ElementListComponent"],
                 _theme_theme_component__WEBPACK_IMPORTED_MODULE_12__["ThemeComponent"],
-                _quote_quote_component__WEBPACK_IMPORTED_MODULE_15__["QuoteComponent"],
-                _quote_formQuote_component__WEBPACK_IMPORTED_MODULE_17__["FormQuoteComponent"],
+                _quote_quote_component__WEBPACK_IMPORTED_MODULE_16__["QuoteComponent"],
+                _quote_formQuote_component__WEBPACK_IMPORTED_MODULE_18__["FormQuoteComponent"],
                 _theme_formTheme_component__WEBPACK_IMPORTED_MODULE_14__["FormThemeComponent"],
-                _auth_login_component__WEBPACK_IMPORTED_MODULE_18__["LoginComponent"],
-                _auth_register_component__WEBPACK_IMPORTED_MODULE_20__["RegisterComponent"],
-                _histogram_histogram_component__WEBPACK_IMPORTED_MODULE_23__["HistogramComponent"]
+                _auth_login_component__WEBPACK_IMPORTED_MODULE_19__["LoginComponent"],
+                _auth_register_component__WEBPACK_IMPORTED_MODULE_21__["RegisterComponent"],
+                _histogram_histogram_component__WEBPACK_IMPORTED_MODULE_24__["HistogramComponent"],
+                _theme_selectQuote_component__WEBPACK_IMPORTED_MODULE_15__["SelectQuoteComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -255,9 +260,10 @@ var AppModule = /** @class */ (function () {
                 _covalent_core__WEBPACK_IMPORTED_MODULE_7__["CovalentNotificationsModule"], _covalent_core__WEBPACK_IMPORTED_MODULE_7__["CovalentMenuModule"], _covalent_core__WEBPACK_IMPORTED_MODULE_7__["CovalentDataTableModule"], _covalent_core__WEBPACK_IMPORTED_MODULE_7__["CovalentMessageModule"],
                 _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_8__["NgxChartsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"]
             ],
-            providers: [_theme_theme_service__WEBPACK_IMPORTED_MODULE_13__["ThemeService"], _quote_quote_service__WEBPACK_IMPORTED_MODULE_16__["QuoteService"], _auth_login_service__WEBPACK_IMPORTED_MODULE_19__["LoginService"], _histogram_histogram_service__WEBPACK_IMPORTED_MODULE_24__["HistogramService"], _tabs_tab_service__WEBPACK_IMPORTED_MODULE_22__["TabService"],
-                { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"], useClass: _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_25__["BasicAuthInterceptor"], multi: true },
-                { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"], useClass: _auth_error_interceptor__WEBPACK_IMPORTED_MODULE_26__["ErrorInterceptor"], multi: true }],
+            providers: [_theme_theme_service__WEBPACK_IMPORTED_MODULE_13__["ThemeService"], _quote_quote_service__WEBPACK_IMPORTED_MODULE_17__["QuoteService"], _auth_login_service__WEBPACK_IMPORTED_MODULE_20__["LoginService"], _histogram_histogram_service__WEBPACK_IMPORTED_MODULE_25__["HistogramService"], _tabs_tab_service__WEBPACK_IMPORTED_MODULE_23__["TabService"],
+                { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"], useClass: _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_26__["BasicAuthInterceptor"], multi: true },
+                { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"], useClass: _auth_error_interceptor__WEBPACK_IMPORTED_MODULE_27__["ErrorInterceptor"], multi: true },
+                { provide: _angular_common__WEBPACK_IMPORTED_MODULE_28__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_28__["HashLocationStrategy"] }],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]]
         })
     ], AppModule);
@@ -278,14 +284,16 @@ var AppModule = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routing", function() { return routing; });
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _element_list_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./element-list.component */ "./src/app/element-list.component.ts");
-/* harmony import */ var _theme_theme_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./theme/theme.component */ "./src/app/theme/theme.component.ts");
-/* harmony import */ var _quote_quote_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./quote/quote.component */ "./src/app/quote/quote.component.ts");
-/* harmony import */ var _auth_register_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth/register.component */ "./src/app/auth/register.component.ts");
-/* harmony import */ var _quote_formQuote_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./quote/formQuote.component */ "./src/app/quote/formQuote.component.ts");
-/* harmony import */ var _theme_formTheme_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./theme/formTheme.component */ "./src/app/theme/formTheme.component.ts");
-/* harmony import */ var _histogram_histogram_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./histogram/histogram.component */ "./src/app/histogram/histogram.component.ts");
+/* harmony import */ var _theme_selectQuote_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./theme/selectQuote.component */ "./src/app/theme/selectQuote.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _element_list_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./element-list.component */ "./src/app/element-list.component.ts");
+/* harmony import */ var _theme_theme_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme/theme.component */ "./src/app/theme/theme.component.ts");
+/* harmony import */ var _quote_quote_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./quote/quote.component */ "./src/app/quote/quote.component.ts");
+/* harmony import */ var _auth_register_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth/register.component */ "./src/app/auth/register.component.ts");
+/* harmony import */ var _quote_formQuote_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./quote/formQuote.component */ "./src/app/quote/formQuote.component.ts");
+/* harmony import */ var _theme_formTheme_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./theme/formTheme.component */ "./src/app/theme/formTheme.component.ts");
+/* harmony import */ var _histogram_histogram_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./histogram/histogram.component */ "./src/app/histogram/histogram.component.ts");
+
 
 
 
@@ -295,17 +303,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var appRoutes = [
-    { path: '', component: _element_list_component__WEBPACK_IMPORTED_MODULE_1__["ElementListComponent"] },
-    { path: 'theme/:id', component: _theme_theme_component__WEBPACK_IMPORTED_MODULE_2__["ThemeComponent"] },
-    { path: 'newTheme', component: _theme_formTheme_component__WEBPACK_IMPORTED_MODULE_6__["FormThemeComponent"] },
-    { path: 'theme/edit/:id', component: _theme_formTheme_component__WEBPACK_IMPORTED_MODULE_6__["FormThemeComponent"] },
-    { path: 'quote/:id', component: _quote_quote_component__WEBPACK_IMPORTED_MODULE_3__["QuoteComponent"] },
-    { path: 'newQuote', component: _quote_formQuote_component__WEBPACK_IMPORTED_MODULE_5__["FormQuoteComponent"] },
-    { path: 'quote/edit/:id', component: _quote_formQuote_component__WEBPACK_IMPORTED_MODULE_5__["FormQuoteComponent"] },
-    { path: 'register', component: _auth_register_component__WEBPACK_IMPORTED_MODULE_4__["RegisterComponent"] },
-    { path: 'histogram', component: _histogram_histogram_component__WEBPACK_IMPORTED_MODULE_7__["HistogramComponent"] }
+    { path: '', component: _element_list_component__WEBPACK_IMPORTED_MODULE_2__["ElementListComponent"] },
+    { path: 'theme/:id', component: _theme_theme_component__WEBPACK_IMPORTED_MODULE_3__["ThemeComponent"] },
+    { path: 'newTheme', component: _theme_formTheme_component__WEBPACK_IMPORTED_MODULE_7__["FormThemeComponent"] },
+    { path: 'theme/edit/:id', component: _theme_formTheme_component__WEBPACK_IMPORTED_MODULE_7__["FormThemeComponent"] },
+    { path: 'theme/selectQuote/:id', component: _theme_selectQuote_component__WEBPACK_IMPORTED_MODULE_0__["SelectQuoteComponent"] },
+    { path: 'quote/:id', component: _quote_quote_component__WEBPACK_IMPORTED_MODULE_4__["QuoteComponent"] },
+    { path: 'newQuote', component: _quote_formQuote_component__WEBPACK_IMPORTED_MODULE_6__["FormQuoteComponent"] },
+    { path: 'quote/edit/:id', component: _quote_formQuote_component__WEBPACK_IMPORTED_MODULE_6__["FormQuoteComponent"] },
+    { path: 'register', component: _auth_register_component__WEBPACK_IMPORTED_MODULE_5__["RegisterComponent"] },
+    { path: 'histogram', component: _histogram_histogram_component__WEBPACK_IMPORTED_MODULE_8__["HistogramComponent"] }
 ];
-var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes);
+var routing = _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forRoot(appRoutes);
 
 
 /***/ }),
@@ -526,11 +535,10 @@ var LoginService = /** @class */ (function () {
         }));
     };
     LoginService.prototype.saveUser = function (user) {
-        var body = JSON.stringify(user);
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-            'Content-Type': 'application/json',
-        });
-        return this.http.post('/api/user/register', body);
+        var formData = new FormData();
+        formData.append('name', user.name);
+        formData.append('authdata', user.authdata);
+        return this.http.post('/api/user/register', formData);
     };
     LoginService.prototype.setCurrentUser = function (user) {
         this.isLogged = true;
@@ -619,7 +627,7 @@ var RegisterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\r\n  <div class=\"search\">\r\n    <mat-form-field\r\n      appearance=\"outline\"\r\n      style=\"width:100%\"\r\n      (keyup.enter)=\"search(searchName)\"\r\n    >\r\n      <mat-label>Buscador</mat-label>\r\n      <input matInput [(ngModel)]=\"searchName\" />\r\n      <mat-icon matSuffix (click)=\"search(searchName)\" style=\"cursor: pointer\"\r\n        >search</mat-icon\r\n      >\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <div>\r\n    <mat-card class=\"card\" style=\"margin-top: -1rem\">\r\n      <mat-tab-group dynamicHeight>\r\n        <mat-tab label=\"Temas\">\r\n          <div *ngFor=\"let theme of themes\">\r\n            <mat-card class=\"card element-list\">\r\n              <div\r\n                *ngIf=\"loginService.isLogged\"\r\n                style=\"padding: 0.7rem; cursor: pointer;\"\r\n                [routerLink]=\"['/theme', theme.id]\"\r\n                (click)=\"tabService.addTab('theme', theme.id)\"\r\n              >\r\n                {{ theme.name }}\r\n              </div>\r\n              <div *ngIf=\"!loginService.isLogged\" style=\"padding: 0.7rem\">\r\n                {{ theme.name }}\r\n              </div>\r\n            </mat-card>\r\n          </div>\r\n\r\n          <div style=\"text-align: center\">\r\n            <p *ngIf=\"themes.length === 0\" style=\"margin: 2rem\">\r\n              Ningún resultado\r\n            </p>\r\n          </div>\r\n\r\n          <mat-progress-bar *ngIf=\"spinner\"  mode=\"indeterminate\"></mat-progress-bar>\r\n\r\n          <div style=\"margin-top: 2rem; text-align: center\">\r\n              <button mat-mini-fab color=\"primary\" style=\"margin-right: 1rem\"\r\n              matBadge=\"6\"  matBadgeColor=\"accent\">\r\n                  <mat-icon matSuffix (click)=\"showThemesByPage(pageThemes + 1)\">\r\n                    more_horiz\r\n                  </mat-icon>\r\n                </button>\r\n\r\n                <button mat-mini-fab color=\"primary\">\r\n                  <mat-icon matSuffix (click)=\"loadLess()\">\r\n                    keyboard_capslock\r\n                  </mat-icon>\r\n                </button>\r\n\r\n            <button\r\n              mat-mini-fab\r\n              color=\"primary\"\r\n              style=\"margin-left: 1rem\"\r\n              *ngIf=\"loginService.isAdmin\"\r\n\r\n            >\r\n              <mat-icon (click)=\"newTheme()\">add</mat-icon>\r\n            </button>\r\n          </div>\r\n        </mat-tab>\r\n\r\n        <mat-tab label=\"Citas\">\r\n          <div *ngFor=\"let quote of quotes\">\r\n            <mat-card class=\"card element-list\">\r\n              <div\r\n                *ngIf=\"loginService.isLogged\"\r\n                style=\"padding: 0.7rem; cursor: pointer;\"\r\n                [routerLink]=\"['/quote', quote.id]\"\r\n                (click)=\"tabService.addTab('quote', quote.id)\"\r\n              >\r\n                {{ quote.quote }}\r\n              </div>\r\n              <div *ngIf=\"!loginService.isLogged\" style=\"padding: 0.7rem\">\r\n                {{ quote.quote }}\r\n              </div>\r\n            </mat-card>\r\n          </div>\r\n\r\n          <div style=\"text-align: center\">\r\n            <p *ngIf=\"quotes.length === 0\" style=\"margin: 2rem\">\r\n              Ningún resultado\r\n            </p>\r\n          </div>\r\n\r\n          <div style=\"margin-top: 2rem; text-align: center\">\r\n            <button mat-mini-fab color=\"primary\" style=\"margin-right: 1rem\"\r\n            matBadge=\"6\"  matBadgeColor=\"accent\">\r\n              <mat-icon matSuffix (click)=\"showQuotesByPage(pageQuotes + 1)\">\r\n                more_horiz\r\n              </mat-icon>\r\n            </button>\r\n\r\n            <button mat-mini-fab color=\"primary\">\r\n              <mat-icon matSuffix (click)=\"loadLess()\">\r\n                keyboard_capslock\r\n              </mat-icon>\r\n            </button>\r\n\r\n            <button\r\n              mat-mini-fab\r\n              color=\"primary\"\r\n              style=\"margin-left: 1rem\"\r\n              *ngIf=\"loginService.isAdmin\"\r\n            >\r\n              <mat-icon (click)=\"newQuote()\" >add</mat-icon>\r\n            </button>\r\n          </div>\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n    </mat-card>\r\n  </div>\r\n\r\n  <div class=\"histogramButton\" style=\"text-align: center; margin: 1rem;\">\r\n    <button [routerLink]=\"['/histogram']\" mat-raised-button color=\"primary\">\r\n      Histograma\r\n      <mat-icon>bar_chart</mat-icon>\r\n    </button>\r\n  </div>\r\n</body>\r\n"
+module.exports = "<body>\r\n  <div class=\"search\">\r\n    <mat-form-field\r\n      appearance=\"outline\"\r\n      style=\"width:100%\"\r\n      (keyup.enter)=\"search(searchName)\"\r\n    >\r\n      <mat-label>Buscador</mat-label>\r\n      <input matInput [(ngModel)]=\"searchName\" />\r\n      <mat-icon matSuffix (click)=\"search(searchName)\" style=\"cursor: pointer\"\r\n        >search</mat-icon\r\n      >\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <div>\r\n    <mat-card class=\"card\" style=\"margin-top: -1rem\">\r\n      <mat-tab-group dynamicHeight>\r\n        <mat-tab label=\"Temas\">\r\n          <div *ngFor=\"let theme of themes\">\r\n            <mat-card class=\"card element-list\">\r\n              <div\r\n                *ngIf=\"loginService.isLogged\"\r\n                style=\"padding: 0.7rem; cursor: pointer;\"\r\n                [routerLink]=\"['/theme', theme.id]\"\r\n                (click)=\"tabService.addTab('theme', theme.id)\"\r\n              >\r\n                {{ theme.name }}\r\n              </div>\r\n              <div *ngIf=\"!loginService.isLogged\" style=\"padding: 0.7rem\">\r\n                {{ theme.name }}\r\n              </div>\r\n            </mat-card>\r\n          </div>\r\n\r\n          <div style=\"text-align: center\">\r\n            <p *ngIf=\"themes.length === 0\" style=\"margin: 2rem\">\r\n              Ningún resultado\r\n            </p>\r\n          </div>\r\n\r\n          <mat-progress-bar *ngIf=\"spinner\"  mode=\"indeterminate\"></mat-progress-bar>\r\n\r\n          <div style=\"margin-top: 2rem; text-align: center\">\r\n              <button *ngIf=\"loadMoreThemes\" mat-mini-fab color=\"primary\" style=\"margin-right: 1rem\"\r\n              [matBadge]=\"remainingThemes\"  matBadgeColor=\"accent\">\r\n                  <mat-icon matSuffix (click)=\"showThemesByPage(pageThemes + 1)\">\r\n                    more_horiz\r\n                  </mat-icon>\r\n                </button>\r\n\r\n                <button *ngIf=\"pageThemes !== 0\" mat-mini-fab color=\"primary\">\r\n                  <mat-icon matSuffix (click)=\"loadLessThemes()\">\r\n                    keyboard_capslock\r\n                  </mat-icon>\r\n                </button>\r\n\r\n            <button\r\n              mat-mini-fab\r\n              color=\"primary\"\r\n              style=\"margin-left: 1rem\"\r\n              *ngIf=\"loginService.isAdmin\"\r\n\r\n            >\r\n              <mat-icon (click)=\"newTheme()\">add</mat-icon>\r\n            </button>\r\n\r\n          </div>\r\n        </mat-tab>\r\n\r\n        <mat-tab label=\"Citas\">\r\n          <div *ngFor=\"let quote of quotes\">\r\n            <mat-card class=\"card element-list\">\r\n              <div\r\n                *ngIf=\"loginService.isLogged\"\r\n                style=\"padding: 0.7rem; cursor: pointer;\"\r\n                [routerLink]=\"['/quote', quote.id]\"\r\n                (click)=\"tabService.addTab('quote', quote.id)\"\r\n              >\r\n                {{ quote.quote }}\r\n              </div>\r\n              <div *ngIf=\"!loginService.isLogged\" style=\"padding: 0.7rem\">\r\n                {{ quote.quote }}\r\n              </div>\r\n            </mat-card>\r\n          </div>\r\n\r\n          <div style=\"text-align: center\">\r\n            <p *ngIf=\"quotes.length === 0\" style=\"margin: 2rem\">\r\n              Ningún resultado\r\n            </p>\r\n          </div>\r\n\r\n          <div style=\"margin-top: 2rem; text-align: center\">\r\n            <button *ngIf=\"loadMoreQuotes\" mat-mini-fab color=\"primary\" style=\"margin-right: 1rem\"\r\n            [matBadge]=\"remainingQuotes\"  matBadgeColor=\"accent\">\r\n              <mat-icon matSuffix (click)=\"showQuotesByPage(pageQuotes + 1)\">\r\n                more_horiz\r\n              </mat-icon>\r\n            </button>\r\n            <button *ngIf=\"pageQuotes !== 0\" mat-mini-fab color=\"primary\">\r\n              <mat-icon matSuffix (click)=\"loadLessQuotes()\">\r\n                keyboard_capslock\r\n              </mat-icon>\r\n            </button>\r\n\r\n            <button\r\n              mat-mini-fab\r\n              color=\"primary\"\r\n              style=\"margin-left: 1rem\"\r\n              *ngIf=\"loginService.isAdmin\"\r\n            >\r\n              <mat-icon (click)=\"newQuote()\" >add</mat-icon>\r\n            </button>\r\n\r\n          </div>\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n    </mat-card>\r\n  </div>\r\n\r\n  <div class=\"histogramButton\" style=\"text-align: center; margin: 1rem;\">\r\n    <button [routerLink]=\"['/histogram']\" mat-raised-button color=\"primary\">\r\n      Histograma\r\n      <mat-icon>bar_chart</mat-icon>\r\n    </button>\r\n  </div>\r\n</body>\r\n"
 
 /***/ }),
 
@@ -659,14 +667,29 @@ var ElementListComponent = /** @class */ (function () {
     ElementListComponent.prototype.ngOnInit = function () {
         this.resetPages();
         this.showAllThemesAndQuotes();
+        // Pages size and matBadge init
+        this.getQuotesSize();
+        this.getThemesSize();
+        this.pageSize = 6;
+        this.loadMoreQuotes = true;
+        //console.log(this.quotesSize);
+        //console.log(this.pageSize)
     };
     ElementListComponent.prototype.resetPages = function () {
         this.pageThemes = 0;
         this.pageQuotes = 0;
     };
-    ElementListComponent.prototype.loadLess = function () {
-        this.resetPages();
-        this.showAllThemesAndQuotes();
+    ElementListComponent.prototype.loadLessQuotes = function () {
+        this.pageQuotes = 0;
+        this.loadMoreQuotes = true;
+        this.showFirstQuotes();
+        this.getRemainingQuotes();
+    };
+    ElementListComponent.prototype.loadLessThemes = function () {
+        this.pageThemes = 0;
+        this.loadMoreThemes = true;
+        this.showFirstThemes();
+        this.getRemainingQuotes();
     };
     ElementListComponent.prototype.search = function (name) {
         var _this = this;
@@ -693,7 +716,7 @@ var ElementListComponent = /** @class */ (function () {
             this.showAllThemesAndQuotes();
         }
         this.pageQuotes++;
-        this.pageThemes = 0;
+        this.getRemainingQuotes();
     };
     ElementListComponent.prototype.showThemesByPage = function (page) {
         var _this = this;
@@ -708,7 +731,7 @@ var ElementListComponent = /** @class */ (function () {
             this.showAllThemesAndQuotes();
         }
         this.pageThemes++;
-        this.pageQuotes = 0;
+        this.getRemainingThemes();
     };
     ElementListComponent.prototype.showAllThemesAndQuotes = function () {
         var _this = this;
@@ -718,12 +741,52 @@ var ElementListComponent = /** @class */ (function () {
         });
         this.quoteService.getQuotes()
             .subscribe(function (data) { return _this.quotes = data['content']; });
+        this.getRemainingQuotes();
+        this.getRemainingThemes();
+    };
+    ElementListComponent.prototype.showFirstThemes = function () {
+        var _this = this;
+        this.themeService.getThemes()
+            .subscribe(function (data) { _this.themes = data['content']; });
+        this.getRemainingQuotes();
+    };
+    ElementListComponent.prototype.showFirstQuotes = function () {
+        var _this = this;
+        this.quoteService.getQuotes()
+            .subscribe(function (data) { return _this.quotes = data['content']; });
+        this.getRemainingThemes();
     };
     ElementListComponent.prototype.newTheme = function () {
         this.router.navigate(['/newTheme']);
     };
     ElementListComponent.prototype.newQuote = function () {
         this.router.navigate(['/newQuote']);
+    };
+    ElementListComponent.prototype.getThemesSize = function () {
+        var _this = this;
+        this.themeService.getSize()
+            .subscribe(function (data) {
+            _this.themesSize = data;
+            _this.getRemainingThemes();
+        });
+    };
+    ElementListComponent.prototype.getQuotesSize = function () {
+        var _this = this;
+        this.quoteService.getSize()
+            .subscribe(function (data) {
+            _this.quotesSize = data;
+            _this.getRemainingQuotes();
+        });
+    };
+    ElementListComponent.prototype.getRemainingQuotes = function () {
+        var op = this.quotesSize - this.pageSize - (this.pageSize * this.pageQuotes);
+        this.remainingQuotes = (op > 0) ? op : 0;
+        this.loadMoreQuotes = this.remainingQuotes !== 0;
+    };
+    ElementListComponent.prototype.getRemainingThemes = function () {
+        var op = this.themesSize - this.pageSize - (this.pageSize * this.pageThemes);
+        this.remainingThemes = (op > 0) ? op : 0;
+        this.loadMoreThemes = this.remainingThemes !== 0;
     };
     ElementListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
@@ -966,7 +1029,7 @@ var FormQuoteComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<body>\r\n\r\n  <div>\r\n    <mat-card class=\"card\" >\r\n      <mat-tab-group dynamicHeight>\r\n        <mat-tab label=\"Citas\">\r\n          <div class=\"example-large-box mat-elevation-z4\">\r\n            <mat-card class=\"card\">\r\n              {{quote.quote}}\r\n            </mat-card>\r\n            <mat-card class=\"card\">\r\n              {{quote.author}}\r\n            </mat-card>\r\n            <mat-card class=\"card\">\r\n              {{quote.book}}\r\n            </mat-card>\r\n          </div>\r\n\r\n          <div>\r\n            <button mat-mini-fab color=\"warn\" class=\"right-button\" (click)=\"removeTheme()\" >\r\n              <mat-icon>delete</mat-icon>\r\n            </button>\r\n\r\n            <button\r\n              mat-mini-fab\r\n              color=\"primary\"\r\n              class=\"right-button\"\r\n              (click)=\"editQuote()\"\r\n            >\r\n              <mat-icon>border_color</mat-icon>\r\n            </button>\r\n          </div>\r\n\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n    </mat-card>\r\n  </div>\r\n\r\n</body>\r\n"
+module.exports = "\r\n<body>\r\n\r\n  <div>\r\n    <mat-card class=\"card\" >\r\n      <mat-tab-group dynamicHeight>\r\n        <mat-tab label=\"Citas\">\r\n          <div class=\"example-large-box mat-elevation-z4\">\r\n\r\n            <mat-card *ngIf=\"!edit\" class=\"card\">\r\n              {{quote.quote}}\r\n            </mat-card>\r\n            <mat-card *ngIf=\"!edit\" class=\"card\">\r\n              {{quote.author}}\r\n            </mat-card>\r\n            <mat-card *ngIf=\"!edit\" class=\"card\">\r\n              {{quote.book}}\r\n            </mat-card>\r\n\r\n            <form (keyup.enter)=\"save()\">\r\n              <mat-card *ngIf=\"edit\" class=\"card\">\r\n                <input style=\"font-size: 1rem; width: 99%;\" type=\"text\" [(ngModel)]=\"name\" name=\"name\">\r\n              </mat-card>\r\n\r\n              <mat-card *ngIf=\"edit\" class=\"card\">\r\n                <input style=\"font-size: 1rem; width: 99%;\" type=\"text\" [(ngModel)]=\"author\" name=\"author\">\r\n              </mat-card>\r\n\r\n              <mat-card *ngIf=\"edit\" class=\"card\">\r\n                <input style=\"font-size: 1rem; width: 99%;\" type=\"text\" [(ngModel)]=\"book\" name=\"book\">\r\n              </mat-card>\r\n            </form>\r\n\r\n          </div>\r\n\r\n          <div>\r\n            <button mat-mini-fab color=\"warn\" class=\"right-button\" (click)=\"removeTheme()\" >\r\n              <mat-icon>delete</mat-icon>\r\n            </button>\r\n\r\n            <button *ngIf=\"edit\" mat-mini-fab color=\"primary\" class=\"right-button\" (click)=\"save()\">\r\n              <mat-icon>border_color</mat-icon>\r\n            </button>\r\n\r\n            <button *ngIf=\"!edit\" mat-mini-fab color=\"primary\" class=\"right-button\" (click)=\"editQuote()\">\r\n              <mat-icon>border_color</mat-icon>\r\n            </button>\r\n\r\n          </div>\r\n\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n    </mat-card>\r\n  </div>\r\n\r\n</body>\r\n"
 
 /***/ }),
 
@@ -991,23 +1054,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var QuoteComponent = /** @class */ (function () {
-    function QuoteComponent(router, themeService, _dialogService, activatedRoute) {
+    function QuoteComponent(router, quoteService, _dialogService, activatedRoute) {
         this.router = router;
-        this.themeService = themeService;
+        this.quoteService = quoteService;
         this._dialogService = _dialogService;
         this.activatedRoute = activatedRoute;
+        this.edit = false;
     }
     QuoteComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
             var id = params['id'];
-            _this.themeService.getQuote(id)
-                .subscribe(function (data) { return _this.quote = {
-                id: data['id'],
-                quote: data['quote'],
-                author: data['author'],
-                book: data['book']
-            }; });
+            _this.quoteService.getQuote(id)
+                .subscribe(function (data) {
+                _this.quote = {
+                    id: data['id'],
+                    quote: data['quote'],
+                    author: data['author'],
+                    book: data['book']
+                };
+                _this.name = _this.quote.quote;
+                _this.author = _this.quote.author;
+                _this.book = _this.quote.book;
+            });
         });
     };
     QuoteComponent.prototype.removeTheme = function () {
@@ -1019,14 +1088,23 @@ var QuoteComponent = /** @class */ (function () {
             height: '175px'
         }).afterClosed().subscribe(function (accept) {
             if (accept) {
-                _this.themeService
+                _this.quoteService
                     .removeQuote(_this.quote)
                     .subscribe(function (_) { return _this.router.navigate(['/']); }, function (error) { return console.error(error); });
             }
         });
     };
     QuoteComponent.prototype.editQuote = function () {
-        this.router.navigate(['/quote/edit', this.quote.id]);
+        this.edit = true;
+    };
+    QuoteComponent.prototype.save = function () {
+        if ((this.name !== '') && (this.author !== '') && (this.book !== '')) {
+            this.edit = false;
+            this.quote.quote = this.name;
+            this.quote.author = this.author;
+            this.quote.book = this.book;
+            this.quoteService.saveQuote(this.quote).subscribe(function (_) { }, function (error) { return console.error('Error creating new theme: ' + error); });
+        }
     };
     QuoteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1067,6 +1145,9 @@ var QuoteService = /** @class */ (function () {
     }
     QuoteService.prototype.getQuotes = function () {
         return this.http.get('/api/quotes/');
+    };
+    QuoteService.prototype.getSize = function () {
+        return this.http.get('/api/quotes/size');
     };
     QuoteService.prototype.getQuotesByPage = function (page) {
         return this.http.get('/api/quotes/?page=' + page);
@@ -1282,6 +1363,68 @@ var FormThemeComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/theme/selectQuote.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/theme/selectQuote.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<body>\r\n    <div *ngFor=\"let quote of quotes\">\r\n      <button mat color=\"warn\"(click)=\"add(quote.id)\" >\r\n        {{quote.quote}}\r\n      </button>\r\n    </div>\r\n</body>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/theme/selectQuote.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/theme/selectQuote.component.ts ***!
+  \************************************************/
+/*! exports provided: SelectQuoteComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectQuoteComponent", function() { return SelectQuoteComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _theme_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./theme.service */ "./src/app/theme/theme.service.ts");
+/* harmony import */ var _quote_quote_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../quote/quote.service */ "./src/app/quote/quote.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+
+
+
+var SelectQuoteComponent = /** @class */ (function () {
+    function SelectQuoteComponent(quoteService, themeService, activatedRoute, router) {
+        this.quoteService = quoteService;
+        this.themeService = themeService;
+        this.router = router;
+        this.id = activatedRoute.snapshot.params['id'];
+    }
+    SelectQuoteComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.quoteService.getQuotes()
+            .subscribe(function (data) { return _this.quotes = data['content']; });
+    };
+    SelectQuoteComponent.prototype.add = function (idQ) {
+        var _this = this;
+        this.themeService.addQuote(this.id, idQ).subscribe(function (_) { return _this.router.navigate(['theme/', _this.id]); }, function (error) { return console.log(error); });
+    };
+    SelectQuoteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
+            template: __webpack_require__(/*! ./selectQuote.component.html */ "./src/app/theme/selectQuote.component.html"),
+            styles: [__webpack_require__(/*! ../app.component.css */ "./src/app/app.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_quote_quote_service__WEBPACK_IMPORTED_MODULE_3__["QuoteService"], _theme_service__WEBPACK_IMPORTED_MODULE_2__["ThemeService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], SelectQuoteComponent);
+    return SelectQuoteComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/theme/theme.component.html":
 /*!********************************************!*\
   !*** ./src/app/theme/theme.component.html ***!
@@ -1289,7 +1432,7 @@ var FormThemeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<body>\r\n\r\n  <div>\r\n    <mat-card class=\"card\" >\r\n      <mat-tab-group dynamicHeight>\r\n        <mat-tab label=\"Temas\">\r\n          <mat-card class=\"card\" >\r\n            <img [src]=\"image\" alt=\"{{theme.name}}Image\" class=\"themeImage\">\r\n            <button mat-mini-fab color=\"warn\" class=\"right-button-theme\" (click)=\"removeTheme()\">\r\n              <mat-icon>delete</mat-icon>\r\n            </button>\r\n\r\n            <button\r\n              mat-mini-fab\r\n              color=\"primary\"\r\n              class=\"right-button-theme\"\r\n              (click)=\"editTheme()\"\r\n            >\r\n              <mat-icon>border_color</mat-icon>\r\n            </button>\r\n\r\n            <h1>{{theme.name}}</h1>\r\n          </mat-card>\r\n\r\n          <div class=\"example-large-box mat-elevation-z4\" *ngFor = \"let quote of theme.quotes\">\r\n              <mat-card class=\"card\" >\r\n                Referencia cita {{quote.id}}\r\n                <button mat-mini-fab color=\"warn\" *ngIf=\"loginService.isAdmin\" class=\"delete\" (click)=\"deleteQuote()\" >\r\n                  <mat-icon>delete</mat-icon>\r\n                </button>\r\n                <mat-card class=\"card\">\r\n                  {{quote.quote}}\r\n                </mat-card>\r\n                <mat-grid-list cols=\"2\" rowHeight=\"4.5rem\" class=\"authorAndBook\">\r\n                  <mat-grid-tile>\r\n                    <mat-card class=\"card\">\r\n                      {{quote.author}}\r\n                    </mat-card>\r\n                  </mat-grid-tile>\r\n                  <mat-grid-tile>\r\n                    <mat-card class=\"card\">\r\n                      {{quote.book}}\r\n                    </mat-card>\r\n                  </mat-grid-tile>\r\n                </mat-grid-list>\r\n              </mat-card>\r\n          </div>\r\n\r\n          <div class=\"example-large-box mat-elevation-z4\" *ngIf=\"loginService.isAdmin\">\r\n              <section class=\"example-section\">\r\n                  <mat-checkbox class=\"example-margin\">Referencia a cita</mat-checkbox>\r\n                  <mat-checkbox class=\"example-margin\">Texto</mat-checkbox>\r\n                  <mat-chip-list>\r\n                    <mat-chip color=\"accent\" selected (click)=\"add()\" >Añadir</mat-chip>\r\n                  </mat-chip-list>\r\n              </section>\r\n          </div>\r\n\r\n          <div class=\"example-large-box mat-elevation-z4\">\r\n              <mat-card class=\"card\" >\r\n                HTML\r\n              </mat-card>\r\n              <mat-card class=\"card\" >\r\n                <h3>{{theme.name}}</h3>\r\n                <div *ngFor = \"let quote of theme.quotes\">\r\n                  <p>\"{{quote.quote}}\"</p>\r\n                  <p>{{quote.author}} en {{quote.book}}</p>\r\n                </div>\r\n              </mat-card>\r\n          </div>\r\n\r\n          <button mat-raised-button color=\"primary\" class=\"pdfButton\" (click)=\"getPDF()\">\r\n              Generar PDF\r\n              <mat-icon>picture_as_pdf</mat-icon>\r\n          </button>\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n    </mat-card>\r\n  </div>\r\n\r\n</body>\r\n"
+module.exports = "\r\n<body>\r\n\r\n  <div>\r\n    <mat-card class=\"card\" >\r\n      <mat-tab-group dynamicHeight>\r\n        <mat-tab label=\"Temas\">\r\n          <mat-card class=\"card\" >\r\n            <img [src]=\"image\" alt=\"{{theme.name}}Image\" class=\"themeImage\">\r\n            <button mat-mini-fab color=\"warn\" class=\"right-button-theme\" (click)=\"removeTheme()\">\r\n              <mat-icon>delete</mat-icon>\r\n            </button>\r\n\r\n            <button *ngIf=\"edit\" mat-mini-fab color=\"primary\" class=\"right-button-theme\" (click)=\"save()\">\r\n              <mat-icon>border_color</mat-icon>\r\n            </button>\r\n\r\n            <button *ngIf=\"!edit\" mat-mini-fab color=\"primary\" class=\"right-button-theme\" (click)=\"editTheme()\">\r\n              <mat-icon>border_color</mat-icon>\r\n            </button>\r\n\r\n            <button mat-mini-fab color=\"accent\" class=\"right-button-theme\" (click)=\"fileInput.click()\">\r\n              <input #fileInput type=\"file\" [(ngModel)]=\"newImage\" class=\"inputFileButton\" (change)=\"changeImage(fileInput)\">\r\n              <mat-icon>insert_photo</mat-icon>\r\n            </button>\r\n\r\n            <h1 style=\"font-size: 2rem\" *ngIf=\"!edit\">{{theme.name}}</h1>\r\n\r\n            <form *ngIf=\"edit\" (keyup.enter)=\"save()\">\r\n              <input style=\"font-size: 2rem; margin-top: 1rem;; width: 50%;\" type=\"text\" [(ngModel)]=\"name\" name=\"name\" required>\r\n            </form>\r\n\r\n          </mat-card>\r\n\r\n          <div class=\"example-large-box mat-elevation-z4\" *ngFor = \"let quote of theme.quotes\">\r\n              <mat-card class=\"card\" >\r\n                Referencia cita {{quote.id}}\r\n                <button mat-mini-fab color=\"warn\" *ngIf=\"loginService.isAdmin\" class=\"delete\" (click)=\"deleteQuote(quote.id, theme.id)\" >\r\n                  <mat-icon>delete</mat-icon>\r\n                </button>\r\n                <mat-card class=\"card\">\r\n                  {{quote.quote}}\r\n                </mat-card>\r\n                <mat-grid-list cols=\"2\" rowHeight=\"4.5rem\" class=\"authorAndBook\">\r\n                  <mat-grid-tile>\r\n                    <mat-card class=\"card\">\r\n                      {{quote.author}}\r\n                    </mat-card>\r\n                  </mat-grid-tile>\r\n                  <mat-grid-tile>\r\n                    <mat-card class=\"card\">\r\n                      {{quote.book}}\r\n                    </mat-card>\r\n                  </mat-grid-tile>\r\n                </mat-grid-list>\r\n              </mat-card>\r\n          </div>\r\n\r\n          <div class=\"example-large-box mat-elevation-z4\" *ngIf=\"loginService.isAdmin\">\r\n              <section class=\"example-section\">\r\n                  <mat-checkbox class=\"example-margin\">Referencia a cita</mat-checkbox>\r\n                  <mat-checkbox class=\"example-margin\">Texto</mat-checkbox>\r\n                  <mat-chip-list>\r\n                    <mat-chip color=\"accent\" selected (click)=\"add()\">Añadir</mat-chip>\r\n                  </mat-chip-list>\r\n              </section>\r\n          </div>\r\n\r\n          <div class=\"example-large-box mat-elevation-z4\">\r\n              <mat-card class=\"card\" >\r\n                HTML\r\n              </mat-card>\r\n              <mat-card class=\"card\" >\r\n                <h3>{{theme.name}}</h3>\r\n                <div *ngFor = \"let quote of theme.quotes\">\r\n                  <p>\"{{quote.quote}}\"</p>\r\n                  <p>{{quote.author}} en {{quote.book}}</p>\r\n                </div>\r\n              </mat-card>\r\n          </div>\r\n\r\n          <button mat-raised-button color=\"primary\" class=\"pdfButton\" (click)=\"getPDF()\">\r\n              Generar PDF\r\n              <mat-icon>picture_as_pdf</mat-icon>\r\n          </button>\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n    </mat-card>\r\n  </div>\r\n\r\n</body>\r\n"
 
 /***/ }),
 
@@ -1318,6 +1461,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var ImageSnippet = /** @class */ (function () {
+    function ImageSnippet(src, file) {
+        this.src = src;
+        this.file = file;
+    }
+    return ImageSnippet;
+}());
 var ThemeComponent = /** @class */ (function () {
     function ThemeComponent(router, themeService, activatedRoute, loginService, _dialogService) {
         this.router = router;
@@ -1325,17 +1475,22 @@ var ThemeComponent = /** @class */ (function () {
         this.activatedRoute = activatedRoute;
         this.loginService = loginService;
         this._dialogService = _dialogService;
+        this.selectQuote = false;
+        this.edit = false;
     }
     ThemeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
             _this.id = params['id'];
             _this.themeService.getTheme(_this.id)
-                .subscribe(function (data) { return _this.theme = {
-                id: data['id'],
-                name: data['name'],
-                quotes: data['quotes']
-            }; });
+                .subscribe(function (data) {
+                _this.theme = {
+                    id: data['id'],
+                    name: data['name'],
+                    quotes: data['quotes']
+                };
+                _this.name = _this.theme.name;
+            });
             _this.themeService.getImage(_this.id)
                 .subscribe(function (data) {
                 _this.createImageFromBlob(data);
@@ -1364,8 +1519,10 @@ var ThemeComponent = /** @class */ (function () {
     ThemeComponent.prototype.removeTheme = function () {
         var _this = this;
         this._dialogService.openConfirm({
-            message: '¿ Seguro que desea eliminar el tema ' + this.theme.name + '?',
+            message: '¿Seguro que desea eliminar el tema ' + this.theme.name + '?',
             title: 'Confirmación',
+            cancelButton: 'Cancelar',
+            acceptButton: 'Borrar',
             width: '500px',
             height: '175px'
         }).afterClosed().subscribe(function (accept) {
@@ -1377,23 +1534,55 @@ var ThemeComponent = /** @class */ (function () {
         });
     };
     ThemeComponent.prototype.editTheme = function () {
-        this.router.navigate(['/theme/edit', this.theme.id]);
+        this.edit = true;
     };
     ThemeComponent.prototype.add = function () {
-        this.themeService.addQuote(this.theme);
+        this.router.navigate(['/theme/selectQuote', this.theme.id]);
     };
-    ThemeComponent.prototype.deleteQuote = function () {
+    ThemeComponent.prototype.deleteQuote = function (idQ) {
         var _this = this;
         this._dialogService.openConfirm({
-            message: '¿ Seguro que desea eliminar la referencia de esta cita en este tema?',
+            message: '¿Seguro que desea eliminar la referencia de esta cita en este tema?',
             title: 'Confirmación',
+            cancelButton: 'Cancelar',
+            acceptButton: 'Borrar',
             width: '500px',
             height: '200'
         }).afterClosed().subscribe(function (accept) {
             if (accept) {
-                _this.themeService.removeQuote(_this.theme);
+                _this.themeService.removeQuote(_this.theme, idQ).subscribe(function (_) { return _this.ngOnInit(); }, function (error) { return console.log(error); });
             }
         });
+    };
+    ThemeComponent.prototype.changeImage = function (imageInput) {
+        var _this = this;
+        this._dialogService.openConfirm({
+            message: '¿Seguro que desea cambiar la imagen de este tema?',
+            title: 'Confirmación',
+            cancelButton: 'Cancelar',
+            acceptButton: 'Aceptar',
+            width: '500px',
+            height: '200'
+        }).afterClosed().subscribe(function (accept) {
+            if (accept) {
+                var file_1 = imageInput.files[0];
+                var reader = new FileReader();
+                reader.addEventListener('load', function (event) {
+                    _this.newImage = new ImageSnippet(event.target.result, file_1);
+                    _this.themeService.uploadImage(_this.theme.id, _this.newImage.file).subscribe(function (_) {
+                        _this.ngOnInit();
+                    }, function (error) { return console.error('Error creating new image: ' + error); });
+                });
+                reader.readAsDataURL(file_1);
+            }
+        });
+    };
+    ThemeComponent.prototype.save = function () {
+        if (this.name !== '') {
+            this.edit = false;
+            this.theme.name = this.name;
+            this.themeService.saveTheme(this.theme).subscribe(function (_) { }, function (error) { return console.error('Error creating new theme: ' + error); });
+        }
     };
     ThemeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1436,6 +1625,9 @@ var ThemeService = /** @class */ (function () {
     ThemeService.prototype.getThemes = function () {
         return this.http.get('/api/themes/');
     };
+    ThemeService.prototype.getSize = function () {
+        return this.http.get('/api/themes/size');
+    };
     ThemeService.prototype.getThemesByPage = function (page) {
         return this.http.get('/api/themes/?page=' + page);
     };
@@ -1444,6 +1636,11 @@ var ThemeService = /** @class */ (function () {
     };
     ThemeService.prototype.getImage = function (id) {
         return this.http.get('/api/themes/' + id + '/image', { responseType: 'blob' });
+    };
+    ThemeService.prototype.uploadImage = function (id, file) {
+        var formData = new FormData();
+        formData.append('file', file);
+        return this.http.post('api/themes/' + id + '/image', formData);
     };
     ThemeService.prototype.searchTheme = function (name) {
         return this.http.get('/api/themes/search/' + name);
@@ -1466,16 +1663,11 @@ var ThemeService = /** @class */ (function () {
     ThemeService.prototype.getPDF = function (id) {
         return this.http.get('api/themes/' + id + '/PDF', { responseType: 'blob' });
     };
-    ThemeService.prototype.addQuote = function (theme) {
-        var body = JSON.stringify(theme);
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-            'Content-Type': 'application/json',
-        });
-        console.log("AAAAAA");
-        return this.http.post('api/themes/' + theme.id + '/quote/2', body, { headers: headers });
+    ThemeService.prototype.addQuote = function (idT, idQ) {
+        return this.http.post('/api/themes/' + idT + '/quote/' + idQ, null);
     };
-    ThemeService.prototype.removeQuote = function (theme) {
-        return this.http.delete('api/themes/' + theme.id + '/quote/10');
+    ThemeService.prototype.removeQuote = function (theme, id) {
+        return this.http.delete('/api/themes/' + theme.id + '/quote/' + id);
     };
     ThemeService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),

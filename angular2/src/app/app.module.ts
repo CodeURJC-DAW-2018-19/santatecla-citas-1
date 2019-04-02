@@ -76,6 +76,7 @@ import { HistogramComponent } from './histogram/histogram.component';
 import { HistogramService } from './histogram/histogram.service';
 import { BasicAuthInterceptor } from './auth/auth.interceptor';
 import { ErrorInterceptor } from './auth/error.interceptor';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -138,8 +139,9 @@ import { ErrorInterceptor } from './auth/error.interceptor';
   ],
   providers: [ThemeService, QuoteService, LoginService, HistogramService, TabService,
       { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+      { provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {}
