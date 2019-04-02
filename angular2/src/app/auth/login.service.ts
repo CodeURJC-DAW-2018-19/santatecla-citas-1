@@ -59,13 +59,13 @@ export class LoginService {
     }
 
     saveUser(user: User): Observable<User> {
-      const body = JSON.stringify(user);
 
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-      });
+      const formData = new FormData();
 
-      return this.http.post<User>('/api/user/register', body);
+      formData.append('name', user.name);
+      formData.append('authdata', user.authdata);
+
+      return this.http.post<User>('/api/user/register', formData);
 
     }
 

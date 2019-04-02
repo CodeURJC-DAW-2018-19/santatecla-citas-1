@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -33,12 +34,9 @@ public class UserRestController extends GeneralRestController {
 	}
 
 	@PostMapping(value="/register")
-	public ResponseEntity<User> register(@RequestBody User newUser) {
-		if(newUser == null){
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
+	public ResponseEntity<User> register(@RequestParam("name") String name, @RequestParam("authdata") String password) {
 
-		User findUser = userService.findByName(newUser.getName());
+		User findUser = userService.findByName(name);
 
 		//If the user is already sign in or already exists
 		if((userComponent.getLoggedUser() != null || findUser != null) && !userComponent.isAdmin()){
@@ -46,8 +44,8 @@ public class UserRestController extends GeneralRestController {
 		}
 
 		User user = new User();
-		user.setName(newUser.getName());
-		user.setPasswordHash(newUser.getPasswordHash());
+		user.setName(name);
+		user.setPasswordHash(password);
 		userService.save(user);
 
 		return new ResponseEntity<>(user, HttpStatus.CREATED);
