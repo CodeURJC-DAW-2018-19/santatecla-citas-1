@@ -77,7 +77,7 @@ export class ThemeComponent implements OnInit {
         var mediaType = 'application/pdf';
         var blob = new Blob([response], {type: mediaType});
         saveAs(blob, 'theme.pdf');
-      })
+      });
   }
 
   removeTheme() {

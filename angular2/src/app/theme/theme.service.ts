@@ -6,7 +6,7 @@ import { Theme } from './theme.model';
 
 @Injectable()
 export class ThemeService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getThemes() {
     return this.http.get('/api/themes/');
@@ -30,10 +30,8 @@ export class ThemeService {
 
   uploadImage(id: number, file: any) {
     const formData = new FormData();
-
     formData.append('file', file);
-
-    return this.http.post('api/themes/' + id + '/image', formData);
+    return this.http.post('/api/themes/' + id + '/image', formData);
   }
 
   searchTheme(name: string) {
@@ -60,7 +58,7 @@ export class ThemeService {
   }
 
   getPDF(id: number) {
-    return this.http.get('api/themes/' + id + '/PDF', {responseType: 'blob'});
+    return this.http.get('/api/themes/' + id + '/PDF', {responseType: 'blob'});
   }
 
   addQuote(idT: number, idQ: number): Observable<Theme> {
