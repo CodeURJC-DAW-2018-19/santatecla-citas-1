@@ -1,7 +1,57 @@
 <body>
-    <div *ngFor="let quote of quotes">
-      <button mat color="warn"(click)="add(quote.id)" >
-        {{quote.quote}}
-      </button>
-    </div>
+  <div class="search">
+    <mat-form-field
+      appearance="outline"
+      style="width:100%"
+      (keyup.enter)="search(searchName)"
+    >
+      <mat-label>Buscador</mat-label>
+      <input matInput [(ngModel)]="searchName" />
+      <mat-icon matSuffix (click)="search(searchName)" style="cursor: pointer"
+        >search</mat-icon
+      >
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-card class="card" style="margin-top: -1rem">
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Citas">
+          <div *ngFor="let quote of quotes">
+            <mat-card class="card element-list">
+              <div
+                style="padding: 0.7rem; cursor: pointer;"
+                (click)="add(quote.id)"
+              >
+                {{ quote.quote }}
+              </div>
+            </mat-card>
+          </div>
+
+          <div style="text-align: center">
+            <p *ngIf="quotes.length === 0" style="margin: 2rem">
+              Ningún resultado
+            </p>
+          </div>
+
+          <div style="margin-top: 2rem; text-align: center">
+            <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem"
+            [matBadge]="remainingQuotes"  matBadgeColor="accent">
+              <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">
+                more_horiz
+              </mat-icon>
+            </button>
+            <button *ngIf="pageQuotes !== 0" mat-mini-fab color="primary">
+              <mat-icon matSuffix (click)="loadLessQuotes()">
+                keyboard_capslock
+              </mat-icon>
+            </button>
+          </div>
+
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+
 </body>
+
