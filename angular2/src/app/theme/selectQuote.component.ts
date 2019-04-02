@@ -25,6 +25,7 @@ export class SelectQuoteComponent implements OnInit {
   remainingQuotes: number;
   loadMoreQuotes: boolean;
 
+  spinner = false;
 
   constructor(private quoteService: QuoteService, private themeService: ThemeService, activatedRoute: ActivatedRoute,
               private router: Router) {
@@ -71,10 +72,12 @@ export class SelectQuoteComponent implements OnInit {
   }
 
   showQuotesByPage(page: number) {
+    this.spinner = true;
     if (page !== 0) {
-    this.quoteService.getQuotesByPage(page)
-      .subscribe((data: Quote[]) => this.quotes = data['content']
-    );
+      this.quoteService.getQuotesByPage(page).subscribe((data: Quote[]) => {
+        this.quotes = data['content']
+        this.spinner = false;
+      });
     } else {
       this.quoteService.getQuotes().subscribe((data: Quote[]) => this.quotes = data['content']);
     }

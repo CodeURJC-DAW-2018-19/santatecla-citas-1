@@ -34,6 +34,8 @@
             </p>
           </div>
 
+          <mat-progress-bar *ngIf="spinner" mode="indeterminate"></mat-progress-bar>
+
           <div style="margin-top: 2rem; text-align: center">
             <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem"
             [matBadge]="remainingQuotes"  matBadgeColor="accent">
