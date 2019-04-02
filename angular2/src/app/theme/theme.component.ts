@@ -24,6 +24,8 @@ export class ThemeComponent implements OnInit {
   newImage: ImageSnippet;
   id: number;
   selectQuote = false;
+  edit = false;
+  name: string;
 
   constructor(
     private router: Router,
@@ -93,7 +95,7 @@ export class ThemeComponent implements OnInit {
   }
 
   editTheme() {
-    this.router.navigate(['/theme/edit', this.theme.id]);
+    this.edit = true;
   }
 
   add() {
@@ -141,6 +143,15 @@ export class ThemeComponent implements OnInit {
           reader.readAsDataURL(file);
         }
     });
+  }
+
+  save() {
+    this.edit = false;
+    this.theme.name = this.name;
+    this.themeService.saveTheme(this.theme).subscribe(
+        _ => {},
+        (error: Error) => console.error('Error creating new theme: ' + error),
+    );
   }
 
 }

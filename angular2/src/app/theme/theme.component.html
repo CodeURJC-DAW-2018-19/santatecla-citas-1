@@ -11,12 +11,11 @@
               <mat-icon>delete</mat-icon>
             </button>
 
-            <button
-              mat-mini-fab
-              color="primary"
-              class="right-button-theme"
-              (click)="editTheme()"
-            >
+            <button *ngIf="edit" mat-mini-fab color="primary" class="right-button-theme" (click)="save()">
+              <mat-icon>border_color</mat-icon>
+            </button>
+
+            <button *ngIf="!edit" mat-mini-fab color="primary" class="right-button-theme" (click)="editTheme()">
               <mat-icon>border_color</mat-icon>
             </button>
 
@@ -25,7 +24,12 @@
               <mat-icon>insert_photo</mat-icon>
             </button>
 
-            <h1>{{theme.name}}</h1>
+            <h1 style="font-size: 2rem" *ngIf="!edit">{{theme.name}}</h1>
+
+            <form *ngIf="edit" (keyup.enter)="save()">
+              <input style="font-size: 2rem; margin-top: 1rem;" type="text" [(ngModel)]="name" name="name" required>
+            </form>
+
           </mat-card>
 
           <div class="example-large-box mat-elevation-z4" *ngFor = "let quote of theme.quotes">

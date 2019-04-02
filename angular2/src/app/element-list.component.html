@@ -49,7 +49,7 @@
                   </mat-icon>
                 </button>
 
-                <button mat-mini-fab color="primary">
+                <button *ngIf="pageThemes !== 0" mat-mini-fab color="primary">
                   <mat-icon matSuffix (click)="loadLessThemes()">
                     keyboard_capslock
                   </mat-icon>
@@ -98,7 +98,7 @@
                 more_horiz
               </mat-icon>
             </button>
-            <button mat-mini-fab color="primary">
+            <button *ngIf="pageQuotes !== 0" mat-mini-fab color="primary">
               <mat-icon matSuffix (click)="loadLessQuotes()">
                 keyboard_capslock
               </mat-icon>
