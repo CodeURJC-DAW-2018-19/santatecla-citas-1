@@ -12,8 +12,19 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SelectQuoteComponent implements OnInit {
+
   quotes: Quote[];
   id: number;
+  searchName: string;
+
+  pageSize: number;
+  pageQuotes: number;
+
+  quotesSize: number;
+
+  remainingQuotes: number;
+  loadMoreQuotes: boolean;
+
 
   constructor(private quoteService: QuoteService, private themeService: ThemeService, activatedRoute: ActivatedRoute,
               private router: Router) {
@@ -24,6 +35,10 @@ export class SelectQuoteComponent implements OnInit {
     this.quoteService.getQuotes()
       .subscribe((data: Quote[]) => this.quotes = data['content']
     );
+    this.resetPages();
+    this.getQuotesSize();
+    this.pageSize = 6;
+    this.loadMoreQuotes = true;
   }
 
   add(idQ: number) {
@@ -32,4 +47,61 @@ export class SelectQuoteComponent implements OnInit {
       (error) => console.log(error)
     );
   }
+
+  search(name: string) {
+    this.resetPages();
+    if (name !== '') {
+      this.quoteService.searchQuote(name).subscribe((data: Quote[]) => this.quotes = data['content']
+    );
+    } else {
+      this.quoteService.getQuotes().subscribe((data: Quote[]) => this.quotes = data['content']
+    );
+    }
+  }
+
+  resetPages() {
+    this.pageQuotes = 0;
+  }
+
+  loadLessQuotes() {
+    this.pageQuotes = 0;
+    this.loadMoreQuotes = true;
+    this.showFirstQuotes();
+    this.getRemainingQuotes();
+  }
+
+  showQuotesByPage(page: number) {
+    if (page !== 0) {
+    this.quoteService.getQuotesByPage(page)
+      .subscribe((data: Quote[]) => this.quotes = data['content']
+    );
+    } else {
+      this.quoteService.getQuotes().subscribe((data: Quote[]) => this.quotes = data['content']);
+    }
+    this.pageQuotes++;
+    this.getRemainingQuotes();
+  }
+
+  showFirstQuotes() {
+    this.quoteService.getQuotes()
+      .subscribe((data: Quote[]) => this.quotes = data['content']
+    );
+
+  }
+
+  getQuotesSize() {
+    this.quoteService.getSize()
+      .subscribe((data: number) => {
+        this.quotesSize = data;
+        this.getRemainingQuotes();
+      }
+    );
+  }
+
+  getRemainingQuotes() {
+    const op = this.quotesSize - this.pageSize - (this.pageSize * this.pageQuotes);
+    this.remainingQuotes = (op > 0) ?  op : 0;
+    this.loadMoreQuotes = this.remainingQuotes !== 0;
+  }
+
 }
