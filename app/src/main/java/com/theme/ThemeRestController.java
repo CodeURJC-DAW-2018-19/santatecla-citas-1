@@ -51,14 +51,8 @@ public class ThemeRestController extends GeneralRestController {
     }
 
     @GetMapping(value="/size")
-    public MappingJacksonValue qthemesSize(){
-        MappingJacksonValue result = new MappingJacksonValue(this.themeService.findSize());
-        if (userComponent.isLoggedUser()) {
-            result.setSerializationView(LoggedView.class);
-        } else {
-            result.setSerializationView(VisitorView.class);
-        }
-        return result;
+    public long qthemesSize() {
+        return this.themeService.findSize();
     }
 
     @GetMapping(value="/search/{name}")

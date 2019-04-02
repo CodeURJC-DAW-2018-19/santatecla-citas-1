@@ -37,14 +37,8 @@ public class QuoteRestController extends GeneralRestController{
     }
 
     @GetMapping(value="/size")
-    public MappingJacksonValue quotesSize(){
-        MappingJacksonValue result = new MappingJacksonValue(this.quoteService.findSize());
-        if (userComponent.isLoggedUser()) {
-            result.setSerializationView(LoggedView.class);
-        } else {
-            result.setSerializationView(VisitorView.class);
-        }
-        return result;
+    public long quotesSize() {
+        return this.quoteService.findSize();
     }
 
     @GetMapping(value="/search/{name}")
