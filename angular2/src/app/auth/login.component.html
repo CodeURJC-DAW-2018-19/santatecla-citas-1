@@ -1,11 +1,10 @@
 <div>
-  <button mat-mini-fab color="accent" (click)="register()">
-    <mat-icon matSuffix> add </mat-icon>
-  </button>
-
   <div *ngIf="!loginService.isLogged">
-    <button mat-mini-fab color="primary" (click)="openLoginDialog()">
-      <mat-icon>supervised_user_circle</mat-icon>
+    <button mat-mini-fab color="primary" (click)="openLoginDialog()" title="LogIn">
+      <mat-icon>person</mat-icon>
+    </button>
+    <button mat-mini-fab color="accent" (click)="register()" style="margin-right: 1rem; margin-left: 1rem;" title="Registrarse">
+      <mat-icon matSuffix>person_add</mat-icon>
     </button>
   </div>
 
@@ -14,7 +13,7 @@
       {{loginService.user.name}}
     </span>
     <button mat-mini-fab color="primary" (click)="logOut()">
-      <mat-icon>remove</mat-icon>
+      <mat-icon>exit_to_app</mat-icon>
     </button>
   </div>
 </div>

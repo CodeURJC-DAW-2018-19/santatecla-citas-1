@@ -6,34 +6,26 @@
       <mat-tab-group dynamicHeight>
         <mat-tab label="Citas">
           <form #quoteForm="ngForm">
-            <div class="example-large-box mat-elevation-z4">
-              <mat-card class="card">
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Cita" [(ngModel)]="quote.quote" #quoteFormElement
-                  #quoteFormControl="ngModel"
-                  name="quote"
-                  required>
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="card">
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Autor" [(ngModel)]="quote.author" #quoteFormElement
-                  #quoteFormControl="ngModel"
-                  name="author"
-                  required>
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="card">
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Obra" [(ngModel)]="quote.book" #quoteFormElement
-                  #quoteFormControl="ngModel"
-                  name="book"
-                  required>
-                </mat-form-field>
-              </mat-card>
-            </div>
+            <mat-card class="card" style="text-align: center">
+              <mat-form-field class="example-full-width" style="width: 60%">
+                <input matInput placeholder="Cita" [(ngModel)]="quote.quote" #quoteFormElement
+                #quoteFormControl="ngModel" name="quote" required>
+              </mat-form-field>
+            </mat-card>
+            <mat-card class="card" style="text-align: center">
+              <mat-form-field class="example-full-width" style="width: 30%">
+                <input matInput placeholder="Autor" [(ngModel)]="quote.author" #quoteFormElement
+                #quoteFormControl="ngModel" name="author" required>
+              </mat-form-field>
+            </mat-card>
+            <mat-card class="card" style="text-align: center">
+              <mat-form-field class="example-full-width" style="width: 30%">
+                <input matInput placeholder="Obra" [(ngModel)]="quote.book" #quoteFormElement
+                #quoteFormControl="ngModel" name="book" required>
+              </mat-form-field>
+            </mat-card>
           </form>
-          <div  layout="row" layout-align="end center" class="enterLoginBotton">
+          <div  layout="row" style="text-align: center" class="enterLoginBotton">
             <button mat-raised-button class="button" color="primary" (click)="save()" [disabled]="quoteForm === undefined || (quoteForm && !quoteForm.valid)">
               Guardar <mat-icon>save</mat-icon>
             </button>

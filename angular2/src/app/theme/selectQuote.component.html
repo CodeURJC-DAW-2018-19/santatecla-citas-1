@@ -38,15 +38,14 @@
 
           <div style="margin-top: 2rem; text-align: center" class="loadMoreButtons">
             <button mat-raised-button class="button" color="accent" (click)="cancel()">Cancelar</button>
-            <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem"
-            [matBadge]="remainingQuotes"  matBadgeColor="accent">
+            <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingQuotes"  matBadgeColor="accent" title="Cargar más">
               <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">
-                more_horiz
+                keyboard_arrow_down
               </mat-icon>
             </button>
-            <button *ngIf="pageQuotes !== 0" mat-mini-fab color="primary">
+            <button *ngIf="pageQuotes !== 0" mat-mini-fab color="primary" title="Cargar menos">
               <mat-icon matSuffix (click)="loadLessQuotes()">
-                keyboard_capslock
+                keyboard_arrow_up
               </mat-icon>
             </button>
           </div>

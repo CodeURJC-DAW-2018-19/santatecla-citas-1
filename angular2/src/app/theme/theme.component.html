@@ -26,46 +26,59 @@
               </button>
             </span>
 
-            <h1 style="font-size: 2rem" *ngIf="!edit">{{theme.name}}</h1>
+            <h1 style="font-size: 2rem; margin-left: 1rem;" *ngIf="!edit">{{theme.name}}</h1>
 
             <form *ngIf="edit && loginService.isAdmin" (keyup.enter)="save()">
-              <input style="font-size: 2rem; margin-top: 1rem;; width: 50%;" type="text" [(ngModel)]="name" name="name" required>
+              <input style="font-size: 2rem; margin-left: 1rem; margin-top: 1rem;; width: 50%;" type="text" [(ngModel)]="name" name="name" required>
             </form>
 
           </mat-card>
 
-          <div class="example-large-box mat-elevation-z4 bg" *ngIf="loginService.isAdmin">
-              <mat-card class="card" *ngFor = "let quote of theme.quotes">
+          <div class="example-large-box mat-elevation-z4 bg" *ngIf="loginService.isAdmin && (theme.quotes !== undefined) && (theme.quotes.length > 0)">
+            <div style="margin-left: 2rem; padding-top: 0.5rem;">
+              Referencias a citas
+            </div>
+            <mat-card class="card" *ngFor = "let quote of theme.quotes">
+              <div style="margin-left: 2rem">
                 Referencia cita {{quote.id}}
                 <button mat-mini-fab color="warn" *ngIf="loginService.isAdmin" class="delete" (click)="deleteQuote(quote.id, theme.id)" >
                   <mat-icon>delete</mat-icon>
                 </button>
-                <mat-card class="card">
-                  {{quote.quote}}
-                </mat-card>
-                <mat-grid-list cols="2" rowHeight="4.5rem" class="authorAndBook">
-                  <mat-grid-tile>
-                    <mat-card class="card">
-                      {{quote.author}}
-                    </mat-card>
-                  </mat-grid-tile>
-                  <mat-grid-tile>
-                    <mat-card class="card">
-                      {{quote.book}}
-                    </mat-card>
-                  </mat-grid-tile>
-                </mat-grid-list>
+              </div>
+              <mat-card class="card">
+                {{quote.quote}}
               </mat-card>
+              <mat-grid-list cols="2" rowHeight="4.5rem" class="authorAndBook">
+                <mat-grid-tile>
+                  <mat-card class="card">
+                    {{quote.author}}
+                  </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <mat-card class="card">
+                    {{quote.book}}
+                  </mat-card>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </mat-card>
+          </div>
 
-              <mat-card class="card" *ngFor = "let text of theme.texts">
+          <div class="example-large-box mat-elevation-z4 bg" *ngIf="loginService.isAdmin && (theme.texts !== undefined) && (theme.texts.length > 0)">
+            <div style="margin-left: 2rem; padding-top: 0.5rem;">
+              Textos
+            </div>
+            <mat-card class="card" *ngFor = "let text of theme.texts">
+              <div style="margin-left: 2rem">
                 Texto {{text.id}}
-                <button mat-mini-fab color="warn" *ngIf="loginService.isAdmin" class="delete" (click)="deleteText(text.id)" >
+                <button mat-mini-fab color="warn" *ngIf="loginService.isAdmin" class="delete" (click)="deleteText(text.id)">
                   <mat-icon>delete</mat-icon>
                 </button>
-                <mat-card class="card">
-                  {{text.text}}
-                </mat-card>
+              </div>
+
+              <mat-card class="card">
+                {{text.text}}
               </mat-card>
+            </mat-card>
           </div>
 
           <div class="example-large-box mat-elevation-z4 bg" *ngIf="loginService.isAdmin">
@@ -74,14 +87,14 @@
                   <mat-radio-button class="example-margin" value="cita">Referencia a cita</mat-radio-button>
                   <mat-radio-button class="example-margin" value="texto">Texto</mat-radio-button>
                 </mat-radio-group>
-                  <mat-chip-list>
-                    <mat-chip color="accent" selected (click)="add()">Añadir</mat-chip>
-                  </mat-chip-list>
+                <mat-chip-list style="margin-left: 2rem">
+                  <mat-chip color="accent" selected (click)="add()">Añadir</mat-chip>
+                </mat-chip-list>
               </section>
           </div>
 
           <div class="example-large-box mat-elevation-z4 bg">
-              <div style="margin-left: 1rem" *ngIf="loginService.isAdmin">
+              <div style="margin-left: 2rem; padding-top: 0.5rem;">
                 HTML
               </div>
               <mat-card class="card" >
