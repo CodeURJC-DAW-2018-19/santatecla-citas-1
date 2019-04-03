@@ -56,6 +56,10 @@
   margin-right: 1rem;
 }
 
+.registButton {
+  position: fixed;
+}
+
 .right-button {
   float: right;
   margin-right: 1rem;
@@ -70,6 +74,10 @@
 .inputFileButton {
   width: 1.5rem;
   display: none;
+}
+
+.loadMoreButtons {
+  margin-bottom: 1rem;
 }
 
 .element-list {

@@ -1,17 +1,22 @@
-
-<div *ngIf="!loginService.isLogged">
-  <button mat-mini-fab color="primary" (click)="openLoginDialog()">
-    <mat-icon>supervised_user_circle</mat-icon>
+<div>
+  <button mat-mini-fab color="accent" (click)="register()">
+    <mat-icon matSuffix> add </mat-icon>
   </button>
-</div>
 
-<div *ngIf="loginService.isLogged">
-  <span style="margin-right: 1rem">
-    {{loginService.user.name}}
-  </span>
-  <button mat-mini-fab color="primary" (click)="logOut()">
-    <mat-icon>remove</mat-icon>
-  </button>
+  <div *ngIf="!loginService.isLogged">
+    <button mat-mini-fab color="primary" (click)="openLoginDialog()">
+      <mat-icon>supervised_user_circle</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="loginService.isLogged">
+    <span style="margin-right: 1rem">
+      {{loginService.user.name}}
+    </span>
+    <button mat-mini-fab color="primary" (click)="logOut()">
+      <mat-icon>remove</mat-icon>
+    </button>
+  </div>
 </div>
 
 

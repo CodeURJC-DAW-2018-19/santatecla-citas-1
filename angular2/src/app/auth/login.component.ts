@@ -41,4 +41,8 @@ export class LoginComponent {
             height: '50%',
         });
     }
+
+    register() {
+      this.router.navigate(['/register']);
+    }
 }

@@ -36,7 +36,7 @@
 
           <mat-progress-bar *ngIf="spinner" mode="indeterminate"></mat-progress-bar>
 
-          <div style="margin-top: 2rem; text-align: center">
+          <div style="margin-top: 2rem; text-align: center" class="loadMoreButtons">
             <button mat-raised-button class="button" color="accent" (click)="cancel()">Cancelar</button>
             <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem"
             [matBadge]="remainingQuotes"  matBadgeColor="accent">
