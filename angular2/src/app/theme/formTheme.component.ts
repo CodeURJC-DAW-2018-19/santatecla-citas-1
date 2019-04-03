@@ -25,12 +25,13 @@ export class FormThemeComponent {
           .subscribe((data: Theme) => this.theme = {
             id: data['id'],
             name: data['name'],
-            quotes: data['quotes']
+            quotes: data['quotes'],
+            texts: data['texts']
           }
         );
           this.newTheme = false;
         } else {
-          this.theme = { name: '', quotes: []};
+          this.theme = { name: '', quotes: [], texts: []};
           this.newTheme = true;
         }
     }

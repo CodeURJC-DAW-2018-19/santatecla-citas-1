@@ -1,4 +1,5 @@
 import { SelectQuoteComponent } from './theme/selectQuote.component';
+import { FormTextComponent } from './theme/formText.component';
 import { RouterModule } from '@angular/router';
 import { ElementListComponent } from './element-list.component';
 import { ThemeComponent } from './theme/theme.component';
@@ -14,6 +15,7 @@ const appRoutes = [
   { path: 'newTheme', component: FormThemeComponent  },
   { path: 'theme/edit/:id', component: FormThemeComponent },
   { path: 'theme/selectQuote/:id', component: SelectQuoteComponent},
+  { path: 'theme/formText/:id', component: FormTextComponent},
   { path: 'quote/:id', component: QuoteComponent  },
   { path: 'newQuote', component: FormQuoteComponent  },
   { path: 'quote/edit/:id', component: FormQuoteComponent  },
