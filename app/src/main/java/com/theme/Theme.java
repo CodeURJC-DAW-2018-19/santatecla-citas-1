@@ -19,7 +19,7 @@ import com.quote.*;
 public class Theme extends TabElement {
       
     @Id
-    @JsonView(Logged.class)
+    @JsonView(Visitor.class)
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
     

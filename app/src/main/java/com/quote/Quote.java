@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Quote extends TabElement{
 
     @Id
-    @JsonView(Logged.class)
+    @JsonView(Visitor.class)
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
 
