@@ -16,19 +16,21 @@
   </button>
 
   <div>
-    <mat-card class="card" style="margin-top: -0.7rem">
+    <mat-card class="card" style="margin-top: -0.7rem; padding-bottom: 0">
       <mat-tab-group dynamicHeight [backgroundColor]="background">
-        <mat-tab label="Temas">
-          <div *ngFor="let theme of themes">
-            <mat-card class="card element-list">
-              <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;"
-              [routerLink]="['/theme', theme.id]" (click)="tabService.addTab('theme', theme.id)">
-                {{ theme.name }}
-              </div>
-              <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">
-                {{ theme.name }}
-              </div>
-            </mat-card>
+        <mat-tab label="Temas" style="position: fixed">
+          <div style="height: 30rem; overflow-y: scroll">
+            <div *ngFor="let theme of themes">
+              <mat-card class="card element-list">
+                <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;"
+                [routerLink]="['/theme', theme.id]" (click)="tabService.addTab('theme', theme.id)">
+                  {{ theme.name }}
+                </div>
+                <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">
+                  {{ theme.name }}
+                </div>
+              </mat-card>
+            </div>
           </div>
 
           <div style="text-align: center">
@@ -54,7 +56,7 @@
               </button>
             </div>
 
-            <button class="right-button" mat-mini-fab color="primary" style="margin-left: 1rem" *ngIf="loginService.isAdmin" title="Añadir tema">
+            <button class="right-button" mat-mini-fab color="primary" style="margin-bottom: 1rem" *ngIf="loginService.isAdmin" title="Añadir tema">
               <mat-icon (click)="newTheme()">add</mat-icon>
             </button>
           </div>
@@ -62,22 +64,24 @@
         </mat-tab>
 
         <mat-tab label="Citas">
-          <div *ngFor="let quote of quotes">
-            <mat-card class="card element-list">
-              <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;"
-              [routerLink]="['/quote', quote.id]" (click)="tabService.addTab('quote', quote.id)">
-                {{ quote.quote }}
-              </div>
-              <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">
-                {{ quote.quote }}
-              </div>
-            </mat-card>
-          </div>
+          <div style="height: 30rem; overflow-y: scroll">
+            <div *ngFor="let quote of quotes">
+              <mat-card class="card element-list">
+                <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;"
+                [routerLink]="['/quote', quote.id]" (click)="tabService.addTab('quote', quote.id)">
+                  {{ quote.quote }}
+                </div>
+                <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">
+                  {{ quote.quote }}
+                </div>
+              </mat-card>
+            </div>
 
-          <div style="text-align: center">
-            <p *ngIf="quotes.length === 0" style="margin: 2rem">
-              Ningún resultado
-            </p>
+            <div style="text-align: center">
+              <p *ngIf="quotes.length === 0" style="margin: 2rem">
+                Ningún resultado
+              </p>
+            </div>
           </div>
 
           <mat-progress-bar *ngIf="spinner" mode="indeterminate"></mat-progress-bar>
@@ -97,7 +101,7 @@
               </button>
             </div>
 
-            <button mat-mini-fab color="primary" class="right-button" style="margin-left: 1rem" *ngIf="loginService.isAdmin" title="Añadir cita">
+            <button mat-mini-fab color="primary" class="right-button" style="margin-bottom: 1rem" *ngIf="loginService.isAdmin" title="Añadir cita">
               <mat-icon (click)="newQuote()">add</mat-icon>
             </button>
           </div>
