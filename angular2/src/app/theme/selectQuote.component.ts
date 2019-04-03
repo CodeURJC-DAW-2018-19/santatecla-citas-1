@@ -42,6 +42,10 @@ export class SelectQuoteComponent implements OnInit {
     this.loadMoreQuotes = true;
   }
 
+  cancel() {
+    window.history.back();
+  }
+
   add(idQ: number) {
     this.themeService.addQuote(this.id, idQ).subscribe(
       (_) => this.router.navigate(['theme/', this.id]),
