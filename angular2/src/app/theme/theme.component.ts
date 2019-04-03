@@ -35,7 +35,7 @@ export class ThemeComponent implements OnInit {
     private router: Router,
     private themeService: ThemeService,
     private activatedRoute: ActivatedRoute,
-    protected loginService: LoginService,
+    public loginService: LoginService,
     private _dialogService: TdDialogService,) {
 
     }

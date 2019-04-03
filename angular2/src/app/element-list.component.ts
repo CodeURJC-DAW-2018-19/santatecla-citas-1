@@ -47,8 +47,8 @@ export class ElementListComponent implements OnInit {
     private router: Router,
     private themeService: ThemeService,
     private quoteService: QuoteService,
-    protected loginService: LoginService,
-    protected tabService: TabService) {}
+    public loginService: LoginService,
+    public tabService: TabService) {}
 
   ngOnInit() {
     this.resetPages();

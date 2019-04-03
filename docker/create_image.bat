@@ -1,6 +1,7 @@
 cd ../angular2
 
 :: Copy generated resources on static
+del /Q ..\app\src\main\resources\static\new\*
 copy /Y dist\angular2\* ..\app\src\main\resources\static\new
 
 cd ../app
