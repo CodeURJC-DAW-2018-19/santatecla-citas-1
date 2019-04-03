@@ -20,12 +20,16 @@ class ImageSnippet {
 export class ThemeComponent implements OnInit {
 
   theme: Theme;
+
   image: any;
   newImage: ImageSnippet;
+
   id: number;
   selectQuote = false;
   edit = false;
   name: string;
+
+  labelPosition: string;
 
   constructor(
     private router: Router,
@@ -44,7 +48,8 @@ export class ThemeComponent implements OnInit {
           this.theme = {
             id: data['id'],
             name: data['name'],
-            quotes: data['quotes']
+            quotes: data['quotes'],
+            texts: data['texts']
           };
           this.name = this.theme.name;
         }
@@ -102,7 +107,28 @@ export class ThemeComponent implements OnInit {
   }
 
   add() {
-    this.router.navigate(['/theme/selectQuote', this.theme.id]);
+    if (this.labelPosition === "cita") {
+      this.router.navigate(['/theme/selectQuote', this.theme.id]);
+    } else if (this.labelPosition === "texto") {
+      this.router.navigate(['/theme/formText', this.theme.id]);
+    }
+  }
+
+  deleteText(id: number) {
+    this._dialogService.openConfirm({
+      message: '¿Seguro que desea eliminar el texto de este tema?',
+      title: 'Confirmación',
+      cancelButton: 'Cancelar',
+      acceptButton: 'Borrar',
+      width: '500px',
+      height: '200'
+    }).afterClosed().subscribe((accept: boolean) => {
+        if (accept) {
+          this.themeService.removeText(this.theme, id).subscribe(
+            (_) => this.ngOnInit(),
+            (error) => console.log(error));
+        }
+    });
   }
 
   deleteQuote(idQ: number) {

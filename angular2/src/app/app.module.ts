@@ -58,6 +58,7 @@ import { ThemeComponent } from './theme/theme.component';
 import { ThemeService } from './theme/theme.service';
 import { FormThemeComponent } from './theme/formTheme.component';
 import { SelectQuoteComponent } from './theme/selectQuote.component';
+import { FormTextComponent } from './theme/formText.component';
 
 import { QuoteComponent } from './quote/quote.component';
 import { QuoteService } from './quote/quote.service';
@@ -89,7 +90,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     LoginComponent,
     RegisterComponent,
     HistogramComponent,
-    SelectQuoteComponent
+    SelectQuoteComponent,
+    FormTextComponent
   ],
   imports: [
     BrowserModule,

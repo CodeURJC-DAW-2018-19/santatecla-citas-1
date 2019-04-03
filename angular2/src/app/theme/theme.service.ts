@@ -1,8 +1,13 @@
+import { Text } from './theme.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Theme } from './theme.model';
 
+export interface Text {
+  id?: number;
+  text: string;
+}
 
 @Injectable()
 export class ThemeService {
@@ -65,8 +70,20 @@ export class ThemeService {
     return this.http.post<Theme>('/api/themes/' + idT + '/quote/' + idQ, null);
   }
 
+  addText(id: number, text: Text) {
+    const formData = new FormData();
+
+    formData.append('text', text.text);
+
+    return this.http.post<Theme>('/api/themes/' + id + '/text/', formData);
+  }
+
   removeQuote(theme: Theme, id: number) {
     return this.http.delete('/api/themes/' + theme.id + '/quote/' + id);
+  }
+
+  removeText(theme: Theme, id: number) {
+    return this.http.delete('/api/themes/' + theme.id + '/text/' + id);
   }
 
 }
