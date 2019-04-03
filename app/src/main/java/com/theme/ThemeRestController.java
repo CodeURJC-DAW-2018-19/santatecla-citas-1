@@ -12,6 +12,7 @@ import com.GeneralRestController;
 import com.quote.Quote;
 
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
@@ -41,7 +42,8 @@ public class ThemeRestController extends GeneralRestController {
     
     @GetMapping(value="/")
     public MappingJacksonValue themes(@PageableDefault Pageable page){
-        MappingJacksonValue result = new MappingJacksonValue(this.themeService.findAll(page));
+        page = PageRequest.of(page.getPageNumber(), PAGE_SIZE);
+        MappingJacksonValue result = new MappingJacksonValue(this.themeService.findByPage(page));
         if (userComponent.isLoggedUser()) {
             result.setSerializationView(LoggedView.class);
         } else {
@@ -57,6 +59,7 @@ public class ThemeRestController extends GeneralRestController {
 
     @GetMapping(value="/search/{name}")
     public MappingJacksonValue searchThemes(@PageableDefault Pageable page, @PathVariable String name){
+        page = PageRequest.of(page.getPageNumber(), PAGE_SIZE);
         MappingJacksonValue result = new MappingJacksonValue(this.themeService.findByName(name, page));
         if (userComponent.isLoggedUser()) {
             result.setSerializationView(LoggedView.class);

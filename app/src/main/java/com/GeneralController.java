@@ -42,13 +42,17 @@ public class GeneralController implements ErrorController{
 	protected UserComponent userComponent;
   
 	protected static Path PROJECT_FOLDER = Paths.get(System.getProperty("user.dir"), "themes-images");
-	
+
+	protected final int PAGE_SIZE = 6;
+	protected final Pageable DEFAULT_PAGE = PageRequest.of(0, PAGE_SIZE);
+	private static final String PATH = "/error";
+
 	@PostConstruct
 	public void init() throws IOException {
 		if (!Files.exists(PROJECT_FOLDER)) {
 			Files.createDirectories(PROJECT_FOLDER);
 		}
-  }
+  	}
     
   	protected void updateTabs(Model model) {
 		if (this.userComponent.isLoggedUser()) {
@@ -70,61 +74,58 @@ public class GeneralController implements ErrorController{
 	@GetMapping("/")
 	public String home(Model model,
 		@RequestParam(value="searchThemes", required=false) String searchThemes,
-		@RequestParam(value="searchQuotes", required=false) String searchQuotes,
-		@RequestParam(value="pageTheme", required=false) Integer pageThemeNum,
-		@RequestParam(value="pageQuote", required=false) Integer pageQuoteNum) {
-    
-    	if(pageThemeNum == null) pageThemeNum = 0;
-    	if(pageQuoteNum == null) pageQuoteNum = 0;
-    	if(searchThemes == null) searchThemes = "";
-    	if(searchQuotes == null) searchQuotes = "";
+		@RequestParam(value="searchQuotes", required=false) String searchQuotes) {
 
-		Pageable pageTheme = PageRequest.of(pageThemeNum, 6);
-		Pageable pageQuote = PageRequest.of(pageQuoteNum, 6);
+   			if(searchThemes == null) searchThemes = "";
+  	  		if(searchQuotes == null) searchQuotes = "";
 
-		Page<Theme> themes =  themeService.findAll(pageTheme);
-		Page<Quote> quotes = quoteService.findAll(pageQuote);
+			Page<Theme> themes =  themeService.findByPage(DEFAULT_PAGE);
+			Page<Quote> quotes = quoteService.findByPage(DEFAULT_PAGE);
 
-		model.addAttribute("quotes", quotes);
-		model.addAttribute("themes", themes);
-		model.addAttribute("searchThemes", false);
-		model.addAttribute("searchQuotes", false);
+			model.addAttribute("quotes", quotes);
+			model.addAttribute("themes", themes);
+			model.addAttribute("searchThemes", false);
+			model.addAttribute("searchQuotes", false);
 		
-		if (searchThemes == null || searchThemes.equals("")) {
+			if (searchThemes == null || searchThemes.equals("")) {
       		model.addAttribute("themes", themes);
       		model.addAttribute("searchThemes", false);
-    	} else {
-      		themes = themeService.findByName(searchThemes, pageTheme);
+    		} else {
+      		themes = themeService.findByName(searchThemes, DEFAULT_PAGE);
       		model.addAttribute("themes", themes);
       		model.addAttribute("searchThemes", true);
       		model.addAttribute("noResultsTheme", themes.isEmpty());    
-    	}
+    		}
 
-    	boolean plusButtonThemes = themeService.pageSize(pageTheme) < themes.getTotalElements(); 
-    	model.addAttribute("plusButtonThemes", plusButtonThemes);
+			//ToDo
+			boolean plusButtonThemes = PAGE_SIZE < themes.getTotalElements();
+    		//boolean plusButtonThemes = themeService.pageSize(DEFAULT_PAGE) < themes.getTotalElements(); 
+    		model.addAttribute("plusButtonThemes", plusButtonThemes);
 
-    	if (searchQuotes == null || searchQuotes.equals("")) {
-    		model.addAttribute("quotes", quotes);
-     		model.addAttribute("searchQuotes", false);
-    	} else {
-     		quotes = quoteService.findByName(searchQuotes, pageQuote);
-      		model.addAttribute("quotes", quotes);
-    		model.addAttribute("searchQuotes", true);
-      		model.addAttribute("noResultsQuotes", quotes.isEmpty());
-    	}
+    		if (searchQuotes == null || searchQuotes.equals("")) {
+    			model.addAttribute("quotes", quotes);
+     			model.addAttribute("searchQuotes", false);
+    		} else {
+     			quotes = quoteService.findByName(searchQuotes, DEFAULT_PAGE);
+      			model.addAttribute("quotes", quotes);
+    			model.addAttribute("searchQuotes", true);
+      			model.addAttribute("noResultsQuotes", quotes.isEmpty());
+    		}
 
-    	boolean plusButtonQuotes = quoteService.pageSize(pageQuote) < quotes.getTotalElements(); 
-    	model.addAttribute("plusButtonQuotes", plusButtonQuotes);
+			//ToDo
+			boolean plusButtonQuotes = PAGE_SIZE < quotes.getTotalElements();
+    		//boolean plusButtonQuotes = quoteService.pageSize(DEFAULT_PAGE) < quotes.getTotalElements(); 
+    		model.addAttribute("plusButtonQuotes", plusButtonQuotes);
 
-		model.addAttribute("searchThemeString", searchThemes);	
-		model.addAttribute("searchQuoteString", searchQuotes);	
+			model.addAttribute("searchThemeString", searchThemes);	
+			model.addAttribute("searchQuoteString", searchQuotes);	
 
-		if(this.userComponent.isLoggedUser()) {
-			this.userComponent.getLoggedUser().setActive(null);
-		}
+			if(this.userComponent.isLoggedUser()) {
+				this.userComponent.getLoggedUser().setActive(null);
+			}
 
-		model.addAttribute("atHome", true);		
-		updateTabs(model);
+			model.addAttribute("atHome", true);		
+			updateTabs(model);
     
     	model.addAttribute("deleteThemeMessage", false);
 		model.addAttribute("saveThemeMessage", false);
@@ -147,8 +148,6 @@ public class GeneralController implements ErrorController{
     	return "Home";
 	}
 
-	private static final String PATH = "/error";
-
   	@GetMapping("/error")
 	public String error(Model model) {
 		
@@ -157,10 +156,10 @@ public class GeneralController implements ErrorController{
 		return "Error";
 	}
 
-    @Override
-    public String getErrorPath() {
-        return PATH;
-    }
+  	@Override
+  	public String getErrorPath() {
+ 		return PATH;
+  	}
 
 	private class MyInteger {
 		private int value;
@@ -198,7 +197,7 @@ public class GeneralController implements ErrorController{
 
 		}
 
-		return home(model, null, null, null, null);
+		return home(model, null, null);
 	}
 	
 }

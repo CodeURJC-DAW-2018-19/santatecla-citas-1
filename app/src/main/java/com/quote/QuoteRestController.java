@@ -3,6 +3,8 @@ package com.quote;
 import java.util.Optional;
 
 import com.GeneralRestController;
+
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
@@ -27,7 +29,8 @@ public class QuoteRestController extends GeneralRestController{
 
     @GetMapping(value="/")
     public MappingJacksonValue quotes(@PageableDefault Pageable page){
-        MappingJacksonValue result = new MappingJacksonValue(this.quoteService.findAll(page));
+        page = PageRequest.of(page.getPageNumber(), PAGE_SIZE);
+        MappingJacksonValue result = new MappingJacksonValue(this.quoteService.findByPage(page));
         if (userComponent.isLoggedUser()) {
             result.setSerializationView(LoggedView.class);
         } else {
@@ -43,6 +46,7 @@ public class QuoteRestController extends GeneralRestController{
 
     @GetMapping(value="/search/{name}")
     public MappingJacksonValue searchQuotes(@PageableDefault Pageable page, @PathVariable String name){
+        page = PageRequest.of(page.getPageNumber(), PAGE_SIZE);
         MappingJacksonValue result = new MappingJacksonValue(this.quoteService.findByName(name, page));
         if (userComponent.isLoggedUser()) {
             result.setSerializationView(LoggedView.class);

@@ -20,7 +20,7 @@ public class QuotesController extends GeneralController{
 	@GetMapping("/deletedQuote")
 	public String deletedQuote(Model model) {
 
-		home(model, null, null , 0, 0);
+		home(model, null, null);
 		
 		model.addAttribute("deleteQuoteMessage", true);
 
@@ -30,7 +30,7 @@ public class QuotesController extends GeneralController{
 	@GetMapping("/savedQuote")
 	public String savedQuote(Model model) {
 
-		home(model, null, null , 0, 0);
+		home(model, null, null);
 		
 		model.addAttribute("saveQuoteMessage", true);
 
@@ -40,7 +40,7 @@ public class QuotesController extends GeneralController{
 	@GetMapping("/repeatedQuote")
 	public String repeatedQuote(Model model) {
 
-		home(model, null, null , 0, 0);
+		home(model, null, null);
 		
 		model.addAttribute("repeatQuoteMessage", true);
 
