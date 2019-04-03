@@ -17,7 +17,7 @@ export class AppComponent {
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private tabService: TabService) {}
+    protected tabService: TabService) {}
 
   logout() {
     this.loginService.logOut();

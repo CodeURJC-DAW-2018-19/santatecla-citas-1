@@ -1,15 +1,9 @@
 <body>
   <div class="search">
-    <mat-form-field
-      appearance="outline"
-      style="width:100%"
-      (keyup.enter)="search(searchName)"
-    >
+    <mat-form-field appearance="outline" style="width:100%" (keyup.enter)="search(searchName)">
       <mat-label>Buscador</mat-label>
-      <input matInput [(ngModel)]="searchName" />
-      <mat-icon matSuffix (click)="search(searchName)" style="cursor: pointer"
-        >search</mat-icon
-      >
+      <input matInput [(ngModel)]="searchName"/>
+      <mat-icon matSuffix (click)="search(searchName)" style="cursor: pointer">search</mat-icon>
     </mat-form-field>
   </div>
 
@@ -19,12 +13,8 @@
         <mat-tab label="Temas">
           <div *ngFor="let theme of themes">
             <mat-card class="card element-list">
-              <div
-                *ngIf="loginService.isLogged"
-                style="padding: 0.7rem; cursor: pointer;"
-                [routerLink]="['/theme', theme.id]"
-                (click)="tabService.addTab('theme', theme.id)"
-              >
+              <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;"
+              [routerLink]="['/theme', theme.id]" (click)="tabService.addTab('theme', theme.id)">
                 {{ theme.name }}
               </div>
               <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">
@@ -64,12 +54,8 @@
         <mat-tab label="Citas">
           <div *ngFor="let quote of quotes">
             <mat-card class="card element-list">
-              <div
-                *ngIf="loginService.isLogged"
-                style="padding: 0.7rem; cursor: pointer;"
-                [routerLink]="['/quote', quote.id]"
-                (click)="tabService.addTab('quote', quote.id)"
-              >
+              <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;"
+              [routerLink]="['/quote', quote.id]" (click)="tabService.addTab('quote', quote.id)">
                 {{ quote.quote }}
               </div>
               <div *ngIf="!loginService.isLogged" style="padding: 0.7rem">
@@ -100,9 +86,8 @@
             </button>
 
             <button mat-mini-fab color="primary" style="margin-left: 1rem" *ngIf="loginService.isAdmin">
-              <mat-icon (click)="newQuote()" >add</mat-icon>
+              <mat-icon (click)="newQuote()">add</mat-icon>
             </button>
-
           </div>
 
         </mat-tab>

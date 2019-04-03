@@ -47,8 +47,8 @@ export class ElementListComponent implements OnInit {
     private router: Router,
     private themeService: ThemeService,
     private quoteService: QuoteService,
-    private loginService: LoginService,
-    private tabService: TabService) {}
+    protected loginService: LoginService,
+    protected tabService: TabService) {}
 
   ngOnInit() {
     this.resetPages();
@@ -59,8 +59,6 @@ export class ElementListComponent implements OnInit {
     this.getThemesSize();
     this.pageSize = 6;
     this.loadMoreQuotes = true;
-    //console.log(this.quotesSize);
-    //console.log(this.pageSize)
   }
 
   resetPages() {
@@ -85,12 +83,12 @@ export class ElementListComponent implements OnInit {
   search(name: string) {
     this.resetPages();
     if (name !== '') {
-    this.themeService.searchTheme(name)
-      .subscribe((data: Theme[]) => this.themes = data['content']
-    );
-    this.quoteService.searchQuote(name)
-      .subscribe((data: Quote[]) => this.quotes = data['content']
-    );
+      this.themeService.searchTheme(name).subscribe((data: Theme[]) => {
+        this.themes = data['content'];
+      });
+      this.quoteService.searchQuote(name).subscribe((data: Quote[]) => {
+        this.quotes = data['content'];
+      });
     } else {
       this.showAllThemesAndQuotes();
     }
@@ -131,14 +129,12 @@ export class ElementListComponent implements OnInit {
   }
 
   showAllThemesAndQuotes() {
-    this.themeService.getThemes()
-      .subscribe((data: Theme[]) => {
-      this.themes = data['content'];}
-    );
-    this.quoteService.getQuotes()
-      .subscribe((data: Quote[]) => this.quotes = data['content']
-    );
-
+    this.themeService.getThemes().subscribe((data: Theme[]) => {
+      this.themes = data['content'];
+    });
+    this.quoteService.getQuotes().subscribe((data: Quote[]) => {
+      this.quotes = data['content'];
+    });
     this.getRemainingQuotes();
     this.getRemainingThemes();
   }
@@ -147,7 +143,6 @@ export class ElementListComponent implements OnInit {
     this.themeService.getThemes()
       .subscribe((data: Theme[]) => { this.themes = data['content']; }
     );
-
     this.getRemainingQuotes();
   }
 
@@ -155,7 +150,6 @@ export class ElementListComponent implements OnInit {
     this.quoteService.getQuotes()
       .subscribe((data: Quote[]) => this.quotes = data['content']
     );
-
     this.getRemainingThemes();
   }
 
@@ -168,21 +162,17 @@ export class ElementListComponent implements OnInit {
   }
 
   getThemesSize() {
-    this.themeService.getSize()
-      .subscribe((data: number) => {
-        this.themesSize = data;
-        this.getRemainingThemes();
-      }
-    );
+    this.themeService.getSize().subscribe((data: number) => {
+      this.themesSize = data;
+      this.getRemainingThemes();
+    });
   }
 
   getQuotesSize() {
-    this.quoteService.getSize()
-      .subscribe((data: number) => {
-        this.quotesSize = data;
-        this.getRemainingQuotes();
-      }
-    );
+    this.quoteService.getSize().subscribe((data: number) => {
+      this.quotesSize = data;
+      this.getRemainingQuotes();
+    });
   }
 
   getRemainingQuotes() {
@@ -198,3 +188,4 @@ export class ElementListComponent implements OnInit {
   }
 
 }
+

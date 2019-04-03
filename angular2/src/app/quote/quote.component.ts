@@ -26,7 +26,7 @@ export class QuoteComponent implements OnInit {
     private quoteService: QuoteService,
     private _dialogService: TdDialogService,
     private activatedRoute: ActivatedRoute,
-    private loginService: LoginService) {}
+    protected loginService: LoginService) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
