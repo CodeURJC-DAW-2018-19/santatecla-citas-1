@@ -7,9 +7,17 @@
     </mat-form-field>
   </div>
 
+  <button *ngIf="color" mat-icon-button (click)="changeColor()" class="colorButton">
+    <mat-icon>format_paint</mat-icon>
+  </button>
+
+  <button *ngIf="!color" mat-mini-fab color="primary" (click)="changeColor()" class="colorButton">
+    <mat-icon>format_paint</mat-icon>
+  </button>
+
   <div>
     <mat-card class="card" style="margin-top: -1rem">
-      <mat-tab-group dynamicHeight>
+      <mat-tab-group dynamicHeight [backgroundColor]="background">
         <mat-tab label="Temas">
           <div *ngFor="let theme of themes">
             <mat-card class="card element-list">
@@ -32,18 +40,19 @@
           <mat-progress-bar *ngIf="spinner" mode="indeterminate"></mat-progress-bar>
 
           <div style="margin-top: 2rem; text-align: center" class="loadMoreButtons">
+            <div class="load">
+              <button *ngIf="loadMoreThemes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingThemes" matBadgeColor="accent" title="Cargar más">
+                <mat-icon matSuffix (click)="showThemesByPage(pageThemes + 1)">
+                  keyboard_arrow_down
+                </mat-icon>
+              </button>
 
-            <button *ngIf="loadMoreThemes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingThemes" matBadgeColor="accent" title="Cargar más">
-              <mat-icon matSuffix (click)="showThemesByPage(pageThemes + 1)">
-                keyboard_arrow_down
-              </mat-icon>
-            </button>
-
-            <button *ngIf="pageThemes !== 0" mat-mini-fab color="accent" title="Cargar menos">
-              <mat-icon matSuffix (click)="loadLessThemes()">
-                keyboard_arrow_up
-              </mat-icon>
-            </button>
+              <button *ngIf="pageThemes !== 0" mat-mini-fab color="accent" title="Cargar menos">
+                <mat-icon matSuffix (click)="loadLessThemes()">
+                  keyboard_arrow_up
+                </mat-icon>
+              </button>
+            </div>
 
             <button class="right-button" mat-mini-fab color="primary" style="margin-left: 1rem" *ngIf="loginService.isAdmin" title="Añadir tema">
               <mat-icon (click)="newTheme()">add</mat-icon>
@@ -74,18 +83,19 @@
           <mat-progress-bar *ngIf="spinner" mode="indeterminate"></mat-progress-bar>
 
           <div style="margin-top: 2rem; text-align: center" class="loadMoreButtons">
+            <div class="load">
+              <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingQuotes" matBadgeColor="accent" title="Cargar más">
+                <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">
+                  keyboard_arrow_down
+                </mat-icon>
+              </button>
 
-            <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingQuotes" matBadgeColor="accent" title="Cargar más">
-              <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">
-                keyboard_arrow_down
-              </mat-icon>
-            </button>
-
-            <button *ngIf="pageQuotes !== 0" mat-mini-fab color="accent" title="Cargar menos">
-              <mat-icon matSuffix (click)="loadLessQuotes()">
-                keyboard_arrow_up
-              </mat-icon>
-            </button>
+              <button *ngIf="pageQuotes !== 0" mat-mini-fab color="accent" title="Cargar menos">
+                <mat-icon matSuffix (click)="loadLessQuotes()">
+                  keyboard_arrow_up
+                </mat-icon>
+              </button>
+            </div>
 
             <button mat-mini-fab color="primary" class="right-button" style="margin-left: 1rem" *ngIf="loginService.isAdmin" title="Añadir cita">
               <mat-icon (click)="newQuote()">add</mat-icon>

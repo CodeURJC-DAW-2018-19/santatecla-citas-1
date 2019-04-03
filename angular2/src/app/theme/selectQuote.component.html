@@ -28,17 +28,21 @@
           <mat-progress-bar *ngIf="spinner" mode="indeterminate"></mat-progress-bar>
 
           <div style="margin-top: 2rem; text-align: center" class="loadMoreButtons">
-            <button mat-raised-button class="button" color="accent" (click)="cancel()">Cancelar</button>
-            <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingQuotes"  matBadgeColor="accent" title="Cargar más">
-              <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">
-                keyboard_arrow_down
-              </mat-icon>
-            </button>
-            <button *ngIf="pageQuotes !== 0" mat-mini-fab color="primary" title="Cargar menos">
-              <mat-icon matSuffix (click)="loadLessQuotes()">
-                keyboard_arrow_up
-              </mat-icon>
-            </button>
+            <div class="load">
+              <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingQuotes"  matBadgeColor="accent" title="Cargar más">
+                <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">
+                  keyboard_arrow_down
+                </mat-icon>
+              </button>
+              <button *ngIf="pageQuotes !== 0" mat-mini-fab color="accent" title="Cargar menos">
+                <mat-icon matSuffix (click)="loadLessQuotes()">
+                  keyboard_arrow_up
+                </mat-icon>
+              </button>
+            </div>
+
+            <button mat-raised-button class="right-button" color="accent" (click)="cancel()">Cancelar</button>
+
           </div>
 
         </mat-tab>
