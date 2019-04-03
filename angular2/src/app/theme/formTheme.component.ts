@@ -10,42 +10,40 @@ import { Router, ActivatedRoute } from '@angular/router';
   ]
 })
 
-export class FormThemeComponent {
+export class FormThemeComponent implements OnInit{
 
   newTheme: boolean;
   theme: Theme;
 
-    constructor(
-      private _router: Router,
-      activatedRoute: ActivatedRoute,
-      private service: ThemeService) {
-        const id = activatedRoute.snapshot.params['id'];
-        if (id) {
-          this.service.getTheme(id)
-          .subscribe((data: Theme) => this.theme = {
-            id: data['id'],
-            name: data['name'],
-            quotes: data['quotes'],
-            texts: data['texts']
-          }
-        );
-          this.newTheme = false;
-        } else {
-          this.theme = { name: '', quotes: [], texts: []};
-          this.newTheme = true;
-        }
-    }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: ThemeService) {}
 
-    cancel() {
-        window.history.back();
+  ngOnInit(): void {
+    const id = this.activatedRoute.snapshot.params['id'];
+    if (id) {
+      this.service.getTheme(id)
+      .subscribe((data: Theme) => this.theme = {
+        id: data['id'],
+        name: data['name'],
+        quotes: data['quotes'],
+        texts: data['texts']
+      }
+    );
+      this.newTheme = false;
+    } else {
+      this.theme = { name: '', quotes: [], texts: []};
+      this.newTheme = true;
     }
+  }
 
-    save() {
-        this.service.saveTheme(this.theme).subscribe(
-            _ => {},
-            (error: Error) => console.error('Error creating new theme: ' + error),
-        );
-        window.history.back();
-    }
+  cancel() {
+    window.history.back();
+  }
+
+  save() {
+    this.service.saveTheme(this.theme).subscribe(
+      _ => { this.router.navigate(['/']); },
+      (error: Error) => console.error('Error creating new theme: ' + error),
+    );
+  }
 
 }

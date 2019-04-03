@@ -10,43 +10,41 @@ import { Router, ActivatedRoute } from '@angular/router';
   ]
 })
 
-export class FormQuoteComponent {
+export class FormQuoteComponent implements OnInit {
 
   newQuote: boolean;
   quote: Quote;
 
-    constructor(
-      private _router: Router,
-      activatedRoute: ActivatedRoute,
-      private service: QuoteService) {
-        const id = activatedRoute.snapshot.params['id'];
-        if (id) {
-          this.service.getQuote(id)
-          .subscribe((data: Quote) => this.quote = {
-            id: data['id'],
-            quote: data['quote'],
-            author: data['author'],
-            book: data['book']
-          }
-        );
-          this.newQuote = false;
-        } else {
-          this.quote = { quote: '', author: '', book: ''};
-          this.newQuote = true;
-        }
-    }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: QuoteService) {}
 
-    cancel() {
-        window.history.back();
+  ngOnInit(): void {
+    const id = this.activatedRoute.snapshot.params['id'];
+    if (id) {
+      this.service.getQuote(id)
+      .subscribe((data: Quote) => this.quote = {
+        id: data['id'],
+        quote: data['quote'],
+        author: data['author'],
+        book: data['book']
+      }
+    );
+      this.newQuote = false;
+    } else {
+      this.quote = { quote: '', author: '', book: ''};
+      this.newQuote = true;
     }
+  }
 
-    save() {
-        this.service.saveQuote(this.quote).subscribe(
-            _ => {},
-            (error: Error) => console.error('Error creating new theme: ' + error),
-        );
-        window.history.back();
-    }
+  cancel() {
+    window.history.back();
+  }
+
+  save() {
+    this.service.saveQuote(this.quote).subscribe(
+      _ => { this.router.navigate(['/']); },
+      (error: Error) => console.error('Error creating new theme: ' + error),
+    );
+  }
 
 }
 

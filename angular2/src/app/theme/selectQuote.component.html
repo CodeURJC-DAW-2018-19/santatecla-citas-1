@@ -1,15 +1,9 @@
 <body>
   <div class="search">
-    <mat-form-field
-      appearance="outline"
-      style="width:100%"
-      (keyup.enter)="search(searchName)"
-    >
+    <mat-form-field appearance="outline" style="width:100%" (keyup.enter)="search(searchName)">
       <mat-label>Buscador</mat-label>
       <input matInput [(ngModel)]="searchName" />
-      <mat-icon matSuffix (click)="search(searchName)" style="cursor: pointer"
-        >search</mat-icon
-      >
+      <mat-icon matSuffix (click)="search(searchName)" style="cursor: pointer">search</mat-icon>
     </mat-form-field>
   </div>
 
@@ -19,10 +13,7 @@
         <mat-tab label="Citas">
           <div *ngFor="let quote of quotes">
             <mat-card class="card element-list">
-              <div
-                style="padding: 0.7rem; cursor: pointer;"
-                (click)="add(quote.id)"
-              >
+              <div style="padding: 0.7rem; cursor: pointer;" (click)="add(quote.id)">
                 {{ quote.quote }}
               </div>
             </mat-card>
