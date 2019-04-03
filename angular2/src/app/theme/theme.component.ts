@@ -107,9 +107,9 @@ export class ThemeComponent implements OnInit {
   }
 
   add() {
-    if (this.labelPosition === "cita") {
+    if (this.labelPosition === 'cita') {
       this.router.navigate(['/theme/selectQuote', this.theme.id]);
-    } else if (this.labelPosition === "texto") {
+    } else if (this.labelPosition === 'texto') {
       this.router.navigate(['/theme/formText', this.theme.id]);
     }
   }

@@ -33,10 +33,7 @@ public class ThemeService {
 		return repository.findById(id);
 	}
 
-	public Page<Theme> findAll(Pageable page) {
-
-		page = PageRequest.of(0, pageSize(page));
-
+	public Page<Theme> findByPage(Pageable page) {
 		return repository.findAll(page);
 	}
 
@@ -50,11 +47,10 @@ public class ThemeService {
 
 	public List<Theme> findByName(String name) {
         return repository.findByNameContaining(name);
-  }
+  	}
 
-  public Page<Theme> findByName(String name, Pageable page) {
-
-		return repository.findByNameContaining(name, PageRequest.of(0, pageSize(page)));
+  	public Page<Theme> findByName(String name, Pageable page) {
+		return repository.findByNameContaining(name, page);
 	}
 
 	public int pageSize(Pageable page){

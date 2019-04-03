@@ -32,7 +32,7 @@ public class ThemesController extends GeneralController{
 	@GetMapping("/deletedTheme")
 	public String deletedTheme(Model model) {
 
-		home(model, null, null , 0, 0);
+		home(model, null, null);
 		
 		model.addAttribute("deleteThemeMessage", true);
 
@@ -42,7 +42,7 @@ public class ThemesController extends GeneralController{
 	@GetMapping("/savedTheme")
 	public String savedTheme(Model model) {
 
-		home(model, null, null , 0, 0);
+		home(model, null, null);
 		
 		model.addAttribute("saveThemeMessage", true);
 
@@ -52,7 +52,7 @@ public class ThemesController extends GeneralController{
 	@GetMapping("/repeatedTheme")
 	public String repeatedTheme(Model model) {
 
-		home(model, null, null , 0, 0);
+		home(model, null, null);
 	
 		model.addAttribute("repeatThemeMessage", true);
 
@@ -135,13 +135,9 @@ public class ThemesController extends GeneralController{
 	@GetMapping(value="/addQuoteToTheme/{id}")
 	public String addQuoteToTheme(
 		Model model, 
-		@PathVariable long id, 
-		@RequestParam(value="page", required=false) Integer pageNum) {
+		@PathVariable long id) {
 
-		if(pageNum == null) pageNum = 0;
-
-		Pageable page = PageRequest.of(pageNum, 6);
-		Page<Quote> quotes = quoteService.findAll(page);
+		Page<Quote> quotes = quoteService.findByPage(DEFAULT_PAGE);
 
     	model.addAttribute("quotes", quotes);
 		model.addAttribute("themeId", id);
@@ -201,13 +197,10 @@ public class ThemesController extends GeneralController{
 	@GetMapping("/addQuoteToTheme/{id}/searchQuotes")
 	public String selectQuoteSearch(Model model, 
 		@PathVariable long id, 
-		@RequestParam String name,
-		@RequestParam(value="page", required=false) Integer pageNum) {
+		@RequestParam String name) {
 
-		if(pageNum == null) pageNum = 0;
-
-		Pageable page = PageRequest.of(pageNum, 10);
-		Page<Quote> quotes = quoteService.findAll(page);
+		Pageable page = PageRequest.of(0, 10);
+		Page<Quote> quotes = quoteService.findByPage(page);
 
 		if (name.equals("")) {
 			model.addAttribute("quotes", quotes);

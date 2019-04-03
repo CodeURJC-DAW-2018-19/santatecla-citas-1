@@ -55,7 +55,7 @@ export class ElementListComponent implements OnInit {
 
   ngOnInit() {
     this.resetPages();
-    this.showAllThemesAndQuotes();
+    this.showFirstThemesAndQuotes();
 
     // Pages size and matBadge init
     this.getQuotesSize();
@@ -102,22 +102,19 @@ export class ElementListComponent implements OnInit {
         this.quotes = data['content'];
       });
     } else {
-      this.showAllThemesAndQuotes();
+      this.showFirstThemesAndQuotes();
     }
   }
 
   showQuotesByPage(page: number) {
     this.spinner = true;
     if (page !== 0) {
-      this.themeService.getThemes().subscribe((data: Theme[]) => {
-        this.themes = data['content'];
-        this.quoteService.getQuotesByPage(page).subscribe((data1: Quote[]) => {
-          this.quotes = data1['content'];
+          this.quoteService.getQuotesByPage(page).subscribe((data1: Quote[]) => {
+          this.quotes = this.quotes.concat(data1['content']);
           this.spinner = false;
-        });
       });
     } else {
-      this.showAllThemesAndQuotes();
+      this.showFirstQuotes();
     }
     this.pageQuotes++;
     this.getRemainingQuotes();
@@ -127,20 +124,17 @@ export class ElementListComponent implements OnInit {
     this.spinner = true;
     if (page !== 0) {
       this.themeService.getThemesByPage(page).subscribe((data: Theme[]) => {
-        this.themes = data['content'];
-        this.quoteService.getQuotes().subscribe((data1: Quote[]) => {
-          this.quotes = data1['content'];
-          this.spinner = false;
-        });
+        this.themes = this.themes.concat(data['content']);
+        this.spinner = false;
       });
     } else {
-      this.showAllThemesAndQuotes();
+      this.showFirstThemes();
     }
     this.pageThemes++;
     this.getRemainingThemes();
   }
 
-  showAllThemesAndQuotes() {
+  showFirstThemesAndQuotes() {
     this.themeService.getThemes().subscribe((data: Theme[]) => {
       this.themes = data['content'];
     });

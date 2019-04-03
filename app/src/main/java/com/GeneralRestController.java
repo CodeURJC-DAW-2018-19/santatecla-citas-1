@@ -8,6 +8,8 @@ import com.user.UserComponent;
 import com.user.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,9 @@ public class GeneralRestController{
 
     protected interface Visitor {}
     protected interface Logged {}
+
+    protected final int PAGE_SIZE = 6;
+	protected final Pageable DEFAULT_PAGE = PageRequest.of(0, PAGE_SIZE);
     
     @Autowired
     protected QuoteService quoteService;

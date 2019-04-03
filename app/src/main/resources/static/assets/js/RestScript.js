@@ -1,3 +1,5 @@
+var pageSise = 6;
+
 function loadThemes(id){
     $(document).ready(function(){
         var p = document.getElementById(id).value;
@@ -6,7 +8,7 @@ function loadThemes(id){
         $('#spinnerThemes').html("<img style='height: 5rem' style src='/assets/img/spinner.gif'/>");
 
         $.ajax({
-            url:"/api/themes/?page="+p,
+            url:"/api/themes/?page=" + p,
             dataType: 'json'
         }).done(function(data) {
 
@@ -14,32 +16,32 @@ function loadThemes(id){
 
             $('#lThemes').html("<i class='material-icons'>more_horiz</i>");
 
-            var suma = parseInt(p) + parseInt(1);
-            document.getElementById(id).value= suma ; 
+            var suma = parseInt(p) + 1;
+            document.getElementById(id).value = suma;
 
-            var j1 = 0;
-
-            for(var i=(p*6); i<data.content.length; i++){
-                j1++;
+            for(var i = 0; i < data.content.length; i++){
                 if(admin.textContent == 1){
                     $("#home-themes").append(
-                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/theme/"+data.content[i].id+"\" class=\"card-title\">"+data.content[i].name+"</a>"+
-                        "<a title=\"Borrar\" id=\"delete\"onclick=\"confirmAlert('¿Está seguro de que quiere borrar este tema?','/theme/deleteTheme/"+data.content[i].id+"')\""+
-                        "class=\"btn btn-primary btn-sm active pull-right\" role=\"button\" aria-pressed=\"true\"><i class=\"material-icons\">delete_outline</i></a>"+
+                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/theme/" +
+                        data.content[i].id +
+                        "\" class=\"card-title\">" + data.content[i].name + "</a>"+
+                        "<a title=\"Borrar\" id=\"delete\"onclick=\"confirmAlert('¿Está seguro de que quiere borrar este tema?','/theme/deleteTheme/" + 
+                        data.content[i].id + "')\"" +
+                        "class=\"btn btn-primary btn-sm active pull-right\" role=\"button\" aria-pressed=\"true\"><i class=\"material-icons\">delete_outline</i></a>" +
                         "</div></div></div>");
                 }else if(admin.textContent == 2){
                     $("#home-themes").append(
-                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\">"+data.content[i].name+
+                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\">" + data.content[i].name +
                         "</div></div></div>");
                 }else{
                     $("#home-themes").append(
-                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/theme/"+data.content[i].id+
-                        "\" class=\"card-title\">"+data.content[i].name+"</a>"+
+                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/theme/" + data.content[i].id+ 
+                        "\" class=\"card-title\">" + data.content[i].name + "</a>"+
                         "</div></div></div>");
                 }
             }
 
-            if( j1 < 6 ){
+            if( i < pageSise ){
                 document.getElementById(id).disabled = true;
                 document.getElementById(id).style.display = 'none';
             }
@@ -56,7 +58,7 @@ function loadQuotes(id){
         $('#spinnerQuotes').html("<img style='height: 5rem' src='/assets/img/spinner.gif'/>");
 
         $.ajax({
-            url:"/api/quotes/?page="+p,
+            url:"/api/quotes/?page=" + p,
             dataType: 'json'
         }).done(function(data) {
 
@@ -64,32 +66,32 @@ function loadQuotes(id){
 
             $('#lQuotes').html("<i class='material-icons'>more_horiz</i>");
 
-            var suma = parseInt(p) + parseInt(1);
-            document.getElementById(id).value= suma ; 
+            var suma = parseInt(p) + 1;
+            document.getElementById(id).value = suma ; 
 
-            var j2 = 0;
-
-            for(var i=(p*6); i<data.content.length; i++){
-                j2++;
+            for(var i = 0; i < data.content.length; i++){
                 if(admin.textContent == 1){
                     $("#home-quotes").append(
-                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/quote/"+data.content[i].id+"\" class=\"card-title\">"+data.content[i].name+"</a>"+
-                        "<a title=\"Borrar\" id=\"delete\"onclick=\"confirmAlert('¿Está seguro de que quiere borrar esta cita?','/quote/deleteQuote/"+data.content[i].id+"')\""+
-                        "class=\"btn btn-primary btn-sm active pull-right\" role=\"button\" aria-pressed=\"true\"><i class=\"material-icons\">delete_outline</i></a>"+
+                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/quote/" + 
+                        data.content[i].id + "\" class=\"card-title\">" + data.content[i].quote + "</a>" +
+                        "<a title=\"Borrar\" id=\"delete\"onclick=\"confirmAlert('¿Está seguro de que quiere borrar esta cita?','/quote/deleteQuote/" + 
+                        data.content[i].id + "')\""
+                        + "class=\"btn btn-primary btn-sm active pull-right\" role=\"button\" aria-pressed=\"true\"><i class=\"material-icons\">delete_outline</i></a>"+
                         "</div></div></div>");
                 }else if(admin.textContent == 2){
                     $("#home-quotes").append(
-                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\">"+data.content[i].name+
+                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\">" + 
+                        data.content[i].quote +
                         "</div></div></div>");
                 }else{
                     $("#home-quotes").append(
-                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/quote/"+data.content[i].id+
-                        "\" class=\"card-title\">"+data.content[i].name+"</a>"+
+                        "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/quote/" + data.content[i].id +
+                        "\" class=\"card-title\">" + data.content[i].quote + "</a>"+
                         "</div></div></div>");
                 }
             }
 
-            if( j2 < 6 ){
+            if( i < pageSise ){
                 document.getElementById(id).disabled = true;
                 document.getElementById(id).style.display = 'none';
             }
@@ -107,7 +109,7 @@ function loadSelectQuotes(id){
         $('#spinnerSelectQuotes').html("<img style='height: 5rem' src='/assets/img/spinner.gif'/>");
 
         $.ajax({
-            url:"/api/quotes/?page="+p,
+            url:"/api/quotes/?page=" + p,
             dataType: 'json'
         }).done(function(data) {
 
@@ -115,19 +117,18 @@ function loadSelectQuotes(id){
 
             $('#lSelectQuotes').html("<i class='material-icons'>more_horiz</i>");
 
-            var suma = parseInt(p) + parseInt(1);
-            document.getElementById(id).value= suma ; 
+            var suma = parseInt(p) + 1;
+            document.getElementById(id).value = suma ; 
             
-            var j3 = 0;
-
-            for(var i=(p*6); i<data.content.length; i++){
-                j3++;
+            for(var i = 0; i < data.content.length; i++){
                 $("#select-quotes").append(
-                    "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\"><a href=\"/theme/addQuoteToTheme/"+ti.textContent+"/selectQuote/"+(i+1)+"\" class=\"card-title\">"
-                    +data.content[i].name+"</a>"+"</div></div></div>");
+                    "<div class=\"col-md-6\"><div class=\"card\"><div class=\"card-body\">" + 
+                    "<a href=\"/theme/addQuoteToTheme/" + ti.textContent + 
+                    "/selectQuote/" + data.content[i].id + "\" class=\"card-title\">" +
+                    data.content[i].quote + "</a>"+"</div></div></div>");
             }
 
-            if( j3 < 6 ){
+            if( i < 6 ){
                 document.getElementById(id).disabled = true;
                 document.getElementById(id).style.display = 'none';
             }
