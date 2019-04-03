@@ -52,14 +52,6 @@ public class ThemeService {
   	public Page<Theme> findByName(String name, Pageable page) {
 		return repository.findByNameContaining(name, page);
 	}
-
-	public int pageSize(Pageable page){
-		return pageSize + pageSize*page.getPageNumber();
-	}
-
-	public int getPageNumber(Page<Theme> page){
-		return (page.getSize() - pageSize)/pageSize;
-	}
 	 
 	public List<Theme> findAll() {
         return repository.findAll();

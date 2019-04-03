@@ -48,18 +48,10 @@ public class QuoteService {
 	}
 
 	public Page<Quote> findByName(String name, Pageable page) {
-		return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name, PageRequest.of(0, pageSize(page)));
+		return repository.findDistinctByQuoteContainingOrAuthorContainingOrBookContaining(name, name, name, page);
 	}
 
 	public int findSize(){
 		return repository.findAll().size();
-	}
-
-	public int pageSize(Pageable page){
-		return pageSize + pageSize*page.getPageNumber();
-	}
-
-	public int getPageNumber(Page<Quote> page){
-		return (page.getSize()- pageSize)/pageSize;
 	}
 }
