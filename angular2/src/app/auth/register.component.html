@@ -5,31 +5,29 @@
     <mat-card class="card" >
       <mat-tab-group dynamicHeight>
         <mat-tab label="Registro">
-          <div class="example-large-box mat-elevation-z4">
-              <form #userForm="ngForm">
-                  <mat-card class="card">
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Nombre" [(ngModel)]="user.name" #userFormElement
-                      #userFormControl="ngModel"
-                      name="name"
-                      required>
-                    </mat-form-field>
-                  </mat-card>
-                  <mat-card class="card">
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Contraseña" [(ngModel)]="user.authdata" #userFormElement
-                      #userFormControl="ngModel"
-                      name="password"
-                      required>
-                    </mat-form-field>
-                  </mat-card>
-              </form>
-              <div  layout="row" layout-align="end center" class="enterLoginBotton">
-                <button mat-raised-button color="primary" class="button" (click)="save()"  [disabled]="userForm === undefined || (userForm && !userForm.valid)">
-                  Registrar <mat-icon>assignment</mat-icon>
-                </button>
-                <button mat-raised-button class="button" color="accent" (click)="cancel()">Cancelar</button>
-              </div>
+          <form #userForm="ngForm">
+              <mat-card class="card" style="text-align: center">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Nombre" [(ngModel)]="user.name" #userFormElement
+                  #userFormControl="ngModel"
+                  name="name"
+                  required>
+                </mat-form-field>
+              </mat-card>
+              <mat-card class="card" style="text-align: center">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Contraseña" [(ngModel)]="user.authdata" #userFormElement
+                  #userFormControl="ngModel"
+                  name="password"
+                  required>
+                </mat-form-field>
+              </mat-card>
+          </form>
+          <div  layout="row" style="text-align: center" class="enterLoginBotton">
+            <button mat-raised-button color="primary" class="button" (click)="save()"  [disabled]="userForm === undefined || (userForm && !userForm.valid)">
+              Registrar <mat-icon>assignment</mat-icon>
+            </button>
+            <button mat-raised-button class="button" color="accent" (click)="cancel()">Cancelar</button>
           </div>
         </mat-tab>
       </mat-tab-group>
