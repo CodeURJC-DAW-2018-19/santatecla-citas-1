@@ -23,8 +23,4 @@ export class AppComponent {
     this.loginService.logOut();
   }
 
-  register() {
-    this.router.navigate(['/register']);
-  }
-
 }

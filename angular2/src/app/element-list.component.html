@@ -31,20 +31,21 @@
 
           <mat-progress-bar *ngIf="spinner" mode="indeterminate"></mat-progress-bar>
 
-          <div style="margin-top: 2rem; text-align: center">
+          <div style="margin-top: 2rem; text-align: center" class="loadMoreButtons">
+
             <button *ngIf="loadMoreThemes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingThemes" matBadgeColor="accent">
               <mat-icon matSuffix (click)="showThemesByPage(pageThemes + 1)">
                 more_horiz
               </mat-icon>
             </button>
 
-            <button *ngIf="pageThemes !== 0" mat-mini-fab color="primary">
+            <button *ngIf="pageThemes !== 0" mat-mini-fab color="accent">
               <mat-icon matSuffix (click)="loadLessThemes()">
                 keyboard_capslock
               </mat-icon>
             </button>
 
-            <button mat-mini-fab color="primary" style="margin-left: 1rem" *ngIf="loginService.isAdmin">
+            <button class="right-button" mat-mini-fab color="primary" style="margin-left: 1rem" *ngIf="loginService.isAdmin">
               <mat-icon (click)="newTheme()">add</mat-icon>
             </button>
           </div>
@@ -72,20 +73,21 @@
 
           <mat-progress-bar *ngIf="spinner" mode="indeterminate"></mat-progress-bar>
 
-          <div style="margin-top: 2rem; text-align: center">
+          <div style="margin-top: 2rem; text-align: center" class="loadMoreButtons">
+
             <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingQuotes" matBadgeColor="accent">
               <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">
                 more_horiz
               </mat-icon>
             </button>
 
-            <button *ngIf="pageQuotes !== 0" mat-mini-fab color="primary">
+            <button *ngIf="pageQuotes !== 0" mat-mini-fab color="accent">
               <mat-icon matSuffix (click)="loadLessQuotes()">
                 keyboard_capslock
               </mat-icon>
             </button>
 
-            <button mat-mini-fab color="primary" style="margin-left: 1rem" *ngIf="loginService.isAdmin">
+            <button mat-mini-fab color="primary" class="right-button" style="margin-left: 1rem" *ngIf="loginService.isAdmin">
               <mat-icon (click)="newQuote()">add</mat-icon>
             </button>
           </div>
