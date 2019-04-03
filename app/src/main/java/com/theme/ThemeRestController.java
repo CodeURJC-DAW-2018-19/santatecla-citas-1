@@ -146,9 +146,10 @@ public class ThemeRestController extends GeneralRestController {
     }
 
     @PostMapping(value="/{id}/text")
-    public ResponseEntity<Theme> addTextToTheme(@RequestBody Text text, @PathVariable long id){
+    public ResponseEntity<Theme> addTextToTheme(@RequestParam("text") String txt, @PathVariable long id){
         Optional<Theme> t =this.themeService.findOne(id);
         if(t.isPresent()){
+            Text text = new Text(txt);
             t.get().getTexts().add(text);
             this.themeService.save(t.get());
             return new ResponseEntity<>(t.get(), HttpStatus.OK);
