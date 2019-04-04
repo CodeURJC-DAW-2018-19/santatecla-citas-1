@@ -1,0 +1,17 @@
+{
+  "id": "914779af-a904-4f40-9904-f8e114961039",
+  "version": "2.0",
+  "name": "DAW Selenium",
+  "url": "https://localhost:8080",
+  "tests": [],
+  "suites": [{
+    "id": "8e882b94-16cf-41f6-ad6e-0ec16c4e97f8",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://localhost:8080/"],
+  "plugins": []
+}
