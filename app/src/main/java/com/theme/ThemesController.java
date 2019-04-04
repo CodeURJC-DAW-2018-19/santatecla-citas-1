@@ -141,8 +141,6 @@ public class ThemesController extends GeneralController{
 
     	model.addAttribute("quotes", quotes);
 		model.addAttribute("themeId", id);
-		//model.addAttribute("showNextQuotesToSelect", !quotes.isLast());
-		//model.addAttribute("nextPageSelectQuote", quoteService.getPageNumber(quotes) +1);
 		model.addAttribute("search", "");
     	updateTabs(model);
 
@@ -215,8 +213,6 @@ public class ThemesController extends GeneralController{
 		model.addAttribute("search", name);
 		model.addAttribute("themeId", id);
 		model.addAttribute("search", name);
-		model.addAttribute("showNextQuotesToSelect", !quotes.isLast());
-		model.addAttribute("nextPageSelectQuote", quoteService.getPageNumber(quotes) +1); 
 
 		updateTabs(model);
 

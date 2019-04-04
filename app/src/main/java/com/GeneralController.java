@@ -99,7 +99,6 @@ public class GeneralController implements ErrorController{
 
 			//ToDo
 			boolean plusButtonThemes = PAGE_SIZE < themes.getTotalElements();
-    		//boolean plusButtonThemes = themeService.pageSize(DEFAULT_PAGE) < themes.getTotalElements(); 
     		model.addAttribute("plusButtonThemes", plusButtonThemes);
 
     		if (searchQuotes == null || searchQuotes.equals("")) {
@@ -114,7 +113,6 @@ public class GeneralController implements ErrorController{
 
 			//ToDo
 			boolean plusButtonQuotes = PAGE_SIZE < quotes.getTotalElements();
-    		//boolean plusButtonQuotes = quoteService.pageSize(DEFAULT_PAGE) < quotes.getTotalElements(); 
     		model.addAttribute("plusButtonQuotes", plusButtonQuotes);
 
 			model.addAttribute("searchThemeString", searchThemes);	
@@ -134,16 +132,9 @@ public class GeneralController implements ErrorController{
 		model.addAttribute("repeatThemeMessage", false);
     	model.addAttribute("repeatQuoteMessage", false);
 
-		//int prevPageThemes = (themeService.getPageNumber(themes)>0)?(themeService.getPageNumber(themes)-1):0;
-		//int prevPageQuotes = (quoteService.getPageNumber(quotes)>0)?(quoteService.getPageNumber(quotes)-1):0;
-
 		model.addAttribute("showNextThemes", !themes.isLast());
-		model.addAttribute("nextPageThemes", themeService.getPageNumber(themes) +1);
-		model.addAttribute("numPageThemes", themeService.getPageNumber(themes));
 
 		model.addAttribute("showNextQuotes", !quotes.isLast());
-		model.addAttribute("nextPageQuotes", quoteService.getPageNumber(quotes) +1);
-		model.addAttribute("numPageQuotes", quoteService.getPageNumber(quotes));
     
     	return "Home";
 	}

@@ -48,8 +48,6 @@
               <input class="form-control mr-sm-2" type="text" name='searchThemes' placeholder="Buscar un tema"
                 aria-label="Search">
               <input name='searchQuotes' value="{{searchQuoteString}}" hidden>
-              <input name='pageTheme' value="0" hidden>
-              <input name='pageQuote' value="{{numPageQuotes}}" hidden>
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                 Buscar <i class="material-icons">pageview</i>
               </button>
@@ -117,14 +115,6 @@
           </div>
           {{/plusButtonThemes}}
 
-          <!--{{#showNextThemes}}
-          <a title="Cargar más"
-            href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{nextPageThemes}}&pageQuote={{numPageQuotes}}"
-            class="btn btn-info btn-round BCenter">
-            <i class="material-icons">more_horiz</i>
-          </a>
-          {{/showNextThemes}}-->
-
           {{#admin}}
           <a href="/theme/addTheme" type="button" class="btn btn-primary btn-lg btn-block">
             Añadir Tema <i class="material-icons">add_circle</i>
@@ -149,8 +139,6 @@
               <input name='searchThemes' value="{{searchThemeString}}" hidden>
               <input class="form-control mr-sm-2" type="search" name='searchQuotes' placeholder="Buscar una cita"
                 aria-label="Search">
-              <input name='pageTheme' value="{{numPageThemes}}" hidden>
-              <input name='pageQuote' value="0" hidden>
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                 Buscar <i class="material-icons">pageview</i>
               </button>
@@ -217,14 +205,6 @@
             </button>
           </div>
           {{/plusButtonQuotes}}
-
-          <!--{{#showNextQuotes}}
-          <a title="Cargar más"
-            href="/?searchThemes={{searchThemeString}}&searchQuotes={{searchQuoteString}}&pageTheme={{numPageThemes}}&pageQuote={{nextPageQuotes}}"
-            class="btn btn-info btn-round BCenter">
-            <i class="material-icons">more_horiz</i>
-          </a>
-          {{/showNextQuotes}}-->
 
           {{#admin}}
           <a href="/quote/addQuote" type="button" class="btn btn-primary btn-lg btn-block">
