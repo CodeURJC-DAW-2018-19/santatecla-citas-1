@@ -20,7 +20,7 @@
       <mat-tab-group dynamicHeight [backgroundColor]="background">
         <mat-tab label="Temas" style="position: fixed">
           <!--<div style="height: 30rem; overflow-y: scroll">-->
-            <div *ngFor="let theme of themes">
+            <div *ngFor="let theme of themes" ng-model="themes-list">
               <mat-card class="card element-list">
                 <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;"
                 [routerLink]="['/theme', theme.id]" (click)="tabService.addTab('theme', theme.id)">

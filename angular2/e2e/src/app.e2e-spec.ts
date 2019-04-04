@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, logging, element, by } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -10,6 +10,12 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
+    expect(page.getTitleText()).toEqual('Welcome to angular2!');
+  });
+
+  it('should login succesfully', () => {
+    browser.get('http://localhost:4200/new');
+    let themes = element(by.model('themes-list'));
     expect(page.getTitleText()).toEqual('Welcome to angular2!');
   });
 
