@@ -9,13 +9,13 @@
             <div class="example-large-box mat-elevation-z4" style="text-align: center">
               <mat-form-field class="example-full-width" style="width: 30%">
                 <input matInput placeholder="Tema" [(ngModel)]="theme.name" #themeFormElement
-                  #themeFormControl="ngModel" name="name" required>
+                  #themeFormControl="ngModel" name="name" required id="theme-name">
               </mat-form-field>
             </div>
           </form>
 
           <div  layout="row" style="text-align: center" class="enterLoginBotton">
-            <button mat-raised-button class="button" color="primary" (click)="save()" [disabled]="themeForm === undefined || (themeForm && !themeForm.valid)">
+            <button mat-raised-button class="button" color="primary" (click)="save()" [disabled]="themeForm === undefined || (themeForm && !themeForm.valid)" id="save-theme-button">
               Guardar <mat-icon>save</mat-icon>
             </button>
             <button mat-raised-button class="button" color="accent" (click)="cancel()">Cancelar</button>

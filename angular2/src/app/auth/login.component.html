@@ -1,6 +1,6 @@
 <div>
   <div *ngIf="!loginService.isLogged">
-    <button mat-mini-fab color="primary" (click)="openLoginDialog()" title="LogIn">
+    <button mat-mini-fab color="primary" (click)="openLoginDialog()" title="LogIn" id="log-in-button">
       <mat-icon>person</mat-icon>
     </button>
     <button mat-mini-fab color="accent" (click)="register()" style="margin-right: 1rem; margin-left: 1rem;" title="Registrarse">
@@ -9,10 +9,10 @@
   </div>
 
   <div *ngIf="loginService.isLogged">
-    <span style="margin-right: 1rem">
+    <span style="margin-right: 1rem" id="logged-name">
       {{loginService.user.name}}
     </span>
-    <button mat-mini-fab color="primary" (click)="logOut()">
+    <button mat-mini-fab color="primary" (click)="logOut()" id="log-out-button">
       <mat-icon>exit_to_app</mat-icon>
     </button>
   </div>
@@ -33,7 +33,7 @@
       <div layout="row">
         <mat-form-field flex>
           <input matInput #userElement #userControl="ngModel" placeholder="Usuario" type="text"
-            maxlength="30" name="username" [(ngModel)]="username" required>
+            maxlength="30" name="username" [(ngModel)]="username" required id="username">
           <span matPrefix>
             <mat-icon>person</mat-icon>
           </span>
@@ -48,7 +48,7 @@
       <div layout="row">
         <mat-form-field flex>
           <input matInput #passElement #passControl="ngModel" placeholder="Contraseña" type="password"
-            name="password" [(ngModel)]="password" required>
+            name="password" [(ngModel)]="password" required id="password">
           <span matPrefix>
             <mat-icon>lock</mat-icon>
           </span>
@@ -63,7 +63,7 @@
   </mat-dialog-content>
 
   <div style="margin-top: 2rem; text-align: center;">
-    <button type="button" mat-button color="accent" class="text-upper" (click)="logIn($event, userElement.value, passElement.value)">Login</button>
+    <button type="button" mat-button color="accent" class="text-upper" (click)="logIn($event, userElement.value, passElement.value)" id="send-login-button">Login</button>
   </div>
 
 </div>
