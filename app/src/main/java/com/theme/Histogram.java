@@ -8,6 +8,7 @@ public class Histogram {
     private class HistogramNode {
 
         public String name;
+        public int numQuotes;
         public Serie[] series = new Serie[1];
 
         private class Serie {
@@ -22,6 +23,7 @@ public class Histogram {
 
         public HistogramNode(String theme, int n) {
             this.name = theme;
+            this.numQuotes = n;
             this.series[0] = new Serie(n);
         }
         
