@@ -33,10 +33,10 @@ export class SelectQuoteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.resetPages();
     this.quoteService.getQuotes()
       .subscribe((data: Quote[]) => this.quotes = data['content']
     );
-    this.resetPages();
     this.getQuotesSize();
     this.pageSize = 6;
     this.loadMoreQuotes = true;
@@ -78,8 +78,8 @@ export class SelectQuoteComponent implements OnInit {
   showQuotesByPage(page: number) {
     this.spinner = true;
     if (page !== 0) {
-      this.quoteService.getQuotesByPage(page).subscribe((data: Quote[]) => {
-        this.quotes = data['content']
+        this.quoteService.getQuotesByPage(page).subscribe((data: Quote[]) => {
+        this.quotes = this.quotes.concat(data['content']);
         this.spinner = false;
       });
     } else {

@@ -22,7 +22,7 @@
 }
 
 .upperBar {
-  background-color: mediumslateblue;
+  background-color: #9ab1fa;
   padding: 0.5rem;
   position: fixed;
   top: 0;
@@ -99,7 +99,7 @@
 }
 
 .tab {
-  background-color: mediumslateblue;
+  background-color: #657dcc;
   border-radius: 5px 5px 0 0;
   border-top: 1px solid black;
   border-left: 1px solid black;

@@ -8,22 +8,28 @@
           <mat-card class="card">
             <img [src]="image" alt="{{theme.name}}Image" class="themeImage">
             <span *ngIf="loginService.isAdmin">
-              <button mat-mini-fab color="warn" class="right-button-theme" (click)="removeTheme()">
+              <button title="Eliminar tema" mat-mini-fab color="warn" class="right-button-theme" (click)="removeTheme()">
                 <mat-icon>delete</mat-icon>
               </button>
 
-              <button *ngIf="edit" mat-mini-fab color="primary" class="right-button-theme" (click)="save()">
+              <button *ngIf="edit" title="Guardar nombre de tema" mat-mini-fab color="primary" class="right-button-theme" (click)="save()">
                 <mat-icon>border_color</mat-icon>
               </button>
 
-              <button *ngIf="!edit" mat-mini-fab color="primary" class="right-button-theme" (click)="editTheme()">
+              <button *ngIf="!edit" title="Editar nombre de tema" mat-mini-fab color="primary" class="right-button-theme" (click)="editTheme()">
                 <mat-icon>border_color</mat-icon>
               </button>
 
-              <button mat-mini-fab color="accent" class="right-button-theme" (click)="fileInput.click()">
+              <button title="Cambiar imagen" mat-mini-fab color="accent" class="right-button-theme" (click)="fileInput.click()">
                 <input #fileInput type="file" [(ngModel)]="newImage" class="inputFileButton" (change)="changeImage(fileInput)">
                 <mat-icon>insert_photo</mat-icon>
               </button>
+
+              <a href="#userView">
+                <button title="Vista usuario" mat-mini-fab color="primary" class="right-button-theme">
+                  <mat-icon>remove_red_eye</mat-icon>
+                </button>
+              </a>
             </span>
 
             <h1 style="font-size: 2rem; margin-left: 1rem;" *ngIf="!edit">{{theme?.name}}</h1>
@@ -41,7 +47,7 @@
             <mat-card class="card" *ngFor = "let quote of theme.quotes">
               <div style="margin-left: 2rem">
                 Referencia cita {{quote.id}}
-                <button mat-mini-fab color="warn" *ngIf="loginService.isAdmin" class="delete" (click)="deleteQuote(quote.id, theme.id)" >
+                <button title="Eliminar cita" mat-mini-fab color="warn" *ngIf="loginService.isAdmin" class="delete" (click)="deleteQuote(quote.id, theme.id)" >
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>
@@ -70,7 +76,7 @@
             <mat-card class="card" *ngFor = "let text of theme.texts">
               <div style="margin-left: 2rem">
                 Texto {{text.id}}
-                <button mat-mini-fab color="warn" *ngIf="loginService.isAdmin" class="delete" (click)="deleteText(text.id)">
+                <button title="Eliminar texto" mat-mini-fab color="warn" *ngIf="loginService.isAdmin" class="delete" (click)="deleteText(text.id)">
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>
@@ -93,7 +99,7 @@
               </section>
           </div>
 
-          <div class="example-large-box mat-elevation-z4 bg">
+          <div id="userView" class="example-large-box mat-elevation-z4 bg">
               <div style="margin-left: 2rem; padding-top: 0.5rem;">
                 HTML
               </div>

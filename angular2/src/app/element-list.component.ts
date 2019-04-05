@@ -43,9 +43,6 @@ export class ElementListComponent implements OnInit {
 
   spinner = false;
 
-  background = '';
-  color = false;
-
   constructor(
     private router: Router,
     private themeService: ThemeService,
@@ -62,15 +59,6 @@ export class ElementListComponent implements OnInit {
     this.getThemesSize();
     this.pageSize = 6;
     this.loadMoreQuotes = true;
-  }
-
-  changeColor() {
-    this.background = this.background ? '' : 'primary';
-    if ( this.color ) {
-      this.color = false;
-    } else {
-      this.color = true;
-    }
   }
 
   resetPages() {

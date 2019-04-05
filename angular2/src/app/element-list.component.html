@@ -7,19 +7,10 @@
     </mat-form-field>
   </div>
 
-  <button *ngIf="color" mat-icon-button (click)="changeColor()" class="colorButton">
-    <mat-icon>format_paint</mat-icon>
-  </button>
-
-  <button *ngIf="!color" mat-mini-fab color="primary" (click)="changeColor()" class="colorButton">
-    <mat-icon>format_paint</mat-icon>
-  </button>
-
   <div>
     <mat-card class="card" style="margin-top: -0.7rem; padding-bottom: 0">
-      <mat-tab-group dynamicHeight [backgroundColor]="background">
+      <mat-tab-group dynamicHeight>
         <mat-tab label="Temas" style="position: fixed">
-          <!--<div style="height: 30rem; overflow-y: scroll">-->
             <div *ngFor="let theme of themes" id="themes-list">
               <mat-card class="card element-list">
                 <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;"
@@ -31,7 +22,6 @@
                 </div>
               </mat-card>
             </div>
-          <!--</div>-->
 
           <div style="text-align: center">
             <p *ngIf="themes.length === 0" style="margin: 2rem">
@@ -64,7 +54,6 @@
         </mat-tab>
 
         <mat-tab label="Citas">
-          <!--<div style="height: 30rem; overflow-y: scroll">-->
             <div *ngFor="let quote of quotes">
               <mat-card class="card element-list">
                 <div *ngIf="loginService.isLogged" style="padding: 0.7rem; cursor: pointer;"
@@ -81,7 +70,6 @@
               <p *ngIf="quotes.length === 0" style="margin: 2rem">
                 Ningún resultado
               </p>
-            <!--</div>-->
           </div>
 
           <mat-progress-bar *ngIf="spinner" mode="indeterminate"></mat-progress-bar>
