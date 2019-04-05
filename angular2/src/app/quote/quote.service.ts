@@ -23,8 +23,8 @@ export class QuoteService {
     return this.http.get('/api/quotes/' + id);
   }
 
-  searchQuote(name: string) {
-    return this.http.get('/api/quotes/search/' + name);
+  searchQuote(name: string, page: number) {
+    return this.http.get('/api/quotes/search/' + name + '/?page=' + page);
   }
 
   saveQuote(quote: Quote): Observable<Quote> {

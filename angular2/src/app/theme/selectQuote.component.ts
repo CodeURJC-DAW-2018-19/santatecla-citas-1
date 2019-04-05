@@ -15,7 +15,7 @@ export class SelectQuoteComponent implements OnInit {
 
   quotes: Quote[];
   id: number;
-  searchName: string;
+  searchName = '';
 
   pageSize: number;
   pageQuotes: number;
@@ -56,7 +56,8 @@ export class SelectQuoteComponent implements OnInit {
   search(name: string) {
     this.resetPages();
     if (name !== '') {
-      this.quoteService.searchQuote(name).subscribe((data: Quote[]) => this.quotes = data['content']
+      this.quoteService.searchQuote(name, this.pageQuotes).subscribe((data: Quote[]) =>
+        this.quotes = data['content']
     );
     } else {
       this.quoteService.getQuotes().subscribe((data: Quote[]) => this.quotes = data['content']
@@ -78,12 +79,19 @@ export class SelectQuoteComponent implements OnInit {
   showQuotesByPage(page: number) {
     this.spinner = true;
     if (page !== 0) {
-        this.quoteService.getQuotesByPage(page).subscribe((data: Quote[]) => {
-        this.quotes = this.quotes.concat(data['content']);
-        this.spinner = false;
+      if ( this.searchName === '') {
+          this.quoteService.getQuotesByPage(page).subscribe((data1: Quote[]) => {
+            this.quotes = this.quotes.concat(data1['content']);
+            this.spinner = false;
       });
+      } else {
+          this.quoteService.searchQuote(this.searchName, this.pageQuotes + 1).subscribe((data: Quote[]) => {
+            this.quotes = this.quotes.concat(data['content']);
+            this.spinner = false;
+          });
+      }
     } else {
-      this.quoteService.getQuotes().subscribe((data: Quote[]) => this.quotes = data['content']);
+      this.showFirstQuotes();
     }
     this.pageQuotes++;
     this.getRemainingQuotes();

@@ -27,7 +27,7 @@ export class ElementListComponent implements OnInit {
   restThemes: number;
   restQuotes: string;
 
-  searchName: string;
+  searchName = '';
   pageSize: number;
   pageThemes: number;
   pageQuotes: number;
@@ -82,11 +82,12 @@ export class ElementListComponent implements OnInit {
 
   search(name: string) {
     this.resetPages();
+    this.searchName = name;
     if (name !== '') {
-      this.themeService.searchTheme(name).subscribe((data: Theme[]) => {
+      this.themeService.searchTheme(name, this.pageQuotes).subscribe((data: Theme[]) => {
         this.themes = data['content'];
       });
-      this.quoteService.searchQuote(name).subscribe((data: Quote[]) => {
+      this.quoteService.searchQuote(name, this.pageQuotes).subscribe((data: Quote[]) => {
         this.quotes = data['content'];
       });
     } else {
@@ -97,10 +98,17 @@ export class ElementListComponent implements OnInit {
   showQuotesByPage(page: number) {
     this.spinner = true;
     if (page !== 0) {
+      if ( this.searchName === '') {
           this.quoteService.getQuotesByPage(page).subscribe((data1: Quote[]) => {
-          this.quotes = this.quotes.concat(data1['content']);
-          this.spinner = false;
+            this.quotes = this.quotes.concat(data1['content']);
+            this.spinner = false;
       });
+      } else {
+          this.quoteService.searchQuote(this.searchName, this.pageQuotes + 1).subscribe((data: Quote[]) => {
+            this.quotes = this.quotes.concat(data['content']);
+            this.spinner = false;
+          });
+      }
     } else {
       this.showFirstQuotes();
     }
@@ -111,10 +119,17 @@ export class ElementListComponent implements OnInit {
   showThemesByPage(page: number) {
     this.spinner = true;
     if (page !== 0) {
-      this.themeService.getThemesByPage(page).subscribe((data: Theme[]) => {
-        this.themes = this.themes.concat(data['content']);
-        this.spinner = false;
-      });
+      if ( this.searchName === '') {
+        this.themeService.getThemesByPage(page).subscribe((data: Theme[]) => {
+          this.themes = this.themes.concat(data['content']);
+          this.spinner = false;
+        });
+      } else {
+        this.themeService.searchTheme(this.searchName, this.pageQuotes + 1).subscribe((data: Theme[]) => {
+          this.themes = this.themes.concat(data['content']);
+          this.spinner = false;
+        });
+      }
     } else {
       this.showFirstThemes();
     }

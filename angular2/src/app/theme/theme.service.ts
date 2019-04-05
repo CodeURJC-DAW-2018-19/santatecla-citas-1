@@ -39,8 +39,8 @@ export class ThemeService {
     return this.http.post('/api/themes/' + id + '/image', formData);
   }
 
-  searchTheme(name: string) {
-    return this.http.get('/api/themes/search/' + name);
+  searchTheme(name: string, page: number) {
+    return this.http.get('/api/themes/search/' + name + '/?page=' + page);
   }
 
   saveTheme(theme: Theme): Observable<Theme> {
