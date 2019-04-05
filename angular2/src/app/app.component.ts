@@ -3,9 +3,11 @@ import { Component } from '@angular/core';
 import { TabService } from './tabs/tab.service';
 
 import { Router } from '@angular/router';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
+  providers: [LoginService, HttpClient, TabService],
   templateUrl: './app.component.html',
   styleUrls: [
     './app.component.css'
