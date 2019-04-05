@@ -1,7 +1,7 @@
 cd ../angular2
 
 # Build angular app
-docker run --rm --name angular-cli -v ${PWD}:/angular -w /angular teracy/angular-cli /bin/bash -c "npm install; ng build --prod --baseHref=https://localhost:8080/new/"
+docker run --rm --name angular-cli -v ${PWD}:/angular -w /angular node /bin/bash -c "npm install; npm run ng build --prod --baseHref=https://localhost:8080/new/"
 
 cd ../docker
 
