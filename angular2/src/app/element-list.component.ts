@@ -11,9 +11,11 @@ import { QuoteService } from './quote/quote.service';
 
 import { TabService } from './tabs/tab.service';
 import { TouchSequence } from 'selenium-webdriver';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   templateUrl: './element-list.component.html',
+  providers: [ThemeService, HttpClient],
   styleUrls: [
     './app.component.css'
   ]
