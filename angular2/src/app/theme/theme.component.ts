@@ -43,17 +43,26 @@ export class ThemeComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
-      this.themeService.getTheme(this.id)
-        .subscribe((data: Theme) => {
-          this.theme = {
-            id: data['id'],
-            name: data['name'],
-            quotes: data['quotes'],
-            texts: data['texts']
-          };
-          this.name = this.theme.name;
+      this.themeService.getTheme(this.id).subscribe((data: Theme) => {
+        this.theme = {
+          id: data['id'],
+          name: data['name'],
+          quotes: data['quotes'],
+          texts: data['texts']
+        };
+        this.name = this.theme.name;
+      }, error => {
+        if ((this.name === undefined) || (this.name === '') || (this.id === undefined)) {
+          this.router.navigate(['/']);
+          this._dialogService.openAlert({
+            message: 'Lo sentimos, este tema ya no está disponible',
+            title: 'Error',
+            closeButton: 'Cerrar',
+            width: '500px',
+            height: '175px'
+          });
         }
-      );
+      });
 
       this.themeService.getImage(this.id)
         .subscribe(data => {

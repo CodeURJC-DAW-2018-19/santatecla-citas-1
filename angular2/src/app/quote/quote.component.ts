@@ -31,19 +31,28 @@ export class QuoteComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
-      this.quoteService.getQuote(id)
-        .subscribe((data: Quote) => {
-          this.quote = {
-            id: data['id'],
-            quote: data['quote'],
-            author: data['author'],
-            book: data['book']
-          };
-          this.name = this.quote.quote;
-          this.author = this.quote.author;
-          this.book = this.quote.book;
+      this.quoteService.getQuote(id).subscribe((data: Quote) => {
+        this.quote = {
+          id: data['id'],
+          quote: data['quote'],
+          author: data['author'],
+          book: data['book']
+        };
+        this.name = this.quote.quote;
+        this.author = this.quote.author;
+        this.book = this.quote.book;
+      }, error => {
+        if ((this.name === undefined) || (this.name === '') || (id === undefined)) {
+          this.router.navigate(['/']);
+          this._dialogService.openAlert({
+            message: 'Lo sentimos, esta cita ya no está disponible',
+            title: 'Error',
+            closeButton: 'Cerrar',
+            width: '500px',
+            height: '175px'
+          });
         }
-      );
+      });
     });
   }
 
