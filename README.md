@@ -192,6 +192,33 @@ It shows the number of quotes that each topic has on the web.
 ![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/SecurityDiagram.png)
 
 ---------------------
+## Angular Diagrams
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/Angular%20Diagram/diagram1.png)
+
+---------------------
+
+![Alt text](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/Readme-images/Angular%20Diagram/diagram2.png)
+
+---------------------
+
+## Angular Enviroment
+
+First of all, we need install Node.js
+
+[![Node.js](https://img.shields.io/badge/Install-Node%20js-green.svg)](https://nodejs.org/es/)
+
+Then, open the project in Visual Studio Code. 
+Once opened, you have to open the terminal and enter the following commands:
+
+   **cd angular2**
+   
+   **npm install**
+   
+   **npm start**
+
+---------------------
+
 ## REST API documentation
 
 [REST API 📄](https://github.com/CodeURJC-DAW-2018-19/santatecla-citas-1/blob/master/API.md)
