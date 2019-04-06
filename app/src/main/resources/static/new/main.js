@@ -1071,6 +1071,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _covalent_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @covalent/core */ "./node_modules/@covalent/core/fesm5/covalent-core.js");
 /* harmony import */ var _quote_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./quote.service */ "./src/app/quote/quote.service.ts");
 /* harmony import */ var _auth_login_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../auth/login.service */ "./src/app/auth/login.service.ts");
+/* harmony import */ var _tabs_tab_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../tabs/tab.service */ "./src/app/tabs/tab.service.ts");
+
 
 
 
@@ -1078,12 +1080,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var QuoteComponent = /** @class */ (function () {
-    function QuoteComponent(router, quoteService, _dialogService, activatedRoute, loginService) {
+    function QuoteComponent(router, quoteService, _dialogService, activatedRoute, loginService, tabService) {
         this.router = router;
         this.quoteService = quoteService;
         this._dialogService = _dialogService;
         this.activatedRoute = activatedRoute;
         this.loginService = loginService;
+        this.tabService = tabService;
         this.edit = false;
     }
     QuoteComponent.prototype.ngOnInit = function () {
@@ -1110,6 +1113,7 @@ var QuoteComponent = /** @class */ (function () {
                         width: '500px',
                         height: '175px'
                     });
+                    _this.tabService.removeTab('quote', _this.quote.id);
                 }
             });
         });
@@ -1123,9 +1127,10 @@ var QuoteComponent = /** @class */ (function () {
             height: '175px'
         }).afterClosed().subscribe(function (accept) {
             if (accept) {
-                _this.quoteService
-                    .removeQuote(_this.quote)
-                    .subscribe(function (_) { return _this.router.navigate(['/']); }, function (error) { return console.error(error); });
+                _this.quoteService.removeQuote(_this.quote).subscribe(function (_) {
+                    _this.router.navigate(['/']);
+                    _this.tabService.removeTab('quote', _this.quote.id);
+                }, function (error) { return console.error(error); });
             }
         });
     };
@@ -1150,7 +1155,8 @@ var QuoteComponent = /** @class */ (function () {
             _quote_service__WEBPACK_IMPORTED_MODULE_4__["QuoteService"],
             _covalent_core__WEBPACK_IMPORTED_MODULE_3__["TdDialogService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
-            _auth_login_service__WEBPACK_IMPORTED_MODULE_5__["LoginService"]])
+            _auth_login_service__WEBPACK_IMPORTED_MODULE_5__["LoginService"],
+            _tabs_tab_service__WEBPACK_IMPORTED_MODULE_6__["TabService"]])
     ], QuoteComponent);
     return QuoteComponent;
 }());
@@ -1623,6 +1629,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _theme_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme.service */ "./src/app/theme/theme.service.ts");
 /* harmony import */ var _auth_login_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../auth/login.service */ "./src/app/auth/login.service.ts");
 /* harmony import */ var _covalent_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @covalent/core */ "./node_modules/@covalent/core/fesm5/covalent-core.js");
+/* harmony import */ var _tabs_tab_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../tabs/tab.service */ "./src/app/tabs/tab.service.ts");
+
 
 
 
@@ -1638,12 +1646,13 @@ var ImageSnippet = /** @class */ (function () {
     return ImageSnippet;
 }());
 var ThemeComponent = /** @class */ (function () {
-    function ThemeComponent(router, themeService, activatedRoute, loginService, _dialogService) {
+    function ThemeComponent(router, themeService, activatedRoute, loginService, _dialogService, tabService) {
         this.router = router;
         this.themeService = themeService;
         this.activatedRoute = activatedRoute;
         this.loginService = loginService;
         this._dialogService = _dialogService;
+        this.tabService = tabService;
         this.selectQuote = false;
         this.edit = false;
     }
@@ -1669,6 +1678,7 @@ var ThemeComponent = /** @class */ (function () {
                         width: '500px',
                         height: '175px'
                     });
+                    _this.tabService.removeTab('theme', _this.theme.id);
                 }
             });
             _this.themeService.getImage(_this.id)
@@ -1707,9 +1717,10 @@ var ThemeComponent = /** @class */ (function () {
             height: '175px'
         }).afterClosed().subscribe(function (accept) {
             if (accept) {
-                _this.themeService
-                    .removeTheme(_this.theme)
-                    .subscribe(function (_) { return _this.router.navigate(['/']); }, function (error) { return console.error(error); });
+                _this.themeService.removeTheme(_this.theme).subscribe(function (_) {
+                    _this.router.navigate(['/']);
+                    _this.tabService.removeTab('theme', _this.theme.id);
+                }, function (error) { return console.error(error); });
             }
         });
     };
@@ -1793,7 +1804,8 @@ var ThemeComponent = /** @class */ (function () {
             _theme_service__WEBPACK_IMPORTED_MODULE_4__["ThemeService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _auth_login_service__WEBPACK_IMPORTED_MODULE_5__["LoginService"],
-            _covalent_core__WEBPACK_IMPORTED_MODULE_6__["TdDialogService"]])
+            _covalent_core__WEBPACK_IMPORTED_MODULE_6__["TdDialogService"],
+            _tabs_tab_service__WEBPACK_IMPORTED_MODULE_7__["TabService"]])
     ], ThemeComponent);
     return ThemeComponent;
 }());

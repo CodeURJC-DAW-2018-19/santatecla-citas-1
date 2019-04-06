@@ -5,6 +5,7 @@ import { Theme } from './theme.model';
 import { ThemeService } from './theme.service';
 import { LoginService } from '../auth/login.service';
 import { TdDialogService } from '@covalent/core';
+import { TabService } from '../tabs/tab.service';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -36,7 +37,8 @@ export class ThemeComponent implements OnInit {
     private themeService: ThemeService,
     private activatedRoute: ActivatedRoute,
     public loginService: LoginService,
-    private _dialogService: TdDialogService,) {
+    private _dialogService: TdDialogService,
+    public tabService: TabService) {
 
     }
 
@@ -61,6 +63,7 @@ export class ThemeComponent implements OnInit {
             width: '500px',
             height: '175px'
           });
+          this.tabService.removeTab('theme', this.theme.id);
         }
       });
 
@@ -104,9 +107,10 @@ export class ThemeComponent implements OnInit {
         height: '175px'
     }).afterClosed().subscribe((accept: boolean) => {
         if (accept) {
-            this.themeService
-                .removeTheme(this.theme)
-                .subscribe((_) => this.router.navigate(['/']), (error) => console.error(error));
+            this.themeService.removeTheme(this.theme).subscribe((_) => {
+              this.router.navigate(['/']);
+              this.tabService.removeTab('theme', this.theme.id);
+            }, (error) => console.error(error));
         }
     });
   }

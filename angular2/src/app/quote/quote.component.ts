@@ -5,6 +5,7 @@ import { TdDialogService } from '@covalent/core';
 import { Quote } from './quote.model';
 import { QuoteService } from './quote.service';
 import { LoginService } from '../auth/login.service';
+import { TabService } from '../tabs/tab.service';
 
 @Component({
   templateUrl: './quote.component.html',
@@ -26,7 +27,8 @@ export class QuoteComponent implements OnInit {
     private quoteService: QuoteService,
     private _dialogService: TdDialogService,
     private activatedRoute: ActivatedRoute,
-    public loginService: LoginService) {}
+    public loginService: LoginService,
+    private tabService: TabService) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -51,6 +53,7 @@ export class QuoteComponent implements OnInit {
             width: '500px',
             height: '175px'
           });
+          this.tabService.removeTab('quote', this.quote.id);
         }
       });
     });
@@ -64,9 +67,10 @@ export class QuoteComponent implements OnInit {
         height: '175px'
     }).afterClosed().subscribe((accept: boolean) => {
         if (accept) {
-            this.quoteService
-                .removeQuote(this.quote)
-                .subscribe((_) => this.router.navigate(['/']), (error) => console.error(error));
+            this.quoteService.removeQuote(this.quote).subscribe((_) => {
+              this.router.navigate(['/']);
+              this.tabService.removeTab('quote', this.quote.id);
+            }, (error) => console.error(error));
         }
     });
   }
