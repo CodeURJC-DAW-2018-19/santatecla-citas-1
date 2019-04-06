@@ -100,20 +100,16 @@ export class ElementListComponent implements OnInit {
   showMoreQuotes() {
     this.spinner = true;
     this.pageQuotes++;
-    if (this.pageQuotes !== 0) {
-      if ( this.searchName === '') {
-          this.quoteService.getQuotesByPage(this.pageQuotes).subscribe((data1: Quote[]) => {
-            this.quotes = this.quotes.concat(data1['content']);
-            this.spinner = false;
-      });
-      } else {
-          this.quoteService.searchQuote(this.searchName, this.pageQuotes + 1).subscribe((data: Quote[]) => {
-            this.quotes = this.quotes.concat(data['content']);
-            this.spinner = false;
-          });
-      }
+    if ( this.searchName === '') {
+        this.quoteService.getQuotesByPage(this.pageQuotes).subscribe((data1: Quote[]) => {
+          this.quotes = this.quotes.concat(data1['content']);
+          this.spinner = false;
+    });
     } else {
-      this.showFirstQuotes();
+        this.quoteService.searchQuote(this.searchName, this.pageQuotes).subscribe((data: Quote[]) => {
+          this.quotes = this.quotes.concat(data['content']);
+          this.spinner = false;
+        });
     }
     this.getRemainingQuotes();
   }
@@ -121,20 +117,16 @@ export class ElementListComponent implements OnInit {
   showMoreThemes() {
     this.spinner = true;
     this.pageThemes++;
-    if (this.pageThemes !== 0) {
-      if ( this.searchName === '') {
-        this.themeService.getThemesByPage(this.pageThemes).subscribe((data: Theme[]) => {
-          this.themes = this.themes.concat(data['content']);
-          this.spinner = false;
-        });
-      } else {
-        this.themeService.searchTheme(this.searchName, this.pageQuotes + 1).subscribe((data: Theme[]) => {
-          this.themes = this.themes.concat(data['content']);
-          this.spinner = false;
-        });
-      }
+    if ( this.searchName === '') {
+      this.themeService.getThemesByPage(this.pageThemes).subscribe((data: Theme[]) => {
+        this.themes = this.themes.concat(data['content']);
+        this.spinner = false;
+      });
     } else {
-      this.showFirstThemes();
+      this.themeService.searchTheme(this.searchName, this.pageQuotes).subscribe((data: Theme[]) => {
+        this.themes = this.themes.concat(data['content']);
+        this.spinner = false;
+      });
     }
     this.getRemainingThemes();
   }
