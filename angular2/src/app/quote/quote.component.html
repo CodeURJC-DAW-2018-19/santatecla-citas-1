@@ -42,15 +42,15 @@
           </div>
 
           <div *ngIf="loginService.isAdmin">
-            <button mat-mini-fab color="warn" class="right-button" (click)="removeTheme()" >
+            <button title="Borrar cita" mat-mini-fab color="warn" class="right-button" (click)="removeTheme()" style="margin-bottom: 1rem">
               <mat-icon>delete</mat-icon>
             </button>
 
-            <button *ngIf="edit" mat-mini-fab color="primary" class="right-button" (click)="save()">
+            <button title="Guardar cita" *ngIf="edit" mat-mini-fab color="primary" class="right-button" (click)="save()" style="margin-bottom: 1rem">
               <mat-icon>border_color</mat-icon>
             </button>
 
-            <button *ngIf="!edit" mat-mini-fab color="primary" class="right-button" (click)="editQuote()">
+            <button title="Editar cita" *ngIf="!edit" mat-mini-fab color="primary" class="right-button" (click)="editQuote()" style="margin-bottom: 1rem">
               <mat-icon>border_color</mat-icon>
             </button>
           </div>

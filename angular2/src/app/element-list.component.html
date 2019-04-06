@@ -3,7 +3,7 @@
     <mat-form-field appearance="outline" style="width:100%" (keyup.enter)="search(searchName)">
       <mat-label>Buscador</mat-label>
       <input matInput [(ngModel)]="searchName"/>
-      <mat-icon matSuffix (click)="search(searchName)" style="cursor: pointer">search</mat-icon>
+      <mat-icon title="Buscar" matSuffix (click)="search(searchName)" style="cursor: pointer">search</mat-icon>
     </mat-form-field>
   </div>
 
