@@ -35,10 +35,10 @@ export class ElementListComponent implements OnInit {
   themesSize: number;
   quotesSize: number;
 
-  remainingQuotes: number;
+  remainingQuotes: number | string;
   loadMoreQuotes: boolean;
 
-  remainingThemes: number;
+  remainingThemes: number | string;
   loadMoreThemes: boolean;
 
   spinner = false;
@@ -86,9 +86,11 @@ export class ElementListComponent implements OnInit {
     if (name !== '') {
       this.themeService.searchTheme(name, this.pageQuotes).subscribe((data: Theme[]) => {
         this.themes = data['content'];
+        this.getRemainingThemes();
       });
       this.quoteService.searchQuote(name, this.pageQuotes).subscribe((data: Quote[]) => {
         this.quotes = data['content'];
+        this.getRemainingQuotes();
       });
     } else {
       this.showFirstThemesAndQuotes();
@@ -187,13 +189,21 @@ export class ElementListComponent implements OnInit {
   getRemainingQuotes() {
     const op = this.quotesSize - this.pageSize - (this.pageSize * this.pageQuotes);
     this.remainingQuotes = (op > 0) ?  op : 0;
-    this.loadMoreQuotes = this.remainingQuotes !== 0;
+    if (this.searchName !== '') {
+      this.remainingQuotes = '?';
+    } else {
+      this.loadMoreQuotes = this.remainingQuotes !== 0;
+    }
   }
 
   getRemainingThemes() {
     const op = this.themesSize - this.pageSize - (this.pageSize * this.pageThemes);
     this.remainingThemes = (op > 0) ?  op : 0;
-    this.loadMoreThemes = this.remainingThemes !== 0;
+    if (this.searchName !== '') {
+      this.remainingThemes = '?';
+    } else {
+      this.loadMoreThemes = this.remainingThemes !== 0;
+    }
   }
 
 }
