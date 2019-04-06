@@ -211,11 +211,11 @@ First of all, we need install Node.js
 Then, open the project in Visual Studio Code. 
 Once opened, you have to open the terminal and enter the following commands:
 
-   *cd angular2 
+   *cd angular2* 
    
-   *npm install
+   *npm install*
    
-   *npm start
+   *npm start*
 
 ---------------------
 
