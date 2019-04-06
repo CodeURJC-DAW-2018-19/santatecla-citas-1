@@ -1,25 +1,38 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { TestBed, async, ComponentFixture, inject, tick, fakeAsync, RouterTestingModule  } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+
+import { By } from '@angular/platform-browser';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
+
 import { ElementListComponent } from './element-list.component';
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('ElementListComponent', () => {
+
+  let component: ElementListComponent;
+  let fixture: ComponentFixture<ElementListComponent>;
+  let de: DebugElement;
+
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
       declarations: [
         ElementListComponent
       ],
+      imports: [HttpClientModule, RouterTestingModule],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
+
   }));
 
-  it('should render theme name in a h1 tag', () => {
-    const fixture = TestBed.createComponent(ElementListComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ElementListComponent);
+    component = fixture.componentInstance;
+    de = fixture.debugElement;
+
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('{{theme.name}}');
+  });
+
+  it('should creat', () => {
+    expect(component).toBeTruthy();
   });
 });
