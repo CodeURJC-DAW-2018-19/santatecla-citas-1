@@ -206,16 +206,16 @@ It shows the number of quotes that each topic has on the web.
 
 First of all, we need install Node.js
 
-[![Node.js](https://img.shields.io/badge/Install-Node%20js-green.svg)](https://nodejs.org/es/)
+* [![Node.js](https://img.shields.io/badge/Install-Node%20js-green.svg)](https://nodejs.org/es/)
 
 Then, open the project in Visual Studio Code. 
 Once opened, you have to open the terminal and enter the following commands:
 
-   **cd angular2**
+   *cd angular2 
    
-   **npm install**
+   *npm install
    
-   **npm start**
+   *npm start
 
 ---------------------
 
