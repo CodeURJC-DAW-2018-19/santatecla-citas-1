@@ -83,6 +83,7 @@ export class ElementListComponent implements OnInit {
   search(name: string) {
     this.resetPages();
     this.searchName = name;
+    this.getQuotesSize();
     if (name !== '') {
       this.themeService.searchTheme(name, this.pageQuotes).subscribe((data: Theme[]) => {
         this.themes = data['content'];
@@ -171,23 +172,34 @@ export class ElementListComponent implements OnInit {
   }
 
   getThemesSize() {
-    this.themeService.getSize().subscribe((data: number) => {
-      this.themesSize = data;
-      this.getRemainingThemes();
-    });
+    //if(this.searchName === '') {
+      this.themeService.getSize().subscribe((data: number) => {
+        this.themesSize = data;
+        this.getRemainingThemes();
+      });
+    //} else {
+      //this.themeService.getSearchSize(this.searchName).subscribe;
+    //}
   }
 
   getQuotesSize() {
-    this.quoteService.getSize().subscribe((data: number) => {
-      this.quotesSize = data;
-      this.getRemainingQuotes();
-    });
+    if (this.searchName !== '') {
+      this.quoteService.getSearchSize(this.searchName).subscribe((data: number) => {
+        this.quotesSize = data;
+        this.getRemainingQuotes();
+      });
+    } else {
+      this.quoteService.getSize().subscribe((data: number) => {
+        this.quotesSize = data;
+        this.getRemainingQuotes();
+      });
+    }
   }
 
   getRemainingQuotes() {
-    const op = this.quotesSize - this.pageSize - (this.pageSize * this.pageQuotes);
-    this.remainingQuotes = (op > 0) ?  op : 0;
-    this.loadMoreQuotes = this.remainingQuotes !== 0;
+      const op = this.quotesSize - this.pageSize - (this.pageSize * this.pageQuotes);
+      this.remainingQuotes = (op > 0) ?  op : 0;
+      this.loadMoreQuotes = this.remainingQuotes !== 0;
   }
 
   getRemainingThemes() {

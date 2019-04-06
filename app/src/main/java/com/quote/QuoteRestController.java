@@ -44,6 +44,11 @@ public class QuoteRestController extends GeneralRestController{
         return this.quoteService.findSize();
     }
 
+    @GetMapping(value="/search/{name}/size")
+    public long quotesSearchSize(@PathVariable String name) {
+        return this.quoteService.findSize(name);
+    }
+
     @GetMapping(value="/search/{name}")
     public MappingJacksonValue searchQuotes(@PageableDefault Pageable page, @PathVariable String name){
         page = PageRequest.of(page.getPageNumber(), PAGE_SIZE);

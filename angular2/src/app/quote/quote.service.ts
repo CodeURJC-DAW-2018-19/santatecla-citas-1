@@ -15,6 +15,10 @@ export class QuoteService {
     return this.http.get('/api/quotes/size');
   }
 
+  getSearchSize(name: string) {
+    return this.http.get('/api/quotes/search/' + name + '/size');
+  }
+
   getQuotesByPage(page: number) {
     return this.http.get('/api/quotes/?page=' + page);
   }

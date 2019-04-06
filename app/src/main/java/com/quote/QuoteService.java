@@ -54,4 +54,8 @@ public class QuoteService {
 	public int findSize(){
 		return repository.findAll().size();
 	}
+
+	public int findSize(String name){
+		return this.findByName(name).size();
+	}
 }
