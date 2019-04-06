@@ -34,7 +34,7 @@
           <div style="margin-top: 2rem; text-align: center" class="loadMoreButtons">
             <div class="load">
               <button *ngIf="loadMoreThemes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingThemes" matBadgeColor="accent" title="Cargar más">
-                <mat-icon matSuffix (click)="showThemesByPage(pageThemes + 1)">
+                <mat-icon matSuffix (click)="showMoreThemes()">
                   keyboard_arrow_down
                 </mat-icon>
               </button>
@@ -77,7 +77,7 @@
           <div style="margin-top: 2rem; text-align: center" class="loadMoreButtons">
             <div class="load">
               <button *ngIf="loadMoreQuotes" mat-mini-fab color="primary" style="margin-right: 1rem" [matBadge]="remainingQuotes" matBadgeColor="accent" title="Cargar más">
-                <mat-icon matSuffix (click)="showQuotesByPage(pageQuotes + 1)">
+                <mat-icon matSuffix (click)="showMoreQuotes()">
                   keyboard_arrow_down
                 </mat-icon>
               </button>

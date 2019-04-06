@@ -84,7 +84,7 @@ export class ElementListComponent implements OnInit {
     this.resetPages();
     this.searchName = name;
     if (name !== '') {
-      this.themeService.searchTheme(name, this.pageQuotes).subscribe((data: Theme[]) => {
+      this.themeService.searchTheme(name, this.pageThemes).subscribe((data: Theme[]) => {
         this.themes = data['content'];
         this.getRemainingThemes();
       });
@@ -97,11 +97,12 @@ export class ElementListComponent implements OnInit {
     }
   }
 
-  showQuotesByPage(page: number) {
+  showMoreQuotes() {
     this.spinner = true;
-    if (page !== 0) {
+    this.pageQuotes++;
+    if (this.pageQuotes !== 0) {
       if ( this.searchName === '') {
-          this.quoteService.getQuotesByPage(page).subscribe((data1: Quote[]) => {
+          this.quoteService.getQuotesByPage(this.pageQuotes).subscribe((data1: Quote[]) => {
             this.quotes = this.quotes.concat(data1['content']);
             this.spinner = false;
       });
@@ -114,15 +115,15 @@ export class ElementListComponent implements OnInit {
     } else {
       this.showFirstQuotes();
     }
-    this.pageQuotes++;
     this.getRemainingQuotes();
   }
 
-  showThemesByPage(page: number) {
+  showMoreThemes() {
     this.spinner = true;
-    if (page !== 0) {
+    this.pageThemes++;
+    if (this.pageThemes !== 0) {
       if ( this.searchName === '') {
-        this.themeService.getThemesByPage(page).subscribe((data: Theme[]) => {
+        this.themeService.getThemesByPage(this.pageThemes).subscribe((data: Theme[]) => {
           this.themes = this.themes.concat(data['content']);
           this.spinner = false;
         });
@@ -135,7 +136,6 @@ export class ElementListComponent implements OnInit {
     } else {
       this.showFirstThemes();
     }
-    this.pageThemes++;
     this.getRemainingThemes();
   }
 
