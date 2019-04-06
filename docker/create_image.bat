@@ -18,7 +18,7 @@ cd docker
 :: Delete containers and app image
 FOR /f "tokens=*" %%i IN ('docker ps -aq') DO docker stop %%i
 FOR /f "tokens=*" %%i IN ('docker ps -aq') DO docker rm %%i
-docker rmi app
+docker rmi -f app
 
 :: Build app image
 docker build -t app .

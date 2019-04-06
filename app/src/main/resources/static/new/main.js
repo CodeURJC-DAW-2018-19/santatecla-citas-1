@@ -415,7 +415,7 @@ var ErrorInterceptor = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <div *ngIf=\"!loginService.isLogged\">\r\n    <button mat-mini-fab color=\"primary\" (click)=\"openLoginDialog()\" title=\"LogIn\" id=\"log-in-button\">\r\n      <mat-icon>person</mat-icon>\r\n    </button>\r\n    <button mat-mini-fab color=\"accent\" (click)=\"register()\" style=\"margin-right: 1rem; margin-left: 1rem;\" title=\"Registrarse\">\r\n      <mat-icon matSuffix>person_add</mat-icon>\r\n    </button>\r\n  </div>\r\n\r\n  <div *ngIf=\"loginService.isLogged\">\r\n    <span style=\"margin-right: 1rem\" id=\"logged-name\">\r\n      {{loginService.user.name}}\r\n    </span>\r\n    <button mat-mini-fab color=\"primary\" (click)=\"logOut()\" id=\"log-out-button\">\r\n      <mat-icon>exit_to_app</mat-icon>\r\n    </button>\r\n  </div>\r\n</div>\r\n\r\n\r\n<ng-template #loginDialog let-dialogRef=\"dialogRef\">\r\n\r\n<div layout=\"column\" layout-fill>\r\n\r\n  <h2 mat-dialog-title style=\"text-align: center\">\r\n    LogIn\r\n  </h2>\r\n\r\n  <mat-dialog-content style=\"text-align: center\">\r\n    <form #loginForm=\"ngForm\" (keyup.enter)=\"logIn($event, userElement.value, passElement.value)\">\r\n\r\n      <div layout=\"row\">\r\n        <mat-form-field flex>\r\n          <input matInput #userElement #userControl=\"ngModel\" placeholder=\"Usuario\" type=\"text\"\r\n            maxlength=\"30\" name=\"username\" [(ngModel)]=\"username\" required id=\"username\">\r\n          <span matPrefix>\r\n            <mat-icon>person</mat-icon>\r\n          </span>\r\n          <mat-hint>\r\n            <span [hidden]=\"!userControl.errors?.required || userControl.pristine\"\r\n              class=\"tc-red-600\">Required</span>\r\n          </mat-hint>\r\n          <mat-hint>{{userElement.value.length}} / 30</mat-hint>\r\n        </mat-form-field>\r\n      </div>\r\n\r\n      <div layout=\"row\">\r\n        <mat-form-field flex>\r\n          <input matInput #passElement #passControl=\"ngModel\" placeholder=\"Contraseña\" type=\"password\"\r\n            name=\"password\" [(ngModel)]=\"password\" required id=\"password\">\r\n          <span matPrefix>\r\n            <mat-icon>lock</mat-icon>\r\n          </span>\r\n          <mat-hint>\r\n            <span [hidden]=\"!passControl.errors?.required || passControl.pristine\"\r\n              class=\"tc-red-600\">Required</span>\r\n          </mat-hint>\r\n        </mat-form-field>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-dialog-content>\r\n\r\n  <div style=\"margin-top: 2rem; text-align: center;\">\r\n    <button type=\"button\" mat-button color=\"accent\" class=\"text-upper\" (click)=\"logIn($event, userElement.value, passElement.value)\" id=\"send-login-button\">Login</button>\r\n  </div>\r\n\r\n</div>\r\n\r\n</ng-template>\r\n"
+module.exports = "<div>\r\n  <div *ngIf=\"!loginService.isLogged\">\r\n    <button mat-mini-fab color=\"primary\" (click)=\"openLoginDialog()\" title=\"LogIn\" id=\"log-in-button\">\r\n      <mat-icon>person</mat-icon>\r\n    </button>\r\n    <button mat-mini-fab color=\"accent\" (click)=\"register()\" style=\"margin-right: 1rem; margin-left: 1rem;\" title=\"Registrarse\">\r\n      <mat-icon matSuffix>person_add</mat-icon>\r\n    </button>\r\n  </div>\r\n\r\n  <div *ngIf=\"loginService.isLogged\">\r\n    <span style=\"margin-right: 1rem\" id=\"logged-name\">\r\n      {{loginService.user.name}}\r\n    </span>\r\n    <button title=\"LogOut\" mat-mini-fab color=\"primary\" (click)=\"logOut()\" id=\"log-out-button\">\r\n      <mat-icon>exit_to_app</mat-icon>\r\n    </button>\r\n  </div>\r\n</div>\r\n\r\n\r\n<ng-template #loginDialog let-dialogRef=\"dialogRef\">\r\n\r\n<div layout=\"column\" layout-fill>\r\n\r\n  <h2 mat-dialog-title style=\"text-align: center\">\r\n    LogIn\r\n  </h2>\r\n\r\n  <mat-dialog-content style=\"text-align: center\">\r\n    <form #loginForm=\"ngForm\" (keyup.enter)=\"logIn($event, userElement.value, passElement.value)\">\r\n\r\n      <div layout=\"row\">\r\n        <mat-form-field flex>\r\n          <input matInput #userElement #userControl=\"ngModel\" placeholder=\"Usuario\" type=\"text\"\r\n            maxlength=\"30\" name=\"username\" [(ngModel)]=\"username\" required id=\"username\">\r\n          <span matPrefix>\r\n            <mat-icon>person</mat-icon>\r\n          </span>\r\n          <mat-hint>\r\n            <span [hidden]=\"!userControl.errors?.required || userControl.pristine\"\r\n              class=\"tc-red-600\">Required</span>\r\n          </mat-hint>\r\n          <mat-hint>{{userElement.value.length}} / 30</mat-hint>\r\n        </mat-form-field>\r\n      </div>\r\n\r\n      <div layout=\"row\">\r\n        <mat-form-field flex>\r\n          <input matInput #passElement #passControl=\"ngModel\" placeholder=\"Contraseña\" type=\"password\"\r\n            name=\"password\" [(ngModel)]=\"password\" required id=\"password\">\r\n          <span matPrefix>\r\n            <mat-icon>lock</mat-icon>\r\n          </span>\r\n          <mat-hint>\r\n            <span [hidden]=\"!passControl.errors?.required || passControl.pristine\"\r\n              class=\"tc-red-600\">Required</span>\r\n          </mat-hint>\r\n        </mat-form-field>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-dialog-content>\r\n\r\n  <div style=\"margin-top: 2rem; text-align: center;\">\r\n    <button type=\"button\" mat-button color=\"accent\" class=\"text-upper\" (click)=\"logIn($event, userElement.value, passElement.value)\" id=\"send-login-button\">Login</button>\r\n  </div>\r\n\r\n</div>\r\n\r\n</ng-template>\r\n"
 
 /***/ }),
 
@@ -629,7 +629,7 @@ var RegisterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\r\n  <div class=\"search\">\r\n    <mat-form-field appearance=\"outline\" style=\"width:100%\" (keyup.enter)=\"search(searchName)\">\r\n      <mat-label>Buscador</mat-label>\r\n      <input matInput [(ngModel)]=\"searchName\"/>\r\n      <mat-icon matSuffix (click)=\"search(searchName)\" style=\"cursor: pointer\">search</mat-icon>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <div>\r\n    <mat-card class=\"card\" style=\"margin-top: -0.7rem; padding-bottom: 0\">\r\n      <mat-tab-group dynamicHeight>\r\n        <mat-tab label=\"Temas\" style=\"position: fixed\">\r\n            <div *ngFor=\"let theme of themes\" id=\"themes-list\">\r\n              <mat-card class=\"card element-list\">\r\n                <div *ngIf=\"loginService.isLogged\" style=\"padding: 0.7rem; cursor: pointer;\"\r\n                [routerLink]=\"['/theme', theme.id]\" (click)=\"tabService.addTab('theme', theme.id)\">\r\n                  {{ theme.name }}\r\n                </div>\r\n                <div *ngIf=\"!loginService.isLogged\" style=\"padding: 0.7rem\">\r\n                  {{ theme.name }}\r\n                </div>\r\n              </mat-card>\r\n            </div>\r\n\r\n          <div style=\"text-align: center\">\r\n            <p *ngIf=\"themes.length === 0\" style=\"margin: 2rem\">\r\n              Ningún resultado\r\n            </p>\r\n          </div>\r\n\r\n          <mat-progress-bar *ngIf=\"spinner\" mode=\"indeterminate\"></mat-progress-bar>\r\n\r\n          <div style=\"margin-top: 2rem; text-align: center\" class=\"loadMoreButtons\">\r\n            <div class=\"load\">\r\n              <button *ngIf=\"loadMoreThemes\" mat-mini-fab color=\"primary\" style=\"margin-right: 1rem\" [matBadge]=\"remainingThemes\" matBadgeColor=\"accent\" title=\"Cargar más\">\r\n                <mat-icon matSuffix (click)=\"showThemesByPage(pageThemes + 1)\">\r\n                  keyboard_arrow_down\r\n                </mat-icon>\r\n              </button>\r\n\r\n              <button *ngIf=\"pageThemes !== 0\" mat-mini-fab color=\"accent\" title=\"Cargar menos\">\r\n                <mat-icon matSuffix (click)=\"loadLessThemes()\">\r\n                  keyboard_arrow_up\r\n                </mat-icon>\r\n              </button>\r\n            </div>\r\n\r\n            <button class=\"right-button\" mat-mini-fab color=\"primary\" style=\"margin-bottom: 1rem\" *ngIf=\"loginService.isAdmin\" title=\"Añadir tema\" id=\"add-theme-button\">\r\n              <mat-icon (click)=\"newTheme()\">add</mat-icon>\r\n            </button>\r\n          </div>\r\n\r\n        </mat-tab>\r\n\r\n        <mat-tab label=\"Citas\">\r\n            <div *ngFor=\"let quote of quotes\">\r\n              <mat-card class=\"card element-list\">\r\n                <div *ngIf=\"loginService.isLogged\" style=\"padding: 0.7rem; cursor: pointer;\"\r\n                [routerLink]=\"['/quote', quote.id]\" (click)=\"tabService.addTab('quote', quote.id)\">\r\n                  {{ quote.quote }}\r\n                </div>\r\n                <div *ngIf=\"!loginService.isLogged\" style=\"padding: 0.7rem\">\r\n                  {{ quote.quote }}\r\n                </div>\r\n              </mat-card>\r\n            </div>\r\n\r\n            <div style=\"text-align: center\">\r\n              <p *ngIf=\"quotes.length === 0\" style=\"margin: 2rem\">\r\n                Ningún resultado\r\n              </p>\r\n          </div>\r\n\r\n          <mat-progress-bar *ngIf=\"spinner\" mode=\"indeterminate\"></mat-progress-bar>\r\n\r\n          <div style=\"margin-top: 2rem; text-align: center\" class=\"loadMoreButtons\">\r\n            <div class=\"load\">\r\n              <button *ngIf=\"loadMoreQuotes\" mat-mini-fab color=\"primary\" style=\"margin-right: 1rem\" [matBadge]=\"remainingQuotes\" matBadgeColor=\"accent\" title=\"Cargar más\">\r\n                <mat-icon matSuffix (click)=\"showQuotesByPage(pageQuotes + 1)\">\r\n                  keyboard_arrow_down\r\n                </mat-icon>\r\n              </button>\r\n\r\n              <button *ngIf=\"pageQuotes !== 0\" mat-mini-fab color=\"accent\" title=\"Cargar menos\">\r\n                <mat-icon matSuffix (click)=\"loadLessQuotes()\">\r\n                  keyboard_arrow_up\r\n                </mat-icon>\r\n              </button>\r\n            </div>\r\n\r\n            <button mat-mini-fab color=\"primary\" class=\"right-button\" style=\"margin-bottom: 1rem\" *ngIf=\"loginService.isAdmin\" title=\"Añadir cita\">\r\n              <mat-icon (click)=\"newQuote()\">add</mat-icon>\r\n            </button>\r\n          </div>\r\n\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n    </mat-card>\r\n  </div>\r\n\r\n  <div class=\"histogramButton\" style=\"text-align: center; margin: 1rem;\">\r\n    <button [routerLink]=\"['/histogram']\" mat-raised-button color=\"primary\">\r\n      Histograma\r\n      <mat-icon>bar_chart</mat-icon>\r\n    </button>\r\n  </div>\r\n</body>\r\n"
+module.exports = "<body>\r\n  <div class=\"search\">\r\n    <mat-form-field appearance=\"outline\" style=\"width:100%\" (keyup.enter)=\"search(searchName)\">\r\n      <mat-label>Buscador</mat-label>\r\n      <input matInput [(ngModel)]=\"searchName\"/>\r\n      <mat-icon title=\"Buscar\" matSuffix (click)=\"search(searchName)\" style=\"cursor: pointer\">search</mat-icon>\r\n    </mat-form-field>\r\n  </div>\r\n\r\n  <div>\r\n    <mat-card class=\"card\" style=\"margin-top: -0.7rem; padding-bottom: 0\">\r\n      <mat-tab-group dynamicHeight>\r\n        <mat-tab label=\"Temas\" style=\"position: fixed\">\r\n            <div *ngFor=\"let theme of themes\" id=\"themes-list\">\r\n              <mat-card class=\"card element-list\">\r\n                <div *ngIf=\"loginService.isLogged\" style=\"padding: 0.7rem; cursor: pointer;\"\r\n                [routerLink]=\"['/theme', theme.id]\" (click)=\"tabService.addTab('theme', theme.id)\">\r\n                  {{ theme.name }}\r\n                </div>\r\n                <div *ngIf=\"!loginService.isLogged\" style=\"padding: 0.7rem\">\r\n                  {{ theme.name }}\r\n                </div>\r\n              </mat-card>\r\n            </div>\r\n\r\n          <div style=\"text-align: center\">\r\n            <p *ngIf=\"themes.length === 0\" style=\"margin: 2rem\">\r\n              Ningún resultado\r\n            </p>\r\n          </div>\r\n\r\n          <mat-progress-bar *ngIf=\"spinner\" mode=\"indeterminate\"></mat-progress-bar>\r\n\r\n          <div style=\"margin-top: 2rem; text-align: center\" class=\"loadMoreButtons\">\r\n            <div class=\"load\">\r\n              <button *ngIf=\"loadMoreThemes\" mat-mini-fab color=\"primary\" style=\"margin-right: 1rem\" [matBadge]=\"remainingThemes\" matBadgeColor=\"accent\" title=\"Cargar más\">\r\n                <mat-icon matSuffix (click)=\"showMoreThemes()\">\r\n                  keyboard_arrow_down\r\n                </mat-icon>\r\n              </button>\r\n\r\n              <button *ngIf=\"pageThemes !== 0\" mat-mini-fab color=\"accent\" title=\"Cargar menos\">\r\n                <mat-icon matSuffix (click)=\"loadLessThemes()\">\r\n                  keyboard_arrow_up\r\n                </mat-icon>\r\n              </button>\r\n            </div>\r\n\r\n            <button class=\"right-button\" mat-mini-fab color=\"primary\" style=\"margin-bottom: 1rem\" *ngIf=\"loginService.isAdmin\" title=\"Añadir tema\" id=\"add-theme-button\">\r\n              <mat-icon (click)=\"newTheme()\">add</mat-icon>\r\n            </button>\r\n          </div>\r\n\r\n        </mat-tab>\r\n\r\n        <mat-tab label=\"Citas\">\r\n            <div *ngFor=\"let quote of quotes\">\r\n              <mat-card class=\"card element-list\">\r\n                <div *ngIf=\"loginService.isLogged\" style=\"padding: 0.7rem; cursor: pointer;\"\r\n                [routerLink]=\"['/quote', quote.id]\" (click)=\"tabService.addTab('quote', quote.id)\">\r\n                  {{ quote.quote }}\r\n                </div>\r\n                <div *ngIf=\"!loginService.isLogged\" style=\"padding: 0.7rem\">\r\n                  {{ quote.quote }}\r\n                </div>\r\n              </mat-card>\r\n            </div>\r\n\r\n            <div style=\"text-align: center\">\r\n              <p *ngIf=\"quotes.length === 0\" style=\"margin: 2rem\">\r\n                Ningún resultado\r\n              </p>\r\n          </div>\r\n\r\n          <mat-progress-bar *ngIf=\"spinner\" mode=\"indeterminate\"></mat-progress-bar>\r\n\r\n          <div style=\"margin-top: 2rem; text-align: center\" class=\"loadMoreButtons\">\r\n            <div class=\"load\">\r\n              <button *ngIf=\"loadMoreQuotes\" mat-mini-fab color=\"primary\" style=\"margin-right: 1rem\" [matBadge]=\"remainingQuotes\" matBadgeColor=\"accent\" title=\"Cargar más\">\r\n                <mat-icon matSuffix (click)=\"showMoreQuotes()\">\r\n                  keyboard_arrow_down\r\n                </mat-icon>\r\n              </button>\r\n\r\n              <button *ngIf=\"pageQuotes !== 0\" mat-mini-fab color=\"accent\" title=\"Cargar menos\">\r\n                <mat-icon matSuffix (click)=\"loadLessQuotes()\">\r\n                  keyboard_arrow_up\r\n                </mat-icon>\r\n              </button>\r\n            </div>\r\n\r\n            <button mat-mini-fab color=\"primary\" class=\"right-button\" style=\"margin-bottom: 1rem\" *ngIf=\"loginService.isAdmin\" title=\"Añadir cita\">\r\n              <mat-icon (click)=\"newQuote()\">add</mat-icon>\r\n            </button>\r\n          </div>\r\n\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n    </mat-card>\r\n  </div>\r\n\r\n  <div class=\"histogramButton\" style=\"text-align: center; margin: 1rem;\">\r\n    <button [routerLink]=\"['/histogram']\" mat-raised-button color=\"primary\">\r\n      Histograma\r\n      <mat-icon>bar_chart</mat-icon>\r\n    </button>\r\n  </div>\r\n</body>\r\n"
 
 /***/ }),
 
@@ -697,61 +697,53 @@ var ElementListComponent = /** @class */ (function () {
         this.resetPages();
         this.searchName = name;
         if (name !== '') {
-            this.themeService.searchTheme(name, this.pageQuotes).subscribe(function (data) {
+            this.themeService.searchTheme(name, this.pageThemes).subscribe(function (data) {
                 _this.themes = data['content'];
+                _this.getRemainingThemes();
             });
             this.quoteService.searchQuote(name, this.pageQuotes).subscribe(function (data) {
                 _this.quotes = data['content'];
+                _this.getRemainingQuotes();
             });
         }
         else {
             this.showFirstThemesAndQuotes();
         }
     };
-    ElementListComponent.prototype.showQuotesByPage = function (page) {
+    ElementListComponent.prototype.showMoreQuotes = function () {
         var _this = this;
         this.spinner = true;
-        if (page !== 0) {
-            if (this.searchName === '') {
-                this.quoteService.getQuotesByPage(page).subscribe(function (data1) {
-                    _this.quotes = _this.quotes.concat(data1['content']);
-                    _this.spinner = false;
-                });
-            }
-            else {
-                this.quoteService.searchQuote(this.searchName, this.pageQuotes + 1).subscribe(function (data) {
-                    _this.quotes = _this.quotes.concat(data['content']);
-                    _this.spinner = false;
-                });
-            }
+        this.pageQuotes++;
+        if (this.searchName === '') {
+            this.quoteService.getQuotesByPage(this.pageQuotes).subscribe(function (data1) {
+                _this.quotes = _this.quotes.concat(data1['content']);
+                _this.spinner = false;
+            });
         }
         else {
-            this.showFirstQuotes();
+            this.quoteService.searchQuote(this.searchName, this.pageQuotes).subscribe(function (data) {
+                _this.quotes = _this.quotes.concat(data['content']);
+                _this.spinner = false;
+            });
         }
-        this.pageQuotes++;
         this.getRemainingQuotes();
     };
-    ElementListComponent.prototype.showThemesByPage = function (page) {
+    ElementListComponent.prototype.showMoreThemes = function () {
         var _this = this;
         this.spinner = true;
-        if (page !== 0) {
-            if (this.searchName === '') {
-                this.themeService.getThemesByPage(page).subscribe(function (data) {
-                    _this.themes = _this.themes.concat(data['content']);
-                    _this.spinner = false;
-                });
-            }
-            else {
-                this.themeService.searchTheme(this.searchName, this.pageQuotes + 1).subscribe(function (data) {
-                    _this.themes = _this.themes.concat(data['content']);
-                    _this.spinner = false;
-                });
-            }
+        this.pageThemes++;
+        if (this.searchName === '') {
+            this.themeService.getThemesByPage(this.pageThemes).subscribe(function (data) {
+                _this.themes = _this.themes.concat(data['content']);
+                _this.spinner = false;
+            });
         }
         else {
-            this.showFirstThemes();
+            this.themeService.searchTheme(this.searchName, this.pageQuotes).subscribe(function (data) {
+                _this.themes = _this.themes.concat(data['content']);
+                _this.spinner = false;
+            });
         }
-        this.pageThemes++;
         this.getRemainingThemes();
     };
     ElementListComponent.prototype.showFirstThemesAndQuotes = function () {
@@ -800,12 +792,22 @@ var ElementListComponent = /** @class */ (function () {
     ElementListComponent.prototype.getRemainingQuotes = function () {
         var op = this.quotesSize - this.pageSize - (this.pageSize * this.pageQuotes);
         this.remainingQuotes = (op > 0) ? op : 0;
-        this.loadMoreQuotes = this.remainingQuotes !== 0;
+        if (this.searchName !== '') {
+            this.remainingQuotes = '?';
+        }
+        else {
+            this.loadMoreQuotes = this.remainingQuotes !== 0;
+        }
     };
     ElementListComponent.prototype.getRemainingThemes = function () {
         var op = this.themesSize - this.pageSize - (this.pageSize * this.pageThemes);
         this.remainingThemes = (op > 0) ? op : 0;
-        this.loadMoreThemes = this.remainingThemes !== 0;
+        if (this.searchName !== '') {
+            this.remainingThemes = '?';
+        }
+        else {
+            this.loadMoreThemes = this.remainingThemes !== 0;
+        }
     };
     ElementListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
@@ -1049,7 +1051,7 @@ var FormQuoteComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<body>\r\n\r\n  <div>\r\n    <mat-card class=\"card\">\r\n      <mat-tab-group dynamicHeight>\r\n        <mat-tab label=\"Citas\">\r\n          <div class=\"example-large-box mat-elevation-z4 bg\">\r\n\r\n            <span *ngIf=\"!edit\">\r\n              <mat-card class=\"card\">\r\n                {{quote.quote}}\r\n              </mat-card>\r\n\r\n              <div style=\"padding-top: 2rem; margin-left: 2rem\">Autor</div>\r\n              <mat-card class=\"card\">\r\n                {{quote.author}}\r\n              </mat-card>\r\n\r\n              <div style=\"padding-top: 2rem; margin-left: 2rem\">Libro</div>\r\n              <mat-card class=\"card\">\r\n                {{quote.book}}\r\n              </mat-card>\r\n            </span>\r\n\r\n            <form (keyup.enter)=\"save()\" *ngIf=\"edit\">\r\n              <mat-card class=\"card\">\r\n                <input style=\"font-size: 1rem; width: 99%;\" type=\"text\" [(ngModel)]=\"name\" name=\"name\">\r\n              </mat-card>\r\n\r\n              <div style=\"padding-top: 2rem; margin-left: 2rem\">Autor</div>\r\n              <mat-card class=\"card\">\r\n                <input style=\"font-size: 1rem; width: 99%;\" type=\"text\" [(ngModel)]=\"author\" name=\"author\">\r\n              </mat-card>\r\n\r\n              <div style=\"padding-top: 2rem; margin-left: 2rem\">Libro</div>\r\n              <mat-card class=\"card\">\r\n                <input style=\"font-size: 1rem; width: 99%;\" type=\"text\" [(ngModel)]=\"book\" name=\"book\">\r\n              </mat-card>\r\n            </form>\r\n\r\n          </div>\r\n\r\n          <div *ngIf=\"loginService.isAdmin\">\r\n            <button mat-mini-fab color=\"warn\" class=\"right-button\" (click)=\"removeTheme()\" >\r\n              <mat-icon>delete</mat-icon>\r\n            </button>\r\n\r\n            <button *ngIf=\"edit\" mat-mini-fab color=\"primary\" class=\"right-button\" (click)=\"save()\">\r\n              <mat-icon>border_color</mat-icon>\r\n            </button>\r\n\r\n            <button *ngIf=\"!edit\" mat-mini-fab color=\"primary\" class=\"right-button\" (click)=\"editQuote()\">\r\n              <mat-icon>border_color</mat-icon>\r\n            </button>\r\n          </div>\r\n\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n    </mat-card>\r\n  </div>\r\n\r\n</body>\r\n"
+module.exports = "\r\n<body>\r\n\r\n  <div>\r\n    <mat-card class=\"card\">\r\n      <mat-tab-group dynamicHeight>\r\n        <mat-tab label=\"Citas\">\r\n          <div class=\"example-large-box mat-elevation-z4 bg\">\r\n\r\n            <span *ngIf=\"!edit\">\r\n              <mat-card class=\"card\">\r\n                {{quote.quote}}\r\n              </mat-card>\r\n\r\n              <div style=\"padding-top: 2rem; margin-left: 2rem\">Autor</div>\r\n              <mat-card class=\"card\">\r\n                {{quote.author}}\r\n              </mat-card>\r\n\r\n              <div style=\"padding-top: 2rem; margin-left: 2rem\">Libro</div>\r\n              <mat-card class=\"card\">\r\n                {{quote.book}}\r\n              </mat-card>\r\n            </span>\r\n\r\n            <form (keyup.enter)=\"save()\" *ngIf=\"edit\">\r\n              <mat-card class=\"card\">\r\n                <input style=\"font-size: 1rem; width: 99%;\" type=\"text\" [(ngModel)]=\"name\" name=\"name\">\r\n              </mat-card>\r\n\r\n              <div style=\"padding-top: 2rem; margin-left: 2rem\">Autor</div>\r\n              <mat-card class=\"card\">\r\n                <input style=\"font-size: 1rem; width: 99%;\" type=\"text\" [(ngModel)]=\"author\" name=\"author\">\r\n              </mat-card>\r\n\r\n              <div style=\"padding-top: 2rem; margin-left: 2rem\">Libro</div>\r\n              <mat-card class=\"card\">\r\n                <input style=\"font-size: 1rem; width: 99%;\" type=\"text\" [(ngModel)]=\"book\" name=\"book\">\r\n              </mat-card>\r\n            </form>\r\n\r\n          </div>\r\n\r\n          <div *ngIf=\"loginService.isAdmin\">\r\n            <button title=\"Borrar cita\" mat-mini-fab color=\"warn\" class=\"right-button\" (click)=\"removeTheme()\" style=\"margin-bottom: 1rem\">\r\n              <mat-icon>delete</mat-icon>\r\n            </button>\r\n\r\n            <button title=\"Guardar cita\" *ngIf=\"edit\" mat-mini-fab color=\"primary\" class=\"right-button\" (click)=\"save()\" style=\"margin-bottom: 1rem\">\r\n              <mat-icon>border_color</mat-icon>\r\n            </button>\r\n\r\n            <button title=\"Editar cita\" *ngIf=\"!edit\" mat-mini-fab color=\"primary\" class=\"right-button\" (click)=\"editQuote()\" style=\"margin-bottom: 1rem\">\r\n              <mat-icon>border_color</mat-icon>\r\n            </button>\r\n          </div>\r\n\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n    </mat-card>\r\n  </div>\r\n\r\n</body>\r\n"
 
 /***/ }),
 
@@ -1088,8 +1090,7 @@ var QuoteComponent = /** @class */ (function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
             var id = params['id'];
-            _this.quoteService.getQuote(id)
-                .subscribe(function (data) {
+            _this.quoteService.getQuote(id).subscribe(function (data) {
                 _this.quote = {
                     id: data['id'],
                     quote: data['quote'],
@@ -1099,6 +1100,17 @@ var QuoteComponent = /** @class */ (function () {
                 _this.name = _this.quote.quote;
                 _this.author = _this.quote.author;
                 _this.book = _this.quote.book;
+            }, function (error) {
+                if ((_this.name === undefined) || (_this.name === '') || (id === undefined)) {
+                    _this.router.navigate(['/']);
+                    _this._dialogService.openAlert({
+                        message: 'Lo sentimos, esta cita ya no está disponible',
+                        title: 'Error',
+                        closeButton: 'Cerrar',
+                        width: '500px',
+                        height: '175px'
+                    });
+                }
             });
         });
     };
@@ -1639,8 +1651,7 @@ var ThemeComponent = /** @class */ (function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
             _this.id = params['id'];
-            _this.themeService.getTheme(_this.id)
-                .subscribe(function (data) {
+            _this.themeService.getTheme(_this.id).subscribe(function (data) {
                 _this.theme = {
                     id: data['id'],
                     name: data['name'],
@@ -1648,6 +1659,17 @@ var ThemeComponent = /** @class */ (function () {
                     texts: data['texts']
                 };
                 _this.name = _this.theme.name;
+            }, function (error) {
+                if ((_this.name === undefined) || (_this.name === '') || (_this.id === undefined)) {
+                    _this.router.navigate(['/']);
+                    _this._dialogService.openAlert({
+                        message: 'Lo sentimos, este tema ya no está disponible',
+                        title: 'Error',
+                        closeButton: 'Cerrar',
+                        width: '500px',
+                        height: '175px'
+                    });
+                }
             });
             _this.themeService.getImage(_this.id)
                 .subscribe(function (data) {
