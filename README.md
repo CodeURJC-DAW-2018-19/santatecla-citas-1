@@ -1,7 +1,5 @@
 # santatecla-citas-1
 
-## Phase 0
-
 ### App Name 
 "Gestor de citas"
 
@@ -232,6 +230,23 @@ First of all, we need to install Docker:
 
 * [![Docker](https://img.shields.io/badge/Install-Docker-blue.svg)](https://www.docker.com/)
 
-Having already Docker installed, we must use the console (Using Windows CMD or Linux Terminal is the **_cd_** command) to go to the docker folder (at the root of our repository) and execute **docker-compose up**, this command will run up the containers: db (database) and app (sigma98/app:3.0.3 on DockerHub).
+Having already Docker installed, we must use the console (Using Windows CMD or Linux Terminal is the **_cd_** command) to go to the docker folder (at the root of our repository) and execute  the script **all.ps1**, this command will build our angular app and run up the containers: db (database) and app.
 
-YOU ARE READY TO USE OUR WEB APPLICATION USING DOCKER
+YOU ARE READY TO USE OUR WEB APPLICATIONS USING DOCKER
+
+---------------------
+## Tests
+
+Here we will explain how to execute the different types of tests we have developed.
+
+Protractor tests: we must open a terminal, go to our angular project folder and execute the following commands:
+
+- *npm install -g protractor* 
+
+- *webdriver-manager update*
+
+- *protractor protractor.conf.js*
+
+Selenium tests
+
+We must install the selenium extension in our browser, open our selenium project clicking on "Open an existing project" and selecting the .side file (it is on Selenium folder, in the root of our repository). Then, we can run the tests pressing "Run all tests".
