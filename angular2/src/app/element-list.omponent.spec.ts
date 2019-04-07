@@ -1,4 +1,5 @@
-import { TestBed, async, ComponentFixture, inject, tick, fakeAsync, RouterTestingModule  } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture, inject, tick, fakeAsync} from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 
 import { By } from '@angular/platform-browser';
