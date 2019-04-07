@@ -1,7 +1,10 @@
 # santatecla-citas-1
 
-### Demo Video
-[Gestor de Citas](https://youtu.be/A1vi6tPOdiE)
+### Demo Video 
+
+In order to show, as a demo, the final appearance of the application and its functionalities using Angular, we have recorded a small video.
+
+[Gestor de Citas](https://youtu.be/A1vi6tPOdiE) ▶
 
 ### App Name 
 "Gestor de citas"
@@ -238,7 +241,7 @@ Having already Docker installed, we must use the console (Using Windows CMD or L
 YOU ARE READY TO USE OUR WEB APPLICATIONS USING DOCKER
 
 ---------------------
-## Tests
+## Tests ✅
 
 Here we will explain how to execute the different types of tests we have developed.
 
