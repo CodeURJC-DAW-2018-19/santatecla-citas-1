@@ -109,6 +109,9 @@
                   <p>"{{quote.quote}}"</p>
                   <p>{{quote.author}} en {{quote.book}}</p>
                 </div>
+                <div *ngFor = "let text of theme?.texts">
+                  <p>"{{text.text}}"</p>
+                </div>
               </mat-card>
           </div>
 
